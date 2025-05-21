@@ -1,0 +1,125 @@
+/* Estilos gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #f6f6f6;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #22fd7d;
+    padding: 10px 5%;
+}
+
+.cabecalho-menu {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.menu-link {
+    color: #000000;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.menu-link:hover {
+    color: #f6f6f6;
+}
+
+.apresentacao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5% 8%;
+    gap: 40px;
+}
+
+.apresentacao-conteudo {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.apresentacao-titulo {
+    font-size: 2rem;
+    color: #22D4FD;
+    text-align: center;
+}
+
+.apresentacao-paragrafo {
+    font-size: 1.2rem;
+    text-align: justify;
+}
+
+.apresentacao-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.apresentacao-links2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 2px solid #22D4FD;
+    border-radius: 8px;
+    color: #f6f6f6;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.apresentacao-links2:hover {
+    background-color: #272727;
+}
+
+.img-pricipal {
+    width: 50%;
+    border-radius: 10px;
+}
+
+footer {
+    text-align: center;
+    background-color: #22D4FD;
+    color: #000000;
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+
+/* Smartphones */
+@media (min-width: 344px) and (max-width: 1080px) {
+
+    body{
+        background-color: purple;
+    }
+
+    .cabecalho {
+    padding: 10%;
+    
+    }
+
+    .cabecalho-menu {
+        justify-content: center;
+    }
+    .apresentacao {
+        flex-direction: column-reverse;
+        padding: 5%;
+    }
+    .apresentacao-conteudo {
+        width: auto;
+    }
+}
