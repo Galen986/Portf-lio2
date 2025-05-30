@@ -40,6 +40,7 @@ header {
     justify-content: space-between;
     padding: 5% 8%;
     gap: 40px;
+    flex-wrap: wrap; /* Adicionado para melhor ajuste em telas menores */
 }
 
 .apresentacao-conteudo {
@@ -99,27 +100,58 @@ footer {
 }
 
 /* Responsividade */
-
-/* Smartphones */
-@media (min-width: 344px) and (max-width: 1080px) {
-
-    body{
-        background-color: purple;
+@media (max-width: 768px) {
+    .apresentacao {
+        flex-direction: column;
+        padding: 5% 5%;
     }
 
-    .cabecalho {
-    padding: 10%;
-    
+    .apresentacao-conteudo,
+    .img-pricipal {
+        width: 100%;
+    }
+
+    .apresentacao-titulo {
+        font-size: 1.8rem;
+    }
+
+    .apresentacao-paragrafo {
+        font-size: 1rem;
+    }
+
+    .menu-link {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px 2%;
     }
 
     .cabecalho-menu {
-        justify-content: center;
+        flex-direction: column;
+        gap: 10px;
     }
-    .apresentacao {
-        flex-direction: column-reverse;
-        padding: 5%;
+
+    .menu-link {
+        font-size: 0.9rem;
     }
-    .apresentacao-conteudo {
-        width: auto;
+
+    .apresentacao-titulo {
+        font-size: 1.5rem;
+    }
+
+    .apresentacao-paragrafo {
+        font-size: 0.9rem;
+    }
+
+    .apresentacao-links2 {
+        font-size: 0.8rem;
+        padding: 8px 15px;
+    }
+
+    footer {
+        font-size: 0.8rem;
     }
 }
