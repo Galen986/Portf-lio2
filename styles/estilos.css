@@ -86,17 +86,19 @@ header {
     background-color: #272727;
 }
 
-.img-pricipal {
-    width: 50%;
-    border-radius: 10px;
-}
-
 footer {
     text-align: center;
     background-color: #22D4FD;
     color: #000000;
     padding: 10px;
     font-size: 0.9rem;
+}
+
+.img-pricipal {
+    width: 50%;
+    max-width: 100%; /* Adicionado para limitar a largura máxima */
+    height: auto; /* Adicionado para manter a proporção */
+    border-radius: 10px;
 }
 
 /* Responsividade */
@@ -108,7 +110,7 @@ footer {
 
     .apresentacao-conteudo,
     .img-pricipal {
-        width: 100%;
+        width: 100%; /* Ajusta a largura para ocupar todo o espaço disponível */
     }
 
     .apresentacao-titulo {
