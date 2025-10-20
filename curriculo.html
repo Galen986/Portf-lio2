@@ -9,60 +9,43 @@
 </head>
 <body>
 
-  <!-- ======= CABEÇALHO ======= -->
   <header class="cabecalho">
     <div class="logo">
       <img src="./imagens/logo.png" alt="Logo" class="logo-img">
       <h1 class="logo-texto">Guilherme Dev</h1>
     </div>
 
-    <header class="cabecalho">
-  <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
-  <nav class="cabecalho-menu">
-    <a class="menu-link" href="index.html">Início</a>
-    <a class="menu-link" href="sobre.html">Sobre Mim</a>
-    <a class="menu-link" href="curriculo.html">Currículo</a>
-  </nav>
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html" class="menu-link">Início</a></li>
+        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="menu-link ativo">Currículo</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <!-- ======= CONTEÚDO PRINCIPAL ======= -->
-  <main class="sobre">
-
-    <!-- ======= PERFIL ======= -->
-    <section class="perfil">
-      <img src="./imagens/Programador.jpg" alt="Foto de Guilherme" class="perfil-foto">
-      <div>
-        <h1>Guilherme Cardoso da Silva</h1>
-        <p>Sou um desenvolvedor Front-End em formação, com foco em criar interfaces modernas, responsivas e funcionais. 
-        Busco aplicar meus conhecimentos em projetos reais, sempre com dedicação, aprendizado contínuo e trabalho em equipe.</p>
+  <main class="curriculo-container">
+    <section class="curriculo-conteudo">
+      <div class="curriculo-topo">
+        <h1 class="nome">GUILHERME CARDOSO DA SILVA</h1>
+        <a href="./arquivos/Curriculo_Guilherme_Cardoso.pdf" download class="btn-download">📄 Baixar Currículo (PDF)</a>
       </div>
-    </section>
 
-    <!-- ======= CONTATO ======= -->
-    <section class="secao">
-      <h2>📞 Contato</h2>
-      <p>
+      <p class="contato">
         📍 São Paulo – SP, Zona Leste | CEP: 08270-340<br>
-        📞 (11) 9 6400-2284 | ✉ <a href="mailto:guisilva4410@gmail.com" style="color:#00eaff; text-decoration:none;">guisilva4410@gmail.com</a>
+        📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com
       </p>
-    </section>
 
-    <!-- ======= EXPERIÊNCIA ======= -->
-    <section class="secao">
+      <hr>
+
       <h2>💼 Experiência Profissional</h2>
-      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web e crescer profissionalmente na área.</p>
-    </section>
+      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web.</p>
 
-    <!-- ======= FORMAÇÃO ======= -->
-    <section class="secao">
       <h2>🎓 Formação Acadêmica</h2>
       <ul>
         <li>Ensino Médio Completo – E.E. Infante Dom Henrique (2020)</li>
       </ul>
-    </section>
 
-    <!-- ======= CURSOS ======= -->
-    <section class="secao">
       <h2>💻 Cursos de Aperfeiçoamento</h2>
       <ul>
         <li>Programador Web – 440h | Obra Social Dom Bosco</li>
@@ -71,27 +54,17 @@
         <li>Serigrafia – 440h | Obra Social Dom Bosco</li>
         <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
       </ul>
-    </section>
 
-    <!-- ======= COMPETÊNCIAS ======= -->
-    <section class="secao">
       <h2>🛠 Competências Técnicas</h2>
-      <div class="habilidades">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Lógica de Programação</span>
-        <span>Banco de Dados (básico)</span>
-        <span>Pacote Office</span>
-      </div>
+      <ul>
+        <li>HTML, CSS e JavaScript</li>
+        <li>Lógica de Programação</li>
+        <li>Banco de Dados (Noções)</li>
+        <li>Pacote Office</li>
+      </ul>
     </section>
-
   </main>
 
-  <!-- ======= RODAPÉ ======= -->
-  <footer class="rodape">
-    © 2025 | Desenvolvido por Guilherme Cardoso da Silva
-  </footer>
-
+  <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
 </body>
 </html>
