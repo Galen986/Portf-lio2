@@ -1,4 +1,6 @@
-/* ======= RESET GLOBAL ======= */
+/* =========================
+   RESET GLOBAL
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -6,15 +8,17 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ======= ESTILO GERAL ======= */
+/* =========================
+   ESTILO GERAL
+========================= */
 body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
+  background-size: 300% 300%;
+  animation: backgroundMove 12s ease infinite;
+  color: #fff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-size: 300% 300%;
-  animation: backgroundMove 15s ease infinite;
 }
 
 @keyframes backgroundMove {
@@ -23,211 +27,247 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ======= CABEÇALHO ======= */
+/* =========================
+   CABEÇALHO / MENU
+========================= */
 .cabecalho {
-  background: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
-  padding: 20px 0;
   position: sticky;
   top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .cabecalho-menu {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  align-items: center;
+  gap: 3rem;
+  padding: 1rem 0;
 }
 
 .menu-link {
-  color: #00ffff;
+  color: #ffffffcc;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
+  letter-spacing: 1px;
+  transition: 0.3s;
   position: relative;
+}
+
+.menu-link:hover,
+.menu-link:focus {
+  color: #00c6ff;
 }
 
 .menu-link::after {
   content: "";
   position: absolute;
   width: 0;
-  height: 3px;
+  height: 2px;
+  bottom: -4px;
   left: 0;
-  bottom: -5px;
-  background: #00ffff;
-  transition: width 0.3s ease;
-  border-radius: 5px;
-}
-
-.menu-link:hover {
-  color: #fff;
+  background-color: #00c6ff;
+  transition: width 0.3s;
 }
 
 .menu-link:hover::after {
   width: 100%;
 }
 
-/* ======= APRESENTAÇÃO ======= */
+/* =========================
+   SEÇÃO PRINCIPAL
+========================= */
 .apresentacao {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 4rem 10%;
   flex-wrap: wrap;
-  padding: 50px 10%;
-  gap: 50px;
 }
 
 .apresentacao-conteudo {
   max-width: 600px;
-  animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  animation: fadeIn 1s ease;
 }
 
 .apresentacao-titulo {
   font-size: 2rem;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #00ffff, #ff00ff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #00c6ff;
   font-weight: 700;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  text-shadow: 0 0 15px rgba(0, 198, 255, 0.5);
 }
 
-.apresentacao-paragrafo,
-.conteúdo-texto1,
-.curriculo-texto {
+.apresentacao-paragrafo {
   font-size: 1.1rem;
-  color: #e0e0e0;
   line-height: 1.6;
-  margin-bottom: 15px;
+  color: #ffffffdd;
 }
 
 .fundo {
-  color: #00ffff;
+  color: #00c6ff;
   font-weight: bold;
 }
 
 .destaque {
-  color: #ff00ff;
-  font-weight: bold;
+  color: #ff9f43;
+  font-weight: 600;
 }
 
-/* ======= LINKS ======= */
+/* =========================
+   LINKS DAS REDES
+========================= */
 .apresentacao-links {
-  margin-top: 25px;
+  margin-top: 2rem;
 }
 
 .apresentacao-links-subtitulo {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: #00ffff;
+  margin-bottom: 1rem;
+  color: #ffffffcc;
   font-weight: 600;
 }
 
 .apresentacao-links2 {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  text-decoration: none;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  gap: 0.8rem;
+  margin: 0.5rem 1rem 0.5rem 0;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 0.6rem 1.2rem;
   color: #fff;
-  font-weight: bold;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin: 8px;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-}
-
-.apresentacao-links2 img {
-  width: 24px;
-  height: 24px;
-  filter: brightness(0) invert(1);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.4s ease;
 }
 
 .apresentacao-links2:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 25px rgba(0, 255, 255, 0.5),
-    0 0 40px rgba(255, 0, 255, 0.5);
+  background: #00c6ff;
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px #00c6ff;
 }
 
-/* ======= IMAGEM ======= */
+/* =========================
+   IMAGEM PRINCIPAL
+========================= */
 .apresentacao-imagem {
-  width: 380px;
-  max-width: 100%;
-  height: auto;
-  border-radius: 20px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
   object-fit: cover;
+  border: 3px solid #00c6ff;
+  box-shadow: 0 0 20px rgba(0, 198, 255, 0.5);
+  animation: float 3s ease-in-out infinite;
+}
 
-  /* ==== EFEITO VITRINE FUTURISTA ==== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* =========================
+   CURRÍCULO
+========================= */
+.curriculo-container {
+  padding: 4rem 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.curriculo-conteudo {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow:
-    0 0 15px rgba(0, 255, 255, 0.3),
-    0 0 30px rgba(255, 0, 255, 0.2),
-    inset 0 0 10px rgba(255, 255, 255, 0.05);
-
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  animation: fadeIn 1.5s ease;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 3rem;
+  max-width: 800px;
+  box-shadow: 0 0 25px rgba(0, 198, 255, 0.3);
+  animation: fadeIn 1s ease;
 }
 
-.apresentacao-imagem:hover {
-  transform: scale(1.05);
-  box-shadow:
-    0 0 25px rgba(0, 255, 255, 0.5),
-    0 0 45px rgba(255, 0, 255, 0.5),
-    inset 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-/* ======= RODAPÉ ======= */
-footer {
+.nome {
+  font-size: 1.8rem;
+  color: #00c6ff;
   text-align: center;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.6);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.contato {
+  text-align: center;
+  font-size: 1rem;
+  color: #ffffffcc;
+}
+
+.curriculo-conteudo h2 {
+  color: #ff9f43;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.curriculo-conteudo p,
+.curriculo-conteudo li {
+  color: #ddd;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.curriculo-conteudo ul {
+  list-style-type: "✔ ";
+  padding-left: 1.2rem;
+}
+
+/* =========================
+   RODAPÉ
+========================= */
+footer {
+  background: rgba(255, 255, 255, 0.05);
+  text-align: center;
+  padding: 1rem;
   font-size: 0.9rem;
-  color: #00ffff;
-  letter-spacing: 1px;
+  color: #ffffffcc;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ======= RESPONSIVIDADE ======= */
-@media (max-width: 900px) {
+/* =========================
+   ANIMAÇÕES
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+@media (max-width: 768px) {
+  .cabecalho-menu {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
   .apresentacao {
     flex-direction: column;
     text-align: center;
+    padding: 2rem;
   }
 
   .apresentacao-imagem {
-    width: 70%;
-    max-width: 350px;
+    width: 220px;
+    height: 220px;
   }
 
-  .menu-link {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .apresentacao-titulo {
-    font-size: 1.5rem;
-  }
-
-  .apresentacao-paragrafo {
-    font-size: 1rem;
-  }
-
-  .apresentacao-links2 {
-    padding: 8px 15px;
+  .curriculo-conteudo {
+    padding: 2rem;
   }
 }
