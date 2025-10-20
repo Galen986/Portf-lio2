@@ -1,59 +1,64 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currículo - Guilherme Cardoso da Silva</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="./styles/estilos.css"><!-- link para o arquivo CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currículo - Guilherme Cardoso</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/estilos.css">
 </head>
-   <header class="cabecalho"><!-- classe para o cabeçalho -->
-    <nav class="cabecalho-menu"><!-- classe para o menu -->
-        <a class="menu-link" href="index.html">Pagina Principal </a><!-- link para a pagina principal -->
-        <a class="menu-link" href="sobre.html">Sobre Mim</a><!-- link para a pagina sobre -->
-        <a class="menu-link" href="curriculo.html">Currículo</a><!-- link para a pagina do currículo -->
+<body>
+
+  <header class="cabecalho">
+    <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
+    <nav class="cabecalho-menu">
+      <a class="menu-link" href="index.html">Página Principal</a>
+      <a class="menu-link" href="sobre.html">Sobre Mim</a>
+      <a class="menu-link" href="curriculo.html">Currículo</a>
     </nav>
+  </header>
 
-    <main class="curriculo-container">
-        <section class="curriculo-conteudo">
-            <h1 class="nome">GUILHERME CARDOSO DA SILVA</h1>
-            <p class="contato">
-                📍 São Paulo – SP, Zona Leste | CEP: 08270-340<br>
-                📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com
-            </p>
+  <main class="curriculo-container">
+    <section class="curriculo-conteudo">
+      <div class="curriculo-topo">
+        <h1 class="nome">GUILHERME CARDOSO DA SILVA</h1>
+        <a href="./arquivos/Curriculo_Guilherme_Cardoso.pdf" download class="btn-download">📄 Baixar Currículo (PDF)</a>
+      </div>
 
-            <hr>
+      <p class="contato">
+        📍 São Paulo – SP, Zona Leste | CEP: 08270-340<br>
+        📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com
+      </p>
 
-            <h2>💼 Experiência Profissional</h2>
-            <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web, contribuindo com dedicação, aprendizado contínuo e trabalho em equipe.</p>
+      <hr>
 
-            <h2>🎓 Formação Acadêmica</h2>
-            <ul>
-                <li>Ensino Médio Completo – E.E. Infante Dom Henrique (2020)</li>
-            </ul>
+      <h2>💼 Experiência Profissional</h2>
+      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web.</p>
 
-            <h2>💻 Cursos de Aperfeiçoamento</h2>
-            <ul>
-                <li>Programador Web – 440h | Obra Social Dom Bosco</li>
-                <li>Programador de Sistemas – 440h | Obra Social Dom Bosco</li>
-                <li>Operador de Computador – 440h | Obra Social Dom Bosco</li>
-                <li>Serigrafia – 440h | Obra Social Dom Bosco</li>
-                <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
-            </ul>
+      <h2>🎓 Formação Acadêmica</h2>
+      <ul>
+        <li>Ensino Médio Completo – E.E. Infante Dom Henrique (2020)</li>
+      </ul>
 
-            <h2>🛠 Competências Técnicas</h2>
-            <ul>
-                <li>Desenvolvimento Web (HTML, CSS, JavaScript)</li>
-                <li>Lógica de Programação</li>
-                <li>Noções de Banco de Dados</li>
-                <li>Pacote Office e Ferramentas de Produtividade</li>
-                <li>Organização e Trabalho em Equipe</li>
-            </ul>
-        </section>
-    </main>
+      <h2>💻 Cursos de Aperfeiçoamento</h2>
+      <ul>
+        <li>Programador Web – 440h | Obra Social Dom Bosco</li>
+        <li>Programador de Sistemas – 440h | Obra Social Dom Bosco</li>
+        <li>Operador de Computador – 440h | Obra Social Dom Bosco</li>
+      </ul>
 
-    <footer class="rodape">
-        Site desenvolvido por Guilherme © 2025
-    </footer>
+      <h2>🛠 Competências Técnicas</h2>
+      <ul>
+        <li>HTML, CSS e JavaScript</li>
+        <li>Lógica de Programação</li>
+        <li>Banco de Dados (Noções)</li>
+        <li>Pacote Office</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="rodape">Site desenvolvido por Guilherme © 2025</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
