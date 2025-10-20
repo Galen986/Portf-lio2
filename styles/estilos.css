@@ -68,134 +68,110 @@ body {
   color: #00bcd4;
 }
 
-/* ======= SEÇÕES GERAIS ======= */
-main {
+/* ======= CONTEÚDO DO CURRÍCULO ======= */
+.curriculo-container {
   flex: 1;
   width: 90%;
   max-width: 1000px;
-  margin: 50px auto;
+  margin: 60px auto;
   background: rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 40px;
+  border-radius: 18px;
+  padding: 60px 60px;
   box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
 }
 
-/* ======= PERFIL E FOTO ======= */
-.perfil, .apresentacao {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 30px;
-}
-
-.perfil-foto {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  border: 3px solid #00bcd4;
-  object-fit: cover;
-}
-
-.perfil h1, .apresentacao h1 {
-  font-size: 1.8rem;
-  color: #00bcd4;
-}
-
-.apresentacao h1 span {
+.curriculo-conteudo h1.nome {
+  font-size: 1.9rem;
   color: #00eaff;
+  text-align: center;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
-.perfil p, .apresentacao p {
-  color: #d9d9d9;
-  margin-top: 5px;
-  line-height: 1.5;
+.curriculo-topo {
+  text-align: center;
+  margin-bottom: 35px;
 }
 
-/* ======= BOTÕES ======= */
+.contato {
+  text-align: center;
+  font-size: 1rem;
+  color: #dcdcdc;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 30px 0;
+}
+
+/* ======= TÍTULOS DE SEÇÃO ======= */
+.curriculo-conteudo h2 {
+  color: #00bcd4;
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  border-left: 4px solid #00bcd4;
+  padding-left: 12px;
+  letter-spacing: 0.5px;
+}
+
+.curriculo-conteudo p,
+.curriculo-conteudo ul {
+  color: #f1f1f1;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 25px;
+}
+
+.curriculo-conteudo ul {
+  list-style: disc;
+  padding-left: 25px;
+}
+
+/* ======= BOTÃO DE DOWNLOAD ======= */
 .btn-download {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  display: inline-block;
   background: linear-gradient(90deg, #00bcd4, #007bff);
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 25px;
+  padding: 12px 24px;
+  border-radius: 30px;
   transition: 0.3s;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
 .btn-download:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   background: linear-gradient(90deg, #007bff, #00bcd4);
-}
-
-/* ======= SEÇÕES ======= */
-.secao {
-  margin-top: 35px;
-}
-
-.secao h2 {
-  color: #00bcd4;
-  margin-bottom: 12px;
-  font-size: 1.3rem;
-}
-
-.secao p,
-.secao ul {
-  color: #f1f1f1;
-  line-height: 1.6;
-}
-
-.secao ul {
-  list-style: disc;
-  padding-left: 20px;
-}
-
-/* ======= HABILIDADES ======= */
-.habilidades {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.habilidades span {
-  background: rgba(0, 188, 212, 0.2);
-  color: #00eaff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  border: 1px solid rgba(0, 188, 212, 0.4);
 }
 
 /* ======= RODAPÉ ======= */
 .rodape {
   text-align: center;
-  padding: 15px;
+  padding: 18px;
   background: rgba(255, 255, 255, 0.08);
   font-size: 0.9rem;
   margin-top: auto;
+  color: #dcdcdc;
 }
 
 /* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
-  .perfil, .apresentacao {
-    flex-direction: column;
-    text-align: center;
+  .curriculo-container {
+    padding: 40px 30px;
   }
 
-  .perfil-foto {
-    width: 140px;
-    height: 140px;
+  .curriculo-conteudo h1.nome {
+    font-size: 1.6rem;
   }
 
-  main {
-    padding: 25px;
+  .curriculo-conteudo h2 {
+    font-size: 1.2rem;
   }
 }
 
@@ -212,12 +188,13 @@ main {
     margin-top: 10px;
   }
 
-  main {
+  .curriculo-container {
     width: 95%;
+    padding: 30px 20px;
   }
 
-  .habilidades span {
-    font-size: 0.85rem;
-    padding: 5px 10px;
+  .btn-download {
+    padding: 10px 18px;
+    font-size: 0.9rem;
   }
 }
