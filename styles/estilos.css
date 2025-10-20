@@ -1,131 +1,223 @@
+/* ======= RESET GLOBAL ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ======= CORPO ======= */
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 /* ======= CABEÇALHO ======= */
 .cabecalho {
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(10px);
-  padding: 20px 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 50px;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* ======= MENU ======= */
-.cabecalho-menu {
+.logo {
   display: flex;
-  gap: 40px;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #00bcd4;
+  object-fit: cover;
+}
+
+.logo-texto {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #00bcd4;
+}
+
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
 .menu-link {
-  color: #00ffff;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  position: relative;
+  transition: all 0.3s;
 }
 
-.menu-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 3px;
-  left: 0;
-  bottom: -5px;
-  background: #00ffff;
-  transition: width 0.3s ease;
-  border-radius: 5px;
+.menu-link:hover,
+.menu-link.ativo {
+  color: #00bcd4;
 }
 
-.menu-link:hover {
-  color: #fff;
-}
-
-.menu-link:hover::after {
-  width: 100%;
-}
-
-/* ======= BOTÃO HAMBURGER ======= */
-.btn-toggle-menu {
-  display: none; /* só aparece em telas pequenas */
-  font-size: 2rem;
-  background: rgba(255, 255, 255, 0.05);
+/* ======= SEÇÕES GERAIS ======= */
+main {
+  flex: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #00ffff;
-  padding: 10px 15px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-  z-index: 200;
 }
 
-.btn-toggle-menu:hover {
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5),
-              0 0 40px rgba(255, 0, 255, 0.5);
-  transform: scale(1.1);
+/* ======= PERFIL E FOTO ======= */
+.perfil, .apresentacao {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
 }
 
-/* Animação de transformação ☰ → X */
-.btn-toggle-menu.active {
-  transform: rotate(90deg);
+.perfil-foto {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #00bcd4;
+  object-fit: cover;
 }
 
-/* ======= MENU RESPONSIVO ======= */
+.perfil h1, .apresentacao h1 {
+  font-size: 1.8rem;
+  color: #00bcd4;
+}
+
+.apresentacao h1 span {
+  color: #00eaff;
+}
+
+.perfil p, .apresentacao p {
+  color: #d9d9d9;
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+/* ======= BOTÕES ======= */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #00bcd4, #007bff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 25px;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.btn-download:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #007bff, #00bcd4);
+}
+
+/* ======= SEÇÕES ======= */
+.secao {
+  margin-top: 35px;
+}
+
+.secao h2 {
+  color: #00bcd4;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.secao p,
+.secao ul {
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+.secao ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* ======= HABILIDADES ======= */
+.habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.habilidades span {
+  background: rgba(0, 188, 212, 0.2);
+  color: #00eaff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 188, 212, 0.4);
+}
+
+/* ======= RODAPÉ ======= */
+.rodape {
+  text-align: center;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
-  .btn-toggle-menu {
-    display: block;
-  }
-
-  .cabecalho-menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 70%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
+  .perfil, .apresentacao {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
-    transition: left 0.3s ease;
-    z-index: 150;
+    text-align: center;
   }
 
-  .cabecalho-menu.active {
-    left: 0;
+  .perfil-foto {
+    width: 140px;
+    height: 140px;
   }
 
-  .menu-link {
-    font-size: 1.5rem;
+  main {
+    padding: 25px;
   }
 }
 
-/* ======= RESPONSIVIDADE PARA CELULAR ======= */
 @media (max-width: 600px) {
-  .menu-link {
-    font-size: 1.3rem;
+  .cabecalho {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
   }
 
-  .apresentacao-imagem {
-    width: 70%;
-    max-width: 300px;
+  .menu ul {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
-  .apresentacao-titulo {
-    font-size: 1.5rem;
+  main {
+    width: 95%;
   }
 
-  .apresentacao-paragrafo {
-    font-size: 1rem;
-  }
-
-  .apresentacao-links2 {
-    padding: 8px 15px;
+  .habilidades span {
+    font-size: 0.85rem;
+    padding: 5px 10px;
   }
 }
