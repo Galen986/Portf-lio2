@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto</title>
-   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/estilos.css"><!-- link para o arquivo CSS -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio - Guilherme Cardoso da Silva</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/estilos.css">
 </head>
 <body>
 
-   <header class="cabecalho"><!-- classe para o cabeçalho -->
-    <nav class="cabecalho-menu"><!-- classe para o menu -->
-        <a class="menu-link" href="index.html">Pagina Principal </a><!-- link para a pagina principal -->
-        <a class="menu-link" href="sobre.html">Sobre Mim</a><!-- link para a pagina sobre -->
-        <a class="menu-link" href="curriculo.html">Currículo</a><!-- link para a pagina do currículo -->
+  <header class="cabecalho">
+    <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
+    <nav class="cabecalho-menu">
+      <a class="menu-link" href="index.html">Página Principal</a>
+      <a class="menu-link" href="sobre.html">Sobre Mim</a>
+      <a class="menu-link" href="curriculo.html">Currículo</a>
     </nav>
-   </header> <!-- cabeçalho do site -->
-    <main class="apresentacao"><!-- classe para o elemento main -->
-    <section class="apresentacao-conteudo"><!-- classe para o elemento section -->
-    <h1 class="apresentacao-titulo">Eleve Seu Negócio Digital a Outra o Nível Com Um FRONT-END De Qualidade</h1>
-    <p class="apresentacao-paragrafo">Olá  Sou <span class="fundo">Guilherme</span> Desenvolvedora FRONT-END Com Especialidade Em <span class="destaque">HTML,CSS e JavaScript.</span> Ajudo Pequenos Negócios e Designers a Colocam Em Práticas Boas Idéias</p>
-    <div class="apresentacao-links">
-    <h2 class="apresentacao-links-subtitulo">Acesse Minhas Redes:</h2>
-    <a class="apresentacao-links2"   href="https://www.instagram.com" target="_blank"><img src="./imagens/instagram.png">Instagram</a><!-- link para o instagram -->
-    <a class="apresentacao-links2"   href="https://www.linkedin.com"  target="_blank"><img src="./imagens/linkedin.png">linkedin</a><!-- link para o linkedin -->
-    <a class="apresentacao-links2"   href="https://github.com"        target="_blank"><img src="./imagens/github.png">GitHub</a><!-- link para o github -->
-    <a class="apresentacao-links2"   href="https://www.twitter.com"   target="_blank"><img src="./imagens/twitter.png">Twitter</a><!-- link para o twitter -->
-    <a class="apresentacao-links2"   href="https://www.twitch.tv/"    target="_blank"><img src="./imagens/twitch.png">Twitch</a><!-- link para o twitch -->
-    </div>
-</section>
-    <img id="img-pricipal"   src="./imagens/Programador.jpg"alt="Guilherme" title="Desenvolvedora FRONT-END"  class="apresentacao-imagem"><!-- imagem da desenvolvedora -->
-    </main>
-    <footer>Site Desenvolvedora Por Guilherme © 2025</footer><!-- rodapé do site -->
-    <script src="script.js"></script>
+  </header>
+
+  <main class="apresentacao">
+    <section class="apresentacao-conteudo">
+      <h1 class="apresentacao-titulo">Eleve Seu Negócio Digital a Outro Nível com um <span>Front-End de Qualidade</span></h1>
+      <p class="apresentacao-paragrafo">Olá, sou <span class="fundo">Guilherme</span>, Desenvolvedor Front-End com especialidade em <span class="destaque">HTML, CSS e JavaScript</span>.  
+      Ajudo empresas e designers a transformarem boas ideias em experiências digitais incríveis.</p>
+
+      <div class="apresentacao-links">
+        <h2 class="apresentacao-links-subtitulo">Acesse minhas redes:</h2>
+        <a class="apresentacao-links2" href="https://www.instagram.com" target="_blank"><img src="./imagens/instagram.png">Instagram</a>
+        <a class="apresentacao-links2" href="https://www.linkedin.com" target="_blank"><img src="./imagens/linkedin.png">LinkedIn</a>
+        <a class="apresentacao-links2" href="https://github.com" target="_blank"><img src="./imagens/github.png">GitHub</a>
+        <a class="apresentacao-links2" href="https://www.twitter.com" target="_blank"><img src="./imagens/twitter.png">Twitter</a>
+        <a class="apresentacao-links2" href="https://www.twitch.tv/" target="_blank"><img src="./imagens/twitch.png">Twitch</a>
+      </div>
+    </section>
+
+    <img id="img-principal" src="./imagens/Programador.jpg" alt="Guilherme" title="Desenvolvedor Front-End" class="apresentacao-imagem">
+  </main>
+
+  <footer class="rodape">Site desenvolvido por Guilherme © 2025</footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
