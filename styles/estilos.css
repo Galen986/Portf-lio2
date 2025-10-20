@@ -28,10 +28,8 @@ body {
   top: 0;
   z-index: 100;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ======= LOGO ======= */
 .logo {
   display: flex;
   align-items: center;
@@ -44,21 +42,14 @@ body {
   border-radius: 50%;
   border: 2px solid #00bcd4;
   object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-  transform: scale(1.05);
 }
 
 .logo-texto {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 700;
   color: #00bcd4;
-  letter-spacing: 1px;
 }
 
-/* ======= MENU ======= */
 .menu ul {
   list-style: none;
   display: flex;
@@ -66,106 +57,119 @@ body {
 }
 
 .menu-link {
-  text-decoration: none;
   color: #fff;
+  text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-  padding: 6px 0;
+  transition: all 0.3s;
 }
 
-.menu-link::after {
-  content: "";
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0%;
-  height: 2px;
-  background-color: #00bcd4;
-  transition: width 0.3s ease;
-}
-
-.menu-link:hover::after {
-  width: 100%;
-}
-
-.menu-link:hover {
+.menu-link:hover,
+.menu-link.ativo {
   color: #00bcd4;
 }
 
-/* ======= CONTEÚDO ======= */
-.apresentacao {
+/* ======= CURRÍCULO ======= */
+.curriculo {
+  width: 90%;
+  max-width: 1000px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 50px auto;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* ======= PERFIL ======= */
+.perfil {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  padding: 50px;
+  gap: 30px;
   flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
 }
 
-.apresentacao-conteudo {
-  max-width: 550px;
+.perfil-foto {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #00bcd4;
 }
 
-.apresentacao-titulo {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.apresentacao-titulo span {
+.perfil h1 {
+  font-size: 1.8rem;
   color: #00bcd4;
 }
 
-.apresentacao-paragrafo {
-  margin-bottom: 20px;
-  line-height: 1.6;
+.perfil p {
+  margin-top: 5px;
+  color: #d9d9d9;
 }
 
-.apresentacao-links {
-  margin-top: 20px;
-}
-
-.apresentacao-links2 {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  margin: 5px;
-  text-decoration: none;
-  background: #00bcd4;
-  color: #fff;
-  padding: 8px 15px;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-
-.apresentacao-links2:hover {
-  background: #007bff;
-}
-
-/* ======= IMAGEM ======= */
-.apresentacao-imagem {
-  max-width: 400px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
+.contato {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 /* ======= BOTÃO DE DOWNLOAD ======= */
 .btn-download {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: linear-gradient(90deg, #00bcd4, #007bff);
   color: #fff;
   font-weight: 600;
   text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 30px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
+  padding: 10px 18px;
+  border-radius: 25px;
+  transition: 0.3s;
+  margin-top: 15px;
 }
 
 .btn-download:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 188, 212, 0.6);
+  background: linear-gradient(90deg, #007bff, #00bcd4);
+}
+
+/* ======= SEÇÕES ======= */
+.secao {
+  margin-top: 35px;
+}
+
+.secao h2 {
+  color: #00bcd4;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
+}
+
+.secao p,
+.secao ul {
+  color: #f1f1f1;
+  line-height: 1.6;
+}
+
+.secao ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+/* ======= HABILIDADES ======= */
+.habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.habilidades span {
+  background: rgba(0, 188, 212, 0.2);
+  color: #00eaff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 188, 212, 0.4);
 }
 
 /* ======= RODAPÉ ======= */
@@ -178,26 +182,41 @@ body {
 }
 
 /* ======= RESPONSIVIDADE ======= */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
+  .perfil {
+    text-align: center;
+    flex-direction: column;
+  }
+
+  .perfil-foto {
+    width: 140px;
+    height: 140px;
+  }
+
+  .curriculo {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
   .cabecalho {
     flex-direction: column;
     text-align: center;
-    padding: 15px 25px;
+    padding: 15px;
   }
 
   .menu ul {
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
     margin-top: 10px;
   }
 
-  .apresentacao {
-    flex-direction: column;
-    text-align: center;
+  .curriculo {
+    width: 95%;
   }
 
-  .apresentacao-imagem {
-    margin-top: 20px;
-    max-width: 300px;
+  .habilidades span {
+    font-size: 0.85rem;
+    padding: 5px 10px;
   }
 }
