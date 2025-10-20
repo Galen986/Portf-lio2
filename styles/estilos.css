@@ -1,6 +1,4 @@
-/* ==========================================================
-   RESET E CONFIGURAÇÕES GERAIS
-========================================================== */
+/* ======= RESET GLOBAL ======= */
 * {
   margin: 0;
   padding: 0;
@@ -8,14 +6,15 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* ======= ESTILO GERAL ======= */
 body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  background-size: 300% 300%;
-  animation: backgroundMove 15s ease infinite;
   color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-size: 300% 300%;
+  animation: backgroundMove 15s ease infinite;
 }
 
 @keyframes backgroundMove {
@@ -24,99 +23,112 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* ==========================================================
-   CABEÇALHO E MENU
-========================================================== */
-.cabecalho, header {
-  width: 100%;
-  padding: 25px 5%;
+/* ======= CABEÇALHO ======= */
+.cabecalho {
   background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
-  display: flex;
-  justify-content: center;
+  backdrop-filter: blur(10px);
+  padding: 20px 0;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 100;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-.cabecalho-menu, .menu {
+.cabecalho-menu {
   display: flex;
-  gap: 2.5rem;
+  justify-content: center;
+  gap: 40px;
 }
 
-.menu-link, .menu a {
-  color: #ffffff;
+.menu-link {
+  color: #00ffff;
   text-decoration: none;
   font-weight: 600;
+  font-size: 1.1rem;
   transition: all 0.3s ease;
   position: relative;
 }
 
-.menu-link::after, .menu a::after {
+.menu-link::after {
   content: "";
   position: absolute;
-  bottom: -4px;
+  width: 0;
+  height: 3px;
   left: 0;
-  width: 0%;
-  height: 2px;
+  bottom: -5px;
   background: #00ffff;
-  transition: 0.3s;
+  transition: width 0.3s ease;
+  border-radius: 5px;
 }
 
-.menu-link:hover::after, .menu a:hover::after,
-.menu-link:hover, .menu a:hover {
+.menu-link:hover {
+  color: #fff;
+}
+
+.menu-link:hover::after {
   width: 100%;
-  color: #00ffff;
 }
 
-/* ==========================================================
-   APRESENTAÇÃO (PÁGINA PRINCIPAL)
-========================================================== */
+/* ======= APRESENTAÇÃO ======= */
 .apresentacao {
+  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
-  padding: 80px 10%;
+  padding: 50px 10%;
+  gap: 50px;
 }
 
 .apresentacao-conteudo {
   max-width: 600px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .apresentacao-titulo {
-  font-size: 2.3rem;
-  color: #00ffff;
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #00ffff, #ff00ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-weight: 700;
-  margin-bottom: 1.2rem;
-  text-shadow: 0 0 10px #00ffff;
 }
 
-.apresentacao-paragrafo {
+.apresentacao-paragrafo,
+.conteúdo-texto1,
+.curriculo-texto {
   font-size: 1.1rem;
-  line-height: 1.8;
-  color: #dce3e9;
-  margin-bottom: 1.5rem;
+  color: #e0e0e0;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 .fundo {
   color: #00ffff;
-  font-weight: 600;
+  font-weight: bold;
 }
 
 .destaque {
-  color: #ffd700;
-  font-weight: 700;
+  color: #ff00ff;
+  font-weight: bold;
 }
 
+/* ======= LINKS ======= */
 .apresentacao-links {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .apresentacao-links-subtitulo {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
   color: #00ffff;
+  font-weight: 600;
 }
 
 .apresentacao-links2 {
@@ -124,139 +136,72 @@ body {
   align-items: center;
   gap: 10px;
   text-decoration: none;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  font-weight: bold;
   border-radius: 10px;
-  transition: 0.3s;
-  margin-right: 10px;
-  margin-bottom: 10px;
+  padding: 10px 20px;
+  margin: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+}
+
+.apresentacao-links2 img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
 }
 
 .apresentacao-links2:hover {
-  background: #00ffff;
-  color: #000;
   transform: scale(1.05);
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.5),
+    0 0 40px rgba(255, 0, 255, 0.5);
 }
 
+/* ======= IMAGEM ======= */
 .apresentacao-imagem {
-  width: 340px;
-  height: 340px;
-  border-radius: 50%;
+  width: 380px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 20px;
   object-fit: cover;
-  box-shadow: 0 0 25px #00ffff;
-  transition: transform 0.5s ease;
+
+  /* ==== EFEITO VITRINE FUTURISTA ==== */
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 0 15px rgba(0, 255, 255, 0.3),
+    0 0 30px rgba(255, 0, 255, 0.2),
+    inset 0 0 10px rgba(255, 255, 255, 0.05);
+
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  animation: fadeIn 1.5s ease;
 }
 
 .apresentacao-imagem:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
+  box-shadow:
+    0 0 25px rgba(0, 255, 255, 0.5),
+    0 0 45px rgba(255, 0, 255, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
-/* ==========================================================
-   PÁGINA SOBRE MIM
-========================================================== */
-.apresentacao-titulo {
-  font-size: 2.3rem;
-}
-
-.imagem {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
-  margin-bottom: 10px;
-}
-
-.conteúdo-texto1 {
-  font-size: 1.1rem;
-  color: #e0e0e0;
-  line-height: 1.8;
-  max-width: 600px;
-}
-
-/* ==========================================================
-   CURRÍCULO (curriculo.html)
-========================================================== */
-.curriculo-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 80px 10%;
-}
-
-.curriculo-conteudo {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 40px 50px;
-  border-radius: 20px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
-  max-width: 800px;
-  width: 100%;
-  color: #ffffff;
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s;
-}
-
-.curriculo-conteudo:hover {
-  transform: translateY(-5px);
-}
-
-.curriculo-conteudo h1 {
-  color: #00ffff;
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-  text-shadow: 0 0 10px #00ffff;
-}
-
-.curriculo-conteudo p {
-  margin: 0.5rem 0 1.2rem;
-  line-height: 1.7;
-  text-align: center;
-}
-
-.curriculo-conteudo h2 {
-  color: #ffd700;
-  font-size: 1.4rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 0 10px #ffd700;
-  border-bottom: 2px solid #ffd700;
-  padding-bottom: 5px;
-}
-
-.curriculo-conteudo ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.curriculo-conteudo li {
-  padding: 6px 0;
-  border-left: 3px solid #00ffff;
-  padding-left: 10px;
-  margin-bottom: 5px;
-  transition: 0.3s;
-}
-
-.curriculo-conteudo li:hover {
-  background: rgba(0, 255, 255, 0.1);
-  border-left-color: #ffd700;
-}
-
-/* ==========================================================
-   RODAPÉ
-========================================================== */
+/* ======= RODAPÉ ======= */
 footer {
-  margin-top: auto;
   text-align: center;
-  padding: 25px 0;
-  color: #ccc;
-  background: rgba(0, 0, 0, 0.4);
-  font-size: 0.95rem;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  color: #00ffff;
+  letter-spacing: 1px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ==========================================================
-   RESPONSIVIDADE
-========================================================== */
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
   .apresentacao {
     flex-direction: column;
@@ -264,12 +209,25 @@ footer {
   }
 
   .apresentacao-imagem {
-    margin-top: 30px;
-    width: 280px;
-    height: 280px;
+    width: 70%;
+    max-width: 350px;
   }
 
-  .curriculo-conteudo {
-    padding: 30px 25px;
+  .menu-link {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .apresentacao-titulo {
+    font-size: 1.5rem;
+  }
+
+  .apresentacao-paragrafo {
+    font-size: 1rem;
+  }
+
+  .apresentacao-links2 {
+    padding: 8px 15px;
   }
 }
