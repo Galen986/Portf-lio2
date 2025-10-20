@@ -1,4 +1,4 @@
-/* ======= RESET GLOBAL ======= */
+ /* ======= RESET GLOBAL ======= */
 * {
   margin: 0;
   padding: 0;
@@ -383,4 +383,28 @@ hr {
   p, li {
     font-size: 0.95rem;
   }
+}
+
+/* ======= BOTÃO DE DOWNLOAD ======= */
+.botao-pdf-container {
+    text-align: center;
+    margin: 15px 0 30px;
+}
+
+.botao-pdf {
+    display: inline-block;
+    padding: 12px 25px;
+    background: #00d9ff;
+    color: #0f2027;
+    font-weight: 600;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.3s;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.botao-pdf:hover {
+    background: #00a5cc;
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.4);
 }
