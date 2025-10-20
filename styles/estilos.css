@@ -68,7 +68,117 @@ body {
   color: #00bcd4;
 }
 
-/* ======= CONTEÚDO DO CURRÍCULO ======= */
+/* ======= CONTEÚDO PRINCIPAL ======= */
+main {
+  flex: 1;
+  width: 90%;
+  max-width: 1000px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 60px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+/* ======= PERFIL / APRESENTAÇÃO ======= */
+.perfil, .apresentacao {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
+}
+
+.perfil-foto {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 3px solid #00bcd4;
+  object-fit: cover;
+}
+
+.perfil h1, .apresentacao h1 {
+  font-size: 1.8rem;
+  color: #00bcd4;
+}
+
+.apresentacao h1 span {
+  color: #00eaff;
+}
+
+.perfil p, .apresentacao p {
+  color: #d9d9d9;
+  margin-top: 5px;
+  line-height: 1.6;
+}
+
+/* ======= BOTÕES ======= */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(90deg, #00bcd4, #007bff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 30px;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.btn-download:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(90deg, #007bff, #00bcd4);
+}
+
+/* ======= SEÇÕES ======= */
+.secao {
+  margin-top: 45px;
+}
+
+.secao h2 {
+  color: #00bcd4;
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  border-left: 4px solid #00bcd4;
+  padding-left: 12px;
+  letter-spacing: 0.5px;
+}
+
+.secao p,
+.secao ul {
+  color: #f1f1f1;
+  line-height: 1.8;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+.secao ul {
+  list-style: disc;
+  padding-left: 25px;
+}
+
+/* ======= HABILIDADES ======= */
+.habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.habilidades span {
+  background: rgba(0, 188, 212, 0.2);
+  color: #00eaff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(0, 188, 212, 0.4);
+}
+
+/* ======= CURRÍCULO ======= */
 .curriculo-container {
   flex: 1;
   width: 90%;
@@ -81,17 +191,16 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.curriculo-topo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 .curriculo-conteudo h1.nome {
   font-size: 1.9rem;
   color: #00eaff;
-  text-align: center;
   margin-bottom: 10px;
   letter-spacing: 1px;
-}
-
-.curriculo-topo {
-  text-align: center;
-  margin-bottom: 35px;
 }
 
 .contato {
@@ -99,17 +208,16 @@ body {
   font-size: 1rem;
   color: #dcdcdc;
   line-height: 1.7;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 hr {
   border: none;
   height: 1px;
   background: rgba(255, 255, 255, 0.15);
-  margin: 30px 0;
+  margin: 35px 0;
 }
 
-/* ======= TÍTULOS DE SEÇÃO ======= */
 .curriculo-conteudo h2 {
   color: #00bcd4;
   margin-bottom: 12px;
@@ -117,6 +225,7 @@ hr {
   border-left: 4px solid #00bcd4;
   padding-left: 12px;
   letter-spacing: 0.5px;
+  margin-top: 40px;
 }
 
 .curriculo-conteudo p,
@@ -132,24 +241,6 @@ hr {
   padding-left: 25px;
 }
 
-/* ======= BOTÃO DE DOWNLOAD ======= */
-.btn-download {
-  display: inline-block;
-  background: linear-gradient(90deg, #00bcd4, #007bff);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 12px 24px;
-  border-radius: 30px;
-  transition: 0.3s;
-  margin-top: 10px;
-}
-
-.btn-download:hover {
-  transform: translateY(-3px);
-  background: linear-gradient(90deg, #007bff, #00bcd4);
-}
-
 /* ======= RODAPÉ ======= */
 .rodape {
   text-align: center;
@@ -162,8 +253,18 @@ hr {
 
 /* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
-  .curriculo-container {
+  main, .curriculo-container {
     padding: 40px 30px;
+  }
+
+  .perfil, .apresentacao {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .perfil-foto {
+    width: 140px;
+    height: 140px;
   }
 
   .curriculo-conteudo h1.nome {
@@ -188,7 +289,7 @@ hr {
     margin-top: 10px;
   }
 
-  .curriculo-container {
+  main, .curriculo-container {
     width: 95%;
     padding: 30px 20px;
   }
@@ -196,5 +297,10 @@ hr {
   .btn-download {
     padding: 10px 18px;
     font-size: 0.9rem;
+  }
+
+  .habilidades span {
+    font-size: 0.85rem;
+    padding: 5px 10px;
   }
 }
