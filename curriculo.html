@@ -10,11 +10,17 @@
 <body>
 
   <header class="cabecalho">
-    <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
-    <nav class="cabecalho-menu">
-      <a class="menu-link" href="index.html">Página Principal</a>
-      <a class="menu-link" href="sobre.html">Sobre Mim</a>
-      <a class="menu-link" href="curriculo.html">Currículo</a>
+    <div class="logo">
+      <img src="./imagens/logo.png" alt="Logo" class="logo-img">
+      <h1 class="logo-texto">Guilherme Dev</h1>
+    </div>
+
+    <nav class="menu">
+      <ul>
+        <li><a href="index.html" class="menu-link">Página Principal</a></li>
+        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -22,7 +28,9 @@
     <section class="curriculo-conteudo">
       <div class="curriculo-topo">
         <h1 class="nome">GUILHERME CARDOSO DA SILVA</h1>
-        <a href="./arquivos/Curriculo_Guilherme_Cardoso.pdf" download class="btn-download">📄 Baixar Currículo (PDF)</a>
+        <a href="./arquivos/Curriculo_Guilherme_Cardoso.pdf" download class="btn-download">
+          <img src="./imagens/download-icon.svg" alt="Download"> Baixar Currículo (PDF)
+        </a>
       </div>
 
       <p class="contato">
@@ -59,6 +67,5 @@
 
   <footer class="rodape">Site desenvolvido por Guilherme © 2025</footer>
 
-  <script src="script.js"></script>
 </body>
 </html>
