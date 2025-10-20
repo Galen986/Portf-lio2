@@ -1,4 +1,4 @@
-/* ======= RESET ======= */
+/* ======= RESET GLOBAL ======= */
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +6,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+/* ======= CORPO ======= */
 body {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #fff;
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -16,27 +17,61 @@ body {
 
 /* ======= CABEÇALHO ======= */
 .cabecalho {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1rem 2rem;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 18px 50px;
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cabecalho-menu {
+/* ======= LOGO ======= */
+.logo {
   display: flex;
-  gap: 2rem;
-  transition: 0.3s;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid #00bcd4;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.05);
+}
+
+.logo-texto {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #00bcd4;
+  letter-spacing: 1px;
+}
+
+/* ======= MENU ======= */
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
 }
 
 .menu-link {
-  color: #fff;
   text-decoration: none;
+  color: #fff;
   font-weight: 600;
+  transition: all 0.3s ease;
   position: relative;
+  padding: 6px 0;
 }
 
 .menu-link::after {
@@ -46,147 +81,123 @@ body {
   left: 0;
   width: 0%;
   height: 2px;
-  background: #00c6ff;
-  transition: 0.3s ease;
+  background-color: #00bcd4;
+  transition: width 0.3s ease;
 }
 
 .menu-link:hover::after {
   width: 100%;
 }
 
-.btn-toggle-menu {
-  display: none;
-  background: transparent;
-  color: #fff;
-  font-size: 1.8rem;
-  border: none;
-  cursor: pointer;
+.menu-link:hover {
+  color: #00bcd4;
 }
 
-/* ======= APRESENTAÇÃO ======= */
+/* ======= CONTEÚDO ======= */
 .apresentacao {
-  flex: 1;
   display: flex;
-  align-items: center;
   justify-content: space-around;
-  padding: 2rem;
+  align-items: center;
+  padding: 50px;
   flex-wrap: wrap;
-  animation: fadeIn 1s ease-in;
+}
+
+.apresentacao-conteudo {
+  max-width: 550px;
+}
+
+.apresentacao-titulo {
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
 .apresentacao-titulo span {
-  color: #00c6ff;
+  color: #00bcd4;
 }
 
 .apresentacao-paragrafo {
-  max-width: 600px;
-  line-height: 1.8;
-  margin-top: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
 .apresentacao-links {
-  margin-top: 2rem;
+  margin-top: 20px;
 }
 
 .apresentacao-links2 {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  color: #fff;
+  gap: 8px;
+  margin: 5px;
   text-decoration: none;
-  margin-right: 1rem;
-  transition: transform 0.2s;
+  background: #00bcd4;
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 8px;
+  transition: 0.3s;
 }
 
 .apresentacao-links2:hover {
-  transform: scale(1.1);
+  background: #007bff;
 }
 
+/* ======= IMAGEM ======= */
 .apresentacao-imagem {
   max-width: 400px;
-  border-radius: 20px;
-  box-shadow: 0 0 15px #00c6ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.3);
 }
 
-/* ======= CURRÍCULO ======= */
-.curriculo-container {
-  padding: 3rem;
+/* ======= BOTÃO DE DOWNLOAD ======= */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #00bcd4, #007bff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.4);
 }
 
-.curriculo-conteudo {
-  max-width: 800px;
-  margin: auto;
-}
-
-h1, h2 {
-  color: #00c6ff;
-}
-
-ul {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
-  padding-left: 1.5rem;
+.btn-download:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 188, 212, 0.6);
 }
 
 /* ======= RODAPÉ ======= */
 .rodape {
   text-align: center;
-  padding: 1rem;
-  background: rgba(0, 0, 0, 0.7);
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.9rem;
+  margin-top: auto;
 }
 
-/* ======= ANIMAÇÕES ======= */
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-/* ======= RESPONSIVO ======= */
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 768px) {
-  .btn-toggle-menu {
-    display: block;
-  }
-
-  .cabecalho-menu {
-    display: none;
+  .cabecalho {
     flex-direction: column;
-    background: rgba(0,0,0,0.8);
-    position: absolute;
-    top: 70px;
-    right: 0;
-    width: 200px;
-    padding: 1rem;
+    text-align: center;
+    padding: 15px 25px;
   }
 
-  .cabecalho-menu.ativo {
-    display: flex;
+  .menu ul {
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 10px;
   }
-}
 
- /* ======= BOTÃO DE DOWNLOAD ======= */
-.btn-download {
-  display: inline-block;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  padding: 0.8rem 1.5rem;
-  border-radius: 8px;
-  margin-top: 1rem;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 198, 255, 0.4);
-}
+  .apresentacao {
+    flex-direction: column;
+    text-align: center;
+  }
 
-.btn-download:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(0, 198, 255, 0.6);
-}
-
-.curriculo-topo {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  .apresentacao-imagem {
+    margin-top: 20px;
+    max-width: 300px;
+  }
 }
