@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Currículo - Guilherme Dev</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/estilos.css">
-  <!-- Ícones Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="./styles/estilos.css">
 </head>
 <body>
 
@@ -16,7 +14,9 @@
       <img src="./imagens/logo.png" alt="Logo" class="logo-img">
       <h1 class="logo-texto">Guilherme Dev</h1>
     </div>
+
     <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
+
     <nav class="menu">
       <ul>
         <li><a href="index.html" class="menu-link">Início</a></li>
@@ -26,15 +26,14 @@
     </nav>
   </header>
 
-  <main class="curriculo-container">
-    <div class="curriculo-topo">
-      <h1 class="nome">Guilherme Cardoso da Silva</h1>
-      <p class="contato">📍 São Paulo – SP | CEP: 08270-340 <br> 📞 (11) 96400-2284 | ✉ guisilva4410@gmail.com</p>
-    </div>
+  <main class="curriculo">
+    <section class="dados">
+      <h1>Guilherme Cardoso da Silva</h1>
+      <p>📍 São Paulo – SP, Zona Leste | CEP: 08270-340</p>
+      <p>📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com</p>
 
-    <section class="curriculo-conteudo">
       <h2>💼 Experiência Profissional</h2>
-      <p>Ainda não possuo experiência formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em desenvolvimento web.</p>
+      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web.</p>
 
       <h2>🎓 Formação e Cursos</h2>
       <ul>
@@ -44,37 +43,30 @@
         <li>Serigrafia – 440h | Obra Social Dom Bosco</li>
         <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
       </ul>
-
-      <h2>🛠 Habilidades</h2>
-      <div class="habilidades">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Front-End</span>
-        <span>UX/UI</span>
-      </div>
     </section>
   </main>
 
-  <!-- ===== BOTÕES FLUTUANTES ===== -->
-  <div class="botoes-flutuantes">
-    <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-    <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
-
   <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
 
-  <script>
-    const toggleMenu = document.querySelector('.btn-toggle-menu');
-    const menu = document.querySelector('.menu');
+  <!-- BOTÕES FLUTUANTES -->
+  <div class="botoes-flutuantes">
+    <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float"><i class="fab fa-instagram"></i></a>
+  </div>
 
-    toggleMenu.addEventListener('click', () => {
-      menu.classList.toggle('ativo');
+  <!-- SCRIPT DO MENU -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.querySelector(".btn-toggle-menu");
+      const menu = document.querySelector(".menu");
+      if (toggleBtn && menu) {
+        toggleBtn.addEventListener("click", () => {
+          menu.classList.toggle("menu-ativo");
+          toggleBtn.classList.toggle("ativo");
+        });
+      }
     });
   </script>
+
 </body>
 </html>
