@@ -1,133 +1,12 @@
-/* ======= RESET GLOBAL ======= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-/* ======= BASE ======= */
-body {
-  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
-}
-
-/* ======= CABEÇALHO ======= */
-.cabecalho {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+/* ======= PERFIL / APRESENTAÇÃO ======= */
+.apresentacao,
+.perfil {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 50px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  animation: fadeInDown 0.8s ease;
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.logo-img {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: 2px solid #00eaff;
-  box-shadow: 0 0 15px #00eaff77;
-  object-fit: cover;
-  transition: 0.4s;
-}
-
-.logo-img:hover {
-  transform: rotate(10deg) scale(1.1);
-}
-
-.logo-texto {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #00eaff;
-  letter-spacing: 1px;
-}
-
-/* ======= MENU ======= */
-.menu ul {
-  list-style: none;
-  display: flex;
-  gap: 28px;
-}
-
-.menu-link {
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.menu-link::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: #00eaff;
-  transition: width 0.3s;
-}
-
-.menu-link:hover::after,
-.menu-link.ativo::after {
-  width: 100%;
-}
-
-.menu-link:hover,
-.menu-link.ativo {
-  color: #00eaff;
-}
-
-/* ======= CONTEÚDO PRINCIPAL ======= */
-main {
-  flex: 1;
-  width: 90%;
-  max-width: 1100px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 60px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
-  transition: 0.3s;
-  animation: fadeIn 0.8s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ======= APRESENTAÇÃO ======= */
-.apresentacao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: center; /* Centraliza no meio da tela */
   gap: 35px;
   flex-wrap: wrap;
+  text-align: center; /* Centraliza texto */
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 30px;
   margin-bottom: 40px;
@@ -149,18 +28,9 @@ main {
   box-shadow: 0 0 35px #00eaffaa;
 }
 
-@keyframes slideLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
 .apresentacao div {
   animation: slideRight 1s ease forwards;
-}
-
-@keyframes slideRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
+  max-width: 600px;
 }
 
 .apresentacao h1 {
@@ -170,171 +40,31 @@ main {
   animation: fadeText 1.2s ease forwards;
 }
 
-@keyframes fadeText {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* ======= EFEITO NEON NO NOME ======= */
 .apresentacao h1 span {
   color: #00ffff;
   text-shadow: 0 0 8px #00eaff, 0 0 20px #00bcd4, 0 0 30px #00eaff;
   animation: neonPulse 2s infinite alternate;
 }
 
-@keyframes neonPulse {
-  from {
-    text-shadow: 0 0 8px #00eaff, 0 0 20px #00bcd4, 0 0 30px #00eaff;
-    color: #00ffff;
-  }
-  to {
-    text-shadow: 0 0 15px #00eaff, 0 0 30px #00ffff, 0 0 50px #00bcd4;
-    color: #a6ffff;
-  }
-}
-
 .apresentacao p {
   color: #d9d9d9;
   margin-top: 8px;
   line-height: 1.7;
-  max-width: 600px;
   text-align: center;
   animation: fadeText 1.3s ease forwards;
 }
 
-/* ======= BOTÃO PRINCIPAL ======= */
-.btn-download {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(90deg, #00eaff, #007bff);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 14px 28px;
-  border-radius: 35px;
-  transition: all 0.3s;
-  margin-top: 20px;
-  box-shadow: 0 0 20px #00eaff33;
-  animation: bounceIn 1.5s ease;
-}
-
-.btn-download:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(90deg, #007bff, #00eaff);
-  box-shadow: 0 0 25px #00eaff77;
-}
-
-@keyframes bounceIn {
-  0% { transform: scale(0.8); opacity: 0; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-/* ======= HABILIDADES ======= */
-.habilidades {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-}
-
-.habilidades span {
-  background: linear-gradient(90deg, #00bcd4aa, #00eaff77);
-  color: #fff;
-  padding: 8px 18px;
-  border-radius: 25px;
-  font-size: 0.95rem;
-  border: 1px solid rgba(0, 188, 212, 0.5);
-  box-shadow: 0 0 10px #00eaff33;
-  transition: 0.3s;
-}
-
-.habilidades span:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 15px #00eaff88;
-}
-
-/* ======= BOTÕES FLUTUANTES ======= */
-.botoes-flutuantes {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  z-index: 200;
-}
-
-.whatsapp-float,
-.instagram-float {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 30px;
-  text-decoration: none;
-  box-shadow: 0 0 15px rgba(0,0,0,0.4);
-  transition: all 0.3s ease;
-  animation: pulsar 2s infinite;
-}
-
-@keyframes pulsar {
-  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-  50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
-  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-}
-
-/* WhatsApp */
-.whatsapp-float {
-  background-color: #25D366;
-}
-.whatsapp-float:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px #25D366;
-}
-
-/* Instagram */
-.instagram-float {
-  background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-}
-.instagram-float:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px #d6249f;
-}
-
-/* ======= RODAPÉ ======= */
-.rodape {
-  text-align: center;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.08);
-  font-size: 0.95rem;
-  color: #cccccc;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: auto;
-}
-
 /* ======= RESPONSIVIDADE ======= */
-@media (max-width: 1024px) {
-  main { padding: 50px 40px; }
-  .apresentacao h1 { font-size: 1.8rem; }
-}
-
 @media (max-width: 768px) {
-  .cabecalho { flex-direction: column; padding: 15px; gap: 10px; text-align: center; }
-  .menu ul { flex-direction: column; gap: 15px; }
-  main { width: 95%; padding: 35px 25px; }
-  .perfil-foto { width: 150px; height: 150px; }
-  .botoes-flutuantes { bottom: 15px; right: 15px; }
-  .whatsapp-float, .instagram-float { width: 50px; height: 50px; font-size: 24px; }
-}
+  .apresentacao,
+  .perfil {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
 
-@media (max-width: 480px) {
-  .apresentacao h1 { font-size: 1.4rem; }
-  .btn-download { width: 100%; justify-content: center; font-size: 0.85rem; }
-  .botoes-flutuantes { bottom: 10px; right: 10px; }
-  .whatsapp-float, .instagram-float { width: 45px; height: 45px; font-size: 22px; }
+  .perfil-foto {
+    width: 150px;
+    height: 150px;
+  }
 }
