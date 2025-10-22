@@ -6,249 +6,415 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ======= CORPO ======= */
+/* ======= BASE ======= */
 body {
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
   color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* ======= CABEÇALHO ======= */
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(8px);
+.cabecalho {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 50px;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  transition: background 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 0.8s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .logo {
-  color: #00c3ff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #00eaff;
+  box-shadow: 0 0 15px #00eaff77;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.logo-img:hover {
+  transform: rotate(10deg) scale(1.1);
+}
+
+.logo-texto {
+  font-size: 1.4rem;
   font-weight: 700;
-  font-size: 1.8rem;
+  color: #00eaff;
+  letter-spacing: 1px;
 }
 
 /* ======= MENU ======= */
 .menu ul {
-  display: flex;
   list-style: none;
-  gap: 25px;
+  display: flex;
+  gap: 28px;
 }
 
-.menu a {
-  color: #fff;
+.menu-link {
+  color: #ffffff;
   text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.menu a:hover,
-.menu a.ativo {
-  color: #00e6a8;
+.menu-link::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #00eaff;
+  transition: width 0.3s;
 }
 
-/* ======= BOTÃO MENU (☰) ======= */
+.menu-link:hover::after,
+.menu-link.ativo::after {
+  width: 100%;
+}
+
+.menu-link:hover,
+.menu-link.ativo {
+  color: #00eaff;
+}
+
+/* ======= BOTÃO TOGGLE ======= */
 .btn-toggle-menu {
   display: none;
-  background: none;
+  background: transparent;
   border: none;
-  color: #fff;
   font-size: 1.8rem;
+  color: #00eaff;
   cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.btn-toggle-menu.ativo {
-  transform: rotate(90deg);
 }
 
 /* ======= CONTEÚDO PRINCIPAL ======= */
 main {
   flex: 1;
-  padding: 50px 10%;
-  text-align: center;
-  animation: fadeIn 0.8s ease-in-out;
+  width: 90%;
+  max-width: 1100px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+  animation: fadeIn 0.8s ease;
 }
 
-/* ======= ANIMAÇÃO DE ENTRADA ======= */
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ======= SEÇÕES ======= */
-.inicio .apresentacao,
-.sobre .perfil {
+/* ======= PERFIL ======= */
+.perfil,
+.apresentacao {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 40px;
+  gap: 35px;
   flex-wrap: wrap;
-  animation: fadeIn 1s ease-in-out;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 30px;
+  margin-bottom: 40px;
 }
 
 .perfil-foto {
-  width: 260px;
-  height: 260px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
+  border: 3px solid #00eaff;
   object-fit: cover;
-  border: 4px solid #00c3ff;
-  box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
-  transition: transform 0.4s ease;
+  box-shadow: 0 0 25px #00eaff55;
+  transition: 0.4s;
 }
 
 .perfil-foto:hover {
   transform: scale(1.05);
+  box-shadow: 0 0 35px #00eaffaa;
 }
 
-/* ======= TÍTULOS ======= */
-h1, h2, h3 {
-  color: #00c3ff;
+.perfil h1,
+.apresentacao h1 {
+  font-size: 1.9rem;
+  color: #00eaff;
 }
 
-h1 span {
-  color: #00e6a8;
+.apresentacao h1 span {
+  color: #00bcd4;
 }
 
-/* ======= BOTÃO PRINCIPAL ======= */
+.perfil p,
+.apresentacao p {
+  color: #d9d9d9;
+  margin-top: 8px;
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ======= SEÇÕES ======= */
+.secao {
+  margin-top: 50px;
+}
+
+.secao h2 {
+  color: #00eaff;
+  margin-bottom: 18px;
+  font-size: 1.5rem;
+  border-left: 4px solid #00eaff;
+  padding-left: 12px;
+  letter-spacing: 0.6px;
+  text-shadow: 0 0 8px #00eaff55;
+}
+
+.secao p,
+.secao ul {
+  color: #f1f1f1;
+  line-height: 1.9;
+  font-size: 1rem;
+  margin-bottom: 22px;
+}
+
+.secao ul {
+  list-style: disc;
+  padding-left: 30px;
+}
+
+/* ======= HABILIDADES ======= */
+.habilidades {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.habilidades span {
+  background: linear-gradient(90deg, #00bcd4aa, #00eaff77);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-size: 0.95rem;
+  border: 1px solid rgba(0, 188, 212, 0.5);
+  box-shadow: 0 0 10px #00eaff33;
+  transition: 0.3s;
+}
+
+.habilidades span:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 15px #00eaff88;
+}
+
+/* ======= BOTÕES ======= */
 .btn-download {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-top: 25px;
-  background: linear-gradient(135deg, #00c3ff, #00e6a8);
+  gap: 8px;
+  background: linear-gradient(90deg, #00eaff, #007bff);
   color: #fff;
-  padding: 12px 30px;
-  border-radius: 50px;
-  text-decoration: none;
   font-weight: 600;
-  transition: 0.4s ease;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 35px;
+  transition: all 0.3s;
+  margin-top: 20px;
+  box-shadow: 0 0 20px #00eaff33;
 }
 
 .btn-download:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px #00e6a8;
-}
-
-/* ======= CURRÍCULO ======= */
-.conteudo-curriculo {
-  max-width: 850px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
-  text-align: left;
-  animation: fadeIn 0.9s ease;
-}
-
-.conteudo-curriculo h2 {
-  font-size: 1.8rem;
-  color: #00c3ff;
-  margin-bottom: 10px;
-}
-
-.conteudo-curriculo h3 {
-  font-size: 1.3rem;
-  margin-top: 25px;
-  color: #00e6a8;
-}
-
-.conteudo-curriculo ul {
-  margin-left: 20px;
-}
-
-.conteudo-curriculo li,
-.conteudo-curriculo p {
-  font-size: 1rem;
-  color: #ddd;
-  line-height: 1.6;
-  margin-top: 8px;
+  transform: translateY(-4px);
+  background: linear-gradient(90deg, #007bff, #00eaff);
+  box-shadow: 0 0 25px #00eaff77;
 }
 
 /* ======= BOTÕES FLUTUANTES ======= */
-.btn-flutuantes {
+.botoes-flutuantes {
   position: fixed;
   bottom: 25px;
   right: 25px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 999;
+  z-index: 99;
 }
 
-.btn-flutuantes a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.botoes-flutuantes a {
   width: 55px;
   height: 55px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  font-size: 1.8rem;
-  transition: 0.3s ease;
+  font-size: 26px;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-.btn-whatsapp {
+.whatsapp-float {
   background: #25d366;
 }
 
-.btn-instagram {
+.instagram-float {
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
 }
 
-.btn-flutuantes a:hover {
+.botoes-flutuantes a:hover {
   transform: scale(1.1);
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* ======= CURRÍCULO ======= */
+.curriculo-container {
+  flex: 1;
+  width: 90%;
+  max-width: 1100px;
+  margin: 60px auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 60px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+}
+
+.curriculo-topo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.curriculo-conteudo h1.nome {
+  font-size: 2rem;
+  color: #00eaff;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px #00eaff77;
+}
+
+.contato {
+  text-align: center;
+  font-size: 1rem;
+  color: #cccccc;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 35px 0;
 }
 
 /* ======= RODAPÉ ======= */
-footer {
+.rodape {
   text-align: center;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.3);
-  font-size: 0.9rem;
-  color: #ccc;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.95rem;
+  color: #cccccc;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: auto;
 }
 
-/* ======= MENU RESPONSIVO ======= */
-@media (max-width: 850px) {
-  .menu ul {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    height: 100%;
-    width: 230px;
-    background: rgba(0, 0, 0, 0.95);
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 900px) {
+  main,
+  .curriculo-container {
+    padding: 40px 30px;
+  }
+
+  .perfil,
+  .apresentacao {
     flex-direction: column;
-    justify-content: start;
-    padding-top: 100px;
     text-align: center;
-    transition: right 0.4s ease, opacity 0.4s ease;
-    opacity: 0;
   }
 
-  .menu.ativo ul {
-    right: 0;
-    opacity: 1;
+  .perfil-foto {
+    width: 140px;
+    height: 140px;
   }
 
-  .menu a {
-    font-size: 1.2rem;
-    padding: 15px 0;
+  .curriculo-conteudo h1.nome {
+    font-size: 1.7rem;
   }
 
   .btn-toggle-menu {
     display: block;
+  }
+
+  .menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(15, 32, 39, 0.98);
+    backdrop-filter: blur(8px);
+    transition: 0.4s;
+    padding-top: 100px;
+    text-align: center;
+    z-index: 98;
+  }
+
+  .menu.ativo {
+    right: 0;
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  main,
+  .curriculo-container {
+    width: 95%;
+    padding: 30px 20px;
+  }
+
+  .btn-download {
+    padding: 12px 22px;
+    font-size: 0.9rem;
+  }
+
+  .habilidades span {
+    font-size: 0.85rem;
+    padding: 6px 12px;
   }
 }
