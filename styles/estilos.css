@@ -359,51 +359,154 @@ hr {
 }
 
 /* ======= RESPONSIVIDADE ======= */
+
+/* === Tablets (até 900px) === */
 @media (max-width: 900px) {
-  main, .curriculo-container {
+  main,
+  .curriculo-container {
     padding: 40px 30px;
   }
 
-  .perfil, .apresentacao {
+  .perfil,
+  .apresentacao {
     flex-direction: column;
     text-align: center;
   }
 
   .perfil-foto {
-    width: 140px;
-    height: 140px;
+    width: 150px;
+    height: 150px;
   }
 
-  .curriculo-conteudo h1.nome {
+  .perfil h1,
+  .apresentacao h1 {
     font-size: 1.7rem;
+  }
+
+  .cabecalho {
+    padding: 15px 30px;
+  }
+
+  .menu ul {
+    gap: 20px;
+  }
+
+  .btn-download {
+    padding: 12px 25px;
+  }
+
+  .habilidades span {
+    font-size: 0.9rem;
+    padding: 7px 15px;
   }
 }
 
+/* === Celulares (até 600px) === */
 @media (max-width: 600px) {
   .cabecalho {
     flex-direction: column;
     text-align: center;
     padding: 15px;
+    gap: 10px;
+  }
+
+  .logo-img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .logo-texto {
+    font-size: 1.2rem;
   }
 
   .menu ul {
     flex-direction: column;
-    gap: 12px;
-    margin-top: 10px;
+    gap: 10px;
+    margin-top: 8px;
   }
 
-  main, .curriculo-container {
-    width: 95%;
-    padding: 30px 20px;
+  main,
+  .curriculo-container {
+    width: 94%;
+    padding: 25px 18px;
+  }
+
+  .perfil-foto {
+    width: 130px;
+    height: 130px;
+  }
+
+  .perfil p,
+  .apresentacao p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .secao h2 {
+    font-size: 1.2rem;
   }
 
   .btn-download {
-    padding: 12px 22px;
+    padding: 10px 20px;
     font-size: 0.9rem;
   }
 
+  .habilidades {
+    justify-content: center;
+  }
+
   .habilidades span {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     padding: 6px 12px;
+  }
+
+  /* Ajuste dos botões flutuantes no celular */
+  .botoes-flutuantes {
+    bottom: 15px;
+    right: 15px;
+    gap: 10px;
+  }
+
+  .whatsapp-float,
+  .instagram-float {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  /* Rodapé menor */
+  .rodape {
+    font-size: 0.85rem;
+    padding: 15px;
+  }
+}
+
+/* === Telas muito pequenas (até 400px) === */
+@media (max-width: 400px) {
+  .perfil-foto {
+    width: 110px;
+    height: 110px;
+  }
+
+  .apresentacao h1 {
+    font-size: 1.4rem;
+  }
+
+  .btn-download {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  .botoes-flutuantes {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .whatsapp-float,
+  .instagram-float {
+    width: 45px;
+    height: 45px;
+    font-size: 22px;
   }
 }
