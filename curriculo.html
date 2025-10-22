@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículo - Guilherme Dev</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo - Guilherme Cardoso</title>
+  
+  <!-- FONTES E ÍCONES -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- CSS -->
   <link rel="stylesheet" href="./styles/estilos.css">
 </head>
+
 <body>
-
-  <header class="cabecalho">
-    <div class="logo">
-      <img src="./imagens/logo.png" alt="Logo" class="logo-img">
-      <h1 class="logo-texto">Guilherme Dev</h1>
-    </div>
-
+  <!-- ======= CABEÇALHO ======= -->
+  <header>
+    <h1 class="logo">Guilherme Dev</h1>
+    
     <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
-
+    
     <nav class="menu">
       <ul>
-        <li><a href="index.html" class="menu-link">Início</a></li>
-        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link ativo">Currículo</a></li>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="sobre.html">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="ativo">Currículo</a></li>
       </ul>
     </nav>
   </header>
 
-  <main class="curriculo">
-    <section class="dados">
-      <h1>Guilherme Cardoso da Silva</h1>
+  <!-- ======= CONTEÚDO PRINCIPAL ======= -->
+  <main class="conteudo-curriculo">
+    <section class="info-pessoal">
+      <h2>Guilherme Cardoso da Silva</h2>
       <p>📍 São Paulo – SP, Zona Leste | CEP: 08270-340</p>
       <p>📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com</p>
+    </section>
 
-      <h2>💼 Experiência Profissional</h2>
-      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web.</p>
+    <section class="experiencia">
+      <h3>💼 Experiência Profissional</h3>
+      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web e contribuir com o crescimento da empresa.</p>
+    </section>
 
-      <h2>🎓 Formação e Cursos</h2>
+    <section class="formacao">
+      <h3>🎓 Formação Acadêmica</h3>
       <ul>
         <li>Programador Web – 440h | Obra Social Dom Bosco</li>
         <li>Programador de Sistemas – 440h | Obra Social Dom Bosco</li>
@@ -44,29 +52,41 @@
         <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
       </ul>
     </section>
+
+    <section class="habilidades">
+      <h3>🧠 Habilidades</h3>
+      <ul>
+        <li>HTML, CSS e JavaScript</li>
+        <li>Design Responsivo</li>
+        <li>Git e GitHub</li>
+        <li>Criação de Sites e Portfólios</li>
+      </ul>
+    </section>
+
+    <!-- BOTÃO DE DOWNLOAD -->
+    <a href="./arquivos/curriculo.pdf" class="btn-download" download>
+      <i class="fa-solid fa-download"></i> Baixar Currículo
+    </a>
   </main>
 
-  <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
-
-  <!-- BOTÕES FLUTUANTES -->
-  <div class="botoes-flutuantes">
-    <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float"><i class="fab fa-instagram"></i></a>
+  <!-- ======= BOTÕES FLUTUANTES ======= -->
+  <div class="btn-flutuantes">
+    <a href="https://wa.me/5511964002284" class="btn-whatsapp" target="_blank" aria-label="WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="https://www.instagram.com/guilherme_cardoso132" class="btn-instagram" target="_blank" aria-label="Instagram">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
   </div>
 
-  <!-- SCRIPT DO MENU -->
+  <!-- ======= SCRIPT MENU ======= -->
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.querySelector(".btn-toggle-menu");
-      const menu = document.querySelector(".menu");
-      if (toggleBtn && menu) {
-        toggleBtn.addEventListener("click", () => {
-          menu.classList.toggle("menu-ativo");
-          toggleBtn.classList.toggle("ativo");
-        });
-      }
+    const toggleMenu = document.querySelector('.btn-toggle-menu');
+    const menu = document.querySelector('.menu');
+    
+    toggleMenu.addEventListener('click', () => {
+      menu.classList.toggle('ativo');
     });
   </script>
-
 </body>
 </html>
