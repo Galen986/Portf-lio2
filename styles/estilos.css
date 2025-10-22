@@ -250,57 +250,6 @@ main {
   backdrop-filter: blur(12px);
 }
 
-.curriculo-topo {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.curriculo-conteudo h1.nome {
-  font-size: 2rem;
-  color: #00eaff;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px #00eaff77;
-}
-
-.contato {
-  text-align: center;
-  font-size: 1rem;
-  color: #cccccc;
-  line-height: 1.8;
-  margin-bottom: 35px;
-}
-
-hr {
-  border: none;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 35px 0;
-}
-
-.curriculo-conteudo h2 {
-  color: #00eaff;
-  margin-bottom: 15px;
-  font-size: 1.4rem;
-  border-left: 4px solid #00eaff;
-  padding-left: 12px;
-  letter-spacing: 0.5px;
-  margin-top: 40px;
-}
-
-.curriculo-conteudo p,
-.curriculo-conteudo ul {
-  color: #f1f1f1;
-  line-height: 1.8;
-  font-size: 1rem;
-  margin-bottom: 25px;
-}
-
-.curriculo-conteudo ul {
-  list-style: disc;
-  padding-left: 25px;
-}
-
 /* ======= BOTÕES FLUTUANTES ======= */
 .botoes-flutuantes {
   position: fixed;
@@ -325,26 +274,36 @@ hr {
   text-decoration: none;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   transition: all 0.3s ease;
+  animation: pulseGlow 2.5s infinite;
 }
 
-/* Cor e efeito do WhatsApp */
+/* Efeito de pulsação */
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.6); }
+  100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
+}
+
+/* WhatsApp neon */
 .whatsapp-float {
   background: #25D366;
+  box-shadow: 0 0 20px #25D36677;
 }
-
 .whatsapp-float:hover {
-  transform: scale(1.15);
+  transform: scale(1.2);
   background: #1ebe5d;
+  box-shadow: 0 0 25px #25D366;
 }
 
-/* Cor e gradiente do Instagram */
+/* Instagram neon */
 .instagram-float {
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  box-shadow: 0 0 20px #dd2a7b66;
 }
-
 .instagram-float:hover {
-  transform: scale(1.15);
-  filter: brightness(1.2);
+  transform: scale(1.2);
+  filter: brightness(1.3);
+  box-shadow: 0 0 25px #dd2a7b;
 }
 
 /* ======= RODAPÉ ======= */
@@ -474,7 +433,6 @@ hr {
     font-size: 24px;
   }
 
-  /* Rodapé menor */
   .rodape {
     font-size: 0.85rem;
     padding: 15px;
