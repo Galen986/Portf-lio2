@@ -45,8 +45,8 @@ body {
 }
 
 .logo-img {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   border: 2px solid #00eaff;
   box-shadow: 0 0 15px #00eaff77;
@@ -121,10 +121,11 @@ main {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ======= PERFIL ======= */
-.perfil, .apresentacao {
+/* ======= APRESENTAÇÃO ======= */
+.apresentacao {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 35px;
   flex-wrap: wrap;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -133,13 +134,14 @@ main {
 }
 
 .perfil-foto {
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   border: 3px solid #00eaff;
   object-fit: cover;
   box-shadow: 0 0 25px #00eaff55;
   transition: 0.4s;
+  animation: slideLeft 1s ease forwards;
 }
 
 .perfil-foto:hover {
@@ -147,54 +149,93 @@ main {
   box-shadow: 0 0 35px #00eaffaa;
 }
 
-.perfil h1, .apresentacao h1 {
-  font-size: 1.9rem;
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.apresentacao div {
+  animation: slideRight 1s ease forwards;
+}
+
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.apresentacao h1 {
+  font-size: 2rem;
   color: #00eaff;
+  text-align: center;
+  animation: fadeText 1.2s ease forwards;
 }
 
+@keyframes fadeText {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* ======= EFEITO NEON NO NOME ======= */
 .apresentacao h1 span {
-  color: #00bcd4;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00eaff, 0 0 20px #00bcd4, 0 0 30px #00eaff;
+  animation: neonPulse 2s infinite alternate;
 }
 
-.perfil p, .apresentacao p {
+@keyframes neonPulse {
+  from {
+    text-shadow: 0 0 8px #00eaff, 0 0 20px #00bcd4, 0 0 30px #00eaff;
+    color: #00ffff;
+  }
+  to {
+    text-shadow: 0 0 15px #00eaff, 0 0 30px #00ffff, 0 0 50px #00bcd4;
+    color: #a6ffff;
+  }
+}
+
+.apresentacao p {
   color: #d9d9d9;
   margin-top: 8px;
   line-height: 1.7;
   max-width: 600px;
+  text-align: center;
+  animation: fadeText 1.3s ease forwards;
 }
 
-/* ======= SEÇÕES ======= */
-.secao {
-  margin-top: 50px;
+/* ======= BOTÃO PRINCIPAL ======= */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(90deg, #00eaff, #007bff);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 35px;
+  transition: all 0.3s;
+  margin-top: 20px;
+  box-shadow: 0 0 20px #00eaff33;
+  animation: bounceIn 1.5s ease;
 }
 
-.secao h2 {
-  color: #00eaff;
-  margin-bottom: 18px;
-  font-size: 1.5rem;
-  border-left: 4px solid #00eaff;
-  padding-left: 12px;
-  letter-spacing: 0.6px;
-  text-shadow: 0 0 8px #00eaff55;
+.btn-download:hover {
+  transform: translateY(-4px);
+  background: linear-gradient(90deg, #007bff, #00eaff);
+  box-shadow: 0 0 25px #00eaff77;
 }
 
-.secao p,
-.secao ul {
-  color: #f1f1f1;
-  line-height: 1.9;
-  font-size: 1rem;
-  margin-bottom: 22px;
-}
-
-.secao ul {
-  list-style: disc;
-  padding-left: 30px;
+@keyframes bounceIn {
+  0% { transform: scale(0.8); opacity: 0; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
 /* ======= HABILIDADES ======= */
 .habilidades {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 12px;
 }
 
@@ -214,42 +255,6 @@ main {
   box-shadow: 0 0 15px #00eaff88;
 }
 
-/* ======= BOTÕES ======= */
-.btn-download {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background: linear-gradient(90deg, #00eaff, #007bff);
-  color: #fff;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 14px 28px;
-  border-radius: 35px;
-  transition: all 0.3s;
-  margin-top: 20px;
-  box-shadow: 0 0 20px #00eaff33;
-}
-
-.btn-download:hover {
-  transform: translateY(-4px);
-  background: linear-gradient(90deg, #007bff, #00eaff);
-  box-shadow: 0 0 25px #00eaff77;
-}
-
-/* ======= CURRÍCULO ======= */
-.curriculo-container {
-  flex: 1;
-  width: 90%;
-  max-width: 1100px;
-  margin: 60px auto;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  padding: 60px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(12px);
-}
-
 /* ======= BOTÕES FLUTUANTES ======= */
 .botoes-flutuantes {
   position: fixed;
@@ -263,47 +268,42 @@ main {
 
 .whatsapp-float,
 .instagram-float {
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 30px;
   text-decoration: none;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   transition: all 0.3s ease;
-  animation: pulseGlow 2.5s infinite;
+  animation: pulsar 2s infinite;
 }
 
-/* Efeito de pulsação */
-@keyframes pulseGlow {
+@keyframes pulsar {
   0% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
-  50% { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,255,255,0.6); }
+  50% { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
   100% { transform: scale(1); box-shadow: 0 0 10px rgba(255,255,255,0.2); }
 }
 
-/* WhatsApp neon */
+/* WhatsApp */
 .whatsapp-float {
-  background: #25D366;
-  box-shadow: 0 0 20px #25D36677;
+  background-color: #25D366;
 }
 .whatsapp-float:hover {
-  transform: scale(1.2);
-  background: #1ebe5d;
+  transform: scale(1.15);
   box-shadow: 0 0 25px #25D366;
 }
 
-/* Instagram neon */
+/* Instagram */
 .instagram-float {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-  box-shadow: 0 0 20px #dd2a7b66;
+  background: radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 .instagram-float:hover {
-  transform: scale(1.2);
-  filter: brightness(1.3);
-  box-shadow: 0 0 25px #dd2a7b;
+  transform: scale(1.15);
+  box-shadow: 0 0 25px #d6249f;
 }
 
 /* ======= RODAPÉ ======= */
@@ -318,153 +318,23 @@ main {
 }
 
 /* ======= RESPONSIVIDADE ======= */
-
-/* === Tablets (até 900px) === */
-@media (max-width: 900px) {
-  main,
-  .curriculo-container {
-    padding: 40px 30px;
-  }
-
-  .perfil,
-  .apresentacao {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .perfil-foto {
-    width: 150px;
-    height: 150px;
-  }
-
-  .perfil h1,
-  .apresentacao h1 {
-    font-size: 1.7rem;
-  }
-
-  .cabecalho {
-    padding: 15px 30px;
-  }
-
-  .menu ul {
-    gap: 20px;
-  }
-
-  .btn-download {
-    padding: 12px 25px;
-  }
-
-  .habilidades span {
-    font-size: 0.9rem;
-    padding: 7px 15px;
-  }
+@media (max-width: 1024px) {
+  main { padding: 50px 40px; }
+  .apresentacao h1 { font-size: 1.8rem; }
 }
 
-/* === Celulares (até 600px) === */
-@media (max-width: 600px) {
-  .cabecalho {
-    flex-direction: column;
-    text-align: center;
-    padding: 15px;
-    gap: 10px;
-  }
-
-  .logo-img {
-    width: 45px;
-    height: 45px;
-  }
-
-  .logo-texto {
-    font-size: 1.2rem;
-  }
-
-  .menu ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 8px;
-  }
-
-  main,
-  .curriculo-container {
-    width: 94%;
-    padding: 25px 18px;
-  }
-
-  .perfil-foto {
-    width: 130px;
-    height: 130px;
-  }
-
-  .perfil p,
-  .apresentacao p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
-
-  .secao h2 {
-    font-size: 1.2rem;
-  }
-
-  .btn-download {
-    padding: 10px 20px;
-    font-size: 0.9rem;
-  }
-
-  .habilidades {
-    justify-content: center;
-  }
-
-  .habilidades span {
-    font-size: 0.8rem;
-    padding: 6px 12px;
-  }
-
-  /* Ajuste dos botões flutuantes no celular */
-  .botoes-flutuantes {
-    bottom: 15px;
-    right: 15px;
-    gap: 10px;
-  }
-
-  .whatsapp-float,
-  .instagram-float {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
-
-  .rodape {
-    font-size: 0.85rem;
-    padding: 15px;
-  }
+@media (max-width: 768px) {
+  .cabecalho { flex-direction: column; padding: 15px; gap: 10px; text-align: center; }
+  .menu ul { flex-direction: column; gap: 15px; }
+  main { width: 95%; padding: 35px 25px; }
+  .perfil-foto { width: 150px; height: 150px; }
+  .botoes-flutuantes { bottom: 15px; right: 15px; }
+  .whatsapp-float, .instagram-float { width: 50px; height: 50px; font-size: 24px; }
 }
 
-/* === Telas muito pequenas (até 400px) === */
-@media (max-width: 400px) {
-  .perfil-foto {
-    width: 110px;
-    height: 110px;
-  }
-
-  .apresentacao h1 {
-    font-size: 1.4rem;
-  }
-
-  .btn-download {
-    width: 100%;
-    justify-content: center;
-    font-size: 0.85rem;
-  }
-
-  .botoes-flutuantes {
-    right: 10px;
-    bottom: 10px;
-  }
-
-  .whatsapp-float,
-  .instagram-float {
-    width: 45px;
-    height: 45px;
-    font-size: 22px;
-  }
+@media (max-width: 480px) {
+  .apresentacao h1 { font-size: 1.4rem; }
+  .btn-download { width: 100%; justify-content: center; font-size: 0.85rem; }
+  .botoes-flutuantes { bottom: 10px; right: 10px; }
+  .whatsapp-float, .instagram-float { width: 45px; height: 45px; font-size: 22px; }
 }
