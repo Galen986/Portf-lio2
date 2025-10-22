@@ -1,7 +1,6 @@
-const btnToggleMenu = document.querySelector(".btn-toggle-menu");
-const menu = document.querySelector(".cabecalho-menu");
+const toggleMenu = document.querySelector('.btn-toggle-menu');
+const menu = document.querySelector('.menu');
 
-btnToggleMenu.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  btnToggleMenu.classList.toggle("active"); // animação do botão
+toggleMenu.addEventListener('click', () => {
+  menu.classList.toggle('ativo');
 });
