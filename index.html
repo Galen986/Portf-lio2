@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Run&Street - Guilherme Dev</title>
-
-  <!-- ÍCONES FONT AWESOME -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="./styles/estilos.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -53,29 +51,16 @@
 
   <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
 
-  <!-- BOTÕES FLUTUANTES -->
+  <!-- ===== BOTÕES FLUTUANTES ===== -->
   <div class="botoes-flutuantes">
     <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
-    <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
+    <a href="https://www.instagram.com/guilherme_cardoso132" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
       <i class="fab fa-instagram"></i>
     </a>
   </div>
 
-  <!-- SCRIPT DO MENU -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.querySelector(".btn-toggle-menu");
-      const menu = document.querySelector(".menu");
-      if (toggleBtn && menu) {
-        toggleBtn.addEventListener("click", () => {
-          menu.classList.toggle("menu-ativo");
-          toggleBtn.classList.toggle("ativo");
-        });
-      }
-    });
-  </script>
-
+  <script src="./scripts/menu.js"></script>
 </body>
 </html>
