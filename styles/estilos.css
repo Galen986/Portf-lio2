@@ -6,318 +6,195 @@
   font-family: "Poppins", sans-serif;
 }
 
-/* ======= CORES PRINCIPAIS ======= */
-:root {
-  --cor-fundo: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  --cor-destaque: #00c3ff;
-  --cor-texto: #ffffff;
-  --cor-secundaria: rgba(255, 255, 255, 0.8);
-}
-
-/* ======= CORPO ======= */
 body {
-  background: var(--cor-fundo);
-  color: var(--cor-texto);
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
 /* ======= CABEÇALHO ======= */
-.cabecalho {
+header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 20px 50px;
+  padding: 20px 40px;
   background: rgba(0, 0, 0, 0.3);
-  position: relative;
-  z-index: 100;
+  backdrop-filter: blur(6px);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-/* ======= LOGO ======= */
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.logo-img {
-  width: 50px;
-  height: 50px;
-}
-
-.logo-texto {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  color: var(--cor-destaque);
+  color: #00c3ff;
+  letter-spacing: 1px;
 }
 
-/* ======= MENU PRINCIPAL ======= */
+/* ======= MENU ======= */
 .menu ul {
-  list-style: none;
   display: flex;
+  list-style: none;
   gap: 25px;
 }
 
-.menu-link {
+.menu a {
+  color: #fff;
   text-decoration: none;
-  color: var(--cor-texto);
-  font-weight: 600;
-  transition: color 0.3s;
+  font-weight: 500;
+  transition: 0.3s;
 }
 
-.menu-link:hover,
-.menu-link.ativo {
-  color: var(--cor-destaque);
+.menu a:hover,
+.menu a.ativo {
+  color: #00c3ff;
 }
 
-/* ======= BOTÃO TOGGLE (☰) ======= */
 .btn-toggle-menu {
   display: none;
+  font-size: 1.8rem;
   background: none;
   border: none;
-  font-size: 2rem;
-  color: var(--cor-texto);
+  color: #fff;
   cursor: pointer;
-  z-index: 200;
 }
 
-/* ======= MENU RESPONSIVO ======= */
-@media (max-width: 900px) {
-  .btn-toggle-menu {
-    display: block;
-    position: absolute;
-    top: 25px;
-    right: 25px;
-  }
-
-  .menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 250px;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.95);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    transition: right 0.3s ease-in-out;
-    z-index: 150;
-  }
-
-  .menu.menu-ativo {
-    right: 0;
-  }
-
-  .menu ul {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .menu-link {
-    font-size: 1.2rem;
-  }
-}
-
-/* ======= SEÇÃO DE APRESENTAÇÃO ======= */
-.inicio {
+/* ======= CONTEÚDO PRINCIPAL ======= */
+main {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 60px 20px;
+  padding: 40px 10%;
 }
 
-.apresentacao {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-top: 40px;
-}
-
-.apresentacao h1 {
-  font-size: 2rem;
-}
-
-.apresentacao h1 span {
-  color: var(--cor-destaque);
-}
-
-.apresentacao p {
-  max-width: 500px;
-  font-size: 1rem;
-  color: var(--cor-secundaria);
-  margin: 15px 0;
-}
-
-.perfil-foto {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid var(--cor-destaque);
-  box-shadow: 0 0 20px rgba(0, 195, 255, 0.4);
-}
-
-/* ======= BOTÃO CURRÍCULO ======= */
-.btn-download {
-  display: inline-block;
-  padding: 10px 25px;
-  background: var(--cor-destaque);
-  color: #000;
-  font-weight: 700;
-  border-radius: 25px;
-  text-decoration: none;
-  transition: background 0.3s ease;
-}
-
-.btn-download:hover {
-  background: #0099cc;
-}
-
-/* ======= HABILIDADES ======= */
-.secao {
-  margin-top: 60px;
-  text-align: center;
-}
-
-.habilidades {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  margin-top: 20px;
-}
-
-.habilidades span {
-  background: rgba(255, 255, 255, 0.1);
-  padding: 10px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  color: var(--cor-texto);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* ======= PÁGINA SOBRE ======= */
-.sobre .perfil {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 40px;
-  padding: 60px 20px;
-}
-
-.sobre .perfil div {
-  max-width: 600px;
-}
-
-.sobre .perfil h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
-  color: var(--cor-destaque);
-}
-
-/* ======= PÁGINA CURRÍCULO ======= */
-.curriculo {
-  padding: 60px 20px;
-  display: flex;
-  justify-content: center;
-}
-
-.dados {
-  max-width: 700px;
+/* ======= CURRÍCULO ======= */
+.conteudo-curriculo {
+  max-width: 900px;
+  margin: 0 auto;
   background: rgba(255, 255, 255, 0.05);
   padding: 40px;
   border-radius: 20px;
-  box-shadow: 0 0 20px rgba(0, 195, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-.dados h1 {
-  font-size: 2rem;
-  color: var(--cor-destaque);
+.conteudo-curriculo h2 {
+  font-size: 1.8rem;
+  color: #00c3ff;
   margin-bottom: 10px;
 }
 
-.dados h2 {
+.conteudo-curriculo h3 {
   margin-top: 25px;
-  color: var(--cor-destaque);
+  font-size: 1.4rem;
+  color: #00e6a8;
 }
 
-.dados p,
-.dados li {
-  margin-top: 10px;
-  color: var(--cor-secundaria);
+.conteudo-curriculo p,
+.conteudo-curriculo li {
+  font-size: 1rem;
   line-height: 1.6;
+  color: #ddd;
+  margin-top: 5px;
 }
 
-/* ======= RODAPÉ ======= */
-.rodape {
-  text-align: center;
-  padding: 20px;
-  background: rgba(0, 0, 0, 0.4);
-  color: var(--cor-secundaria);
-  font-size: 0.9rem;
+/* ======= BOTÃO DE DOWNLOAD ======= */
+.btn-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #00c3ff, #00e6a8);
+  color: #fff;
+  padding: 12px 25px;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 30px;
+  transition: 0.4s;
+}
+
+.btn-download i {
+  font-size: 1.1rem;
+}
+
+.btn-download:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00e6a8;
 }
 
 /* ======= BOTÕES FLUTUANTES ======= */
-.botoes-flutuantes {
+.btn-flutuantes {
   position: fixed;
   bottom: 25px;
   right: 25px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  z-index: 300;
+  z-index: 999;
 }
 
-.whatsapp-float,
-.instagram-float {
-  width: 55px;
-  height: 55px;
-  background: #25d366;
-  color: #fff;
-  border-radius: 50%;
+.btn-flutuantes a {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  color: white;
   font-size: 1.8rem;
-  text-decoration: none;
-  transition: transform 0.3s ease, background 0.3s ease;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.instagram-float {
-  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af);
+.btn-whatsapp {
+  background: #25d366;
 }
 
-.whatsapp-float:hover {
+.btn-instagram {
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+
+.btn-flutuantes a:hover {
   transform: scale(1.1);
-  background: #20bd5f;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.6);
 }
 
-.instagram-float:hover {
-  transform: scale(1.1);
-  background: linear-gradient(45deg, #fd1d1d, #c13584, #833ab4);
+/* ======= MENU LATERAL MOBILE ======= */
+@media (max-width: 850px) {
+  .menu ul {
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.9);
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 220px;
+    height: 100%;
+    padding-top: 100px;
+    text-align: center;
+    transition: right 0.4s ease;
+  }
+
+  .menu.ativo ul {
+    right: 0;
+  }
+
+  .menu a {
+    display: block;
+    padding: 15px 0;
+    font-size: 1.2rem;
+  }
+
+  .btn-toggle-menu {
+    display: block;
+  }
 }
 
-/* ======= RESPONSIVIDADE GERAL ======= */
-@media (max-width: 600px) {
-  .perfil-foto {
-    width: 180px;
-    height: 180px;
-  }
-
-  .cabecalho {
-    padding: 20px;
-  }
-
-  .dados {
-    padding: 25px;
-  }
+/* ======= RODAPÉ ======= */
+footer {
+  text-align: center;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 0.9rem;
+  color: #ccc;
 }
