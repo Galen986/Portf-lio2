@@ -4,24 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Run&Street - Guilherme Dev</title>
-
-  <!-- FONTES GOOGLE -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-  <!-- ARQUIVO DE ESTILO -->
   <link rel="stylesheet" href="./styles/estilos.css">
-
   <!-- ÍCONES FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-
 <body>
-  <!-- ======= CABEÇALHO ======= -->
+
   <header class="cabecalho">
     <div class="logo">
       <img src="./imagens/logo.png" alt="Logo" class="logo-img">
       <h1 class="logo-texto">Guilherme Dev</h1>
     </div>
+
+    <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
 
     <nav class="menu">
       <ul>
@@ -32,7 +28,6 @@
     </nav>
   </header>
 
-  <!-- ======= CONTEÚDO PRINCIPAL ======= -->
   <main class="inicio">
     <section class="apresentacao">
       <img src="./imagens/Programador.jpg" alt="Foto de Guilherme" class="perfil-foto">
@@ -55,20 +50,27 @@
     </section>
   </main>
 
-  <!-- ======= RODAPÉ ======= -->
   <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
 
-  <!-- ======= BOTÕES FLUTUANTES ======= -->
+  <!-- ===== BOTÕES FLUTUANTES ===== -->
   <div class="botoes-flutuantes">
-    <!-- BOTÃO WHATSAPP -->
     <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
+      <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- BOTÃO INSTAGRAM -->
     <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
-      <i class="fa-brands fa-instagram"></i>
+      <i class="fab fa-instagram"></i>
     </a>
   </div>
+
+  <script>
+    // MENU LATERAL RESPONSIVO
+    const toggleMenu = document.querySelector('.btn-toggle-menu');
+    const menu = document.querySelector('.menu');
+
+    toggleMenu.addEventListener('click', () => {
+      menu.classList.toggle('ativo');
+    });
+  </script>
 </body>
 </html>
