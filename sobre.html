@@ -6,6 +6,7 @@
   <title>Sobre Mim - Guilherme Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/estilos.css">
+  <!-- Ícones Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -15,9 +16,7 @@
       <img src="./imagens/logo.png" alt="Logo" class="logo-img">
       <h1 class="logo-texto">Guilherme Dev</h1>
     </div>
-
     <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
-
     <nav class="menu">
       <ul>
         <li><a href="index.html" class="menu-link">Início</a></li>
@@ -28,28 +27,43 @@
   </header>
 
   <main class="sobre">
-    <section class="perfil">
-      <img src="./imagens/perfil.jpg" alt="Foto de Guilherme" class="perfil-foto">
-      <div class="perfil-texto">
-        <h1>Sobre Mim</h1>
-        <p>Sou <strong>Guilherme Cardoso da Silva</strong>, um desenvolvedor Front-End apaixonado por tecnologia, design e inovação. 
-        Tenho experiência com <strong>HTML, CSS, JavaScript</strong> e estou sempre buscando aprender mais para criar interfaces modernas e responsivas.</p>
-        <p>Meu objetivo é construir experiências digitais que unam estética e desempenho, proporcionando o melhor resultado possível.</p>
+    <section class="apresentacao">
+      <img src="./imagens/Programador.jpg" alt="Foto de Guilherme" class="perfil-foto">
+      <div>
+        <h1>Sobre <span>Guilherme</span></h1>
+        <p>Sou Desenvolvedor Front-End, apaixonado por criar interfaces modernas, responsivas e experiências digitais envolventes. Sempre buscando aprender novas tecnologias e entregar projetos de qualidade.</p>
+      </div>
+    </section>
+
+    <section class="secao">
+      <h2>🎯 Objetivos</h2>
+      <p>Meu objetivo é atuar como desenvolvedor web, criando soluções eficientes, elegantes e inovadoras, contribuindo para o crescimento da equipe e evoluindo profissionalmente.</p>
+    </section>
+
+    <section class="secao">
+      <h2>🧰 Ferramentas e Tecnologias</h2>
+      <div class="habilidades">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>JavaScript</span>
+        <span>React</span>
+        <span>Git/GitHub</span>
+        <span>Figma</span>
       </div>
     </section>
   </main>
 
-  <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
-
+  <!-- ===== BOTÕES FLUTUANTES ===== -->
   <div class="botoes-flutuantes">
     <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
       <i class="fab fa-whatsapp"></i>
     </a>
-
     <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
       <i class="fab fa-instagram"></i>
     </a>
   </div>
+
+  <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
 
   <script>
     const toggleMenu = document.querySelector('.btn-toggle-menu');
