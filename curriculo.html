@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículo - Guilherme</title>
+  <title>Currículo - Guilherme Cardoso</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -14,6 +15,8 @@
       <img src="./imagens/logo.png" alt="Logo" class="logo-img">
       <h1 class="logo-texto">Guilherme Dev</h1>
     </div>
+
+    <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
 
     <nav class="menu">
       <ul>
@@ -24,29 +27,14 @@
     </nav>
   </header>
 
-  <main class="curriculo-container">
-    <section class="curriculo-conteudo">
-      <div class="curriculo-topo">
-        <h1 class="nome">GUILHERME CARDOSO DA SILVA</h1>
-        <a href="Curriculo_Guilherme_Cardoso.pdf" download class="btn-download">📄 Baixar Currículo (PDF)</a>
-      </div>
+  <main class="curriculo">
+    <section class="conteudo">
+      <h1>Currículo</h1>
+      <p><strong>Guilherme Cardoso da Silva</strong><br>
+      📍 São Paulo – SP, Zona Leste | CEP: 08270-340<br>
+      📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com</p>
 
-      <p class="contato">
-        📍 São Paulo – SP, Zona Leste | CEP: 08270-340<br>
-        📞 (11) 9 6400-2284 | ✉ guisilva4410@gmail.com
-      </p>
-
-      <hr>
-
-      <h2>💼 Experiência Profissional</h2>
-      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web.</p>
-
-      <h2>🎓 Formação Acadêmica</h2>
-      <ul>
-        <li>Ensino Médio Completo – E.E. Infante Dom Henrique (2020)</li>
-      </ul>
-
-      <h2>💻 Cursos de Aperfeiçoamento</h2>
+      <h2>🎓 Formação Profissional</h2>
       <ul>
         <li>Programador Web – 440h | Obra Social Dom Bosco</li>
         <li>Programador de Sistemas – 440h | Obra Social Dom Bosco</li>
@@ -54,17 +42,28 @@
         <li>Serigrafia – 440h | Obra Social Dom Bosco</li>
         <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
       </ul>
-
-      <h2>🛠 Competências Técnicas</h2>
-      <ul>
-        <li>HTML, CSS e JavaScript</li>
-        <li>Lógica de Programação</li>
-        <li>Banco de Dados (Noções)</li>
-        <li>Pacote Office</li>
-      </ul>
     </section>
   </main>
 
   <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
+
+  <div class="botoes-flutuantes">
+    <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float" aria-label="Falar no WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="https://www.instagram.com/guilherme_cardoso132?utm_source=qr&igsh=MWozZnM0a2plOHp3aA==" target="_blank" class="instagram-float" aria-label="Visitar Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <script>
+    const toggleMenu = document.querySelector('.btn-toggle-menu');
+    const menu = document.querySelector('.menu');
+
+    toggleMenu.addEventListener('click', () => {
+      menu.classList.toggle('ativo');
+    });
+  </script>
 </body>
 </html>
