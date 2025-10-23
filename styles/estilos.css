@@ -7,11 +7,12 @@
 }
 
 body {
-  background: #0f0f0f;
+  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* ======= HEADER ======= */
@@ -19,17 +20,21 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #1a1a1a;
+  background: rgba(26, 26, 26, 0.95);
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
   z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 200, 255, 0.15);
 }
 
 .logo {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
   color: #00c8ff;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
 }
 
 .menu ul {
@@ -42,12 +47,13 @@ header {
   color: #fff;
   text-decoration: none;
   font-weight: 600;
-  transition: 0.3s;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
 }
 
 .menu-link:hover,
 .menu-link.ativo {
   color: #00c8ff;
+  text-shadow: 0 0 8px #00c8ff;
 }
 
 /* ======= BOTÃO MENU MOBILE ======= */
@@ -62,12 +68,19 @@ header {
 /* ======= CONTEÚDO ======= */
 .container {
   flex: 1;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   text-align: center;
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 h1 span {
   color: #00c8ff;
+  text-shadow: 0 0 8px #00c8ff;
 }
 
 .foto-perfil,
@@ -76,25 +89,54 @@ h1 span {
   height: 200px;
   object-fit: cover;
   border-radius: 50%;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   display: block;
   border: 3px solid #00c8ff;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
+  transition: transform 0.3s ease;
 }
 
+.foto-perfil:hover {
+  transform: scale(1.05);
+}
+
+/* ======= BOTÕES ======= */
 .btn {
   display: inline-block;
+  padding: 0.9rem 1.8rem;
+  border-radius: 12px;
+  margin-top: 1.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* ======= BOTÃO PADRÃO AZUL ======= */
+.btn {
   background: #00c8ff;
   color: #000;
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  margin-top: 1.5rem;
-  font-weight: 600;
-  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
 }
 
 .btn:hover {
   background: #008bbd;
   color: #fff;
+  box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+}
+
+/* ======= BOTÃO COM DEGRADÊ AZUL ======= */
+.btn-degrade {
+  background: linear-gradient(45deg, #00c8ff, #0062ff);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(0, 120, 255, 0.4);
+}
+
+.btn-degrade:hover {
+  background: linear-gradient(45deg, #009fff, #0055ff);
+  box-shadow: 0 0 25px rgba(0, 150, 255, 0.6);
+  transform: translateY(-2px);
 }
 
 /* ======= BOTÕES FLUTUANTES ======= */
@@ -122,7 +164,7 @@ h1 span {
 
 .instagram-btn {
   background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
-  bottom: 90px; /* acima do WhatsApp */
+  bottom: 90px;
   right: 25px;
 }
 
@@ -139,22 +181,10 @@ footer {
   text-align: center;
   color: #aaa;
   font-size: 0.9rem;
+  border-top: 1px solid rgba(0, 200, 255, 0.2);
 }
 
 /* ======= RESPONSIVIDADE ======= */
-@media (max-width: 1024px) {
-  .foto-perfil,
-  .foto-sobre {
-    width: 180px;
-    height: 180px;
-  }
-
-  .btn {
-    padding: 0.7rem 1.3rem;
-    font-size: 0.95rem;
-  }
-}
-
 @media (max-width: 768px) {
   .btn-toggle-menu {
     display: block;
@@ -169,6 +199,7 @@ footer {
     right: 0;
     width: 100%;
     text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
   }
 
   .menu.ativo {
@@ -181,52 +212,12 @@ footer {
     padding: 1rem 0;
   }
 
-  .container {
-    padding: 1.5rem;
-  }
-
-  .whatsapp-btn, .instagram-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-  }
-
-  .instagram-btn {
-    bottom: 80px;
-    right: 20px;
-  }
-
-  .whatsapp-btn {
-    bottom: 20px;
-    right: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .foto-perfil,
-  .foto-sobre {
-    width: 150px;
-    height: 150px;
+  .foto-perfil {
+    width: 160px;
+    height: 160px;
   }
 
   .btn {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
-
-  .whatsapp-btn, .instagram-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 22px;
-  }
-
-  .instagram-btn {
-    bottom: 75px;
-    right: 15px;
-  }
-
-  .whatsapp-btn {
-    bottom: 15px;
-    right: 15px;
+    padding: 0.7rem 1.4rem;
   }
 }
