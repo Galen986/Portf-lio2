@@ -6,18 +6,12 @@
   <title>Sobre Mim - Guilherme Dev</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles/estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script defer src="./scripts/script.js"></script>
 </head>
 <body>
-
-  <header class="cabecalho">
-    <div class="logo">
-      <img src="./imagens/logo.png" alt="Logo" class="logo-img">
-      <h1 class="logo-texto">Guilherme Dev</h1>
-    </div>
-
+  <header>
+    <div class="logo"># Guilherme Dev</div>
     <button class="btn-toggle-menu" aria-label="Abrir menu">☰</button>
-
     <nav class="menu">
       <ul>
         <li><a href="index.html" class="menu-link">Início</a></li>
@@ -27,42 +21,15 @@
     </nav>
   </header>
 
-  <main>
-    <section class="perfil">
-      <img src="./imagens/Perfil.jpg" alt="Foto de Guilherme" class="perfil-foto">
-      <div>
-        <h1>Guilherme Cardoso da Silva</h1>
-        <p>Sou um jovem desenvolvedor Front-End com foco em criar interfaces modernas, funcionais e responsivas. 
-        Gosto de transformar ideias em projetos reais e estou sempre buscando evoluir na área de programação web.</p>
-      </div>
-    </section>
-
-    <section class="secao">
-      <h2>💡 Objetivos</h2>
-      <p>Busco minha primeira oportunidade profissional na área de desenvolvimento web, onde possa aplicar meus conhecimentos 
-      em HTML, CSS e JavaScript, aprender novas tecnologias e crescer junto com uma equipe criativa e inovadora.</p>
-    </section>
-
-    <section class="secao">
-      <h2>🚀 Tecnologias e Ferramentas</h2>
-      <div class="habilidades">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Git & GitHub</span>
-        <span>VS Code</span>
-      </div>
-    </section>
+  <main class="container sobre">
+    <h1>Sobre Mim</h1>
+    <img src="./imagens/Perfil.jpg" alt="Foto de Guilherme" class="foto-sobre">
+    <p>Meu nome é <strong>Guilherme Cardoso da Silva</strong>, sou apaixonado por tecnologia e desenvolvimento web. Estou sempre aprendendo novas linguagens e técnicas para criar experiências digitais modernas e responsivas.</p>
+    <p>Atualmente, estudo programação e busco minha primeira oportunidade na área para aplicar meus conhecimentos e crescer profissionalmente.</p>
   </main>
 
-  <footer class="rodape">© 2025 | Desenvolvido por Guilherme Cardoso da Silva</footer>
-
-  <!-- BOTÕES FLUTUANTES -->
-  <div class="botoes-flutuantes">
-    <a href="https://wa.me/5511964002284" target="_blank" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.instagram.com/guilherme_cardoso132" target="_blank" class="instagram-float"><i class="fab fa-instagram"></i></a>
-  </div>
-
-  <script src="script.js"></script>
+  <footer>
+    <p>© 2025 Guilherme Dev. Todos os direitos reservados.</p>
+  </footer>
 </body>
 </html>
