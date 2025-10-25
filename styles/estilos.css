@@ -30,7 +30,7 @@ header {
 }
 
 .logo {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #00c8ff;
   letter-spacing: 1px;
@@ -63,12 +63,13 @@ header {
   border: none;
   font-size: 1.8rem;
   color: #fff;
+  cursor: pointer;
 }
 
 /* ======= CONTEÚDO ======= */
 .container {
   flex: 1;
-  padding: 2.5rem 2rem;
+  padding: 3rem 2rem;
   text-align: center;
   animation: fadeIn 1.2s ease;
 }
@@ -78,15 +79,28 @@ header {
   to { opacity: 1; transform: translateY(0); }
 }
 
+h1 {
+  font-size: 2.2rem;
+  margin-top: 1rem;
+}
+
 h1 span {
   color: #00c8ff;
   text-shadow: 0 0 8px #00c8ff;
 }
 
+p {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: #ccc;
+  font-size: 1.1rem;
+}
+
 .foto-perfil,
 .foto-sobre {
-  width: 200px;
-  height: 200px;
+  width: 220px;
+  height: 220px;
   object-fit: cover;
   border-radius: 50%;
   margin: 1.5rem auto;
@@ -140,7 +154,7 @@ h1 span {
 }
 
 /* ======= BOTÕES FLUTUANTES ======= */
-.whatsapp-btn, .instagram-btn {
+.whatsapp-btn, .instagram-btn, .facebook-btn {
   position: fixed;
   width: 55px;
   height: 55px;
@@ -156,17 +170,6 @@ h1 span {
   z-index: 1000;
 }
 
-.facebook-btn {
-  background-color: #1877f2;
-  bottom: 155px; /* posiciona acima do Instagram */
-  right: 25px;
-}
-
-.facebook-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-}
-
 .whatsapp-btn {
   background-color: #25D366;
   bottom: 25px;
@@ -179,8 +182,15 @@ h1 span {
   right: 25px;
 }
 
+.facebook-btn {
+  background-color: #1877f2;
+  bottom: 155px;
+  right: 25px;
+}
+
 .whatsapp-btn:hover,
-.instagram-btn:hover {
+.instagram-btn:hover,
+.facebook-btn:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 15px rgba(0,0,0,0.4);
 }
@@ -196,6 +206,29 @@ footer {
 }
 
 /* ======= RESPONSIVIDADE ======= */
+@media (max-width: 900px) {
+  header {
+    padding: 1rem 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .foto-perfil {
+    width: 180px;
+    height: 180px;
+  }
+}
+
 @media (max-width: 768px) {
   .btn-toggle-menu {
     display: block;
@@ -231,4 +264,30 @@ footer {
   .btn {
     padding: 0.7rem 1.4rem;
   }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    padding: 0 1rem;
+  }
+
+  .foto-perfil {
+    width: 140px;
+    height: 140px;
+  }
+
+  .whatsapp-btn, .instagram-btn, .facebook-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    right: 20px;
+  }
+
+  .instagram-btn { bottom: 80px; }
+  .facebook-btn { bottom: 135px; }
 }
