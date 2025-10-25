@@ -156,6 +156,17 @@ h1 span {
   z-index: 1000;
 }
 
+.facebook-btn {
+  background-color: #1877f2;
+  bottom: 155px; /* posiciona acima do Instagram */
+  right: 25px;
+}
+
+.facebook-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+}
+
 .whatsapp-btn {
   background-color: #25D366;
   bottom: 25px;
