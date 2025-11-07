@@ -1,177 +1,211 @@
-/* ======= RESET ======= */
+:root {
+  --cor-primaria: #00c8ff;
+  --cor-secundaria: #0062ff;
+  --cor-fundo: #121212;
+  --cor-texto-principal: #e0e0e0;
+  --cor-texto-secundario: #a0a0a0;
+  --font-family-principal: 'Poppins', sans-serif;
+  --sombra-suave: 0 4px 12px rgba(0, 200, 255, 0.2);
+  --transicao-suave: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  font-family: var(--font-family-principal);
 }
 
 body {
-  background: linear-gradient(180deg, #0f0f0f 0%, #1a1a1a 100%);
-  color: #fff;
+  background: var(--cor-fundo);
+  color: var(--cor-texto-principal);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 1rem;
 }
 
-/* ======= HEADER ======= */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: rgba(26, 26, 26, 0.95);
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.5rem;
+  background: rgba(18, 18, 18, 0.95);
   position: sticky;
   top: 0;
+  box-shadow: var(--sombra-suave);
   z-index: 1000;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 200, 255, 0.15);
+  backdrop-filter: saturate(180%) blur(15px);
 }
 
 .logo {
-  font-size: 1.6rem;
   font-weight: 700;
-  color: #00c8ff;
-  letter-spacing: 1px;
-  text-shadow: 0 0 10px rgba(0, 200, 255, 0.5);
+  font-size: 1.8rem;
+  color: var(--cor-primaria);
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px var(--cor-primaria);
+  user-select: none;
 }
 
 .menu ul {
   display: flex;
   list-style: none;
-  gap: 1.5rem;
+  gap: 2.2rem;
 }
 
 .menu-link {
-  color: #fff;
+  color: var(--cor-texto-principal);
   text-decoration: none;
   font-weight: 600;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
+  font-size: 1.05rem;
+  padding-bottom: 4px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s ease, color 0.3s ease;
 }
 
 .menu-link:hover,
 .menu-link.ativo {
-  color: #00c8ff;
-  text-shadow: 0 0 8px #00c8ff;
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria);
+  text-shadow: 0 0 6px var(--cor-primaria);
 }
 
-/* ======= BOTÃO MENU MOBILE ======= */
 .btn-toggle-menu {
-  display: none;
   background: none;
   border: none;
-  font-size: 1.8rem;
-  color: #fff;
+  font-size: 2rem;
+  color: var(--cor-texto-principal);
   cursor: pointer;
+  display: none;
 }
 
-/* ======= CONTEÚDO ======= */
 .container {
   flex: 1;
-  padding: 3rem 2rem;
+  padding: 4rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
   text-align: center;
-  animation: fadeIn 1.2s ease;
+  animation: fadeInUp 0.8s ease forwards;
+  color: var(--cor-texto-principal);
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 h1 {
-  font-size: 2.2rem;
-  margin-top: 1rem;
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
 }
 
 h1 span {
-  color: #00c8ff;
-  text-shadow: 0 0 8px #00c8ff;
+  color: var(--cor-primaria);
+  text-shadow: 0 0 8px var(--cor-primaria);
 }
 
 p {
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-  color: #ccc;
-  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto 1.6rem auto;
+  font-size: 1.15rem;
+  color: var(--cor-texto-secundario);
+  line-height: 1.65;
 }
 
-.foto-perfil,
-.foto-sobre {
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
+.foto-perfil, .foto-sobre {
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
-  margin: 1.5rem auto;
-  display: block;
-  border: 3px solid #00c8ff;
-  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
-  transition: transform 0.3s ease;
+  object-fit: cover;
+  border: 3px solid var(--cor-primaria);
+  box-shadow: 0 6px 20px rgba(0, 200, 255, 0.3);
+  margin: 1.8rem auto 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .foto-perfil:hover {
-  transform: scale(1.05);
+  transform: scale(1.07);
+  box-shadow: 0 8px 25px rgba(0, 200, 255, 0.5);
 }
 
-/* ======= BOTÕES ======= */
-.btn {
+h2 {
+  font-weight: 700;
+  margin-top: 2.8rem;
+  margin-bottom: 1.2rem;
+  font-size: 1.7rem;
+  color: var(--cor-primaria);
+  text-shadow: 0 0 6px var(--cor-primaria);
+}
+
+ul {
+  list-style: disc inside;
+  max-width: 700px;
+  margin: 0 auto 1rem auto;
+  text-align: left;
+  color: var(--cor-texto-principal);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.btn, .btn-degrade {
   display: inline-block;
-  padding: 0.9rem 1.8rem;
-  border-radius: 12px;
-  margin-top: 1.8rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-  transition: all 0.3s ease;
+  margin-top: 2rem;
+  padding: 1.1rem 2.2rem;
+  font-weight: 700;
+  border-radius: 14px;
   cursor: pointer;
+  user-select: none;
+  box-shadow: var(--sombra-suave);
+  transition: var(--transicao-suave);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1.05rem;
 }
 
-/* ======= BOTÃO PADRÃO AZUL ======= */
 .btn {
-  background: #00c8ff;
+  background-color: var(--cor-primaria);
   color: #000;
-  box-shadow: 0 0 15px rgba(0, 200, 255, 0.3);
 }
 
 .btn:hover {
-  background: #008bbd;
+  background-color: var(--cor-secundaria);
   color: #fff;
-  box-shadow: 0 0 20px rgba(0, 200, 255, 0.5);
+  box-shadow: 0 0 18px var(--cor-secundaria);
+  transform: translateY(-3px);
 }
 
-/* ======= BOTÃO COM DEGRADÊ AZUL ======= */
 .btn-degrade {
-  background: linear-gradient(45deg, #00c8ff, #0062ff);
+  background: linear-gradient(45deg, var(--cor-primaria), var(--cor-secundaria));
   color: #fff;
-  box-shadow: 0 0 15px rgba(0, 120, 255, 0.4);
 }
 
 .btn-degrade:hover {
   background: linear-gradient(45deg, #009fff, #0055ff);
-  box-shadow: 0 0 25px rgba(0, 150, 255, 0.6);
-  transform: translateY(-2px);
+  box-shadow: 0 0 28px #0055ff;
+  transform: translateY(-3px);
 }
 
-/* ======= BOTÕES FLUTUANTES ======= */
+/* Botões flutuantes sociais */
 .whatsapp-btn, .instagram-btn, .facebook-btn {
   position: fixed;
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  color: white;
+  color: #fff;
   font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   z-index: 1000;
 }
 
 .whatsapp-btn {
-  background-color: #25D366;
+  background-color: #25d366;
   bottom: 25px;
   right: 25px;
 }
@@ -188,41 +222,31 @@ p {
   right: 25px;
 }
 
-.whatsapp-btn:hover,
-.instagram-btn:hover,
-.facebook-btn:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+.whatsapp-btn:hover, .instagram-btn:hover, .facebook-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.45);
 }
 
-/* ======= FOOTER ======= */
 footer {
-  background: #1a1a1a;
-  padding: 1rem;
+  background: #181818;
+  padding: 1.2rem 2rem;
   text-align: center;
-  color: #aaa;
-  font-size: 0.9rem;
-  border-top: 1px solid rgba(0, 200, 255, 0.2);
+  font-size: 0.95rem;
+  color: var(--cor-texto-secundario);
+  border-top: 1px solid var(--cor-primaria);
 }
 
-/* ======= RESPONSIVIDADE ======= */
+/* Responsividade */
 @media (max-width: 900px) {
-  header {
-    padding: 1rem 1.5rem;
+  .container {
+    padding: 3rem 2rem;
   }
-
   .logo {
-    font-size: 1.4rem;
+    font-size: 1.6rem;
   }
-
   h1 {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
-
-  p {
-    font-size: 1rem;
-  }
-
   .foto-perfil {
     width: 180px;
     height: 180px;
@@ -233,36 +257,32 @@ footer {
   .btn-toggle-menu {
     display: block;
   }
-
   .menu {
     display: none;
     flex-direction: column;
-    background: #1a1a1a;
     position: absolute;
     top: 70px;
     right: 0;
     width: 100%;
+    background-color: #222;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
     text-align: center;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    padding: 1rem 0;
   }
-
   .menu.ativo {
     display: flex;
   }
-
   .menu ul {
     flex-direction: column;
-    gap: 1rem;
-    padding: 1rem 0;
+    gap: 1.2rem;
   }
-
   .foto-perfil {
     width: 160px;
     height: 160px;
   }
-
-  .btn {
-    padding: 0.7rem 1.4rem;
+  .btn, .btn-degrade {
+    padding: 0.9rem 1.8rem;
+    font-size: 1rem;
   }
 }
 
@@ -270,24 +290,19 @@ footer {
   h1 {
     font-size: 1.6rem;
   }
-
   p {
-    font-size: 0.95rem;
-    padding: 0 1rem;
+    font-size: 1rem;
   }
-
   .foto-perfil {
     width: 140px;
     height: 140px;
   }
-
   .whatsapp-btn, .instagram-btn, .facebook-btn {
     width: 50px;
     height: 50px;
     font-size: 24px;
     right: 20px;
   }
-
   .instagram-btn { bottom: 80px; }
   .facebook-btn { bottom: 135px; }
 }
