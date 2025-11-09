@@ -176,15 +176,36 @@ p {
   transition: all 0.35s ease;
 }
 
-.whatsapp-btn { bottom: 25px; background: #25d366; }
-.instagram-btn { bottom: 95px; background: linear-gradient(45deg, #ff007a, #ffae00, #8134af); }
-.facebook-btn { bottom: 165px; background: #1877f2; }
+/* Cores oficiais */
+.whatsapp-btn {
+  bottom: 25px;
+  background: #25d366;
+  box-shadow: 0 0 20px rgba(37, 211, 102, 0.6);
+}
+.instagram-btn {
+  bottom: 95px;
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+  box-shadow: 0 0 20px rgba(221, 42, 123, 0.6);
+}
+.facebook-btn {
+  bottom: 165px;
+  background: #1877f2;
+  box-shadow: 0 0 20px rgba(24, 119, 242, 0.6);
+}
 
-.whatsapp-btn:hover,
-.instagram-btn:hover,
+.whatsapp-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px #25d366;
+}
+
+.instagram-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 40px #dd2a7b;
+}
+
 .facebook-btn:hover {
   transform: scale(1.15);
-  box-shadow: 0 0 25px var(--accent-blue);
+  box-shadow: 0 0 40px #1877f2;
 }
 
 /* ======= FOOTER ======= */
