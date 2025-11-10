@@ -1,116 +1,124 @@
-/* ======= PORTFÓLIO PREMIUM FUTURISTA - GUILHERME DEV ======= */
+/* ======= GUILHERME DEV - NEON PRO 2.0 ======= */
 :root {
-  --bg-main: #0b0f19;
-  --glass: rgba(255, 255, 255, 0.05);
-  --accent-blue: #00bfff;
-  --accent-purple: #8a2be2;
+  --bg-dark: #0a0d1a;
+  --bg-light: #f2f6fc;
+  --text-dark: #0b0f19;
   --text-light: #f2f6fc;
-  --text-muted: #aab4cc;
-  --radius: 16px;
+  --gray: #aab4cc;
+  --blue: #00c8ff;
+  --purple: #8a2be2;
+  --radius: 18px;
   --transition: all 0.4s ease;
-  --shadow-glow: 0 0 16px rgba(0, 191, 255, 0.3);
 }
 
+/* ======= TEMA AUTOMÁTICO ======= */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-dark: #f2f6fc;
+    --text-light: #0b0f19;
+    --gray: #4a4a4a;
+  }
+}
+
+/* ======= RESET ======= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
-  background: radial-gradient(circle at 20% 20%, #121a2b, #06080d);
+  background: radial-gradient(circle at 20% 30%, #111831, #05060a);
   color: var(--text-light);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
   position: relative;
+  transition: var(--transition);
 }
 
-/* ======= FUNDO ANIMADO ======= */
+/* ======= FUNDO DE PARTÍCULAS ======= */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(0,191,255,0.07) 1px, transparent 1px);
-  background-size: 100px 100px;
-  animation: moveParticles 60s linear infinite;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,191,255,0.08) 1px, transparent 1px);
+  background-size: 90px 90px;
+  animation: particles 70s linear infinite;
+  opacity: 0.4;
   z-index: -2;
-  opacity: 0.5;
 }
-
-@keyframes moveParticles {
+@keyframes particles {
   0% { transform: translate(0, 0); }
-  50% { transform: translate(-50px, -50px); }
+  50% { transform: translate(-60px, -40px); }
   100% { transform: translate(0, 0); }
 }
 
+/* ======= CAMADA DE BRILHO ======= */
 body::after {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 25% 25%, rgba(138,43,226,0.08), rgba(0,191,255,0.05));
+  inset: 0;
+  background: radial-gradient(circle at 30% 25%, rgba(138,43,226,0.08), rgba(0,191,255,0.05));
   z-index: -1;
+  transition: var(--transition);
 }
 
 /* ======= CABEÇALHO ======= */
 header {
   position: sticky;
   top: 0;
-  width: 100%;
-  padding: 1.4rem 3rem;
-  background: rgba(15, 20, 35, 0.8);
-  backdrop-filter: blur(12px);
+  background: rgba(15, 20, 35, 0.85);
+  backdrop-filter: blur(15px);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  z-index: 10;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 1.4rem 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  z-index: 20;
+  box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+  animation: slideDown 0.8s ease-out;
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-/* ======= LOGO COM BRILHO ANIMADO ======= */
+/* ======= LOGO ANIMADA ======= */
 .logo {
   font-weight: 800;
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  background: linear-gradient(90deg, var(--blue), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
   position: relative;
   overflow: hidden;
+  cursor: default;
+  perspective: 800px;
 }
-
-/* EFEITO DE LUZ PASSANDO PELO TEXTO */
+.logo:hover {
+  transform: rotateY(10deg);
+}
 .logo::after {
   content: "";
   position: absolute;
   top: 0;
-  left: -75%;
+  left: -80%;
   width: 50%;
   height: 100%;
-  background: linear-gradient(
-    120deg,
-    rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.6) 50%,
-    rgba(255,255,255,0) 100%
-  );
-  animation: brilhoLogo 4s infinite;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
   transform: skewX(-25deg);
+  animation: brilho 4s infinite;
 }
-
-@keyframes brilhoLogo {
-  0% { left: -75%; }
-  50% { left: 125%; }
-  100% { left: 125%; }
+@keyframes brilho {
+  0% { left: -80%; }
+  50% { left: 120%; }
+  100% { left: 120%; }
 }
 
 /* ======= MENU ======= */
@@ -119,16 +127,14 @@ header {
   gap: 2rem;
   list-style: none;
 }
-
 .menu-link {
-  color: var(--text-muted);
+  color: var(--gray);
   font-weight: 600;
   text-decoration: none;
-  transition: var(--transition);
   position: relative;
+  transition: var(--transition);
   padding: 4px 0;
 }
-
 .menu-link::after {
   content: "";
   position: absolute;
@@ -136,21 +142,18 @@ header {
   bottom: -4px;
   width: 0%;
   height: 2px;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  background: linear-gradient(90deg, var(--blue), var(--purple));
   transition: width 0.3s ease;
   border-radius: 10px;
 }
-
 .menu-link:hover,
 .menu-link.ativo {
-  color: var(--accent-blue);
+  color: var(--blue);
 }
-
 .menu-link:hover::after,
 .menu-link.ativo::after {
   width: 100%;
 }
-
 .btn-toggle-menu {
   display: none;
   background: none;
@@ -160,7 +163,7 @@ header {
   cursor: pointer;
 }
 
-/* ======= CONTEÚDO ======= */
+/* ======= CONTEÚDO PRINCIPAL ======= */
 .container {
   max-width: 1000px;
   margin: 4rem auto;
@@ -168,88 +171,76 @@ header {
   text-align: center;
   animation: fadeIn 1s ease;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
-
 h1 {
   font-size: 2.8rem;
   font-weight: 800;
-  margin-bottom: 1.2rem;
   text-transform: uppercase;
-  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  margin-bottom: 1.4rem;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-
-h1 span {
-  color: var(--accent-blue);
-}
-
 h2 {
   font-size: 1.9rem;
-  color: var(--accent-blue);
+  color: var(--blue);
   margin-top: 3rem;
   margin-bottom: 1.2rem;
 }
-
 p, li {
-  color: var(--text-muted);
+  color: var(--gray);
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
-/* ======= FOTO ======= */
+/* ======= FOTO COM EFEITO 3D ======= */
 .foto-perfil, .foto-sobre {
-  width: 200px;
-  height: 200px;
+  width: 210px;
+  height: 210px;
   border-radius: 50%;
   object-fit: cover;
   margin: 2.5rem 0;
   border: 3px solid transparent;
-  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple)) border-box;
-  box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  background: linear-gradient(135deg, var(--blue), var(--purple)) border-box;
+  box-shadow: 0 0 25px rgba(0,191,255,0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
 }
-
 .foto-perfil:hover, .foto-sobre:hover {
-  transform: scale(1.08);
-  box-shadow: 0 0 40px rgba(138, 43, 226, 0.6);
+  transform: rotateY(15deg) scale(1.08);
+  box-shadow: 0 0 60px rgba(138,43,226,0.7);
 }
 
-/* ======= BOTÕES ======= */
+/* ======= BOTÃO DE DOWNLOAD ======= */
 .btn-degrade {
   display: inline-block;
-  background: linear-gradient(45deg, var(--accent-blue), var(--accent-purple));
-  border: none;
+  background: linear-gradient(45deg, var(--blue), var(--purple));
   color: white;
   font-weight: 700;
-  padding: 1.1rem 2.6rem;
+  padding: 1rem 2.8rem;
   border-radius: 999px;
   text-decoration: none;
   transition: var(--transition);
-  margin-top: 2rem;
-  box-shadow: 0 0 20px rgba(0,191,255,0.4);
-  animation: neonPulse 3s ease-in-out infinite;
+  margin-top: 2.2rem;
+  box-shadow: 0 0 25px rgba(0,191,255,0.5);
+  animation: pulse 3s infinite ease-in-out;
 }
-
-/* EFEITO DE NÉON PULSANTE NO BOTÃO */
-@keyframes neonPulse {
+@keyframes pulse {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(0,191,255,0.4),
-                0 0 40px rgba(138,43,226,0.3);
+    box-shadow: 0 0 25px rgba(0,191,255,0.6),
+                0 0 50px rgba(138,43,226,0.4);
   }
   50% {
-    box-shadow: 0 0 40px rgba(0,191,255,0.8),
-                0 0 70px rgba(138,43,226,0.6);
+    box-shadow: 0 0 50px rgba(0,191,255,1),
+                0 0 90px rgba(138,43,226,0.8);
   }
 }
-
 .btn-degrade:hover {
-  transform: scale(1.07);
+  transform: scale(1.08) rotateX(8deg);
 }
 
 /* ======= LISTAS ======= */
@@ -259,15 +250,13 @@ ul {
   max-width: 750px;
   margin: 0 auto;
 }
-
 ul li {
-  padding-left: 30px;
+  padding-left: 28px;
   position: relative;
 }
-
 ul li::before {
   content: "▹";
-  color: var(--accent-blue);
+  color: var(--blue);
   position: absolute;
   left: 0;
   top: 0;
@@ -287,17 +276,16 @@ ul li::before {
   font-size: 1.6rem;
   z-index: 100;
   transition: var(--transition);
-  border: none; /* REMOVE QUALQUER LINHA/BORDA */
+  border: none;
   outline: none;
+  transform: perspective(600px) translateZ(0);
 }
-
 .whatsapp-btn { right: 28px; bottom: 28px; background: #25D366; }
 .instagram-btn { right: 28px; bottom: 98px; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); }
 .facebook-btn { right: 28px; bottom: 168px; background: #1877F2; }
-
 .whatsapp-btn:hover, .instagram-btn:hover, .facebook-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 25px rgba(255,255,255,0.25);
+  transform: scale(1.15) rotateY(12deg);
+  box-shadow: 0 0 30px rgba(255,255,255,0.35);
 }
 
 /* ======= RODAPÉ ======= */
@@ -305,19 +293,19 @@ footer {
   margin-top: auto;
   text-align: center;
   padding: 2rem 1rem;
-  color: var(--text-muted);
+  color: var(--gray);
   font-size: 0.95rem;
   border-top: 1px solid rgba(255,255,255,0.08);
-  background: rgba(10, 15, 25, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 15, 25, 0.85);
+  backdrop-filter: blur(12px);
+  animation: fadeIn 1.5s ease;
 }
 
-/* ======= RESPONSIVO ======= */
+/* ======= RESPONSIVIDADE ======= */
 @media (max-width: 900px) {
-  h1 { font-size: 2.2rem; }
+  h1 { font-size: 2.3rem; }
   .container { padding: 1rem; }
 }
-
 @media (max-width: 768px) {
   .btn-toggle-menu { display: block; }
   .menu { display: none; }
@@ -325,9 +313,9 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: rgba(10, 15, 25, 0.9);
-    backdrop-filter: blur(10px);
-    padding: 1rem 0;
+    background: rgba(10, 15, 25, 0.95);
+    backdrop-filter: blur(15px);
+    padding: 1.4rem 0;
     position: absolute;
     top: 70px;
     left: 0;
@@ -335,6 +323,6 @@ footer {
   }
   .menu ul {
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 1.3rem;
   }
 }
