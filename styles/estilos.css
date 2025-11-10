@@ -1,260 +1,294 @@
-/* ======= BOTÃO TEMA ======= */
-.toggle-theme {
+/* ======= ESTILO PROFISSIONAL - GUILHERME DEV ======= */
+:root {
+  --bg: #0b0f19;
+  --glass: rgba(255, 255, 255, 0.05);
+  --blue: #00bfff;
+  --purple: #8a2be2;
+  --text: #f2f6fc;
+  --text-muted: #aab4cc;
+  --radius: 16px;
+  --transition: 0.4s ease;
+}
+
+/* ======= RESET ======= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: radial-gradient(circle at 20% 20%, #121a2b, #06080d);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* ======= EFEITO DE FUNDO ======= */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(0,191,255,0.07) 1px, transparent 1px);
+  background-size: 100px 100px;
+  animation: moveBg 60s linear infinite;
+  z-index: -2;
+  opacity: 0.5;
+}
+
+@keyframes moveBg {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-50px, -50px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ======= CABEÇALHO ======= */
+header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 1.2rem 2.5rem;
+  background: rgba(15, 20, 35, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: brilho 4s infinite;
+}
+
+@keyframes brilho {
+  0%,100% { filter: brightness(1); }
+  50% { filter: brightness(1.4); }
+}
+
+/* ======= MENU ======= */
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.menu-link {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--transition);
+  position: relative;
+}
+
+.menu-link::after {
+  content: "";
   position: absolute;
-  right: 1.8rem;
-  top: 1.2rem;
-  background: linear-gradient(45deg, var(--blue), var(--purple));
+  bottom: -5px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  transition: width 0.3s ease;
+  border-radius: 8px;
+}
+
+.menu-link:hover,
+.menu-link.ativo {
+  color: var(--blue);
+}
+
+.menu-link:hover::after,
+.menu-link.ativo::after {
+  width: 100%;
+}
+
+.btn-toggle-menu {
+  display: none;
+  background: none;
   border: none;
-  color: white;
-  font-size: 1.2rem;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* ======= CONTEÚDO ======= */
+.container {
+  max-width: 950px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--blue), var(--purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: var(--blue);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+p, li {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+/* ======= FOTO ======= */
+.foto-perfil, .foto-sobre {
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  object-fit: cover;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, var(--blue), var(--purple)) border-box;
+  box-shadow: 0 0 18px rgba(0,191,255,0.3);
+  margin: 2rem 0;
+  transition: 0.4s ease;
+}
+
+.foto-perfil:hover, .foto-sobre:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(138,43,226,0.5);
+}
+
+/* ======= BOTÃO DOWNLOAD ======= */
+.btn-degrade {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--blue), var(--purple));
+  color: white;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: 0.3s ease;
+  box-shadow: 0 0 15px rgba(0,191,255,0.4);
+  margin-top: 1.5rem;
+}
+
+.btn-degrade:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 35px rgba(138,43,226,0.6);
+}
+
+/* ======= LISTAS ======= */
+ul {
+  list-style: none;
+  text-align: left;
+  max-width: 700px;
+  margin: 0 auto;
+}
+ul li::before {
+  content: "▹";
+  color: var(--blue);
+  margin-right: 8px;
+}
+
+/* ======= REDES SOCIAIS ======= */
+.whatsapp-btn, .instagram-btn, .facebook-btn {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  box-shadow: 0 0 18px rgba(0,191,255,0.4);
-}
-.toggle-theme:hover {
-  transform: rotate(20deg) scale(1.05);
-  box-shadow: 0 0 25px rgba(138,43,226,0.7);
+  color: white;
+  font-size: 1.5rem;
+  z-index: 50;
+  right: 25px;
+  transition: 0.3s;
 }
 
-/* ======= TAMANHO DE FONTES EQUILIBRADO ======= */
-body {
-  font-size: 1rem;
-}
-h1 {
-  font-size: 2.3rem;
-}
-h2 {
-  font-size: 1.6rem;
-}
-p, li {
-  font-size: 1.05rem;
+.whatsapp-btn { bottom: 25px; background: #25D366; }
+.instagram-btn { bottom: 95px; background: linear-gradient(45deg, #833ab4, #fd1d1d, #fcb045); }
+.facebook-btn { bottom: 165px; background: #1877F2; }
+
+.whatsapp-btn:hover, .instagram-btn:hover, .facebook-btn:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(255,255,255,0.25);
 }
 
-/* ======= ANIMAÇÃO DE TRANSIÇÃO DE TEMA ======= */
-body {
-  transition: background 0.8s ease, color 0.8s ease;
-}
-body::after {
-  transition: opacity 0.6s ease;
-}
-body.theme-transition::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(0,191,255,0.3), transparent 70%);
-  opacity: 1;
-  z-index: 9999;
-  animation: flashFade 0.6s ease forwards;
-}
-@keyframes flashFade {
-  0% { opacity: 1; }
-  100% { opacity: 0; }
+/* ======= RODAPÉ ======= */
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  background: rgba(10,15,25,0.85);
+  backdrop-filter: blur(10px);
 }
 
-/* ======= TEMA CLARO ======= */
-body.light-theme {
-  background: radial-gradient(circle at 20% 30%, #f5f8ff, #e7ebf2);
-  color: var(--text-dark);
-}
-body.light-theme header {
-  background: rgba(255,255,255,0.8);
-  border-bottom: 1px solid rgba(0,0,0,0.1);
-}
-body.light-theme .menu-link {
-  color: #333;
-}
-body.light-theme .menu-link:hover,
-body.light-theme .menu-link.ativo {
-  color: var(--purple);
-}
-body.light-theme footer {
-  background: rgba(255,255,255,0.8);
-  border-top: 1px solid rgba(0,0,0,0.1);
-}
-body.light-theme .btn-degrade {
-  background: linear-gradient(45deg, var(--purple), var(--blue));
-}
-body.light-theme .toggle-theme {
-  background: linear-gradient(45deg, var(--purple), var(--blue));
-}
-body.light-theme .toggle-theme i::before {
-  content: "\f185"; /* ícone sol */
-}
-
-/* ======= RESPONSIVIDADE ======= */
-
-/* ✅ Ajustes para telas grandes */
-@media (min-width: 1200px) {
-  .container {
-    max-width: 1100px;
-    padding: 0 2rem;
-  }
-  h1 {
-    font-size: 2.6rem;
-  }
-  h2 {
-    font-size: 1.7rem;
-  }
-  p, li {
-    font-size: 1.1rem;
-  }
-}
-
-/* ✅ Notebooks e tablets grandes */
-@media (max-width: 1024px) {
-  .container {
-    padding: 0 2rem;
-  }
-  .foto-perfil, .foto-sobre {
-    width: 180px;
-    height: 180px;
-  }
-  h1 {
-    font-size: 2.2rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-  }
-  p, li {
-    font-size: 1rem;
-  }
-}
-
-/* ✅ Tablets médios e pequenos */
+/* ======= RESPONSIVO ======= */
 @media (max-width: 900px) {
-  header {
-    padding: 1rem 2rem;
-  }
-  h1 {
-    font-size: 2rem;
-  }
-  h2 {
-    font-size: 1.4rem;
-  }
-  .container {
-    padding: 1rem;
-  }
-  .foto-perfil, .foto-sobre {
-    width: 160px;
-    height: 160px;
-  }
-  p, li {
-    font-size: 0.95rem;
-  }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.4rem; }
+  .foto-perfil, .foto-sobre { width: 150px; height: 150px; }
 }
 
-/* ✅ Celulares grandes (até 768px) */
 @media (max-width: 768px) {
-  .btn-toggle-menu {
-    display: block;
-  }
-
-  .menu {
-    display: none;
-  }
-
+  .btn-toggle-menu { display: block; }
+  .menu { display: none; }
   .menu.ativo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.4rem;
+    gap: 1.2rem;
     position: absolute;
-    top: 70px;
-    left: 0;
+    top: 70px; left: 0;
     width: 100%;
-    background: rgba(10, 15, 25, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(10,15,25,0.95);
     padding: 1.5rem 0;
     border-bottom: 1px solid rgba(255,255,255,0.1);
-    animation: slideDown 0.4s ease forwards;
   }
-
-  @keyframes slideDown {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  h1 {
-    font-size: 1.8rem;
-  }
-  h2 {
-    font-size: 1.3rem;
-  }
-  p, li {
-    font-size: 0.93rem;
-  }
-
-  .foto-perfil, .foto-sobre {
-    width: 140px;
-    height: 140px;
-  }
-
-  .btn-degrade {
-    padding: 0.9rem 2rem;
-    font-size: 0.95rem;
-  }
-
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.3rem; }
+  p, li { font-size: 0.95rem; }
   .whatsapp-btn, .instagram-btn, .facebook-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 1.4rem;
-    right: 18px;
+    width: 50px; height: 50px; font-size: 1.3rem; right: 18px;
   }
-
   .instagram-btn { bottom: 85px; }
-  .facebook-btn { bottom: 152px; }
+  .facebook-btn { bottom: 150px; }
 }
 
-/* ✅ Celulares pequenos (até 480px) */
 @media (max-width: 480px) {
-  header {
-    padding: 0.8rem 1.2rem;
-  }
-
-  .logo {
-    font-size: 1.4rem;
-  }
-
-  h1 {
-    font-size: 1.6rem;
-  }
-
-  h2 {
-    font-size: 1.2rem;
-  }
-
-  p, li {
-    font-size: 0.9rem;
-  }
-
-  .foto-perfil, .foto-sobre {
-    width: 120px;
-    height: 120px;
-  }
-
-  .btn-degrade {
-    padding: 0.8rem 1.8rem;
-    font-size: 0.9rem;
-  }
-
-  footer {
-    font-size: 0.8rem;
-    padding: 1.5rem 1rem;
-  }
-
+  .logo { font-size: 1.4rem; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.2rem; }
+  p, li { font-size: 0.9rem; }
+  .foto-perfil, .foto-sobre { width: 120px; height: 120px; }
   .whatsapp-btn, .instagram-btn, .facebook-btn {
-    width: 45px;
-    height: 45px;
-    font-size: 1.2rem;
-    right: 15px;
+    width: 45px; height: 45px; font-size: 1.1rem;
   }
-
   .instagram-btn { bottom: 80px; }
-  .facebook-btn { bottom: 145px; }
+  .facebook-btn { bottom: 140px; }
 }
