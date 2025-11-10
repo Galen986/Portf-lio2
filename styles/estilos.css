@@ -86,3 +86,175 @@ body.light-theme .toggle-theme {
 body.light-theme .toggle-theme i::before {
   content: "\f185"; /* ícone sol */
 }
+
+/* ======= RESPONSIVIDADE ======= */
+
+/* ✅ Ajustes para telas grandes */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1100px;
+    padding: 0 2rem;
+  }
+  h1 {
+    font-size: 2.6rem;
+  }
+  h2 {
+    font-size: 1.7rem;
+  }
+  p, li {
+    font-size: 1.1rem;
+  }
+}
+
+/* ✅ Notebooks e tablets grandes */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 2rem;
+  }
+  .foto-perfil, .foto-sobre {
+    width: 180px;
+    height: 180px;
+  }
+  h1 {
+    font-size: 2.2rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  p, li {
+    font-size: 1rem;
+  }
+}
+
+/* ✅ Tablets médios e pequenos */
+@media (max-width: 900px) {
+  header {
+    padding: 1rem 2rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  .container {
+    padding: 1rem;
+  }
+  .foto-perfil, .foto-sobre {
+    width: 160px;
+    height: 160px;
+  }
+  p, li {
+    font-size: 0.95rem;
+  }
+}
+
+/* ✅ Celulares grandes (até 768px) */
+@media (max-width: 768px) {
+  .btn-toggle-menu {
+    display: block;
+  }
+
+  .menu {
+    display: none;
+  }
+
+  .menu.ativo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.4rem;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: rgba(10, 15, 25, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p, li {
+    font-size: 0.93rem;
+  }
+
+  .foto-perfil, .foto-sobre {
+    width: 140px;
+    height: 140px;
+  }
+
+  .btn-degrade {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+  }
+
+  .whatsapp-btn, .instagram-btn, .facebook-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+    right: 18px;
+  }
+
+  .instagram-btn { bottom: 85px; }
+  .facebook-btn { bottom: 152px; }
+}
+
+/* ✅ Celulares pequenos (até 480px) */
+@media (max-width: 480px) {
+  header {
+    padding: 0.8rem 1.2rem;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  p, li {
+    font-size: 0.9rem;
+  }
+
+  .foto-perfil, .foto-sobre {
+    width: 120px;
+    height: 120px;
+  }
+
+  .btn-degrade {
+    padding: 0.8rem 1.8rem;
+    font-size: 0.9rem;
+  }
+
+  footer {
+    font-size: 0.8rem;
+    padding: 1.5rem 1rem;
+  }
+
+  .whatsapp-btn, .instagram-btn, .facebook-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.2rem;
+    right: 15px;
+  }
+
+  .instagram-btn { bottom: 80px; }
+  .facebook-btn { bottom: 145px; }
+}
