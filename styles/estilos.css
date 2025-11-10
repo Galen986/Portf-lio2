@@ -1,4 +1,371 @@
 /* =========================================================
+   estilos.css — versão futurista e minimalista
+   Autor: ChatGPT + Guilherme Cardoso da Silva
+   Estilo: futurista, responsivo, elegante (azul neon + preto espacial)
+========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS GERAIS E CONFIGURAÇÕES DE COR / LAYOUT
+========================================================= */
+:root {
+  --bg: #05070e;                /* Fundo principal (preto espacial) */
+  --card: #0b0f1a;              /* Fundo dos cards / seções */
+  --muted: #9aa6bd;             /* Texto secundário */
+  --accent-1: #00e0ff;          /* Azul neon claro */
+  --accent-2: #0077ff;          /* Azul neon escuro */
+  --text: #e7edf7;              /* Texto principal */
+  --glass: rgba(255, 255, 255, 0.04); /* Efeito vidro translúcido */
+  --radius-lg: 20px;            /* Bordas grandes */
+  --radius-md: 14px;            /* Bordas médias */
+  --shadow-lg: 0 10px 40px rgba(0,200,255,0.1); /* Sombra suave */
+  --max-width: 1100px;          /* Largura máxima do conteúdo */
+}
+
+
+/* =========================================================
+   2. RESET E ESTILOS BÁSICOS
+========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(180deg, var(--bg) 0%, #03050a 100%);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--accent-1);
+  text-decoration: none;
+  transition: 0.3s;
+}
+a:hover {
+  text-shadow: 0 0 10px var(--accent-1);
+}
+
+
+/* =========================================================
+   3. CABEÇALHO E MENU DE NAVEGAÇÃO
+========================================================= */
+header {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 20px auto;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  position: sticky;
+  top: 10px;
+  z-index: 50;
+}
+
+/* Logotipo com gradiente neon */
+.logo {
+  font-weight: 700;
+  font-size: 1.2rem;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+/* Botão do menu mobile (hambúrguer) */
+.btn-toggle-menu {
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: none; /* visível apenas em telas pequenas */
+}
+
+/* Menu principal */
+.menu ul {
+  list-style: none;
+  display: flex;
+  gap: 18px;
+}
+
+/* Links do menu */
+.menu-link {
+  color: var(--muted);
+  font-weight: 600;
+  transition: 0.3s;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+.menu-link:hover {
+  color: var(--accent-1);
+  background: rgba(0,224,255,0.08);
+}
+.menu-link.ativo {
+  background: linear-gradient(90deg, rgba(0,224,255,0.12), rgba(0,119,255,0.08));
+  color: var(--accent-1);
+}
+
+
+/* =========================================================
+   4. CONTAINERS E SEÇÕES PRINCIPAIS
+========================================================= */
+.container {
+  width: calc(100% - 40px);
+  max-width: var(--max-width);
+  margin: 40px auto;
+  padding: 24px;
+}
+
+/* Card principal (foto + texto) */
+.principal {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* Imagem do perfil */
+.principal img {
+  width: 140px;
+  height: 140px;
+  border-radius: 20px;
+  border: 3px solid rgba(0,224,255,0.2);
+  object-fit: cover;
+  transition: 0.4s;
+}
+.principal img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,224,255,0.3);
+}
+
+/* Título e subtítulo */
+.principal h1 {
+  font-size: 1.8rem;
+}
+.principal h1 span {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.principal p {
+  color: var(--muted);
+  max-width: 600px;
+}
+
+
+/* =========================================================
+   5. SEÇÕES DE CONTEÚDO (ex: Currículo)
+========================================================= */
+.container h1 span {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+section {
+  margin-bottom: 30px;
+}
+
+/* Títulos com marcador lateral */
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  position: relative;
+}
+h2::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-1);
+  border-radius: 2px;
+}
+
+ul {
+  margin-left: 20px;
+}
+li {
+  margin-bottom: 6px;
+}
+
+
+/* =========================================================
+   6. BOTÕES
+========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Botão de download com efeito degradê e brilho */
+.btn-degrade {
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #020a14;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 25px rgba(0,200,255,0.2);
+}
+.btn-degrade:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 30px rgba(0,200,255,0.4);
+}
+
+
+/* =========================================================
+   7. RODAPÉ
+========================================================= */
+footer {
+  text-align: center;
+  color: var(--muted);
+  margin: 40px 0;
+  font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   8. BOTÕES DE REDES SOCIAIS FIXOS
+========================================================= */
+.whatsapp-btn,
+.instagram-btn,
+.facebook-btn {
+  position: fixed;
+  right: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 20px;
+  z-index: 80;
+  transition: 0.3s;
+}
+
+/* Cores de cada rede */
+.whatsapp-btn {
+  bottom: 20px;
+  background: linear-gradient(180deg, #25D366, #128C7E);
+}
+.instagram-btn {
+  bottom: 86px;
+  background: linear-gradient(45deg, #feda75, #d62976, #833ab4);
+}
+.facebook-btn {
+  bottom: 152px;
+  background: linear-gradient(180deg, #1877f2, #0b52c6);
+}
+
+/* Efeito de zoom ao passar o mouse */
+.whatsapp-btn:hover,
+.instagram-btn:hover,
+.facebook-btn:hover {
+  transform: scale(1.1);
+}
+
+
+/* =========================================================
+   9. RESPONSIVIDADE (Mobile, Tablet e Impressão)
+========================================================= */
+
+/* Tablets e telas médias */
+@media (max-width: 900px) {
+  .principal {
+    flex-direction: column;
+    text-align: center;
+  }
+  .menu ul {
+    gap: 10px;
+  }
+}
+
+/* Smartphones */
+@media (max-width: 720px) {
+  .btn-toggle-menu {
+    display: block;
+  }
+
+  /* Menu móvel com transição */
+  .menu {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: 0.3s;
+  }
+  .menu.ativo {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+
+  .menu ul {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .principal img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Telas pequenas */
+@media (max-width: 480px) {
+  .principal h1 {
+    font-size: 1.5rem;
+  }
+  .container {
+    padding: 16px;
+  }
+  header {
+    padding: 10px 14px;
+  }
+}
+
+/* Modo de impressão (remove botões e fundo) */
+@media print {
+  header,
+  footer,
+  .whatsapp-btn,
+  .instagram-btn,
+  .facebook-btn {
+    display: none;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+
+/* =========================================================
    10. AJUSTES FINAIS DE LAYOUT E CORREÇÃO DE PROPORÇÕES
 ========================================================= */
 
