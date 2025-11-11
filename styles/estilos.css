@@ -1,30 +1,28 @@
 /* =========================================================
-   estilos.css — versão futurista e minimalista
-   Autor: ChatGPT + Guilherme Cardoso da Silva
-   Estilo: futurista, responsivo, elegante (azul neon + preto espacial)
+   estilos.css — versão futurista azul-ciano + lilás nebuloso
+   Autor: Guilherme Cardoso da Silva + ChatGPT
+   Tema: Tecnológico, moderno e leve
 ========================================================= */
-
 
 /* =========================================================
-   1. VARIÁVEIS GERAIS E CONFIGURAÇÕES DE COR / LAYOUT
+   1. VARIÁVEIS DE COR E LAYOUT
 ========================================================= */
 :root {
-  --bg: #05070e;
-  --card: #0b0f1a;
-  --muted: #9aa6bd;
-  --accent-1: #00e0ff;
-  --accent-2: #0077ff;
-  --text: #e7edf7;
+  --bg: #060915;
+  --card: #0e1430;
+  --muted: #aab7d9;
+  --accent-1: #4af0ff;
+  --accent-2: #9c8eff;
+  --text: #f1f6ff;
   --glass: rgba(255, 255, 255, 0.04);
   --radius-lg: 20px;
   --radius-md: 14px;
-  --shadow-lg: 0 10px 40px rgba(0, 200, 255, 0.1);
+  --shadow-lg: 0 10px 40px rgba(156, 142, 255, 0.15);
   --max-width: 1100px;
 }
 
-
 /* =========================================================
-   2. RESET E ESTILOS BÁSICOS
+   2. RESET E ESTILO GLOBAL
 ========================================================= */
 * {
   margin: 0;
@@ -34,13 +32,21 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, var(--bg) 0%, #03050a 100%);
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: linear-gradient(120deg, var(--bg), #0a0f2a, #1b1f45);
+  background-size: 200% 200%;
+  animation: fundo-animado 12s ease-in-out infinite;
+}
+
+@keyframes fundo-animado {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 main {
@@ -56,9 +62,8 @@ a:hover {
   text-shadow: 0 0 10px var(--accent-1);
 }
 
-
 /* =========================================================
-   3. CABEÇALHO E MENU DE NAVEGAÇÃO
+   3. CABEÇALHO E MENU
 ========================================================= */
 header {
   width: 100%;
@@ -83,6 +88,12 @@ header {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   -webkit-background-clip: text;
   color: transparent;
+  animation: brilho-logo 3s ease-in-out infinite alternate;
+}
+
+@keyframes brilho-logo {
+  from { filter: drop-shadow(0 0 2px var(--accent-1)); }
+  to { filter: drop-shadow(0 0 10px var(--accent-2)); }
 }
 
 .btn-toggle-menu {
@@ -109,16 +120,15 @@ header {
 }
 .menu-link:hover {
   color: var(--accent-1);
-  background: rgba(0,224,255,0.08);
+  background: rgba(74, 240, 255, 0.08);
 }
 .menu-link.ativo {
-  background: linear-gradient(90deg, rgba(0,224,255,0.12), rgba(0,119,255,0.08));
+  background: linear-gradient(90deg, rgba(74,240,255,0.12), rgba(156,142,255,0.08));
   color: var(--accent-1);
 }
 
-
 /* =========================================================
-   4. CONTAINERS E SEÇÕES PRINCIPAIS
+   4. CONTAINERS E SEÇÕES
 ========================================================= */
 .container {
   width: calc(100% - 40px);
@@ -127,41 +137,50 @@ header {
   padding: 24px;
 }
 
-/* Card principal */
 .principal, .sobre, .curriculo {
   background: var(--card);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
   padding: 40px;
   margin-bottom: 40px;
+  backdrop-filter: blur(8px);
+  transition: 0.4s ease;
+}
+.principal:hover, .sobre:hover, .curriculo:hover {
+  box-shadow: 0 0 25px rgba(156,142,255,0.25);
 }
 
-/* Imagem padrão de perfil */
+/* =========================================================
+   5. IMAGENS E TÍTULOS
+========================================================= */
 .foto-perfil, .foto-sobre, .foto-curriculo {
   width: 160px;
   height: 160px;
   object-fit: cover;
   border-radius: 20px;
-  border: 3px solid rgba(0, 224, 255, 0.2);
+  border: 3px solid rgba(156, 142, 255, 0.3);
   display: block;
   margin: 0 auto 20px auto;
-  transition: 0.3s ease;
+  transition: 0.4s ease;
 }
 .foto-perfil:hover, .foto-sobre:hover, .foto-curriculo:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
+  box-shadow: 0 0 25px rgba(74, 240, 255, 0.4);
 }
 
-/* Títulos principais */
 h1 {
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 20px;
-}
-h1 span {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   -webkit-background-clip: text;
   color: transparent;
+  animation: brilho-titulo 4s ease-in-out infinite alternate;
+}
+
+@keyframes brilho-titulo {
+  from { text-shadow: 0 0 4px var(--accent-1); }
+  to { text-shadow: 0 0 18px var(--accent-2); }
 }
 
 p {
@@ -170,22 +189,19 @@ p {
   margin-bottom: 10px;
 }
 
-
 /* =========================================================
-   5. CURRÍCULO — AJUSTE DE CONTEÚDO
+   6. CURRÍCULO
 ========================================================= */
 .curriculo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .curriculo section {
   width: 100%;
   max-width: 800px;
   margin: 0 auto 30px auto;
 }
-
 .curriculo h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
@@ -201,21 +217,18 @@ p {
   background: var(--accent-1);
   border-radius: 2px;
 }
-
 .curriculo ul {
   margin-left: 20px;
 }
 .curriculo li {
   margin-bottom: 6px;
 }
-
 .curriculo .btn-degrade {
   margin-top: 10px;
 }
 
-
 /* =========================================================
-   6. BOTÕES
+   7. BOTÕES
 ========================================================= */
 .btn {
   display: inline-flex;
@@ -231,19 +244,25 @@ p {
 
 .btn-degrade {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  color: #020a14;
+  color: #0e1020;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 0 25px rgba(0,200,255,0.2);
-}
-.btn-degrade:hover {
-  transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 0 30px rgba(0,200,255,0.4);
+  box-shadow: 0 0 25px rgba(156,142,255,0.2);
+  animation: brilho-botao 6s infinite alternate ease-in-out;
 }
 
+@keyframes brilho-botao {
+  from { box-shadow: 0 0 20px rgba(74,240,255,0.3); }
+  to { box-shadow: 0 0 35px rgba(156,142,255,0.5); }
+}
+
+.btn-degrade:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 0 35px rgba(156,142,255,0.6);
+}
 
 /* =========================================================
-   7. RODAPÉ
+   8. RODAPÉ
 ========================================================= */
 footer {
   text-align: center;
@@ -253,9 +272,8 @@ footer {
   font-size: 0.9rem;
 }
 
-
 /* =========================================================
-   8. BOTÕES DE REDES SOCIAIS FIXOS
+   9. BOTÕES DE REDES SOCIAIS
 ========================================================= */
 .whatsapp-btn,
 .instagram-btn,
@@ -292,9 +310,8 @@ footer {
   transform: scale(1.1);
 }
 
-
 /* =========================================================
-   9. RESPONSIVIDADE
+   10. RESPONSIVIDADE
 ========================================================= */
 @media (max-width: 900px) {
   .principal, .sobre, .curriculo {
@@ -306,7 +323,6 @@ footer {
   .btn-toggle-menu {
     display: block;
   }
-
   .menu {
     position: fixed;
     top: 70px;
@@ -320,18 +336,15 @@ footer {
     transform: translateY(-10px);
     transition: 0.3s;
   }
-
   .menu.ativo {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
-
   .menu ul {
     flex-direction: column;
     gap: 12px;
   }
-
   .foto-perfil, .foto-sobre, .foto-curriculo {
     width: 120px;
     height: 120px;
@@ -339,18 +352,10 @@ footer {
 }
 
 @media (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
-  .container {
-    padding: 16px;
-  }
-  header {
-    padding: 10px 14px;
-  }
-  p {
-    text-align: left;
-  }
+  h1 { font-size: 1.5rem; }
+  .container { padding: 16px; }
+  header { padding: 10px 14px; }
+  p { text-align: left; }
 }
 
 @media print {
