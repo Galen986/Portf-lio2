@@ -9,17 +9,17 @@
    1. VARIÁVEIS GERAIS E CONFIGURAÇÕES DE COR / LAYOUT
 ========================================================= */
 :root {
-  --bg: #05070e;                /* Fundo principal (preto espacial) */
-  --card: #0b0f1a;              /* Fundo dos cards / seções */
-  --muted: #9aa6bd;             /* Texto secundário */
-  --accent-1: #00e0ff;          /* Azul neon claro */
-  --accent-2: #0077ff;          /* Azul neon escuro */
-  --text: #e7edf7;              /* Texto principal */
-  --glass: rgba(255, 255, 255, 0.04); /* Efeito vidro translúcido */
-  --radius-lg: 20px;            /* Bordas grandes */
-  --radius-md: 14px;            /* Bordas médias */
-  --shadow-lg: 0 10px 40px rgba(0,200,255,0.1); /* Sombra suave */
-  --max-width: 1100px;          /* Largura máxima do conteúdo */
+  --bg: #05070e;
+  --card: #0b0f1a;
+  --muted: #9aa6bd;
+  --accent-1: #00e0ff;
+  --accent-2: #0077ff;
+  --text: #e7edf7;
+  --glass: rgba(255, 255, 255, 0.04);
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --shadow-lg: 0 10px 40px rgba(0, 200, 255, 0.1);
+  --max-width: 1100px;
 }
 
 
@@ -38,6 +38,13 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
 }
 
 a {
@@ -70,7 +77,6 @@ header {
   z-index: 50;
 }
 
-/* Logotipo com gradiente neon */
 .logo {
   font-weight: 700;
   font-size: 1.2rem;
@@ -79,24 +85,21 @@ header {
   color: transparent;
 }
 
-/* Botão do menu mobile (hambúrguer) */
 .btn-toggle-menu {
   background: none;
   border: none;
   color: var(--text);
   font-size: 1.4rem;
   cursor: pointer;
-  display: none; /* visível apenas em telas pequenas */
+  display: none;
 }
 
-/* Menu principal */
 .menu ul {
   list-style: none;
   display: flex;
   gap: 18px;
 }
 
-/* Links do menu */
 .menu-link {
   color: var(--muted);
   font-weight: 600;
@@ -124,67 +127,71 @@ header {
   padding: 24px;
 }
 
-/* Card principal (foto + texto) */
-.principal {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  flex-wrap: wrap;
+/* Card principal */
+.principal, .sobre, .curriculo {
   background: var(--card);
   border-radius: var(--radius-lg);
-  padding: 30px;
   box-shadow: var(--shadow-lg);
+  padding: 40px;
+  margin-bottom: 40px;
 }
 
-/* Imagem do perfil */
-.principal img {
-  width: 140px;
-  height: 140px;
-  border-radius: 20px;
-  border: 3px solid rgba(0,224,255,0.2);
+/* Imagem padrão de perfil */
+.foto-perfil, .foto-sobre, .foto-curriculo {
+  width: 160px;
+  height: 160px;
   object-fit: cover;
-  transition: 0.4s;
+  border-radius: 20px;
+  border: 3px solid rgba(0, 224, 255, 0.2);
+  display: block;
+  margin: 0 auto 20px auto;
+  transition: 0.3s ease;
 }
-.principal img:hover {
+.foto-perfil:hover, .foto-sobre:hover, .foto-curriculo:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(0,224,255,0.3);
+  box-shadow: 0 0 20px rgba(0, 224, 255, 0.3);
 }
 
-/* Título e subtítulo */
-.principal h1 {
+/* Títulos principais */
+h1 {
   font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 20px;
 }
-.principal h1 span {
+h1 span {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   -webkit-background-clip: text;
   color: transparent;
 }
-.principal p {
+
+p {
   color: var(--muted);
-  max-width: 600px;
+  text-align: justify;
+  margin-bottom: 10px;
 }
 
 
 /* =========================================================
-   5. SEÇÕES DE CONTEÚDO (ex: Currículo)
+   5. CURRÍCULO — AJUSTE DE CONTEÚDO
 ========================================================= */
-.container h1 span {
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  -webkit-background-clip: text;
-  color: transparent;
+.curriculo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-section {
-  margin-bottom: 30px;
+.curriculo section {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
 }
 
-/* Títulos com marcador lateral */
-h2 {
+.curriculo h2 {
   font-size: 1.2rem;
   margin-bottom: 10px;
   position: relative;
 }
-h2::before {
+.curriculo h2::before {
   content: '';
   position: absolute;
   left: -16px;
@@ -195,11 +202,15 @@ h2::before {
   border-radius: 2px;
 }
 
-ul {
+.curriculo ul {
   margin-left: 20px;
 }
-li {
+.curriculo li {
   margin-bottom: 6px;
+}
+
+.curriculo .btn-degrade {
+  margin-top: 10px;
 }
 
 
@@ -218,7 +229,6 @@ li {
   transition: 0.3s;
 }
 
-/* Botão de download com efeito degradê e brilho */
 .btn-degrade {
   background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
   color: #020a14;
@@ -238,7 +248,8 @@ li {
 footer {
   text-align: center;
   color: var(--muted);
-  margin: 40px 0;
+  margin-top: auto;
+  padding: 20px 10px;
   font-size: 0.9rem;
 }
 
@@ -263,7 +274,6 @@ footer {
   transition: 0.3s;
 }
 
-/* Cores de cada rede */
 .whatsapp-btn {
   bottom: 20px;
   background: linear-gradient(180deg, #25D366, #128C7E);
@@ -276,8 +286,6 @@ footer {
   bottom: 152px;
   background: linear-gradient(180deg, #1877f2, #0b52c6);
 }
-
-/* Efeito de zoom ao passar o mouse */
 .whatsapp-btn:hover,
 .instagram-btn:hover,
 .facebook-btn:hover {
@@ -286,27 +294,19 @@ footer {
 
 
 /* =========================================================
-   9. RESPONSIVIDADE (Mobile, Tablet e Impressão)
+   9. RESPONSIVIDADE
 ========================================================= */
-
-/* Tablets e telas médias */
 @media (max-width: 900px) {
-  .principal {
-    flex-direction: column;
-    text-align: center;
-  }
-  .menu ul {
-    gap: 10px;
+  .principal, .sobre, .curriculo {
+    padding: 30px 20px;
   }
 }
 
-/* Smartphones */
 @media (max-width: 720px) {
   .btn-toggle-menu {
     display: block;
   }
 
-  /* Menu móvel com transição */
   .menu {
     position: fixed;
     top: 70px;
@@ -320,6 +320,7 @@ footer {
     transform: translateY(-10px);
     transition: 0.3s;
   }
+
   .menu.ativo {
     opacity: 1;
     pointer-events: auto;
@@ -331,15 +332,14 @@ footer {
     gap: 12px;
   }
 
-  .principal img {
+  .foto-perfil, .foto-sobre, .foto-curriculo {
     width: 120px;
     height: 120px;
   }
 }
 
-/* Telas pequenas */
 @media (max-width: 480px) {
-  .principal h1 {
+  h1 {
     font-size: 1.5rem;
   }
   .container {
@@ -348,9 +348,11 @@ footer {
   header {
     padding: 10px 14px;
   }
+  p {
+    text-align: left;
+  }
 }
 
-/* Modo de impressão (remove botões e fundo) */
 @media print {
   header,
   footer,
@@ -362,55 +364,5 @@ footer {
   body {
     background: #fff;
     color: #000;
-  }
-}
-
-/* =========================================================
-   10. AJUSTES FINAIS DE LAYOUT E CORREÇÃO DE PROPORÇÕES
-========================================================= */
-
-/* Mantém o rodapé fixo no final mesmo com pouco conteúdo */
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-main {
-  flex: 1; /* ocupa todo o espaço disponível antes do rodapé */
-}
-
-/* Centraliza e limita imagens grandes (Sobre e Currículo) */
-section img, 
-.sobre img, 
-.curriculo img {
-  max-width: 280px;
-  width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 20px auto;
-  border-radius: 14px;
-  border: 2px solid rgba(0, 224, 255, 0.2);
-  box-shadow: 0 0 20px rgba(0,224,255,0.15);
-  transition: transform 0.3s ease;
-}
-
-section img:hover {
-  transform: scale(1.03);
-}
-
-/* Rodapé sempre centralizado e com margem adequada */
-footer {
-  margin-top: auto;
-  padding: 20px 10px;
-  text-align: center;
-}
-
-/* Ajuste adicional para mobile */
-@media (max-width: 480px) {
-  section img, 
-  .sobre img, 
-  .curriculo img {
-    max-width: 180px;
   }
 }
