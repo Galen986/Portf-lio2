@@ -1,12 +1,10 @@
 /* =========================================================
-   estilos.css — versão futurista azul-ciano + lilás nebuloso
-   Autor: Guilherme Cardoso da Silva + ChatGPT
-   Tema: Tecnológico, moderno e leve
+   estilos.css — Tema Futurista Azul-Ciano + Lilás Nebuloso
+   Autor: Guilherme Cardoso da Silva
+   Estilo: Moderno, leve, tecnológico e responsivo
 ========================================================= */
 
-/* =========================================================
-   1. VARIÁVEIS DE COR E LAYOUT
-========================================================= */
+/* === VARIÁVEIS GLOBAIS === */
 :root {
   --bg: #060915;
   --card: #0e1430;
@@ -21,26 +19,30 @@
   --max-width: 1100px;
 }
 
-/* =========================================================
-   2. RESET E ESTILO GLOBAL
-========================================================= */
+/* === RESET GLOBAL === */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html, body {
+  scroll-behavior: smooth;
+  transition: background 0.5s ease;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   color: var(--text);
-  line-height: 1.6;
-  overflow-x: hidden;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
   background: linear-gradient(120deg, var(--bg), #0a0f2a, #1b1f45);
   background-size: 200% 200%;
   animation: fundo-animado 12s ease-in-out infinite;
+  line-height: 1.6;
+  overflow-x: hidden;
+  opacity: 0; /* aparece com fade via JS */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 @keyframes fundo-animado {
@@ -49,10 +51,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-main {
-  flex: 1;
-}
-
+/* === LINKS === */
 a {
   color: var(--accent-1);
   text-decoration: none;
@@ -63,7 +62,7 @@ a:hover {
 }
 
 /* =========================================================
-   3. CABEÇALHO E MENU
+   CABEÇALHO E MENU
 ========================================================= */
 header {
   width: 100%;
@@ -90,7 +89,6 @@ header {
   color: transparent;
   animation: brilho-logo 3s ease-in-out infinite alternate;
 }
-
 @keyframes brilho-logo {
   from { filter: drop-shadow(0 0 2px var(--accent-1)); }
   to { filter: drop-shadow(0 0 10px var(--accent-2)); }
@@ -128,13 +126,20 @@ header {
 }
 
 /* =========================================================
-   4. CONTAINERS E SEÇÕES
+   CONTAINERS E SEÇÕES
 ========================================================= */
 .container {
   width: calc(100% - 40px);
   max-width: var(--max-width);
   margin: 40px auto;
   padding: 24px;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+.container.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .principal, .sobre, .curriculo {
@@ -151,7 +156,7 @@ header {
 }
 
 /* =========================================================
-   5. IMAGENS E TÍTULOS
+   IMAGENS E TÍTULOS
 ========================================================= */
 .foto-perfil, .foto-sobre, .foto-curriculo {
   width: 160px;
@@ -177,7 +182,6 @@ h1 {
   color: transparent;
   animation: brilho-titulo 4s ease-in-out infinite alternate;
 }
-
 @keyframes brilho-titulo {
   from { text-shadow: 0 0 4px var(--accent-1); }
   to { text-shadow: 0 0 18px var(--accent-2); }
@@ -190,13 +194,8 @@ p {
 }
 
 /* =========================================================
-   6. CURRÍCULO
+   CURRÍCULO
 ========================================================= */
-.curriculo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 .curriculo section {
   width: 100%;
   max-width: 800px;
@@ -223,12 +222,9 @@ p {
 .curriculo li {
   margin-bottom: 6px;
 }
-.curriculo .btn-degrade {
-  margin-top: 10px;
-}
 
 /* =========================================================
-   7. BOTÕES
+   BOTÕES
 ========================================================= */
 .btn {
   display: inline-flex;
@@ -248,21 +244,19 @@ p {
   text-transform: uppercase;
   letter-spacing: 1px;
   box-shadow: 0 0 25px rgba(156,142,255,0.2);
-  animation: brilho-botao 6s infinite alternate ease-in-out;
+  animation: brilho-botao 4s infinite alternate ease-in-out;
 }
-
 @keyframes brilho-botao {
-  from { box-shadow: 0 0 20px rgba(74,240,255,0.3); }
-  to { box-shadow: 0 0 35px rgba(156,142,255,0.5); }
+  0% { box-shadow: 0 0 20px rgba(74,240,255,0.4); }
+  100% { box-shadow: 0 0 35px rgba(156,142,255,0.6); }
 }
-
 .btn-degrade:hover {
-  transform: translateY(-3px) scale(1.03);
-  box-shadow: 0 0 35px rgba(156,142,255,0.6);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 0 40px rgba(156,142,255,0.7);
 }
 
 /* =========================================================
-   8. RODAPÉ
+   RODAPÉ
 ========================================================= */
 footer {
   text-align: center;
@@ -273,7 +267,7 @@ footer {
 }
 
 /* =========================================================
-   9. BOTÕES DE REDES SOCIAIS
+   REDES SOCIAIS
 ========================================================= */
 .whatsapp-btn,
 .instagram-btn,
@@ -290,6 +284,7 @@ footer {
   font-size: 20px;
   z-index: 80;
   transition: 0.3s;
+  box-shadow: 0 0 20px rgba(156,142,255,0.3);
 }
 
 .whatsapp-btn {
@@ -304,25 +299,25 @@ footer {
   bottom: 152px;
   background: linear-gradient(180deg, #1877f2, #0b52c6);
 }
+
 .whatsapp-btn:hover,
 .instagram-btn:hover,
 .facebook-btn:hover {
   transform: scale(1.1);
+  filter: brightness(1.2);
+  box-shadow: 0 0 35px rgba(156,142,255,0.6);
 }
 
 /* =========================================================
-   10. RESPONSIVIDADE
+   RESPONSIVIDADE
 ========================================================= */
 @media (max-width: 900px) {
   .principal, .sobre, .curriculo {
     padding: 30px 20px;
   }
 }
-
 @media (max-width: 720px) {
-  .btn-toggle-menu {
-    display: block;
-  }
+  .btn-toggle-menu { display: block; }
   .menu {
     position: fixed;
     top: 70px;
@@ -336,38 +331,21 @@ footer {
     transform: translateY(-10px);
     transition: 0.3s;
   }
-  .menu.ativo {
+  .menu.menu-ativo {
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
   }
-  .menu ul {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .foto-perfil, .foto-sobre, .foto-curriculo {
-    width: 120px;
-    height: 120px;
-  }
+  .menu ul { flex-direction: column; gap: 12px; }
+  .foto-perfil, .foto-sobre { width: 120px; height: 120px; }
 }
-
 @media (max-width: 480px) {
   h1 { font-size: 1.5rem; }
   .container { padding: 16px; }
   header { padding: 10px 14px; }
   p { text-align: left; }
 }
-
 @media print {
-  header,
-  footer,
-  .whatsapp-btn,
-  .instagram-btn,
-  .facebook-btn {
-    display: none;
-  }
-  body {
-    background: #fff;
-    color: #000;
-  }
+  header, footer, .whatsapp-btn, .instagram-btn, .facebook-btn { display: none; }
+  body { background: #fff; color: #000; }
 }
