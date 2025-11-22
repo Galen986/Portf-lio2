@@ -1,45 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Sobre Mim - Guilherme Dev</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre - Guilherme Cardoso</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <div class="logo"><i class="fa-solid fa-user"></i>&nbsp;# Guilherme Dev</div>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Guilherme</a>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="curriculo.html">Currículo</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <div style="display:flex; align-items:center; gap:10px;">
-      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
-      <button class="btn-toggle-menu" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
-    </div>
-
-    <nav class="menu" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html" class="menu-link">Início</a></li>
-        <li><a href="sobre.html" class="menu-link ativo">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="container sobre" data-animate>
-    <h1>Sobre Mim</h1>
-    <img src="Foto.png" alt="Foto de Guilherme" class="foto-perfil">
-
-    <p>Meu nome é <strong>Guilherme Cardoso da Silva</strong>, sou apaixonado por tecnologia e desenvolvimento web.</p>
-    <p>Estou sempre aprendendo novas linguagens, frameworks e técnicas para criar experiências modernas e profissionais.</p>
-  </main>
-
-  <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
-  </footer>
+<section class="page">
+  <h1>Sobre mim</h1>
+  <p>Olá! Sou Guilherme, desenvolvedor dedicado e apaixonado por tecnologia.</p>
+</section>
 
 </body>
 </html>
