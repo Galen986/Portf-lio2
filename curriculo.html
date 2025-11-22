@@ -12,9 +12,11 @@
 <body>
   <header>
     <div class="logo"># Guilherme Dev</div>
+
     <button class="btn-toggle-menu" aria-label="Abrir menu">
-  <i class="fa-solid fa-bars"></i>
-</button>
+      <i class="fa-solid fa-bars"></i>
+    </button>
+
     <nav class="menu">
       <ul>
         <li><a href="index.html" class="menu-link">Início</a></li>
@@ -26,6 +28,7 @@
 
   <div class="container curriculo" data-animate>
     <h1><span>Currículo</span> - Guilherme Cardoso da Silva</h1>
+
     <img src="Foto.png" alt="Foto de Guilherme Cardoso" class="foto-perfil">
 
     <section class="info">
@@ -71,11 +74,33 @@
       </ul>
     </section>
 
-    <a href="Currículo.pdf" class="btn btn-degrade" download>📄 Baixar Currículo</a>
+    <!-- 🔽 BOTÃO ANIMADO DE DOWNLOAD 🔽 -->
+    <div class="download-btn">
+      <div class="dl-parachute">
+        <svg class="circle" width="280" height="124" viewBox="0 0 280 124">
+          <circle cx="140" cy="62" r="60"></circle>
+        </svg>
+
+        <svg class="line" width="280" height="124" viewBox="0 0 280 124">
+          <line x1="140" y1="10" x2="140" y2="115"></line>
+        </svg>
+
+        <svg class="arrow" width="280" height="124" viewBox="0 0 280 124">
+          <polyline points="120,80 140,100 160,80"></polyline>
+        </svg>
+      </div>
+
+      <a href="Currículo.pdf" download class="real-btn">
+        Baixar Currículo
+      </a>
+    </div>
+    <!-- 🔼 FIM DO BOTÃO 🔼 -->
+
   </div>
 
   <footer>
     <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
   </footer>
+
 </body>
 </html>
