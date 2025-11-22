@@ -1,49 +1,85 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Currículo - Guilherme Cardoso</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Currículo - Guilherme Cardoso da Silva</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-<header>
-  <nav class="navbar">
-    <a href="index.html" class="logo">Guilherme</a>
-    <ul>
-      <li><a href="index.html">Início</a></li>
-      <li><a href="sobre.html">Sobre</a></li>
-      <li><a href="curriculo.html" class="active">Currículo</a></li>
-    </ul>
-  </nav>
-</header>
+  <header>
+    <div class="logo"><i class="fa-solid fa-clipboard"></i>&nbsp;# Guilherme Dev</div>
 
-<section class="page">
-  <h1>Meu Currículo</h1>
+    <div style="display:flex; align-items:center; gap:10px;">
+      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn-toggle-menu" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
 
-  <!-- BOTÃO DE DOWNLOAD SOMENTE AQUI -->
-  <div class="download-area">
-    <button id="downloadBtn" class="download-btn" aria-label="Baixar currículo">
-      <svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle class="circle" cx="50" cy="50" r="40"></circle>
-        <line class="line" x1="50" y1="28" x2="50" y2="58"></line>
-        <polyline class="arrow" points="35,55 50,70 65,55"></polyline>
-      </svg>
-    </button>
-  </div>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" class="menu-link">Início</a></li>
+        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="menu-link ativo">Currículo</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <p>Baixe meu currículo atualizado clicando no botão acima.</p>
-</section>
+  <main class="container curriculo" data-animate>
+    <h1><span>Currículo</span> - Guilherme Cardoso da Silva</h1>
+    <img src="Foto.png" alt="Foto de Guilherme Cardoso" class="foto-perfil">
 
-<script>
-document.getElementById("downloadBtn")?.addEventListener("click", function() {
-  const link = document.createElement("a");
-  link.href = "./curriculo.pdf"; 
-  link.download = "Guilherme_Curriculo.pdf";
-  link.click();
-});
-</script>
+    <section class="info">
+      <p>📍 São Paulo – SP, Zona Leste | CEP: 08270-340</p>
+      <p>📞 (11) 9 6400-2284 | ✉ <a href="mailto:guisilva4410@gmail.com">guisilva4410@gmail.com</a></p>
+    </section>
+
+    <section class="objetivo">
+      <h2>🎯 Objetivo Profissional</h2>
+      <p>Desejo participar de uma equipe que valorize o aprendizado contínuo, onde eu possa crescer e contribuir com soluções modernas e eficientes.</p>
+    </section>
+
+    <section>
+      <h2>💼 Experiência Profissional</h2>
+      <p>Programador Web Júnior</p>
+      <p>Ainda estou em busca da primeira oportunidade, aplicando meus conhecimentos em HTML, CSS, JavaScript e design responsivo.</p>
+    </section>
+
+    <section>
+      <h2>🎓 Formação Acadêmica</h2>
+      <p>Ensino Médio Completo – <strong>E.E. Infante Dom Henrique</strong> (2020)</p>
+    </section>
+
+    <section>
+      <h2>💻 Cursos</h2>
+      <ul>
+        <li>Programador Web – 440h | Dom Bosco</li>
+        <li>Programador de Sistemas – 440h | Dom Bosco</li>
+        <li>Operador de Computador – 440h | Dom Bosco</li>
+        <li>Serigrafia – 440h | Dom Bosco</li>
+        <li>Organizador de Eventos – 440h | Dom Bosco</li>
+      </ul>
+    </section>
+
+    <div class="download-area">
+      <button id="downloadBtn" class="download-btn" aria-label="Baixar currículo">
+        <svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+          <circle class="circle" cx="50" cy="50" r="38"></circle>
+          <line class="line" x1="50" y1="28" x2="50" y2="58"></line>
+          <polyline class="arrow" points="36,56 50,70 64,56"></polyline>
+        </svg>
+      </button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
+  </footer>
 
 </body>
 </html>
