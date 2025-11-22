@@ -184,3 +184,80 @@ h1 {
   h1 { font-size: 1.3rem; }
   .logo { font-size: 1.25rem; }
 }
+
+/* ===========================================================
+   🔵 BOTÃO DE DOWNLOAD ANIMADO (IGUAL AO DO VÍDEO)
+   Estilo Azul Futurista
+=========================================================== */
+
+.download-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.download-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .3s ease;
+}
+
+.download-btn:hover {
+  transform: scale(1.1);
+}
+
+.download-btn .icon {
+  width: 120px;
+  height: 120px;
+  pointer-events: none;
+}
+
+/* Linha do círculo */
+.download-btn .circle {
+  fill: none;
+  stroke: #4a8bff;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  transition: stroke .3s ease;
+}
+
+/* Linha vertical */
+.download-btn .line {
+  stroke: #4a8bff;
+  stroke-width: 6px;
+  stroke-linecap: round;
+  transition: stroke .3s ease;
+}
+
+/* Setinha */
+.download-btn .arrow {
+  stroke: #4a8bff;
+  stroke-width: 6px;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke .3s ease;
+}
+
+/* Animação ao clicar — muda cor */
+.download-btn:active .circle,
+.download-btn:active .line,
+.download-btn:active .arrow {
+  stroke: #7b5bff;
+}
+
+/* 🔥 Animação de brilho */
+@keyframes pulse {
+  0% { transform: scale(1); filter: drop-shadow(0 0 6px #4a8bff); }
+  50% { transform: scale(1.07); filter: drop-shadow(0 0 12px #7b5bff); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 6px #4a8bff); }
+}
+
+.download-btn:hover svg {
+  animation: pulse 1.2s infinite;
+}
