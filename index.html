@@ -1,64 +1,28 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Guilherme Dev - Portfólio</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/estilos.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Início - Guilherme Cardoso</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header>
-    <div class="logo"><i class="fa-solid fa-code"></i>&nbsp;# Guilherme Dev</div>
+<header>
+  <nav class="navbar">
+    <a href="index.html" class="logo">Guilherme</a>
+    <ul>
+      <li><a href="index.html">Início</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+      <li><a href="curriculo.html">Currículo</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <div style="display:flex; align-items:center; gap:10px;">
-      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
-      <button class="btn-toggle-menu" aria-label="Abrir menu"><i class="fa-solid fa-bars"></i></button>
-    </div>
-
-    <nav class="menu" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html" class="menu-link ativo">Início</a></li>
-        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="container principal" data-animate>
-    <img src="Foto.png" alt="Foto Guilherme" class="foto-perfil">
-    <h1>Olá, eu sou <span>Guilherme Cardoso</span></h1>
-    <p>Desenvolvedor Web em formação. Crio sites modernos, responsivos e de alto desempenho.</p>
-
-    <div class="download-area">
-      <button id="downloadBtn" class="download-btn" aria-label="Baixar currículo">
-        <svg class="icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-          <circle class="circle" cx="50" cy="50" r="38"></circle>
-          <line class="line" x1="50" y1="28" x2="50" y2="58"></line>
-          <polyline class="arrow" points="36,56 50,70 64,56"></polyline>
-        </svg>
-      </button>
-    </div>
-  </main>
-
-  <!-- redes sociais fixas -->
-  <a class="whatsapp-btn" href="https://wa.me/5511964002284" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a class="instagram-btn" href="https://www.instagram.com/guilherme_cardoso132" target="_blank" rel="noopener" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-  <a class="facebook-btn" href="https://www.facebook.com/guilherme.cardosodasilva.35" target="_blank" rel="noopener" aria-label="Facebook">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-
-  <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
-  </footer>
+<section class="hero">
+  <h1>Bem-vindo ao meu Portfólio</h1>
+  <p>Desenvolvedor focado em qualidade, tecnologia moderna e experiências profissionais.</p>
+</section>
 
 </body>
 </html>
