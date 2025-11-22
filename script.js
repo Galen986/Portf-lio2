@@ -1,4 +1,3 @@
-
 /* ======================================================
    🌌 SCRIPT GLOBAL - GUILHERME CARDOSO DA SILVA
    Tema: Azul-Ciano + Lilás Nebuloso
@@ -69,7 +68,7 @@ window.addEventListener("load", () => {
 // === BRILHO PULSANTE NOS BOTÕES E ÍCONES ===
 function pulsarBrilho() {
   const botoes = document.querySelectorAll(".btn, .btn-degrade, .whatsapp-btn, .instagram-btn, .facebook-btn");
-  
+
   botoes.forEach((btn, i) => {
     const delay = i * 300;
     setTimeout(() => {
@@ -91,3 +90,28 @@ function pulsarBrilho() {
 
 // Ativa o brilho após o carregamento da página
 window.addEventListener("load", pulsarBrilho);
+
+
+
+
+/* ======================================================
+   🌙 MODO CLARO / MODO ESCURO
+====================================================== */
+
+const toggleTema = document.querySelector(".toggle-tema");
+
+if (toggleTema) {
+  toggleTema.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    // Troca o ícone
+    const icon = toggleTema.querySelector("i");
+    if (document.body.classList.contains("dark")) {
+      icon.classList.remove("fa-moon");
+      icon.classList.add("fa-sun");
+    } else {
+      icon.classList.remove("fa-sun");
+      icon.classList.add("fa-moon");
+    }
+  });
+}
