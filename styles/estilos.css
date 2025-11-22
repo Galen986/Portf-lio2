@@ -349,3 +349,14 @@ footer {
   header, footer, .whatsapp-btn, .instagram-btn, .facebook-btn { display: none; }
   body { background: #fff; color: #000; }
 }
+/* === ÍCONE DO BOTÃO DO MENU (Opção 1 — Profissional) === */
+.btn-toggle-menu i {
+  font-size: 1.6rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Quando o menu abre, o ícone gira e muda de cor */
+.btn-toggle-menu.ativo i {
+  transform: rotate(90deg);
+  color: var(--accent-1);
+}
