@@ -450,3 +450,59 @@ footer {
 @keyframes dash {
   to { stroke-dashoffset: 0; }
 }
+
+/* ===========================================================
+   🎨 BOTÃO DE TEMA (Modo Claro/Escuro)
+   Estilo Azul + Ciano Futurista com Animação
+=========================================================== */
+
+.toggle-tema {
+  background: linear-gradient(135deg, #4af0ff, #7b5bff);
+  border: none;
+  padding: 10px 12px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 22px;
+  color: #ffffff;
+  margin-right: 10px;
+  transition: transform 0.3s ease, box-shadow 0.4s ease, background 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(74, 240, 255, 0.6);
+}
+
+/* HOVER — brilho e leve aumento */
+.toggle-tema:hover {
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 0 0 18px rgba(74, 240, 255, 0.9),
+              0 0 25px rgba(123, 91, 255, 0.7);
+}
+
+/* ANIMAÇÃO DE PULSAÇÃO */
+@keyframes temaPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(74, 240, 255, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(123, 91, 255, 0.5),
+                0 0 40px rgba(74, 240, 255, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(74, 240, 255, 0.4);
+  }
+}
+
+.toggle-tema {
+  animation: temaPulse 3.2s infinite ease-in-out;
+}
+
+/* ÍCONES dentro do botão */
+.toggle-tema i {
+  transition: transform 0.4s ease, opacity 0.3s ease;
+}
+
+/* Quando troca para MODO DARK: ícone gira */
+body.dark .toggle-tema i {
+  transform: rotate(180deg);
+}
