@@ -258,3 +258,100 @@ footer{ text-align:center; margin-top:24px; color:var(--cor-texto); opacity:0.7;
 
 /* ======= KEYFRAMES ======= */
 @keyframes slideFade{ from{ opacity:0; transform: translateY(-8px) scale(.99);} to{opacity:1; transform: translateY(0) scale(1);} }
+
+/* ------------------------------
+   BOTÃO DE DOWNLOAD IGUAL AO VÍDEO
+--------------------------------*/
+.download-area {
+  display: flex;
+  justify-content: center;
+  margin: 40px 0;
+}
+
+.download-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 110px;
+  height: 110px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 110px;
+  height: 110px;
+  stroke: #4af0ff;
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: none;
+  transition: stroke 0.3s ease;
+}
+
+/* --- BRILHO EXATO DO VÍDEO --- */
+.circle,
+.line,
+.arrow {
+  filter: drop-shadow(0 0 10px #4af0ff88);
+  transition: 0.3s ease;
+}
+
+/* --- ANIMAÇÃO CÍRCULO COMO NO VÍDEO --- */
+.circle {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 260;
+  animation: circleDraw 1.6s ease forwards;
+}
+
+@keyframes circleDraw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* --- ANIMAÇÃO LINHA DESCENDO IGUAL AO VÍDEO --- */
+.line {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: lineDrop 0.8s 0.4s ease forwards;
+}
+
+@keyframes lineDrop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- SETA ABRINDO COMO NO VÍDEO --- */
+.arrow {
+  opacity: 0;
+  transform: translateY(-8px);
+  animation: arrowReveal 0.8s 0.9s ease forwards;
+}
+
+@keyframes arrowReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- EFEITO DE PULSAÇÃO --- */
+.download-btn:hover .icon {
+  animation: pulse 1.4s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1);   filter: drop-shadow(0 0 8px #4af0ff90); }
+  50%  { transform: scale(1.08); filter: drop-shadow(0 0 18px #00eaffb5); }
+  100% { transform: scale(1);   filter: drop-shadow(0 0 8px #4af0ff90); }
+}
+
+/* --- EFEITO DE CLIQUE (igual ao vídeo) --- */
+.download-btn:active .icon {
+  stroke: #7b5bff;
+  filter: drop-shadow(0 0 12px #7b5bff);
+}
