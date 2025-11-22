@@ -10,8 +10,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
   <header>
     <div class="logo"># Guilherme Dev</div>
+
+    <!-- BOTÃO DE TEMA -->
+    <button class="toggle-tema" aria-label="Alternar tema">
+      <i class="fa-solid fa-moon"></i>
+    </button>
 
     <button class="btn-toggle-menu" aria-label="Abrir menu">
       <i class="fa-solid fa-bars"></i>
@@ -28,7 +34,6 @@
 
   <div class="container curriculo" data-animate>
     <h1><span>Currículo</span> - Guilherme Cardoso da Silva</h1>
-
     <img src="Foto.png" alt="Foto de Guilherme Cardoso" class="foto-perfil">
 
     <section class="info">
@@ -38,13 +43,13 @@
 
     <section class="objetivo">
       <h2>🎯 Objetivo Profissional</h2>
-      <p>Desejo participar de uma equipe que valorize o aprendizado contínuo, onde eu possa expandir meus conhecimentos e ajudar no desenvolvimento dos projetos da empresa.</p>
+      <p>Desejo participar de uma equipe que valorize o aprendizado contínuo, onde eu possa crescer e contribuir com soluções modernas e eficientes.</p>
     </section>
 
     <section>
       <h2>💼 Experiência Profissional</h2>
-      <p>Programador web júnior</p>
-      <p>Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade para aplicar meus conhecimentos em programação web, contribuindo com dedicação, aprendizado contínuo e trabalho em equipe.</p>
+      <p>Programador Web Júnior</p>
+      <p>Ainda estou em busca da primeira oportunidade, aplicando meus conhecimentos em HTML, CSS, JavaScript e design responsivo.</p>
     </section>
 
     <section>
@@ -53,49 +58,18 @@
     </section>
 
     <section>
-      <h2>💻 Cursos de Aperfeiçoamento</h2>
+      <h2>💻 Cursos</h2>
       <ul>
-        <li>Programador Web – 440h | Obra Social Dom Bosco</li>
-        <li>Programador de Sistemas – 440h | Obra Social Dom Bosco</li>
-        <li>Operador de Computador – 440h | Obra Social Dom Bosco</li>
-        <li>Serigrafia – 440h | Obra Social Dom Bosco</li>
-        <li>Organizador de Eventos – 440h | Obra Social Dom Bosco</li>
+        <li>Programador Web – 440h | Dom Bosco</li>
+        <li>Programador de Sistemas – 440h | Dom Bosco</li>
+        <li>Operador de Computador – 440h | Dom Bosco</li>
+        <li>Serigrafia – 440h | Dom Bosco</li>
+        <li>Organizador de Eventos – 440h | Dom Bosco</li>
       </ul>
     </section>
 
-    <section>
-      <h2>🛠 Competências Técnicas</h2>
-      <ul>
-        <li>Desenvolvimento Web (HTML, CSS, JavaScript)</li>
-        <li>Lógica de Programação</li>
-        <li>Noções de Banco de Dados</li>
-        <li>Pacote Office e Ferramentas de Produtividade</li>
-        <li>Organização e Trabalho em Equipe</li>
-      </ul>
-    </section>
-
-    <!-- 🔽 BOTÃO ANIMADO DE DOWNLOAD 🔽 -->
-    <div class="download-btn">
-      <div class="dl-parachute">
-        <svg class="circle" width="280" height="124" viewBox="0 0 280 124">
-          <circle cx="140" cy="62" r="60"></circle>
-        </svg>
-
-        <svg class="line" width="280" height="124" viewBox="0 0 280 124">
-          <line x1="140" y1="10" x2="140" y2="115"></line>
-        </svg>
-
-        <svg class="arrow" width="280" height="124" viewBox="0 0 280 124">
-          <polyline points="120,80 140,100 160,80"></polyline>
-        </svg>
-      </div>
-
-      <a href="Currículo.pdf" download class="real-btn">
-        Baixar Currículo
-      </a>
-    </div>
-    <!-- 🔼 FIM DO BOTÃO 🔼 -->
-
+    <!-- BOTÃO DE BAIXAR CURRÍCULO -->
+    <a href="Currículo.pdf" class="btn btn-degrade" download>📄 Baixar Currículo</a>
   </div>
 
   <footer>
