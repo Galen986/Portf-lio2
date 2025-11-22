@@ -1,9 +1,3 @@
-/* ======================================================
-   🌌 SCRIPT GLOBAL - GUILHERME CARDOSO DA SILVA
-   Tema: Azul-Ciano + Lilás Nebuloso
-   Efeitos: Animações suaves, menu responsivo e brilho dinâmico
-   ====================================================== */
-
 // === ANIMAÇÃO SUAVE AO ROLAR ===
 const animatedElements = document.querySelectorAll("[data-animate]");
 
@@ -90,9 +84,6 @@ function pulsarBrilho() {
 
 // Ativa o brilho após o carregamento da página
 window.addEventListener("load", pulsarBrilho);
-
-
-
 
 /* ======================================================
    🌙 MODO CLARO / MODO ESCURO
