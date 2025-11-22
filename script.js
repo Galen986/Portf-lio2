@@ -147,3 +147,13 @@ if (toggleTema) {
     icon.classList.add("fa-moon");
   }
 }
+
+// 🔽 Botão de download futurista (animação + download do PDF)
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  const link = document.createElement("a");
+  link.href = "Currículo.pdf"; // coloque o nome exato do seu arquivo
+  link.download = "Currículo - Guilherme Cardoso da Silva.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+});
