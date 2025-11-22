@@ -360,3 +360,93 @@ footer {
   transform: rotate(90deg);
   color: var(--accent-1);
 }
+/* =========================================================
+   BOTÃO ANIMADO DE DOWNLOAD
+========================================================= */
+
+.download-btn {
+  position: relative;
+  width: 220px;
+  text-align: center;
+  margin: 40px auto;
+}
+
+.dl-parachute svg {
+  display: block;
+  pointer-events: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.dl-parachute svg.circle,
+.dl-parachute svg.line,
+.dl-parachute svg.arrow {
+  width: 220px;
+  height: 220px;
+}
+
+.dl-parachute svg.circle circle {
+  stroke: var(--accent-1);
+  stroke-width: 3px;
+  fill: none;
+  stroke-linecap: round;
+  transform: translate(0, 10px);
+}
+
+.dl-parachute svg.line line {
+  stroke: var(--accent-1);
+  stroke-width: 3px;
+  stroke-linecap: round;
+}
+
+.dl-parachute svg.arrow polyline {
+  stroke: var(--accent-1);
+  stroke-width: 4px;
+  fill: none;
+  stroke-linecap: round;
+}
+
+.real-btn {
+  position: relative;
+  top: 165px;
+  display: inline-block;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
+  color: #0e1020;
+  font-weight: 700;
+  border-radius: 12px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+  box-shadow: 0 0 25px rgba(156,142,255,0.3);
+}
+
+.real-btn:hover {
+  transform: scale(1.05) translateY(-3px);
+  box-shadow: 0 0 40px rgba(156,142,255,0.7);
+}
+
+/* ANIMAÇÃO */
+.download-btn:hover .circle circle {
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: dash 1.2s forwards;
+}
+
+.download-btn:hover .line line {
+  stroke-dasharray: 130;
+  stroke-dashoffset: 130;
+  animation: dash 1s forwards .3s;
+}
+
+.download-btn:hover .arrow polyline {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: dash 1s forwards .6s;
+}
+
+@keyframes dash {
+  to { stroke-dashoffset: 0; }
+}
