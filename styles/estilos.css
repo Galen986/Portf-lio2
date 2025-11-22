@@ -1,461 +1,112 @@
-/* =========================================================
-   estilos.css — Tema Futurista Azul-Ciano + Lilás Nebuloso
-   Autor: Guilherme Cardoso da Silva
-   Estilo: Moderno, leve, tecnológico e responsivo
-========================================================= */
-
-/* === VARIÁVEIS GLOBAIS === */
-:root {
-  --bg: #060915;
-  --card: #0e1430;
-  --muted: #aab7d9;
-  --accent-1: #4af0ff;
-  --accent-2: #9c8eff;
-  --text: #f1f6ff;
-  --glass: rgba(255, 255, 255, 0.04);
-  --radius-lg: 20px;
-  --radius-md: 14px;
-  --shadow-lg: 0 10px 40px rgba(156, 142, 255, 0.15);
-  --max-width: 1100px;
-}
-
-/* === RESET GLOBAL === */
+/* ======= RESET ======= */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html, body {
-  scroll-behavior: smooth;
-  transition: background 0.5s ease;
-}
-
-body {
   font-family: 'Poppins', sans-serif;
-  color: var(--text);
-  background: linear-gradient(120deg, var(--bg), #0a0f2a, #1b1f45);
-  background-size: 200% 200%;
-  animation: fundo-animado 12s ease-in-out infinite;
-  line-height: 1.6;
-  overflow-x: hidden;
-  opacity: 0; /* aparece com fade via JS */
+}
+
+/* ======= VARIÁVEIS ======= */
+:root {
+  --cor-primaria: #4af0ff;
+  --cor-secundaria: #7b5bff;
+  --cor-fundo: #0d0d16;
+  --cor-texto: #e0e0ff;
+  --cor-destaque: #9b72ff;
+  --cor-borda: rgba(255, 255, 255, 0.1);
+  --cor-transparente: rgba(255, 255, 255, 0.05);
+}
+
+/* ======= BODY ======= */
+body {
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: 0.4s ease-in-out;
 }
 
-@keyframes fundo-animado {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* ======= MODO CLARO ======= */
+body:not(.dark) {
+  --cor-fundo: #f0f6ff;
+  --cor-texto: #1a1c29;
+  --cor-transparente: rgba(0, 0, 0, 0.05);
+  --cor-borda: rgba(0, 0, 0, 0.1);
 }
 
-/* === LINKS === */
-a {
-  color: var(--accent-1);
-  text-decoration: none;
-  transition: 0.3s;
-}
-a:hover {
-  text-shadow: 0 0 10px var(--accent-1);
-}
-
-/* =========================================================
-   CABEÇALHO E MENU
-========================================================= */
+/* ======= CABEÇALHO ======= */
 header {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 20px auto;
-  padding: 14px 24px;
+  background: var(--cor-transparente);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 15px 25px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  background: var(--glass);
+  align-items: center;
   backdrop-filter: blur(10px);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
   position: sticky;
-  top: 10px;
-  z-index: 50;
+  top: 0;
+  z-index: 1000;
 }
 
 .logo {
+  font-size: 1.6rem;
   font-weight: 700;
-  font-size: 1.2rem;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: brilho-logo 3s ease-in-out infinite alternate;
-}
-@keyframes brilho-logo {
-  from { filter: drop-shadow(0 0 2px var(--accent-1)); }
-  to { filter: drop-shadow(0 0 10px var(--accent-2)); }
+  color: var(--cor-primaria);
+  text-shadow: 0 0 10px var(--cor-primaria);
 }
 
-.btn-toggle-menu {
-  background: none;
-  border: none;
-  color: var(--text);
-  font-size: 1.4rem;
-  cursor: pointer;
-  display: none;
-}
-
-.menu ul {
+/* ======= MENU ======= */
+nav ul {
   list-style: none;
   display: flex;
-  gap: 18px;
 }
 
 .menu-link {
-  color: var(--muted);
-  font-weight: 600;
-  transition: 0.3s;
-  padding: 8px 14px;
-  border-radius: 10px;
-}
-.menu-link:hover {
-  color: var(--accent-1);
-  background: rgba(74, 240, 255, 0.08);
-}
-.menu-link.ativo {
-  background: linear-gradient(90deg, rgba(74,240,255,0.12), rgba(156,142,255,0.08));
-  color: var(--accent-1);
-}
-
-/* =========================================================
-   CONTAINERS E SEÇÕES
-========================================================= */
-.container {
-  width: calc(100% - 40px);
-  max-width: var(--max-width);
-  margin: 40px auto;
-  padding: 24px;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 0.8s ease;
-}
-.container.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.principal, .sobre, .curriculo {
-  background: var(--card);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: 40px;
-  margin-bottom: 40px;
-  backdrop-filter: blur(8px);
-  transition: 0.4s ease;
-}
-.principal:hover, .sobre:hover, .curriculo:hover {
-  box-shadow: 0 0 25px rgba(156,142,255,0.25);
-}
-
-/* =========================================================
-   IMAGENS E TÍTULOS
-========================================================= */
-.foto-perfil, .foto-sobre, .foto-curriculo {
-  width: 160px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 20px;
-  border: 3px solid rgba(156, 142, 255, 0.3);
-  display: block;
-  margin: 0 auto 20px auto;
-  transition: 0.4s ease;
-}
-.foto-perfil:hover, .foto-sobre:hover, .foto-curriculo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(74, 240, 255, 0.4);
-}
-
-h1 {
-  font-size: 1.8rem;
-  text-align: center;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: brilho-titulo 4s ease-in-out infinite alternate;
-}
-@keyframes brilho-titulo {
-  from { text-shadow: 0 0 4px var(--accent-1); }
-  to { text-shadow: 0 0 18px var(--accent-2); }
-}
-
-p {
-  color: var(--muted);
-  text-align: justify;
-  margin-bottom: 10px;
-}
-
-/* =========================================================
-   CURRÍCULO
-========================================================= */
-.curriculo section {
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto 30px auto;
-}
-.curriculo h2 {
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  position: relative;
-}
-.curriculo h2::before {
-  content: '';
-  position: absolute;
-  left: -16px;
-  top: 6px;
-  width: 6px;
-  height: 6px;
-  background: var(--accent-1);
-  border-radius: 2px;
-}
-.curriculo ul {
   margin-left: 20px;
-}
-.curriculo li {
-  margin-bottom: 6px;
-}
-
-/* =========================================================
-   BOTÕES
-========================================================= */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 20px;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-.btn-degrade {
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  color: #0e1020;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 0 25px rgba(156,142,255,0.2);
-  animation: brilho-botao 4s infinite alternate ease-in-out;
-}
-@keyframes brilho-botao {
-  0% { box-shadow: 0 0 20px rgba(74,240,255,0.4); }
-  100% { box-shadow: 0 0 35px rgba(156,142,255,0.6); }
-}
-.btn-degrade:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 0 40px rgba(156,142,255,0.7);
-}
-
-/* =========================================================
-   RODAPÉ
-========================================================= */
-footer {
-  text-align: center;
-  color: var(--muted);
-  margin-top: auto;
-  padding: 20px 10px;
-  font-size: 0.9rem;
-}
-
-/* =========================================================
-   REDES SOCIAIS
-========================================================= */
-.whatsapp-btn,
-.instagram-btn,
-.facebook-btn {
-  position: fixed;
-  right: 20px;
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 20px;
-  z-index: 80;
-  transition: 0.3s;
-  box-shadow: 0 0 20px rgba(156,142,255,0.3);
-}
-
-.whatsapp-btn {
-  bottom: 20px;
-  background: linear-gradient(180deg, #25D366, #128C7E);
-}
-.instagram-btn {
-  bottom: 86px;
-  background: linear-gradient(45deg, #feda75, #d62976, #833ab4);
-}
-.facebook-btn {
-  bottom: 152px;
-  background: linear-gradient(180deg, #1877f2, #0b52c6);
-}
-
-.whatsapp-btn:hover,
-.instagram-btn:hover,
-.facebook-btn:hover {
-  transform: scale(1.1);
-  filter: brightness(1.2);
-  box-shadow: 0 0 35px rgba(156,142,255,0.6);
-}
-
-/* =========================================================
-   RESPONSIVIDADE
-========================================================= */
-@media (max-width: 900px) {
-  .principal, .sobre, .curriculo {
-    padding: 30px 20px;
-  }
-}
-@media (max-width: 720px) {
-  .btn-toggle-menu { display: block; }
-  .menu {
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    background: var(--card);
-    padding: 20px;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: 0.3s;
-  }
-  .menu.menu-ativo {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
-  }
-  .menu ul { flex-direction: column; gap: 12px; }
-  .foto-perfil, .foto-sobre { width: 120px; height: 120px; }
-}
-@media (max-width: 480px) {
-  h1 { font-size: 1.5rem; }
-  .container { padding: 16px; }
-  header { padding: 10px 14px; }
-  p { text-align: left; }
-}
-@media print {
-  header, footer, .whatsapp-btn, .instagram-btn, .facebook-btn { display: none; }
-  body { background: #fff; color: #000; }
-}
-/* === ÍCONE DO BOTÃO DO MENU (Opção 1 — Profissional) === */
-.btn-toggle-menu i {
-  font-size: 1.6rem;
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* Quando o menu abre, o ícone gira e muda de cor */
-.btn-toggle-menu.ativo i {
-  transform: rotate(90deg);
-  color: var(--accent-1);
-}
-/* =========================================================
-   BOTÃO ANIMADO DE DOWNLOAD
-========================================================= */
-
-.download-btn {
-  position: relative;
-  width: 220px;
-  text-align: center;
-  margin: 40px auto;
-}
-
-.dl-parachute svg {
-  display: block;
-  pointer-events: none;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.dl-parachute svg.circle,
-.dl-parachute svg.line,
-.dl-parachute svg.arrow {
-  width: 220px;
-  height: 220px;
-}
-
-.dl-parachute svg.circle circle {
-  stroke: var(--accent-1);
-  stroke-width: 3px;
-  fill: none;
-  stroke-linecap: round;
-  transform: translate(0, 10px);
-}
-
-.dl-parachute svg.line line {
-  stroke: var(--accent-1);
-  stroke-width: 3px;
-  stroke-linecap: round;
-}
-
-.dl-parachute svg.arrow polyline {
-  stroke: var(--accent-1);
-  stroke-width: 4px;
-  fill: none;
-  stroke-linecap: round;
-}
-
-.real-btn {
-  position: relative;
-  top: 165px;
-  display: inline-block;
-  padding: 12px 20px;
-  background: linear-gradient(90deg, var(--accent-1), var(--accent-2));
-  color: #0e1020;
-  font-weight: 700;
-  border-radius: 12px;
+  font-size: 1rem;
+  color: var(--cor-texto);
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 8px 12px;
+  border-radius: 8px;
   transition: 0.3s ease;
-  box-shadow: 0 0 25px rgba(156,142,255,0.3);
 }
 
-.real-btn:hover {
-  transform: scale(1.05) translateY(-3px);
-  box-shadow: 0 0 40px rgba(156,142,255,0.7);
+.menu-link:hover {
+  background: rgba(74, 240, 255, 0.15);
 }
 
-/* ANIMAÇÃO */
-.download-btn:hover .circle circle {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: dash 1.2s forwards;
+/* ======= MENU MOBILE ======= */
+.menu-btn {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  color: var(--cor-primaria);
+  cursor: pointer;
 }
 
-.download-btn:hover .line line {
-  stroke-dasharray: 130;
-  stroke-dashoffset: 130;
-  animation: dash 1s forwards .3s;
+.menu-mobile {
+  display: none;
+  flex-direction: column;
+  background: var(--cor-transparente);
+  position: absolute;
+  top: calc(70px + 10px);
+  right: 15px;
+  width: 180px;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid var(--cor-borda);
+  backdrop-filter: blur(12px);
 }
 
-.download-btn:hover .arrow polyline {
-  stroke-dasharray: 80;
-  stroke-dashoffset: 80;
-  animation: dash 1s forwards .6s;
+.menu-mobile a {
+  text-decoration: none;
+  padding: 10px;
+  color: var(--cor-texto);
 }
 
-@keyframes dash {
-  to { stroke-dashoffset: 0; }
-}
-
-/* ===========================================================
-   🎨 BOTÃO DE TEMA (Modo Claro/Escuro)
-   Estilo Azul + Ciano Futurista com Animação
-=========================================================== */
-
+/* ======= BOTÃO DE TEMA ======= */
 .toggle-tema {
   background: linear-gradient(135deg, #4af0ff, #7b5bff);
   border: none;
@@ -470,39 +121,66 @@ footer {
   align-items: center;
   justify-content: center;
   box-shadow: 0 0 10px rgba(74, 240, 255, 0.6);
-}
-
-/* HOVER — brilho e leve aumento */
-.toggle-tema:hover {
-  transform: scale(1.15) rotate(8deg);
-  box-shadow: 0 0 18px rgba(74, 240, 255, 0.9),
-              0 0 25px rgba(123, 91, 255, 0.7);
-}
-
-/* ANIMAÇÃO DE PULSAÇÃO */
-@keyframes temaPulse {
-  0% {
-    box-shadow: 0 0 10px rgba(74, 240, 255, 0.4);
-  }
-  50% {
-    box-shadow: 0 0 25px rgba(123, 91, 255, 0.5),
-                0 0 40px rgba(74, 240, 255, 0.4);
-  }
-  100% {
-    box-shadow: 0 0 10px rgba(74, 240, 255, 0.4);
-  }
-}
-
-.toggle-tema {
   animation: temaPulse 3.2s infinite ease-in-out;
 }
 
-/* ÍCONES dentro do botão */
-.toggle-tema i {
-  transition: transform 0.4s ease, opacity 0.3s ease;
+.toggle-tema:hover {
+  transform: scale(1.13);
+  box-shadow: 0 0 18px rgba(74, 240, 255, 0.8);
 }
 
-/* Quando troca para MODO DARK: ícone gira */
-body.dark .toggle-tema i {
-  transform: rotate(180deg);
+@keyframes temaPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+/* ======= PRINCIPAL ======= */
+.principal {
+  padding: 70px 25px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: var(--cor-primaria);
+}
+
+.subtitulo {
+  font-size: 1.1rem;
+  color: var(--cor-texto);
+}
+
+/* ======= BOTÃO DOWNLOAD ======= */
+.download-btn {
+  background: linear-gradient(135deg, #4af0ff, #7b5bff);
+  padding: 12px 25px;
+  border-radius: 10px;
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 1rem;
+  box-shadow: 0px 0px 12px rgba(74, 240, 255, 0.7);
+  transition: 0.3s;
+}
+
+.download-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0px 0px 20px rgba(74, 240, 255, 0.9);
+}
+
+/* ======= RESPONSIVIDADE ======= */
+@media (max-width: 768px) {
+  nav ul { display: none; }
+  .menu-btn { display: block; }
+  .principal { padding-top: 40px; }
+}
+
+/* === EXTRA PARA CELULARES MUITO PEQUENOS === */
+@media (max-width: 360px) {
+  .download-btn { transform: scale(0.85); }
+  h1 { font-size: 1.3rem; }
+  .logo { font-size: 1.25rem; }
 }
