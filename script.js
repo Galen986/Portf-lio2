@@ -117,20 +117,11 @@ function pulsarBrilho(){
 }
 window.addEventListener("load", pulsarBrilho);
 
-/* =========================
-   DOWNLOAD BUTTON (verifica arquivo)
-   ========================= */
-const downloadBtn = $("#downloadBtn");
-if(downloadBtn){
-  downloadBtn.addEventListener("click", (e) => {
-    // Nome do arquivo que deve existir na raiz do site
-    const fileHref = "Curriculo.pdf";
-    // tenta abrir /forçar download
-    const a = document.createElement("a");
-    a.href = fileHref;
-    a.download = "Currículo - Guilherme Cardoso da Silva.pdf";
-    document.body.appendChild(a);
-    a.click();
-    a.remove();
-  });
-}
+<script>
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  const a = document.createElement("a");
+  a.href = "curriculo.pdf";
+  a.download = "Guilherme_Curriculo.pdf";
+  a.click();
+});
+</script>
