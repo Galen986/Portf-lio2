@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Currículo - Guilherme Cardoso da Silva</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script defer src="script.js"></script>
 </head>
+
 <body>
 
   <header>
-    <div class="logo"><i class="fa-solid fa-clipboard"></i>&nbsp;# Guilherme Dev</div>
+    <div class="logo"><i class="fa-solid fa-file-lines"></i>&nbsp;Currículo</div>
 
-    <div style="display:flex; align-items:center; gap:10px;">
+    <div class="header-controls">
       <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
+
       <button class="btn-toggle-menu" aria-label="Abrir menu">
         <span class="hamburger">
           <span class="bar"></span>
@@ -26,6 +28,7 @@
       </button>
     </div>
 
+    <!-- MENU FLUTUANTE -->
     <nav class="menu" aria-label="Menu principal">
       <ul>
         <li><a href="index.html" class="menu-link">Início</a></li>
@@ -35,56 +38,61 @@
     </nav>
   </header>
 
-  <main class="container curriculo" data-animate>
-    <h1><span>Currículo</span> - Guilherme Cardoso da Silva</h1>
-    <img src="Foto.png" alt="Foto de Guilherme Cardoso" class="foto-perfil">
+  <main class="curriculo-container" data-animate>
 
-    <section class="info">
-      <p>📍 São Paulo – SP, Zona Leste | CEP: 08270-340</p>
-      <p>📞 (11) 9 6400-2284 | ✉ <a href="mailto:guisilva4410@gmail.com">guisilva4410@gmail.com</a></p>
+    <section class="perfil">
+      <img src="Foto.png" alt="Foto de Guilherme" class="foto-curriculo">
+
+      <h1>Guilherme Cardoso da Silva</h1>
+      <p class="descricao">
+        Tenho interesse em trabalhar na área de tecnologia, desenvolvimento de sistemas e suporte em TI.
+        Busco sempre aprender e evoluir meus conhecimentos para me tornar um desenvolvedor completo.
+      </p>
     </section>
 
-    <section class="objetivo">
-      <h2>🎯 Objetivo Profissional</h2>
-      <p>Desejo participar de uma equipe que valorize o aprendizado contínuo, onde eu possa crescer e contribuir com soluções modernas e eficientes.</p>
-    </section>
-
-    <section>
-      <h2>💼 Experiência Profissional</h2>
-      <p>Programador Web Júnior</p>
-      <p>Ainda estou em busca da primeira oportunidade, aplicando meus conhecimentos em HTML, CSS, JavaScript e design responsivo.</p>
-    </section>
-
-    <section>
-      <h2>🎓 Formação Acadêmica</h2>
-      <p>Ensino Médio Completo – <strong>E.E. Infante Dom Henrique</strong> (2020)</p>
-    </section>
-
-    <section>
-      <h2>💻 Cursos</h2>
+    <section class="bloco">
+      <h2>Dados Pessoais</h2>
       <ul>
-        <li>Programador Web – 440h | Dom Bosco</li>
-        <li>Programador de Sistemas – 440h | Dom Bosco</li>
-        <li>Operador de Computador – 440h | Dom Bosco</li>
-        <li>Serigrafia – 440h | Dom Bosco</li>
-        <li>Organizador de Eventos – 440h | Dom Bosco</li>
+        <li><strong>Telefone:</strong> (11) 96400-2284</li>
+        <li><strong>Email:</strong> guilhermecardoso4413@gmail.com</li>
+        <li><strong>Endereço:</strong> São Paulo - SP</li>
       </ul>
     </section>
 
-    <div class="download-area">
-      <button id="downloadBtn" class="download-btn" aria-label="Baixar currículo">
-        <svg class="icon" viewBox="0 0 100 100">
-          <circle class="circle" cx="50" cy="50" r="40" />
-          <line class="line" x1="50" y1="30" x2="50" y2="55" />
-          <polyline class="arrow" points="35,52 50,68 65,52" />
-        </svg>
-      </button>
-    </div>
+    <section class="bloco">
+      <h2>Objetivo Profissional</h2>
+      <p>Atuar na área de desenvolvimento web ou suporte técnico, com foco em aprendizado e crescimento profissional.</p>
+    </section>
+
+    <section class="bloco">
+      <h2>Formação</h2>
+      <ul>
+        <li>Desenvolvimento de Sistemas – Senac Largo 13</li>
+      </ul>
+    </section>
+
+    <section class="bloco">
+      <h2>Cursos</h2>
+      <ul>
+        <li>Pacote Office – Avançado</li>
+        <li>HTML, CSS e JavaScript – Intermediário</li>
+      </ul>
+    </section>
+
+    <section class="bloco">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>Comunicação</li>
+        <li>Trabalho em equipe</li>
+        <li>Organização e responsabilidade</li>
+        <li>Conhecimentos em montagem e manutenção de computadores</li>
+      </ul>
+    </section>
 
   </main>
 
   <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
+    <p>© 2025 Guilherme Cardoso da Silva - Currículo</p>
   </footer>
 
 </body>
