@@ -1,48 +1,69 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guilherme Dev - Portfólio</title>
-  <link rel="stylesheet" href="estilos.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script defer src="script.js"></script>
 </head>
 <body>
 
-<header class="topo">
-  <h1 class="logo">Guilherme Dev</h1>
+  <header>
+    <div class="logo"><i class="fa-solid fa-code"></i>&nbsp;# Guilherme Dev</div>
 
-  <button class="toggle-tema" aria-label="Alterar tema">
-    🌓
-  </button>
-</header>
+    <div class="header-controls">
+      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
 
-<!-- Menu Bolha -->
-<div class="btn-toggle-menu"></div>
+      <button class="btn-toggle-menu" aria-label="Abrir menu">
+        <span class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+      </button>
+    </div>
 
-<nav class="menu">
-  <ul>
-    <li><a class="menu-link" href="index.html">Início</a></li>
-    <li><a class="menu-link" href="sobre.html">Sobre Mim</a></li>
-    <li><a class="menu-link" href="curriculo.html">Currículo</a></li>
-  </ul>
-</nav>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" class="menu-link ativo">Início</a></li>
+        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <section class="hero" data-animate>
-    <h2>Bem-vindo ao meu Portfólio</h2>
-    <p>Aqui você encontrará meus projetos, habilidades e currículo.</p>
-  </section>
+  <main class="container principal" data-animate>
 
-  <section class="projetos" data-animate>
-    <h2>Meus Projetos</h2>
-    <p>(Seu conteúdo original aqui — nada alterado)</p>
-  </section>
-</main>
+    <!-- FOTO (você só precisa colocar sua imagem como Foto.png) -->
+    <img src="Foto.png" alt="Foto Guilherme" class="foto-perfil">
 
-<footer>
-  <p>© 2025 - Guilherme Cardoso da Silva</p>
-</footer>
+    <h1>Olá, eu sou <span>Guilherme Cardoso</span></h1>
 
-<script src="script.js"></script>
+    <p>Desenvolvedor Web em formação, apaixonado por tecnologia e criação de interfaces modernas.  
+    Busco sempre aprender mais para evoluir e criar projetos de alto desempenho e ótima experiência para os usuários.</p>
+
+  </main>
+
+  <!-- Ícones Sociais -->
+  <a class="whatsapp-btn" href="https://wa.me/5511964002284" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <a class="instagram-btn" href="https://www.instagram.com/guilherme_cardoso132" target="_blank" aria-label="Instagram">
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <a class="facebook-btn" href="https://www.facebook.com/guilherme.cardosodasilva.35" target="_blank" aria-label="Facebook">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <footer>
+    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
+  </footer>
+
 </body>
 </html>
