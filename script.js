@@ -1,103 +1,62 @@
-/* =====================================================
-   script.js
-   Tema persistente, menu mobile, animações, download
-===================================================== */
+/* =========================================================
+   script.js — Menu bolha + Tema persistente + Animações
+========================================================= */
 
-/* ===== Helpers ===== */
+/* ========== SELETORES RÁPIDOS ========== */
 const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+const $$ = (sel) => document.querySelectorAll(sel);
 
-/* =====================================================
-      🟦  TEMA PERSISTENTE EM TODAS AS PÁGINAS
-===================================================== */
+/* ========== TEMA ESCURO/CLARO COM LOCALSTORAGE ========== */
+const botaoTema = $(".toggle-tema");
+const body = document.body;
 
-// 1. Carrega o tema salvo
-const temaSalvo = localStorage.getItem("tema-site");
-
+// Carregar tema salvo
+const temaSalvo = localStorage.getItem("tema");
 if (temaSalvo === "dark") {
-  document.body.classList.add("dark");
+  body.classList.add("dark");
 }
 
-// 2. Define o ícone corretamente ao carregar
-const btnTema = $('.toggle-tema');
-if (btnTema) {
-  const icon = btnTema.querySelector("i");
+// Alternar tema
+botaoTema.addEventListener("click", () => {
+  body.classList.toggle("dark");
 
-  function atualizarIcone() {
-    if (document.body.classList.contains("dark")) {
-      icon.classList.remove("fa-sun");
-      icon.classList.add("fa-moon");
-    } else {
-      icon.classList.remove("fa-moon");
-      icon.classList.add("fa-sun");
-    }
+  if (body.classList.contains("dark")) {
+    localStorage.setItem("tema", "dark");
+  } else {
+    localStorage.setItem("tema", "light");
   }
+});
 
-  atualizarIcone();
+/* ========== MENU BOLHA MINIMALISTA ========== */
+const botaoMenu = $(".btn-toggle-menu");
+const menu = $(".menu");
 
-  // 3. Ao clicar no botão muda o tema e salva
-  btnTema.addEventListener("click", () => {
-    document.body.classList.toggle("dark");
+botaoMenu.addEventListener("click", () => {
+  menu.classList.toggle("menu-ativo");
+  botaoMenu.classList.toggle("ativo");
+});
 
-    // salva no localStorage
-    const temaAtual = document.body.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("tema-site", temaAtual);
-
-    atualizarIcone();
+/* Fechar menu clicando no link */
+$$(".menu-link").forEach(link => {
+  link.addEventListener("click", () => {
+    menu.classList.remove("menu-ativo");
+    botaoMenu.classList.remove("ativo");
   });
-}
+});
 
-/* =====================================================
-      MENU HAMBURGUER
-===================================================== */
-
-const btnMenu = $('.btn-toggle-menu');
-const menu = $('.menu');
-
-if(btnMenu){
-  btnMenu.addEventListener('click', () => {
-    btnMenu.classList.toggle('ativo');
-    menu.classList.toggle('menu-ativo');
-
-    if(menu.classList.contains('menu-ativo')){
-      menu.classList.add('open');
-    } else {
-      menu.classList.remove('open');
-    }
-  });
-}
-
-/* =====================================================
-      ANIMAÇÃO AO ROLAR
-===================================================== */
-
-const elementos = $$('[data-animate]');
-
-function animarScroll(){
-  const topo = window.innerHeight * 0.85;
+/* ========== ANIMAÇÃO AO ROLAR ========== */
+function animarAoRolar() {
+  const elementos = $$("[data-animate]");
 
   elementos.forEach(el => {
     const pos = el.getBoundingClientRect().top;
-    if(pos < topo){
-      el.style.opacity = 1;
-      el.style.transform = 'translateY(0)';
+    const windowHeight = window.innerHeight * 0.85;
+
+    if (pos < windowHeight) {
+      el.classList.add("animado");
     }
   });
 }
 
-window.addEventListener('scroll', animarScroll);
-window.addEventListener('load', animarScroll);
-
-/* =====================================================
-      DOWNLOAD CURRÍCULO
-===================================================== */
-
-const btnDownload = $('#downloadBtn');
-if(btnDownload){
-  btnDownload.addEventListener('click', () => {
-    const link = document.createElement('a');
-    link.href = 'Curriculo-Guilherme.pdf';
-    link.download = 'Curriculo-Guilherme.pdf';
-    link.click();
-  });
-}
+window.addEventListener("scroll", animarAoRolar);
+window.addEventListener("load", animarAoRolar);
