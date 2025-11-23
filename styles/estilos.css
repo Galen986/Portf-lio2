@@ -1,63 +1,46 @@
-/* estilos.css
-   Tema: Futurista Azul-Ciano + Lilás Nebuloso
-   Autor: Ajustado para Guilherme Cardoso
-*/
+/* ===========================
+   estilos.css - Tema Futurista Azul-Ciano + Lilás Nebuloso
+=========================== */
 
-/* ======= RESET ======= */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-
-/* ======= VARIÁVEIS ======= */
-:root{
-  --cor-primaria: #4af0ff;
-  --cor-secundaria: #7b5bff;
-  --cor-destaque: #9b72ff;
-  --cor-fundo: #0d0d16;
-  --cor-texto: #e6e9ff;
-  --cor-borda: rgba(255,255,255,0.08);
-  --transparente: rgba(255,255,255,0.04);
-  --container-width: 1100px;
-  --radius: 12px;
-  --fs-h1: 2.2rem;
-}
-
-/* ======= MODO CLARO OVERRIDE ======= */
-body:not(.dark){
-  --cor-fundo: #f4f8ff;
-  --cor-texto: #10121a;
-  --cor-borda: rgba(0,0,0,0.06);
-  --transparente: rgba(0,0,0,0.03);
-}
-
-/* ======= BASE ======= */
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
 html,body{height:100%;}
-body{
-  background: radial-gradient(1200px 400px at 10% 10%, rgba(74,240,255,0.06), transparent 10%),
-              radial-gradient(1000px 350px at 90% 90%, rgba(123,91,255,0.05), transparent 10%),
-              var(--cor-fundo);
-  color: var(--cor-texto);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
-  transition: background .4s ease, color .3s ease;
-  padding-bottom:40px;
+body{display:flex;flex-direction:column;min-height:100vh;background:var(--cor-fundo);color:var(--cor-texto);transition:background .4s,color .3s;}
+
+/* ===== VARIÁVEIS ===== */
+:root{
+  --cor-primaria:#4af0ff;
+  --cor-secundaria:#7b5bff;
+  --cor-destaque:#9b72ff;
+  --cor-fundo:#0d0d16;
+  --cor-texto:#e6e9ff;
+  --cor-borda:rgba(255,255,255,0.08);
+  --transparente:rgba(255,255,255,0.04);
+  --container-width:1100px;
+  --radius:12px;
+  --fs-h1:2.2rem;
+}
+body:not(.dark){
+  --cor-fundo:#f4f8ff;
+  --cor-texto:#10121a;
+  --cor-borda:rgba(0,0,0,0.06);
+  --transparente:rgba(0,0,0,0.03);
 }
 
-/* ======= CONTAINER ======= */
+/* ===== CONTAINER ===== */
 .container{
-  width: calc(100% - 40px);
-  max-width: var(--container-width);
-  margin: 28px auto;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  border: 1px solid var(--cor-borda);
-  border-radius: var(--radius);
-  padding: 26px;
-  box-shadow: 0 6px 30px rgba(2,6,23,0.5);
+  width:calc(100% - 40px);
+  max-width:var(--container-width);
+  margin:28px auto;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid var(--cor-borda);
+  border-radius:var(--radius);
+  padding:26px;
+  box-shadow:0 6px 30px rgba(2,6,23,0.5);
   backdrop-filter: blur(6px) saturate(120%);
 }
 
-/* ======= HEADER ======= */
+/* ===== HEADER ===== */
 header{
   width:100%;
   position:sticky;
@@ -68,68 +51,47 @@ header{
   justify-content:space-between;
   padding:14px 22px;
   background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.02));
-  border-bottom: 1px solid var(--cor-borda);
+  border-bottom:1px solid var(--cor-borda);
   backdrop-filter: blur(8px);
 }
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--cor-primaria);font-size:1.25rem;text-shadow:0 0 12px rgba(74,240,255,0.08);}
 
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:700;
-  color:var(--cor-primaria);
-  font-size:1.25rem;
-  text-shadow: 0 0 12px rgba(74,240,255,0.08);
-}
+/* ===== NAV ===== */
+nav ul{list-style:none;display:flex;gap:8px;align-items:center;}
+.menu-link{display:inline-block;padding:8px 12px;border-radius:10px;color:var(--cor-texto);text-decoration:none;font-weight:600;transition:.18s ease;}
+.menu-link.ativo{background:linear-gradient(90deg, rgba(74,240,255,0.12), rgba(123,91,255,0.08));color:var(--cor-primaria);box-shadow:0 6px 18px rgba(123,91,255,0.06);}
+.menu-link:hover{transform:translateY(-3px);}
 
-/* ======= NAV ======= */
-nav ul{ list-style:none; display:flex; gap:8px; align-items:center; }
-.menu-link{
-  display:inline-block;
-  padding:8px 12px;
-  border-radius:10px;
-  color:var(--cor-texto);
-  text-decoration:none;
-  font-weight:600;
-  transition: .18s ease;
-}
-.menu-link.ativo{
-  background: linear-gradient(90deg, rgba(74,240,255,0.12), rgba(123,91,255,0.08));
-  color:var(--cor-primaria);
-  box-shadow: 0 6px 18px rgba(123,91,255,0.06);
-}
-.menu-link:hover{ transform: translateY(-3px); }
-
-/* ======= MENU MOBILE BUTTON ======= */
+/* ===== BOTÃO HAMBURGUER ===== */
 .btn-toggle-menu{
   display:none;
-  background:none;
+  appearance:none;
+  background:transparent;
   border:none;
-  color:var(--cor-primaria);
-  font-size:22px;
+  padding:8px;
+  align-items:center;
+  justify-content:center;
   cursor:pointer;
-}
-
-/* ======= MENU MOBILE PANEL ======= */
-.menu{ position: relative; }
-.menu-ativo {
-  position: absolute;
-  right: 16px;
-  top: 64px;
-  width: 210px;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  padding:12px;
-  display:flex;
-  flex-direction:column;
+  width:46px;
+  height:46px;
   border-radius:10px;
-  border:1px solid var(--cor-borda);
-  gap:6px;
-  box-shadow: 0 10px 30px rgba(12,10,40,0.6);
-  animation: slideFade .28s ease;
+  transition: background .18s ease, transform .18s ease;
 }
-.menu-ativo a{ padding:10px; border-radius:8px; }
+.btn-toggle-menu:hover{background:rgba(255,255,255,0.06);transform:translateY(-2px);}
+.hamburger{width:28px;height:18px;position:relative;display:flex;flex-direction:column;justify-content:space-between;}
+.hamburger .bar{height:3px;background:var(--cor-primaria);border-radius:3px;transition:transform .35s ease,opacity .25s ease;}
+.btn-toggle-menu.ativo .bar:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.btn-toggle-menu.ativo .bar:nth-child(2){opacity:0;}
+.btn-toggle-menu.ativo .bar:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* ======= TOGGLE TEMA ======= */
+/* ===== MENU MOBILE PANEL ===== */
+.menu{position:relative;}
+.menu-ativo{position:absolute;right:10px;top:70px;width:220px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);padding:12px;border-radius:12px;backdrop-filter:blur(12px);transform:translateY(-8px) scale(0.98);opacity:0;transition:.3s ease;box-shadow:0 10px 30px rgba(0,0,0,0.5);z-index:999;display:block;}
+.menu-ativo.open{opacity:1;transform:translateY(0) scale(1);}
+.menu-ativo a{display:block;padding:10px;border-radius:8px;text-decoration:none;color:var(--cor-texto);transition:.2s;}
+.menu-ativo a:hover{background:rgba(74,240,255,0.06);color:var(--cor-primaria);}
+
+/* ===== TOGGLE TEMA ===== */
 .toggle-tema{
   background: linear-gradient(135deg,var(--cor-primaria),var(--cor-secundaria));
   border:none;
@@ -141,217 +103,25 @@ nav ul{ list-style:none; display:flex; gap:8px; align-items:center; }
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  box-shadow: 0 6px 24px rgba(74,240,255,0.08);
-  transition: transform .22s ease, box-shadow .3s ease;
+  box-shadow:0 6px 24px rgba(74,240,255,0.08);
+  transition:transform .22s ease,box-shadow .3s ease;
 }
-.toggle-tema:hover{ transform: scale(1.08); }
+.toggle-tema:hover{transform:scale(1.08);}
 
-/* ======= HERO / PRINCIPAL ======= */
-.principal{
-  text-align:center;
-  padding:28px;
-}
-.principal .foto-perfil{
-  width:140px; height:140px; object-fit:cover;
-  border-radius:18px;
-  border: 3px solid rgba(255,255,255,0.05);
-  margin: 0 auto 16px;
-  display:block;
-  box-shadow: 0 12px 40px rgba(11,14,30,0.6);
-}
-.principal h1{ font-size: var(--fs-h1); color:var(--cor-primaria); margin-bottom:6px; }
-.principal h1 span{ color:var(--cor-secundaria); }
-.principal p{ color:var(--cor-texto); opacity:0.95; font-size:1rem; margin-top:8px; }
+/* ===== HERO ===== */
+.principal{text-align:center;padding:28px;}
+.principal .foto-perfil{width:140px;height:140px;object-fit:cover;border-radius:18px;border:3px solid rgba(255,255,255,0.05);margin:0 auto 16px;display:block;box-shadow:0 12px 40px rgba(11,14,30,0.6);}
+.principal h1{font-size:var(--fs-h1);color:var(--cor-primaria);margin-bottom:6px;}
+.principal h1 span{color:var(--cor-secundaria);}
+.principal p{color:var(--cor-texto);opacity:0.95;font-size:1rem;margin-top:8px;}
 
-/* ======= SEÇÕES ======= */
-.container section{ margin-top:18px; }
-.container h2{ font-size:1.05rem; margin-bottom:8px; color:var(--cor-secundaria); }
-.container p, .container li{ line-height:1.5; color:var(--cor-texto); font-size:0.98rem; }
+/* ===== SEÇÕES ===== */
+.container section{margin-top:18px;}
+.container h2{font-size:1.05rem;margin-bottom:8px;color:var(--cor-secundaria);}
+.container p,.container li{line-height:1.5;color:var(--cor-texto);font-size:0.98rem;}
+.container ul{margin-left:16px;margin-top:8px;list-style:disc;}
 
-/* lista cursos */
-.container ul{ margin-left:16px; margin-top:8px; list-style: disc; }
-
-/* ======= SOCIAIS FIXAS ======= */
-.whatsapp-btn, .instagram-btn, .facebook-btn{
-  position:fixed;
-  right:18px;
-  bottom:18px;
-  width:56px; height:56px;
-  border-radius:12px;
-  display:flex;
-  align-items:center; justify-content:center;
-  text-decoration:none;
-  color:#fff;
-  font-size:20px;
-  box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-  transition: transform .18s ease;
-}
-.instagram-btn{ background: linear-gradient(45deg,#f09433,#bc1888,#515bd4); right:86px; }
-.whatsapp-btn{ background: #25D366; right:18px; }
-.facebook-btn{ background:#1877F2; right:154px; }
-
-/* reduzir em telas pequenas */
-@media (max-width:420px){
-  .whatsapp-btn, .instagram-btn, .facebook-btn{ width:48px; height:48px; font-size:18px; border-radius:10px; }
-  .facebook-btn{ right:140px; }
-  .instagram-btn{ right:90px; }
-}
-
-/* ======= DOWNLOAD BOTÃO ANIMADO ======= */
-.download-area{ display:flex; justify-content:center; margin-top:18px; }
-.download-btn{
-  background:transparent;
-  border:none;
-  cursor:pointer;
-  padding:14px;
-  border-radius:50%;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  transition: transform .22s ease;
-  width:120px; height:120px;
-}
-.download-btn:active{ transform: scale(.98); }
-.download-btn .icon{ width:100%; height:100%; display:block; }
-
-/* SVG estilos */
-.download-btn .circle{ fill:none; stroke:var(--cor-primaria); stroke-width:5; stroke-linecap:round; transition: stroke .2s ease; }
-.download-btn .line, .download-btn .arrow{ stroke:var(--cor-primaria); stroke-width:5; stroke-linecap:round; transition: stroke .2s ease; }
-
-/* cor ativa */
-.download-btn:active .circle, .download-btn:active .line, .download-btn:active .arrow{
-  stroke: var(--cor-secundaria);
-}
-
-/* hover pulse */
-@keyframes pulse {
-  0%{ transform: scale(1); filter: drop-shadow(0 0 6px rgba(74,140,255,0.22)); }
-  50%{ transform: scale(1.06); filter: drop-shadow(0 0 24px rgba(123,91,255,0.28)); }
-  100%{ transform: scale(1); filter: drop-shadow(0 0 6px rgba(74,140,255,0.22)); }
-}
-.download-btn:hover svg{ animation: pulse 1.1s infinite; }
-
-/* ======= ANIMAÇÃO AO ROLAR ======= */
-[data-animate]{ opacity:0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
-[data-animate].visible{ opacity:1; transform: translateY(0); }
-
-/* ======= CLASSES AUXILIARES ======= */
-.hidden{ display:none !important; }
-
-/* ======= FOOTER ======= */
-footer{ text-align:center; margin-top:24px; color:var(--cor-texto); opacity:0.7; font-size:.92rem; }
-
-/* ======= RESPONSIVIDADE ======= */
-@media (max-width: 980px){
-  .container{ padding:18px; width:calc(100% - 28px); }
-  .principal h1{ font-size:1.8rem; }
-  .btn-toggle-menu{ display:block; }
-  nav ul{ display:none; }
-}
-
-/* small phones */
-@media (max-width: 420px){
-  :root{ --fs-h1:1.4rem; }
-  .container{ padding:14px; border-radius:10px; }
-  .principal .foto-perfil{ width:110px; height:110px; border-radius:14px; }
-}
-
-/* ======= KEYFRAMES ======= */
-@keyframes slideFade{ from{ opacity:0; transform: translateY(-8px) scale(.99);} to{opacity:1; transform: translateY(0) scale(1);} }
-
-/* ------------------------------
-   BOTÃO DE DOWNLOAD IGUAL AO VÍDEO
---------------------------------*/
-.download-area {
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-}
-
-.download-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  width: 110px;
-  height: 110px;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.icon {
-  width: 110px;
-  height: 110px;
-  stroke: #4af0ff;
-  stroke-width: 6;
-  stroke-linecap: round;
-  fill: none;
-  transition: stroke 0.3s ease;
-}
-
-/* --- BRILHO EXATO DO VÍDEO --- */
-.circle,
-.line,
-.arrow {
-  filter: drop-shadow(0 0 10px #4af0ff88);
-  transition: 0.3s ease;
-}
-
-/* --- ANIMAÇÃO CÍRCULO COMO NO VÍDEO --- */
-.circle {
-  stroke-dasharray: 260;
-  stroke-dashoffset: 260;
-  animation: circleDraw 1.6s ease forwards;
-}
-
-@keyframes circleDraw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* --- ANIMAÇÃO LINHA DESCENDO IGUAL AO VÍDEO --- */
-.line {
-  opacity: 0;
-  transform: translateY(-10px);
-  animation: lineDrop 0.8s 0.4s ease forwards;
-}
-
-@keyframes lineDrop {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- SETA ABRINDO COMO NO VÍDEO --- */
-.arrow {
-  opacity: 0;
-  transform: translateY(-8px);
-  animation: arrowReveal 0.8s 0.9s ease forwards;
-}
-
-@keyframes arrowReveal {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* --- EFEITO DE PULSAÇÃO --- */
-.download-btn:hover .icon {
-  animation: pulse 1.4s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0%   { transform: scale(1);   filter: drop-shadow(0 0 8px #4af0ff90); }
-  50%  { transform: scale(1.08); filter: drop-shadow(0 0 18px #00eaffb5); }
-  100% { transform: scale(1);   filter: drop-shadow(0 0 8px #4af0ff90); }
-}
-
-/* --- EFEITO DE CLIQUE (igual ao vídeo) --- */
-.download-btn:active .icon {
-  stroke: #7b5bff;
-  filter: drop-shadow(0 0 12px #7b5bff);
-}
+/* ===== SOCIAIS FIXAS ===== */
+.whatsapp-btn,.instagram-btn,.facebook-btn{position:fixed;bottom:18px;width:56px;height:56px;border-radius:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:#fff;font-size:20px;box-shadow:0 10px 30px rgba(2,6,23,0.6);transition:transform .18s ease;}
+.whatsapp-btn{background:#25D366;right:18px;}
+.instagram-btn{background:linear-gradient(45deg,#f09433,#
