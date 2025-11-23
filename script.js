@@ -1,28 +1,32 @@
 /* =========================================================
-   script.js — Menu bolha + Tema persistente + Animações
+   script.js — Tema Persistente / Menu Mobile / Animação Scroll
 ========================================================= */
 
-const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => document.querySelectorAll(sel);
+const $ = (selector) => document.querySelector(selector);
+const $$ = (selector) => document.querySelectorAll(selector);
 
-/* ========== TEMA ESCURO/CLARO ========== */
-const botaoTema = $(".toggle-tema");
+/* ======== TEMA ESCURO PERSISTENTE ======== */
 const body = document.body;
+const botaoTema = $(".toggle-tema");
 
-const temaSalvo = localStorage.getItem("tema");
-if (temaSalvo === "dark") body.classList.add("dark");
+let temaSalvo = localStorage.getItem("tema");
+if (temaSalvo === "dark") {
+  body.classList.add("dark");
+}
 
 botaoTema.addEventListener("click", () => {
   body.classList.toggle("dark");
 
-  localStorage.setItem("tema",
-    body.classList.contains("dark") ? "dark" : "light"
-  );
+  if (body.classList.contains("dark")) {
+    localStorage.setItem("tema", "dark");
+  } else {
+    localStorage.setItem("tema", "light");
+  }
 });
 
-/* ========== MENU BOLHA FUNCIONANDO ========== */
+/* ======== MENU MOBILE ======== */
 const botaoMenu = $(".btn-toggle-menu");
-const menu = $(".menu");
+const menu = $("nav.menu");
 
 botaoMenu.addEventListener("click", () => {
   menu.classList.toggle("menu-ativo");
@@ -36,15 +40,19 @@ $$(".menu-link").forEach(link => {
   });
 });
 
-/* ========== ANIMAÇÃO AO ROLAR ========== */
+/* ======== ANIMAÇÃO AO ROLAR ======== */
 function animarAoRolar() {
-  const els = $$("[data-animate]");
-  els.forEach(el => {
-    if (el.getBoundingClientRect().top < innerHeight * 0.85) {
+  const elementos = $$("[data-animate]");
+
+  elementos.forEach(el => {
+    const pos = el.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight * 0.85;
+
+    if (pos < windowHeight) {
       el.classList.add("animado");
     }
   });
 }
 
-addEventListener("scroll", animarAoRolar);
-addEventListener("load", animarAoRolar);
+window.addEventListener("scroll", animarAoRolar);
+window.addEventListener("load", animarAoRolar);
