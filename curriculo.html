@@ -1,44 +1,122 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Currículo - Guilherme Cardoso da Silva</title>
-  <link rel="stylesheet" href="estilos.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles/estilos.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <script defer src="script.js"></script>
 </head>
+
 <body>
 
-<header class="topo">
-  <h1 class="logo">Guilherme Dev</h1>
+  <header>
+    <div class="logo"><i class="fa-solid fa-file-lines"></i>&nbsp;Currículo</div>
 
-  <button class="toggle-tema" aria-label="Alterar tema">
-    🌓
-  </button>
-</header>
+    <div class="header-controls">
+      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
 
-<div class="btn-toggle-menu"></div>
+      <button class="btn-toggle-menu" aria-label="Abrir menu">
+        <span class="hamburger">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </span>
+      </button>
+    </div>
 
-<nav class="menu">
-  <ul>
-    <li><a class="menu-link" href="index.html">Início</a></li>
-    <li><a class="menu-link" href="sobre.html">Sobre Mim</a></li>
-    <li><a class="menu-link" href="curriculo.html">Currículo</a></li>
-  </ul>
-</nav>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="index.html" class="menu-link">Início</a></li>
+        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
+        <li><a href="curriculo.html" class="menu-link ativo">Currículo</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<main>
-  <section class="curriculo" data-animate>
-    <h2>Currículo</h2>
+  <main class="curriculo-container" data-animate>
 
-    <!-- TODO O SEU TEXTO ORIGINAL AQUI -->
-    <p>(Todo o conteúdo do seu currículo permanece igual — sem trocar nada)</p>
-  </section>
-</main>
+    <!-- FOTO (basta colocar o arquivo Foto.png depois) -->
+    <section class="perfil">
+      <img src="Foto.png" alt="Foto de Guilherme" class="foto-curriculo">
 
-<footer>
-  <p>© 2025 - Guilherme Cardoso da Silva</p>
-</footer>
+      <h1>Guilherme Cardoso da Silva</h1>
+      <p class="descricao">
+        Tenho interesse em trabalhar na área de tecnologia, desenvolvimento de sistemas e suporte em TI.
+        Busco sempre aprender e evoluir meus conhecimentos para me tornar um desenvolvedor completo.
+      </p>
+    </section>
 
-<script src="script.js"></script>
+    <!-- Dados Pessoais -->
+    <section class="bloco">
+      <h2>Dados Pessoais</h2>
+      <ul>
+        <li><strong>Telefone:</strong> (11) 96400-2284</li>
+        <li><strong>Email:</strong> guisilva4410@gmail.com</li>
+        <li><strong>Endereço:</strong> São Paulo – SP</li>
+        <li><strong>Nacionalidade:</strong> Brasileiro</li>
+      </ul>
+    </section>
+
+    <!-- Objetivo -->
+    <section class="bloco">
+      <h2>Objetivo Profissional</h2>
+      <p>
+        Desejo participar de uma equipe que valorize o aprendizado contínuo,
+        onde eu possa expandir meus conhecimentos e ajudar no desenvolvimento dos projetos da empresa.
+      </p>
+    </section>
+
+    <!-- Formação -->
+    <section class="bloco">
+      <h2>Formação</h2>
+      <ul>
+        <li><strong>Ensino Médio Completo</strong> — E.E. Infante Dom Henrique (2020)</li>
+      </ul>
+    </section>
+
+    <!-- Cursos -->
+    <section class="bloco">
+      <h2>Cursos</h2>
+      <ul>
+        <li>Programador Web – Obra Social Dom Bosco (440h) — 2025</li>
+        <li>Programador de Sistemas – Obra Social Dom Bosco (440h) — 2024</li>
+        <li>Operador de Computador – Obra Social Dom Bosco (440h) — 2023</li>
+        <li>Serigrafia – Obra Social Dom Bosco (440h) — 2023</li>
+        <li>Organizador de Eventos – Obra Social Dom Bosco (440h) — 2022</li>
+      </ul>
+    </section>
+
+    <!-- Habilidades -->
+    <section class="bloco">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>Desenvolvimento Web (HTML, CSS, JavaScript)</li>
+        <li>Lógica de Programação</li>
+        <li>Noções de Banco de Dados</li>
+        <li>Pacote Office</li>
+        <li>Trabalho em Equipe</li>
+      </ul>
+    </section>
+
+    <!-- Experiência -->
+    <section class="bloco">
+      <h2>Experiência Profissional</h2>
+      <p>
+        <strong>Programador Web Júnior</strong>  
+        Ainda não possuo experiência profissional formal, mas estou em busca da primeira oportunidade
+        para aplicar meus conhecimentos em programação web.
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Guilherme Cardoso da Silva - Currículo</p>
+  </footer>
+
 </body>
 </html>
