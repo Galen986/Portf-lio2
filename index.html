@@ -20,7 +20,7 @@
     <div class="header-controls">
       <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
 
-      <button class="btn-toggle-menu" aria-label="Abrir menu">
+      <button class="btn-toggle-menu" aria-label="Abrir menu" aria-expanded="false">
         <span class="hamburger">
           <span class="bar"></span>
           <span class="bar"></span>
@@ -29,7 +29,7 @@
       </button>
     </div>
 
-    <nav class="menu" aria-label="Menu principal">
+    <nav class="menu" role="navigation" aria-label="Menu principal">
       <ul>
         <li><a href="index.html" class="menu-link ativo">Início</a></li>
         <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
@@ -39,21 +39,20 @@
   </header>
 
   <main class="container principal" data-animate>
-    <img src="Foto.png" alt="Foto Guilherme" class="foto-perfil">
+    <img src="Foto.png" alt="Foto Guilherme" class="foto-perfil" width="160" height="160" loading="lazy">
     <h1>Olá, eu sou <span>Guilherme Cardoso</span></h1>
     <p>Desenvolvedor Web em formação. Crio sites modernos, responsivos e de alto desempenho.</p>
   </main>
 
-  <!-- Redes sociais em COLUNA -->
-  <a class="whatsapp-btn" href="https://wa.me/5511964002284" target="_blank" aria-label="WhatsApp">
+  <a class="whatsapp-btn" href="https://wa.me/5511964002284" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <a class="instagram-btn" href="https://www.instagram.com/guilherme_cardoso132" target="_blank" aria-label="Instagram">
+  <a class="instagram-btn" href="https://www.instagram.com/guilherme_cardoso132" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
     <i class="fab fa-instagram"></i>
   </a>
 
-  <a class="facebook-btn" href="https://www.facebook.com/guilherme.cardosodasilva.35" target="_blank" aria-label="Facebook">
+  <a class="facebook-btn" href="https://www.facebook.com/guilherme.cardosodasilva.35" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
     <i class="fab fa-facebook-f"></i>
   </a>
 
