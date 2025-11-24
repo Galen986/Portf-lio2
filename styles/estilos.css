@@ -1,6 +1,5 @@
 /* =========================================================
-   estilos.css — Tema Azul-Ciano + Lilás / Tech / Vidro / Dark mode
-   Autor: Ajustado especialmente para Guilherme
+   estilos.css — Tema Tech + Quadrado + Versão B
 ========================================================= */
 
 /* ===== RESET ===== */
@@ -8,122 +7,148 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-  -webkit-font-smoothing: antialiased;
-}
-html, body {
-  height: 100%;
-}
-a {
-  color: inherit;
-  text-decoration: none;
-}
-ul {
-  list-style: none;
+  font-family: "Poppins", sans-serif;
 }
 
-/* ===== VARIÁVEIS DE TEMA ===== */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--texto);
+  transition: 0.3s;
+}
+
+/* ===== VARIÁVEIS LIGHT ===== */
 :root {
   --primario: #4af0ff;
   --secundario: #7b5bff;
-  --bg: #f7fafc;
-  --card: #ffffff;
+  --bg: #f5f7fa;
+  --card: #fff;
   --texto: #0f1724;
   --muted: #6b7280;
-  --borda: rgba(15,23,36,0.06);
-  --shadow-1: 0 6px 22px rgba(11,14,30,0.06);
-  --radius: 14px;
-  --blur: blur(10px);
+  --borda: rgba(0,0,0,0.08);
+  --radius: 12px;
 }
 
+/* ===== VARIÁVEIS DARK ===== */
 body.dark {
   --bg: #060915;
   --card: #0f1429;
-  --texto: #e9eefc;
+  --texto: #e8eefc;
   --muted: #9aa3b2;
-  --borda: rgba(255,255,255,0.07);
-  --shadow-1: 0 8px 28px rgba(0,0,0,0.5);
-}
-
-/* ===== FUNDO ===== */
-body {
-  background:
-    radial-gradient(1000px 300px at 5% 12%, rgba(74,240,255,0.06), transparent 40%),
-    radial-gradient(1000px 300px at 95% 90%, rgba(123,91,255,0.06), transparent 40%),
-    var(--bg);
-  color: var(--texto);
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  transition: background .35s ease, color .25s ease;
+  --borda: rgba(255,255,255,0.06);
 }
 
 /* ===== HEADER ===== */
 header {
   width: 100%;
   padding: 14px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: var(--card);
   border-bottom: 1px solid var(--borda);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: sticky;
   top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
-}
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--primario);
-}
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  z-index: 2000;
 }
 
-/* ===== BOTÕES DO HEADER ===== */
+.logo {
+  font-weight: 700;
+  color: var(--primario);
+}
+
+.header-controls {
+  display: flex;
+  gap: 8px;
+}
+
 .toggle-tema,
 .btn-toggle-menu {
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  border: none;
-  cursor: pointer;
   background: var(--card);
-  color: var(--texto);
+  border: 1px solid var(--borda);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: var(--shadow-1);
-  transition: transform 0.15s ease;
-}
-.toggle-tema:hover,
-.btn-toggle-menu:hover {
-  transform: translateY(-3px);
+  cursor: pointer;
 }
 
-/* ===== ÍCONE HAMBURGUER ===== */
+/* ===== MENU DESKTOP ===== */
+nav.menu ul {
+  display: flex;
+  gap: 12px;
+}
+
+.menu-link {
+  padding: 8px 14px;
+  border-radius: 10px;
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.menu-link.ativo {
+  background: rgba(74,240,255,0.12);
+  color: var(--primario);
+}
+
+/* ===== MENU MOBILE (BOLHA) ===== */
+.menu-mobile {
+  position: fixed;
+  top: 70px;
+  right: -260px;
+  width: 220px;
+  padding: 14px;
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.3s ease;
+  z-index: 5000;
+}
+
+.menu-mobile.aberto {
+  right: 14px;
+}
+
+.menu-mobile-link {
+  padding: 10px;
+  border-radius: 8px;
+  color: var(--texto);
+  font-weight: 600;
+}
+
+.menu-mobile-link:hover {
+  background: rgba(74,240,255,0.12);
+  color: var(--primario);
+}
+
+/* ===== HAMBURGUER ===== */
 .hamburger {
   width: 26px;
   height: 18px;
   position: relative;
 }
+
 .bar {
-  height: 3px;
   width: 100%;
+  height: 3px;
   background: var(--primario);
-  border-radius: 5px;
   position: absolute;
-  transition: .25s;
+  left: 0;
+  transition: 0.3s;
 }
+
 .bar:nth-child(1) { top: 0; }
 .bar:nth-child(2) { top: 7px; }
 .bar:nth-child(3) { top: 14px; }
+
+/* animação */
 .btn-toggle-menu.ativo .bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
@@ -134,126 +159,66 @@ header {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-/* ===== NAV DESKTOP ===== */
-nav.menu ul {
-  display: flex;
-  gap: 10px;
-}
-.menu-link {
-  padding: 8px 12px;
-  border-radius: 10px;
-  font-weight: 600;
-  transition: .2s;
-}
-.menu-link:hover {
-  color: var(--primario);
-}
-.menu-link.ativo {
-  color: var(--primario);
-  background: rgba(74,240,255,0.12);
-}
-
-/* ===== NAV MOBILE (menu bolha) ===== */
-@media (max-width: 980px) {
-  nav.menu ul {
-    display: none;
-  }
-}
-
-.menu.menu-ativo {
-  position: absolute;
-  top: 72px;
-  right: 18px;
-  width: 210px;
-  background: var(--card);
-  padding: 12px;
-  border-radius: 14px;
-  border: 1px solid var(--borda);
-  box-shadow: var(--shadow-1);
-  backdrop-filter: blur(16px);
-  display: flex !important;
-  flex-direction: column;
-  gap: 6px;
-}
-.menu.menu-ativo a {
-  padding: 10px;
-  border-radius: 8px;
-  transition: .2s;
-}
-.menu.menu-ativo a:hover {
-  background: rgba(74,240,255,0.08);
-}
-
-/* ===== CONTEÚDO ===== */
+/* ===== CONTAINER ===== */
 .container,
-.sobre-container,
 .curriculo-container,
-.principal {
+.sobre-container {
   width: calc(100% - 40px);
   max-width: 1100px;
-  margin: 26px auto;
-  padding: 22px;
-  border-radius: 14px;
+  margin: 28px auto;
+  padding: 24px;
   background: var(--card);
+  border-radius: 12px;
   border: 1px solid var(--borda);
-  box-shadow: var(--shadow-1);
-  backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
 }
 
 /* ===== FOTO ===== */
 .foto-perfil,
 .foto-curriculo {
-  width: 140px;
-  height: 140px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 12px;
+  margin: 0 auto 14px;
   display: block;
-  margin: 0 auto 16px;
 }
 
-/* ===== CURRÍCULO ===== */
-.bloco {
-  background: var(--card);
-  padding: 16px;
-  border-radius: 14px;
-  border: 1px solid var(--borda);
-  box-shadow: var(--shadow-1);
-  margin-top: 20px;
-}
-.bloco h2 {
-  color: var(--secundario);
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-}
-
-/* ===== ÍCONES SOCIAIS ===== */
+/* ===== ÍCONES SOCIAIS EM COLUNA ===== */
 .whatsapp-btn,
 .instagram-btn,
 .facebook-btn {
   position: fixed;
-  bottom: 18px;
-  width: 55px;
-  height: 55px;
   right: 18px;
-  border-radius: 14px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 12px;
   color: #fff;
-  font-size: 22px;
-  box-shadow: var(--shadow-1);
-  transition: .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.instagram-btn { right: 85px; background: linear-gradient(45deg,#f09433,#bc1888,#515bd4); }
-.facebook-btn { right: 152px; background: #1877F2; }
-.whatsapp-btn { background: #25D366; }
+
+.whatsapp-btn  { bottom: 18px;  background: #25D366; }
+.instagram-btn { bottom: 84px;  background: linear-gradient(45deg,#f09433,#bc1888,#515bd4); }
+.facebook-btn  { bottom: 150px; background: #1877F2; }
+
+/* ===== ANIMAÇÃO AO ROLAR ===== */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: 0.6s ease;
+}
+
+.animado {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 /* ===== FOOTER ===== */
 footer {
-  margin-top: auto;
   text-align: center;
-  padding: 20px 0;
+  margin-top: auto;
+  padding: 20px;
   color: var(--muted);
-  font-size: .95rem;
-  opacity: 0.9;
 }
