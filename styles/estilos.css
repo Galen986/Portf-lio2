@@ -182,6 +182,8 @@ nav.menu ul {
   border-radius: 12px;
   margin: 0 auto 14px;
   display: block;
+  aspect-ratio: 1/1; /* evita pulo enquanto a imagem carrega */
+  max-width: 100%;
 }
 
 /* ===== ÍCONES SOCIAIS EM COLUNA ===== */
