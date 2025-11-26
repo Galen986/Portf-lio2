@@ -2,62 +2,44 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Guilherme Dev - Portfólio</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Guilherme Dev - Futuro da Web</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script defer src="script.js"></script>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo"><i class="fa-solid fa-code"></i>&nbsp;# Guilherme Dev</div>
+  <header class="header">
+    <div class="logo"><i class="fa-solid fa-code"></i> Guilherme Dev</div>
 
     <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
-
-      <button class="btn-toggle-menu" aria-label="Abrir menu" aria-expanded="false">
-        <span class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </span>
+      <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn-toggle-menu" aria-expanded="false">
+        <span class="hamburger"><span></span><span></span><span></span></span>
       </button>
     </div>
 
-    <nav class="menu" role="navigation" aria-label="Menu principal">
-      <ul>
-        <li><a href="index.html" class="menu-link ativo">Início</a></li>
-        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
-      </ul>
+    <nav class="menu">
+      <a href="index.html" class="menu-link ativo">Início</a>
+      <a href="sobre.html" class="menu-link">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link">Currículo</a>
     </nav>
   </header>
 
-  <main class="container principal" data-animate>
-    <img src="Foto.png" alt="Foto Guilherme" class="foto-perfil" width="160" height="160" loading="lazy">
-    <h1>Olá, eu sou <span>Guilherme Cardoso</span></h1>
-    <p>Desenvolvedor Web em formação. Crio sites modernos, responsivos e de alto desempenho.</p>
+  <main class="container" data-animate>
+    <img src="Foto.png" class="foto" alt="Foto perfil">
+
+    <h1>Olá, eu sou <span class="destaque">Guilherme Cardoso</span></h1>
+    <p class="descricao">Desenvolvedor focado em criar experiências modernas e tecnológicas.</p>
   </main>
 
-  <a class="whatsapp-btn" href="https://wa.me/5511964002284" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <a class="instagram-btn" href="https://www.instagram.com/guilherme_cardoso132" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-  </a>
-
-  <a class="facebook-btn" href="https://www.facebook.com/guilherme.cardosodasilva.35" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-    <i class="fab fa-facebook-f"></i>
-  </a>
-
-  <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Todos os direitos reservados</p>
+  <footer class="footer">
+    <p>© 2025 Guilherme Cardoso - Todos os direitos reservados</p>
   </footer>
 
 </body>
