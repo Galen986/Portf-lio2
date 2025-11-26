@@ -230,3 +230,54 @@ body.dark .bloco{
   .titulo{font-size:1.25rem;}
   .socials a{width:52px;height:52px;}
 }
+
+/* =======================================================
+   BOTÃO ANIMADO DE DOWNLOAD - FUTURISTA
+=======================================================*/
+.area-download{
+    text-align:center;
+    margin-top:25px;
+}
+
+.download-btn{
+    position:relative;
+    overflow:hidden;
+    padding:14px 30px;
+    font-size:1rem;
+    font-weight:700;
+    border-radius:14px;
+    cursor:pointer;
+    border:none;
+    backdrop-filter:blur(10px);
+    color:#fff;
+    background:linear-gradient(90deg,#4af0ff,#7b5bff);
+    box-shadow:0 0 18px rgba(123,91,255,0.55);
+    transition:.3s;
+}
+
+.download-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px #4af0ff,0 0 40px #7b5bff;
+}
+
+/* Barra de progresso interna */
+.download-btn .progress{
+    content:"";
+    position:absolute;
+    left:0; top:0;
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#00eaff,#00ffb3);
+    box-shadow:0 0 18px #00ffcc;
+    transition:width 2.4s linear;
+    border-radius:14px;
+    z-index:0;
+}
+
+.download-btn .txt{
+    position:relative;
+    z-index:2;
+}
+
+/* estado carregando */
+.download-btn.loading .txt{opacity:0;}
