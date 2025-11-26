@@ -2,53 +2,38 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Currículo - Guilherme Cardoso da Silva</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Currículo - Guilherme Cardoso</title>
 
+  <link rel="stylesheet" href="styles/estilos.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles/estilos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script defer src="script.js"></script>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo"><i class="fa-solid fa-file-lines"></i>&nbsp;Currículo</div>
+  <header class="header">
+    <div class="logo"><i class="fa-solid fa-file-lines"></i> Currículo</div>
 
     <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
-
-      <button class="btn-toggle-menu" aria-label="Abrir menu" aria-expanded="false">
-        <span class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </span>
-      </button>
+      <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
     </div>
 
-    <nav class="menu" role="navigation">
-      <ul>
-        <li><a href="index.html" class="menu-link">Início</a></li>
-        <li><a href="sobre.html" class="menu-link">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link ativo">Currículo</a></li>
-      </ul>
+    <nav class="menu">
+      <a href="index.html" class="menu-link">Início</a>
+      <a href="sobre.html" class="menu-link">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link ativo">Currículo</a>
     </nav>
   </header>
 
-  <main class="curriculo-container" data-animate>
+  <main class="container" data-animate>
 
-    <section class="perfil">
-      <img src="Foto.png" alt="Foto Guilherme" class="foto-curriculo" width="160" height="160" loading="lazy">
+    <img src="Foto.png" class="foto" alt="Foto curriculum">
 
-      <h1>Guilherme Cardoso da Silva</h1>
-      <p class="descricao">
-        Tenho interesse em trabalhar na área de tecnologia, desenvolvimento de sistemas e suporte em TI.
-        Busco sempre aprender e evoluir meus conhecimentos para me tornar um desenvolvedor completo.
-      </p>
-    </section>
+    <h1 class="titulo">Guilherme Cardoso da Silva</h1>
 
     <section class="bloco">
       <h2>Dados Pessoais</h2>
@@ -60,22 +45,20 @@
     </section>
 
     <section class="bloco">
-      <h2>Objetivo Profissional</h2>
-      <p>Atuar na área de desenvolvimento web ou suporte técnico, com foco em aprendizado e crescimento profissional.</p>
+      <h2>Objetivo</h2>
+      <p>Desenvolvimento Web / Suporte Técnico</p>
     </section>
 
     <section class="bloco">
       <h2>Formação</h2>
-      <ul>
-        <li>Desenvolvimento de Sistemas – Senac Largo 13</li>
-      </ul>
+      <p>Curso de Desenvolvimento de Sistemas – Senac</p>
     </section>
 
     <section class="bloco">
       <h2>Cursos</h2>
       <ul>
+        <li>HTML, CSS e JS – Intermediário</li>
         <li>Pacote Office – Avançado</li>
-        <li>HTML, CSS e JavaScript – Intermediário</li>
       </ul>
     </section>
 
@@ -83,18 +66,17 @@
       <h2>Habilidades</h2>
       <ul>
         <li>Comunicação</li>
+        <li>Organização</li>
         <li>Trabalho em equipe</li>
-        <li>Organização e responsabilidade</li>
-        <li>Conhecimentos em montagem e manutenção de computadores</li>
+        <li>Montagem e manutenção de computadores</li>
       </ul>
     </section>
 
   </main>
 
-  <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Currículo</p>
+  <footer class="footer">
+    <p>© 2025 Guilherme Cardoso</p>
   </footer>
 
 </body>
-
 </html>
