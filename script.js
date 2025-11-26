@@ -170,3 +170,32 @@ if (window.__siteScriptLoaded) {
 }
 
 /* End of script.js */
+
+/* =======================================================
+   DOWNLOAD ANIMADO 
+=======================================================*/
+const downloadBtn = document.getElementById("btnDownload");
+
+downloadBtn.addEventListener("click", ()=>{
+    if(downloadBtn.classList.contains("loading")) return;
+
+    downloadBtn.classList.add("loading");
+    downloadBtn.querySelector(".progress").style.width = "100%";
+
+    /* tempo da animação */
+    setTimeout(()=>{
+        baixarArquivo();
+        downloadBtn.classList.remove("loading");
+        downloadBtn.querySelector(".progress").style.width = "0%";
+        downloadBtn.querySelector(".txt").innerText = "Download concluído! ✔";
+        setTimeout(()=> downloadBtn.querySelector(".txt").innerText = "Baixar Novamente",2000);
+    },2400);
+});
+
+/* ARQUIVO A SER BAIXADO */
+function baixarArquivo(){
+    const link = document.createElement("a");
+    link.href = "curriculo.pdf";   // ⚠ Coloque seu PDF na raiz do site
+    link.download = "Guilherme-Cardoso-Curriculo.pdf";
+    link.click();
+}
