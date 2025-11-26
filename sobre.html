@@ -2,78 +2,51 @@
 <html lang="pt-BR">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sobre Mim - Guilherme Cardoso da Silva</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Sobre Mim - Guilherme Dev</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles/estilos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <script defer src="script.js"></script>
 </head>
 
 <body>
 
-  <header>
-    <div class="logo"><i class="fa-solid fa-user"></i>&nbsp;Sobre Mim</div>
+  <header class="header">
+    <div class="logo"><i class="fa-solid fa-user"></i> Sobre Mim</div>
 
     <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema"><i class="fa-solid fa-moon"></i></button>
-
-      <button class="btn-toggle-menu" aria-label="Abrir menu" aria-expanded="false">
-        <span class="hamburger">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </span>
-      </button>
+      <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
+      <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
     </div>
 
-    <nav class="menu" role="navigation">
-      <ul>
-        <li><a href="index.html" class="menu-link">Início</a></li>
-        <li><a href="sobre.html" class="menu-link ativo">Sobre Mim</a></li>
-        <li><a href="curriculo.html" class="menu-link">Currículo</a></li>
-      </ul>
+    <nav class="menu">
+      <a href="index.html" class="menu-link">Início</a>
+      <a href="sobre.html" class="menu-link ativo">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link">Currículo</a>
     </nav>
   </header>
 
-  <main class="sobre-container" data-animate>
+  <main class="container" data-animate>
+    <h1 class="titulo">Quem Sou Eu?</h1>
 
-    <section class="sobre-bloco">
-      <h1>Sobre Mim</h1>
+    <p>Sou <strong>Guilherme Cardoso</strong>, apaixonado por tecnologia e desenvolvimento web. Busco criar interfaces modernas, dinâmicas e responsivas.</p>
 
-      <p>
-        Meu nome é <strong>Guilherme Cardoso da Silva</strong>, tenho grande interesse na área de tecnologia e desenvolvimento web. 
-        Sempre busco aprender mais, evoluir e me aprimorar em HTML, CSS e JavaScript, criando sites modernos,
-        intuitivos e funcionais.
-      </p>
+    <p>Tenho foco em evoluir constantemente, estudando HTML, CSS, JavaScript e tecnologias voltadas a front-end.</p>
 
-      <p>
-        Tenho facilidade em trabalhar em equipe, sou organizado, responsável e me dedico bastante para entregar sempre 
-        o melhor resultado possível.
-      </p>
-
-      <p>
-        Meu principal objetivo é crescer na área de desenvolvimento e ter experiência no mercado de tecnologia, 
-        participando de projetos que me permitam evoluir cada vez mais.
-      </p>
-    </section>
-
-    <section class="sobre-bloco">
-      <h2>Meus Interesses</h2>
-      <ul>
-        <li>Desenvolvimento Front-end</li>
-        <li>Criação de sites modernos</li>
-        <li>Experiência do usuário (UX)</li>
-        <li>Suporte e infraestrutura de TI</li>
-      </ul>
-    </section>
-
+    <h2 class="subtitulo">Interesses</h2>
+    <ul class="lista">
+      <li>Front-End</li>
+      <li>UX/UI</li>
+      <li>Sistemas modernos</li>
+      <li>Infraestrutura de TI</li>
+    </ul>
   </main>
 
-  <footer>
-    <p>© 2025 Guilherme Cardoso da Silva - Sobre Mim</p>
+  <footer class="footer">
+    <p>© 2025 Guilherme Cardoso</p>
   </footer>
 
 </body>
