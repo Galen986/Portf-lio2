@@ -1,15 +1,16 @@
-/* =========================================================
-   FUTURISTA PREMIUM 2025 — Guilherme Cardoso  
-   Azul Neon • Roxo Plasma • Progress Download + % • UI Vidro Fosco
-=========================================================*/
+/* ============================================================
+   FUTURISTA PREMIUM 2025 — versão final pedida por Guilherme  
+   + Títulos com gradiente diferente em cada página
+   + Botão Download com PORCENTAGEM
+   + Ícones sociais novos (Neon)
+===========================================================*/
 
 /* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 html,body{height:100%;scroll-behavior:smooth;}
 body{
-  font-family:"Poppins","Orbitron", sans-serif;
-  background:var(--bg);
-  color:var(--text);
+  font-family:"Poppins","Orbitron",sans-serif; /* Fonte mais moderna */
+  background:var(--bg);color:var(--text);
   display:flex;flex-direction:column;
   padding-top:var(--header-h);
   transition:.4s;
@@ -21,62 +22,38 @@ body{
   --bg:#f3f7ff;
   --text:#0c1327;
   --card:#ffffff;
-  --accent1:#4af0ff;
+  --accent1:#42f4ff;
   --accent2:#7b5bff;
   --transition:.35s;
 }
 body.dark{
-  --bg:linear-gradient(180deg,#01040c,#07142f);
-  --text:#e8f4ff;
+  --bg:linear-gradient(180deg,#04050b,#07142f);
+  --text:#e7f3ff;
   --card:rgba(22,30,55,.55);
 }
 
-/* HEADER VIDRO FOSCO */
+/* HEADER - Sem linha */
 .header{
   position:fixed;top:0;left:0;width:100%;
   height:var(--header-h);
   display:flex;justify-content:space-between;align-items:center;
-  padding:12px 26px;
+  padding:12px 26px;border:none;
   backdrop-filter:blur(18px);
-  background:rgba(255,255,255,.28);
-  border:none;
-  box-shadow:0 10px 30px rgba(0,0,0,.20);
+  background:rgba(255,255,255,.25);
+  box-shadow:0 10px 35px rgba(0,0,0,.25);
 }
-body.dark .header{background:rgba(0,0,0,.32);}
+body.dark .header{background:rgba(0,0,0,.40);}
 
 /* LOGO */
-.logo{
-  font-size:1.4rem;font-weight:800;
-  color:var(--accent1);letter-spacing:1px;
-  display:flex;gap:10px;align-items:center;
-}
+.logo{font-size:1.45rem;font-weight:800;color:var(--accent1);}
 
-/* BOTÕES */
-.header-controls{display:flex;gap:10px;}
-.toggle-tema,.btn-toggle-menu{
-  width:48px;height:48px;display:grid;place-items:center;
-  border-radius:14px;border:none;cursor:pointer;
-  background:rgba(255,255,255,.75);
-  backdrop-filter:blur(12px);
-}
-body.dark .toggle-tema,body.dark .btn-toggle-menu{
-  background:rgba(0,0,0,.50);
-  border:1px solid rgba(255,255,255,.18);
-}
-
-/* Ícone Tema com Glow */
-.toggle-tema i{font-size:1.4rem;color:#000;}
-body.dark .toggle-tema i{
-  color:var(--accent1);
-  text-shadow:0 0 10px var(--accent1);
-}
-
-/* MENU SEM LINHAS */
-.menu{display:flex;gap:14px;}
+/* MENU AGORA SEM LINHAS E MAIS LIMPO */
+.menu{display:flex;gap:16px;}
 .menu-link{
-  font-size:1rem;font-weight:600;text-decoration:none;
-  padding:8px 14px;border-radius:10px;
-  color:var(--text);transition:.3s;
+  font-size:1.08rem;font-weight:600;
+  padding:10px 16px;border-radius:12px;
+  text-decoration:none;color:var(--text);
+  transition:.3s;
 }
 .menu-link:hover{transform:translateY(-2px);}
 .menu-link.ativo{
@@ -93,108 +70,77 @@ body.dark .toggle-tema i{
 .hamburger span:nth-child(1){top:0;} 
 .hamburger span:nth-child(2){top:7px;} 
 .hamburger span:nth-child(3){top:14px;}
-
 .btn-toggle-menu.ativo .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .btn-toggle-menu.ativo .hamburger span:nth-child(2){opacity:0;}
 .btn-toggle-menu.ativo .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* PAINEL MOBILE */
+/* MENU MOBILE */
 .menu-panel{
   position:fixed;right:20px;top:calc(var(--header-h)+15px);
-  width:240px;padding:14px;border-radius:16px;
+  width:240px;padding:16px;border-radius:18px;
   background:rgba(255,255,255,.70);backdrop-filter:blur(14px);
   opacity:0;pointer-events:none;transform:translateY(-10px);transition:.3s;
 }
 .menu-panel.open{opacity:1;pointer-events:auto;transform:translateY(0);}
 body.dark .menu-panel{background:rgba(0,0,0,.45);} 
 
-.menu-panel-link{
-  padding:10px;border-radius:10px;
-  display:block;text-decoration:none;
-  font-weight:600;color:var(--text);
-}
-.menu-panel-link:hover{background:#4af0ff22;color:var(--accent1);}
-
-/* ===== CONTAINER GERAL ===== */
+/* CONTAINER */
 .container{
-  width:min(1100px,94%);margin:35px auto;padding:30px;
-  background:var(--card);border-radius:16px;
-  box-shadow:0 0 40px rgba(0,0,0,.18);
+  width:min(1100px,94%);margin:35px auto;padding:32px;
+  background:var(--card);border-radius:18px;
+  box-shadow:0 0 45px rgba(0,0,0,.15);
 }
-.container p,li{font-size:1.08rem;}
+.container p,.container li{font-size:1.15rem;letter-spacing:.2px;}
 
-/* FOTOS */
+/* FOTO */
 .foto{
-  width:170px;height:170px;border-radius:16px;
+  width:180px;height:180px;border-radius:18px;
   object-fit:cover;display:block;margin:auto;
 }
 
-/* TÍTULOS COM FUNDO DIFERENTE EM CADA PÁGINA */
+/* 🟦🟪 GRADIENTE DIFERENTE POR PÁGINA */
+body.index .titulo{background:linear-gradient(90deg,#4af0ff,#7b5bff);}
+body.sobre .titulo{background:linear-gradient(90deg,#00ffaa,#00eaff);}
+body.curriculo .titulo{background:linear-gradient(90deg,#ffd800,#ff7300);}
 .titulo{
-  text-align:center;font-size:1.8rem;margin:12px 0;
-  font-weight:800;letter-spacing:1px;
+  font-size:2rem;font-weight:800;text-align:center;margin-bottom:14px;
+  -webkit-background-clip:text;color:transparent;
 }
 
-/* HOME = azul → roxo */
-body.index .titulo{background:linear-gradient(90deg,#4af0ff,#7b5bff);-webkit-background-clip:text;color:transparent;}
-/* SOBRE = verde → ciano */
-body.sobre .titulo{background:linear-gradient(90deg,#00ff90,#00eaff);-webkit-background-clip:text;color:transparent;}
-/* CURRICULO = amarelo → laranja neon */
-body.curriculo .titulo{background:linear-gradient(90deg,#ffe600,#ff8c00);-webkit-background-clip:text;color:transparent;}
-
-/* BLOCOS */
+/* CAIXAS */
 .bloco{
-  padding:18px;border-radius:14px;margin:18px 0;
+  padding:20px;border-radius:16px;margin:22px 0;
   background:rgba(255,255,255,.65);
 }
 body.dark .bloco{background:rgba(0,0,0,.35);}
 
-/* FOOTER IGUAL EM TODAS AS PÁGINAS (sem linha) */
+/* FOOTER clean */
 .footer{
-  text-align:center;padding:28px;margin-top:auto;
-  color:#a8b3c9;font-size:.95rem;
+  text-align:center;margin-top:auto;
+  padding:30px;font-size:1rem;color:#9facbd;
 }
 
-/* ===== SOCIAL ÍCONES — AGORA NEON MODERNO ===== */
+/* Redes sociais neon atualizadas */
 .socials{
   position:fixed;right:20px;bottom:25px;
-  display:flex;flex-direction:column;gap:14px;
+  display:flex;flex-direction:column;gap:15px;
 }
 .socials a{
-  width:58px;height:58px;border-radius:14px;
-  display:grid;place-items:center;
-  font-size:1.35rem;color:#fff;font-weight:900;
-  transition:.28s;border:none;
-  box-shadow:0 0 25px rgba(0,0,0,.45);
+  width:60px;height:60px;border-radius:15px;
+  display:grid;place-items:center;font-size:1.4rem;
+  color:#fff;font-weight:900;transition:.28s;
 }
-.socials a:hover{transform:scale(1.14) translateY(-4px);}
+.socials a:hover{transform:scale(1.18) translateY(-4px);}
 
-.whatsapp{background:#00ff9d;}
-.instagram{background:#ff00d4;}
-.facebook{background:#0094ff;}
+.whatsapp{background:#00ff95;}
+.instagram{background:linear-gradient(45deg,#ff0084,#ff5f00);}
+.facebook{background:#0076ff;}
 
-/* ========== DOWNLOAD ANIMADO COM PORCENTAGEM ========= */
-.area-download{text-align:center;margin-top:30px;}
-
-.download-btn{
-  padding:15px 32px;border-radius:14px;
-  background:linear-gradient(90deg,#4af0ff,#7b5bff);
-  color:#fff;font-weight:800;border:none;
-  position:relative;overflow:hidden;cursor:pointer;font-size:1.1rem;
+/* Responsivo */
+@media(max-width:900px){
+  .menu{display:none;}
 }
-.download-btn:hover{transform:scale(1.05);}
-
-.progress{
-  position:absolute;left:0;top:0;width:0%;
-  height:100%;background:#00eaff;opacity:.7;
-  transition:width 2.5s linear;
+@media(max-width:520px){
+  .foto{width:150px;height:150px;}
+  .titulo{font-size:1.65rem;}
 }
-.percent{
-  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-  font-weight:800;font-size:1rem;z-index:10;display:none;
-}
-.loading .percent{display:block;color:#000;}
-
-/* ANIMAÇÃO AO ROLAR */
-[data-animate]{opacity:0;transform:translateY(20px);transition:.6s;}
-.animado{opacity:1;transform:translateY(0);}
