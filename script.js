@@ -1,201 +1,92 @@
-/* script.js — Menu, Tema persistente e Animações (IntersectionObserver)
-   Coloque este arquivo referenciado com `defer` no HTML.
-*/
+/* ======================================================
+   SCRIPT OFICIAL – Guilherme Cardoso (2025)
+   Menu mobile + Troca de tema persistente + Animações
+   Botão que vira barra de progresso com porcentagem
+====================================================== */
 
-/* ===== helpers ===== */
-const $ = sel => document.querySelector(sel);
-const $$ = sel => Array.from(document.querySelectorAll(sel));
+/* ========= SHORTCUTS ========= */
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => document.querySelectorAll(sel);
 
-/* ===== THEME (persistência entre páginas) ===== */
-const THEME_KEY = 'site_tema';
+
+/* ========= TEMA (ESCURO/CLARO) ========= */
 const body = document.body;
-const btnTema = $('.toggle-tema');
+const toggleTema = $("#toggle-tema");
+const temaSalvo = localStorage.getItem("tema");
 
-function applySavedTheme() {
-  const t = localStorage.getItem(THEME_KEY);
-  if (t === 'dark') body.classList.add('dark');
-  else if (t === 'light') body.classList.remove('dark');
-  // if no key, do nothing (keeps default)
-}
-applySavedTheme();
+if (temaSalvo === "dark") body.classList.add("dark");
 
-if (btnTema) {
-  btnTema.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    const novo = body.classList.contains('dark') ? 'dark' : 'light';
-    localStorage.setItem(THEME_KEY, novo);
-    // update icon (if multiple toggles across pages)
-    syncThemeButtons();
-  });
-}
+// alternar
+toggleTema?.addEventListener("click", () => {
+    body.classList.toggle("dark");
 
-/* Ensure all theme buttons have consistent icon (if present on multiple pages) */
-function syncThemeButtons() {
-  const all = $$('.toggle-tema');
-  all.forEach(btn => {
-    const icon = btn.querySelector('i');
-    if (!icon) return;
-    if (body.classList.contains('dark')) {
-      icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
-    } else {
-      icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
-    }
-  });
-}
-syncThemeButtons();
-
-/* On first load also set icons for any duplicates */
-window.addEventListener('DOMContentLoaded', syncThemeButtons);
-
-/* ===== MENU MOBILE PANEL ===== */
-const menuPanelId = 'menu-panel';
-let panel = document.getElementById(menuPanelId);
-
-function buildMenuPanel() {
-  if (panel) return panel;
-  panel = document.createElement('div');
-  panel.id = menuPanelId;
-  panel.className = 'menu-panel';
-  panel.innerHTML = `
-    <a href="index.html" class="menu-panel-link">Início</a>
-    <a href="sobre.html" class="menu-panel-link">Sobre Mim</a>
-    <a href="curriculo.html" class="menu-panel-link">Currículo</a>
-  `;
-  document.body.appendChild(panel);
-  return panel;
-}
-buildMenuPanel();
-
-const btnMenu = $('.btn-toggle-menu');
-
-if (btnMenu) {
-  btnMenu.addEventListener('click', (e) => {
-    const aberto = panel.classList.toggle('open');
-    btnMenu.classList.toggle('ativo', aberto);
-    btnMenu.setAttribute('aria-expanded', aberto ? 'true' : 'false');
-    // close when clicking outside
-    if (aberto) setTimeout(()=> {
-      const outsideHandler = (ev) => {
-        if (!panel.contains(ev.target) && !btnMenu.contains(ev.target)) {
-          closeMenu();
-          document.removeEventListener('click', outsideHandler);
-        }
-      };
-      document.addEventListener('click', outsideHandler);
-    }, 40);
-  });
-}
-
-function closeMenu() {
-  if (!panel) return;
-  panel.classList.remove('open');
-  if (btnMenu) {
-    btnMenu.classList.remove('ativo');
-    btnMenu.setAttribute('aria-expanded', 'false');
-  }
-}
-
-/* close on links click (better UX on mobile) */
-panel.addEventListener('click', (e) => {
-  const a = e.target.closest('a');
-  if (a) {
-    closeMenu();
-    // allow navigation to proceed
-  }
+    // salvar tema
+    localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
 });
 
-/* keyboard: close menu on Escape */
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') closeMenu();
+
+/* ========= MENU MOBILE ========= */
+const btnMenu = $("#btn-menu");
+const menuPanel = $("#menu-panel");
+
+btnMenu?.addEventListener("click", () => {
+    btnMenu.classList.toggle("ativo");
+    menuPanel.classList.toggle("open");
 });
 
-/* ===== make sure desktop menu links reflect active page ===== */
-function setActiveLinks() {
-  const links = $$('.menu-link, .menu-panel-link');
-  const path = location.pathname.split('/').pop() || 'index.html';
-  links.forEach(link => {
-    const href = link.getAttribute('href') || '';
-    if (href.includes(path) || (path === '' && href.includes('index.html'))) {
-      link.classList.add('ativo');
-    } else {
-      link.classList.remove('ativo');
-    }
-  });
+// fechar menu ao clicar em um link
+$$(".menu-panel-link").forEach(link =>
+    link.addEventListener("click", () => {
+        menuPanel.classList.remove("open");
+        btnMenu.classList.remove("ativo");
+    })
+);
+
+
+/* ========= ANIMAÇÃO AO ROLAR ========= */
+const elementos = $$("[data-animate]");
+
+function revelarAoRolar() {
+    elementos.forEach(el => {
+        const pos = el.getBoundingClientRect().top;
+        if (pos < window.innerHeight - 100) el.classList.add("animado");
+    });
 }
-setActiveLinks();
+window.addEventListener("scroll", revelarAoRolar);
+revelarAoRolar();
 
-/* ===== SOCIALS — optional: create if not in HTML (keeps consistent) ===== */
-function ensureSocials() {
-  if ($('.socials')) return;
-  const block = document.createElement('div');
-  block.className = 'socials';
-  block.innerHTML = `
-    <a class="whatsapp" href="https://wa.me/5511964002284" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
-    <a class="instagram" href="https://www.instagram.com/guilherme_cardoso132" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
-    <a class="facebook" href="https://www.facebook.com/guilherme.cardosodasilva.35" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
-  `;
-  document.body.appendChild(block);
-}
-ensureSocials();
 
-/* ===== ANIMAÇÃO AO ROLAR (IntersectionObserver para performance) ===== */
-const observerOptions = { root: null, rootMargin: '0px 0px -8% 0px', threshold: 0 };
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animado');
-      // optionally unobserve to avoid repeated triggers
-      observer.unobserve(entry.target);
-    }
-  });
-}, observerOptions);
+/* ========= DOWNLOAD COM PROGRESSO + % ========= */
+const downloadBtn = $("#btn-download");
 
-document.addEventListener('DOMContentLoaded', () => {
-  const targets = $$('[data-animate]');
-  targets.forEach(t => observer.observe(t));
-});
-
-/* ===== small utilities ===== */
-/* Smooth focus outline for keyboard users */
-document.addEventListener('keyup', (e) => {
-  if (e.key === 'Tab') document.body.classList.add('user-is-tabbing');
-});
-document.addEventListener('mousedown', () => document.body.classList.remove('user-is-tabbing'));
-
-/* Prevent double-loading side panel if script runs twice */
-if (window.__siteScriptLoaded) {
-  // nothing
-} else {
-  window.__siteScriptLoaded = true;
-}
-
-/* End of script.js */
-
-/* =======================================================
-   DOWNLOAD ANIMADO 
-=======================================================*/
-const downloadBtn = document.getElementById("btnDownload");
-
-downloadBtn.addEventListener("click", ()=>{
-    if(downloadBtn.classList.contains("loading")) return;
+downloadBtn?.addEventListener("click", () => {
+    if (downloadBtn.classList.contains("loading")) return; // evita duplo clique
 
     downloadBtn.classList.add("loading");
-    downloadBtn.querySelector(".progress").style.width = "100%";
 
-    /* tempo da animação */
-    setTimeout(()=>{
-        baixarArquivo();
-        downloadBtn.classList.remove("loading");
-        downloadBtn.querySelector(".progress").style.width = "0%";
-        downloadBtn.querySelector(".txt").innerText = "Download concluído! ✔";
-        setTimeout(()=> downloadBtn.querySelector(".txt").innerText = "Baixar Novamente",2000);
-    },2400);
+    const progress = document.createElement("div");
+    progress.className = "progress";
+    downloadBtn.appendChild(progress);
+
+    const percent = document.createElement("div");
+    percent.className = "percent";
+    percent.innerText = "0%";
+    downloadBtn.appendChild(percent);
+
+    let p = 0;
+    const animar = setInterval(() => {
+        p++;
+        percent.innerText = p + "%";
+        progress.style.width = p + "%";
+
+        if (p >= 100) {
+            clearInterval(animar);
+            setTimeout(() => {
+                downloadBtn.classList.remove("loading");
+                progress.remove();  
+                percent.remove();
+            }, 700);
+        }
+
+    }, 25); // velocidade da animação (quanto menor, mais rápido)
 });
-
-/* ARQUIVO A SER BAIXADO */
-function baixarArquivo(){
-    const link = document.createElement("a");
-    link.href = "curriculo.pdf";   // ⚠ Coloque seu PDF na raiz do site
-    link.download = "Guilherme-Cardoso-Curriculo.pdf";
-    link.click();
-}
