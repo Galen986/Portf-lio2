@@ -1,7 +1,7 @@
 /* ======================================================
    SCRIPT OFICIAL – Guilherme Cardoso (2025)
-   Menu mobile + Troca de tema persistente + Animações
-   Botão que vira barra de progresso com porcentagem
+   Menu mobile + Tema persistente + Animações
+   Botão de download com PORCENTAGEM REAL 
 ====================================================== */
 
 /* ========= SHORTCUTS ========= */
@@ -16,11 +16,8 @@ const temaSalvo = localStorage.getItem("tema");
 
 if (temaSalvo === "dark") body.classList.add("dark");
 
-// alternar
 toggleTema?.addEventListener("click", () => {
     body.classList.toggle("dark");
-
-    // salvar tema
     localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
 });
 
@@ -34,7 +31,7 @@ btnMenu?.addEventListener("click", () => {
     menuPanel.classList.toggle("open");
 });
 
-// fechar menu ao clicar em um link
+// fechar ao clicar em link
 $$(".menu-panel-link").forEach(link =>
     link.addEventListener("click", () => {
         menuPanel.classList.remove("open");
@@ -56,37 +53,35 @@ window.addEventListener("scroll", revelarAoRolar);
 revelarAoRolar();
 
 
-/* ========= DOWNLOAD COM PROGRESSO + % ========= */
+
+/* ======================================================
+   DOWNLOAD COM BARRA + PORCENTAGEM REAL + TEXTO FINAL
+====================================================== */
+
 const downloadBtn = $("#btn-download");
+let pct = 0;
 
-downloadBtn?.addEventListener("click", () => {
-    if (downloadBtn.classList.contains("loading")) return; // evita duplo clique
+downloadBtn?.addEventListener("click",()=>{
 
+    if(downloadBtn.classList.contains("loading")) return;
+
+    downloadBtn.innerHTML = `<span class="txt">0%</span><div class="progress"></div>`;
     downloadBtn.classList.add("loading");
+    pct = 0;
 
-    const progress = document.createElement("div");
-    progress.className = "progress";
-    downloadBtn.appendChild(progress);
+    let run = setInterval(()=>{
+        pct++;
+        downloadBtn.querySelector(".txt").innerText = pct+"%";
+        downloadBtn.querySelector(".progress").style.width = pct+"%";
 
-    const percent = document.createElement("div");
-    percent.className = "percent";
-    percent.innerText = "0%";
-    downloadBtn.appendChild(percent);
+        if(pct >= 100){
+            clearInterval(run);
 
-    let p = 0;
-    const animar = setInterval(() => {
-        p++;
-        percent.innerText = p + "%";
-        progress.style.width = p + "%";
-
-        if (p >= 100) {
-            clearInterval(animar);
-            setTimeout(() => {
+            downloadBtn.querySelector(".txt").innerText = "✔ Completo";
+            setTimeout(()=>{
+                downloadBtn.innerHTML = "Baixar Novamente";
                 downloadBtn.classList.remove("loading");
-                progress.remove();  
-                percent.remove();
-            }, 700);
+            },1000);
         }
-
-    }, 25); // velocidade da animação (quanto menor, mais rápido)
+    },25);
 });
