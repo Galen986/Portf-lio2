@@ -1,283 +1,200 @@
-/* estilos.css — FUTURISTA PREMIUM (Azul Neon + Roxo) */
-/* reset > variáveis > layout > header > menu > container > blocos > footer fixo > sociais > animações > responsivo */
+/* =========================================================
+   FUTURISTA PREMIUM 2025 — Guilherme Cardoso  
+   Azul Neon • Roxo Plasma • Progress Download + % • UI Vidro Fosco
+=========================================================*/
 
-/* ===== RESET ===== */
-*{margin:0;padding:0;box-sizing:border-box;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;}
-html,body{height:100%;}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{height:100%;scroll-behavior:smooth;}
 body{
-  font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
+  font-family:"Poppins","Orbitron", sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.5;
+  display:flex;flex-direction:column;
   padding-top:var(--header-h);
-  transition:background var(--transition),color var(--transition);
+  transition:.4s;
 }
 
-/* ===== VARIÁVEIS ===== */
+/* VARIÁVEIS */
 :root{
-  --bg:#f5f8fb;
+  --header-h:75px;
+  --bg:#f3f7ff;
+  --text:#0c1327;
   --card:#ffffff;
-  --text:#0b1220;
-  --muted:#556071;
-  --accent1:#4af0ff; /* Ciano Neon */
-  --accent2:#7b5bff; /* Roxo Plasma */
-  --shadow:0 10px 30px rgba(14,20,40,0.08);
-  --radius:14px;
-  --header-h:72px;
-  --transition:350ms cubic-bezier(.18,.88,.32,1);
+  --accent1:#4af0ff;
+  --accent2:#7b5bff;
+  --transition:.35s;
 }
 body.dark{
-  --bg:linear-gradient(180deg,#05060b 0%,#071028 100%);
-  --card:rgba(22,26,44,0.75);
-  --text:#eaf3ff;
-  --muted:#9aa3b6;
+  --bg:linear-gradient(180deg,#01040c,#07142f);
+  --text:#e8f4ff;
+  --card:rgba(22,30,55,.55);
 }
 
-/* ==== HEADER VIDRO FOSCO + NEON ==== */
+/* HEADER VIDRO FOSCO */
 .header{
+  position:fixed;top:0;left:0;width:100%;
   height:var(--header-h);
-  width:100%;
-  position:fixed;
-  top:0;
-  left:0;
-  z-index:1200;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:12px 22px;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:12px 26px;
   backdrop-filter:blur(18px);
-  background:rgba(255,255,255,0.32);
-  border-bottom:1px solid rgba(255,255,255,0.25);
-  box-shadow:0 18px 40px rgba(0,0,0,0.14);
-  transition:var(--transition);
+  background:rgba(255,255,255,.28);
+  border:none;
+  box-shadow:0 10px 30px rgba(0,0,0,.20);
 }
-body.dark .header{
-  background:rgba(8,11,22,0.42);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
+body.dark .header{background:rgba(0,0,0,.32);}
 
-/* Logo */
+/* LOGO */
 .logo{
-  font-weight:700;
-  font-size:1.1rem;
-  color:var(--accent1);
-  display:flex;
-  align-items:center;
-  gap:10px;
+  font-size:1.4rem;font-weight:800;
+  color:var(--accent1);letter-spacing:1px;
+  display:flex;gap:10px;align-items:center;
 }
-.logo i{font-size:1.1rem;}
 
-/* ===== Botões (tema + menu) ===== */
+/* BOTÕES */
 .header-controls{display:flex;gap:10px;}
 .toggle-tema,.btn-toggle-menu{
-  width:46px;height:46px;border-radius:14px;
-  display:grid;place-items:center;
-  cursor:pointer;
-  border:1px solid rgba(255,255,255,0.18);
-  background:rgba(255,255,255,0.75);
+  width:48px;height:48px;display:grid;place-items:center;
+  border-radius:14px;border:none;cursor:pointer;
+  background:rgba(255,255,255,.75);
   backdrop-filter:blur(12px);
-  transition:var(--transition);
 }
-
-/* Botão visível no escuro */
 body.dark .toggle-tema,body.dark .btn-toggle-menu{
-  background:rgba(0,0,0,0.52);
-  border:1px solid rgba(255,255,255,0.24);
+  background:rgba(0,0,0,.50);
+  border:1px solid rgba(255,255,255,.18);
 }
-.toggle-tema i{color:#000;font-size:1.3rem;}
+
+/* Ícone Tema com Glow */
+.toggle-tema i{font-size:1.4rem;color:#000;}
 body.dark .toggle-tema i{
-  color:#4af0ff; /* Glow no dark */
-  text-shadow:0 0 8px #4af0ff;
-}
-
-/* ===== MENU ===== */
-.menu{display:flex;gap:12px;align-items:center;}
-.menu-link{
-  padding:8px 14px;border-radius:12px;
-  text-decoration:none;
-  color:var(--text);
-  font-weight:600;
-  transition:var(--transition);
-}
-.menu-link:hover{transform:translateY(-3px);}
-.menu-link.ativo{
-  background:linear-gradient(90deg,rgba(74,240,255,0.15),rgba(123,91,255,0.15));
   color:var(--accent1);
-  box-shadow:0 8px 22px rgba(74,240,255,0.12);
+  text-shadow:0 0 10px var(--accent1);
 }
 
-/* ===== HAMBÚRGUER ===== */
+/* MENU SEM LINHAS */
+.menu{display:flex;gap:14px;}
+.menu-link{
+  font-size:1rem;font-weight:600;text-decoration:none;
+  padding:8px 14px;border-radius:10px;
+  color:var(--text);transition:.3s;
+}
+.menu-link:hover{transform:translateY(-2px);}
+.menu-link.ativo{
+  background:linear-gradient(90deg,#4af0ff33,#7b5bff33);
+  color:var(--accent1);
+}
+
+/* HAMBURGUER */
 .hamburger{width:22px;height:16px;position:relative;}
 .hamburger span{
-  position:absolute;left:0;right:0;height:2px;
-  background:var(--accent1);
-  border-radius:2px;
-  transition:all .28s;
+  position:absolute;height:2px;width:100%;border-radius:3px;
+  background:var(--accent1);transition:.3s;
 }
-.hamburger span:nth-child(1){top:0;}
-.hamburger span:nth-child(2){top:7px;}
+.hamburger span:nth-child(1){top:0;} 
+.hamburger span:nth-child(2){top:7px;} 
 .hamburger span:nth-child(3){top:14px;}
+
 .btn-toggle-menu.ativo .hamburger span:nth-child(1){transform:translateY(7px) rotate(45deg);}
 .btn-toggle-menu.ativo .hamburger span:nth-child(2){opacity:0;}
 .btn-toggle-menu.ativo .hamburger span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
-/* ===== PAINEL MOBILE ===== */
+/* PAINEL MOBILE */
 .menu-panel{
-  position:fixed;
-  top:calc(var(--header-h) + 14px);
-  right:18px;
-  width:240px;
-  background:rgba(255,255,255,0.68);
-  backdrop-filter:blur(14px);
-  border-radius:16px;
-  padding:14px;
-  box-shadow:0 28px 80px rgba(0,0,0,0.25);
-  display:flex;flex-direction:column;gap:10px;
-  opacity:0;transform:translateY(-12px) scale(.94);
-  pointer-events:none;
-  transition:var(--transition);
+  position:fixed;right:20px;top:calc(var(--header-h)+15px);
+  width:240px;padding:14px;border-radius:16px;
+  background:rgba(255,255,255,.70);backdrop-filter:blur(14px);
+  opacity:0;pointer-events:none;transform:translateY(-10px);transition:.3s;
 }
-.menu-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto;}
-body.dark .menu-panel{background:rgba(10,12,22,0.55);}
+.menu-panel.open{opacity:1;pointer-events:auto;transform:translateY(0);}
+body.dark .menu-panel{background:rgba(0,0,0,.45);} 
 
-/* ===== MAIN ===== */
+.menu-panel-link{
+  padding:10px;border-radius:10px;
+  display:block;text-decoration:none;
+  font-weight:600;color:var(--text);
+}
+.menu-panel-link:hover{background:#4af0ff22;color:var(--accent1);}
+
+/* ===== CONTAINER GERAL ===== */
 .container{
-  width:min(1100px,95%);
-  margin:36px auto;
-  padding:26px;
-  background:rgba(255,255,255,0.82);
-  border-radius:var(--radius);
-  border:1px solid rgba(0,0,0,0.05);
-  box-shadow:var(--shadow);
-  transition:var(--transition);
+  width:min(1100px,94%);margin:35px auto;padding:30px;
+  background:var(--card);border-radius:16px;
+  box-shadow:0 0 40px rgba(0,0,0,.18);
 }
-body.dark .container{
-  background:rgba(12,16,36,0.50);
-  border:1px solid rgba(255,255,255,0.08);
-}
+.container p,li{font-size:1.08rem;}
 
-/* Foto */
+/* FOTOS */
 .foto{
-  width:160px;height:160px;object-fit:cover;
-  border-radius:14px;
-  display:block;margin:auto;
-  box-shadow:0 10px 40px rgba(0,0,0,0.35);
+  width:170px;height:170px;border-radius:16px;
+  object-fit:cover;display:block;margin:auto;
 }
 
-/* Título */
-.titulo{text-align:center;font-size:1.45rem;margin-bottom:10px;}
-.titulo .destaque{
-  background:linear-gradient(90deg,var(--accent1),var(--accent2));
-  -webkit-background-clip:text;
-  color:transparent;
-  font-weight:700;
+/* TÍTULOS COM FUNDO DIFERENTE EM CADA PÁGINA */
+.titulo{
+  text-align:center;font-size:1.8rem;margin:12px 0;
+  font-weight:800;letter-spacing:1px;
 }
 
-/* Texto */
-.descricao{text-align:center;color:var(--muted);margin-bottom:18px;}
+/* HOME = azul → roxo */
+body.index .titulo{background:linear-gradient(90deg,#4af0ff,#7b5bff);-webkit-background-clip:text;color:transparent;}
+/* SOBRE = verde → ciano */
+body.sobre .titulo{background:linear-gradient(90deg,#00ff90,#00eaff);-webkit-background-clip:text;color:transparent;}
+/* CURRICULO = amarelo → laranja neon */
+body.curriculo .titulo{background:linear-gradient(90deg,#ffe600,#ff8c00);-webkit-background-clip:text;color:transparent;}
+
+/* BLOCOS */
 .bloco{
-  margin:18px 0;padding:16px;
-  border-radius:14px;
-  background:rgba(255,255,255,0.60);
-  border:1px solid rgba(0,0,0,0.05);
+  padding:18px;border-radius:14px;margin:18px 0;
+  background:rgba(255,255,255,.65);
 }
-body.dark .bloco{
-  background:rgba(14,18,32,0.45);
-  border:1px solid rgba(255,255,255,0.05);
-}
-.bloco h2{margin-bottom:6px;}
-.bloco li{color:var(--muted);}
+body.dark .bloco{background:rgba(0,0,0,.35);}
 
-/* ===== FOOTER FIXO NO FINAL ===== */
+/* FOOTER IGUAL EM TODAS AS PÁGINAS (sem linha) */
 .footer{
-  margin-top:auto; /* cola no fim */
-  padding:24px;
-  text-align:center;
-  color:var(--muted);
+  text-align:center;padding:28px;margin-top:auto;
+  color:#a8b3c9;font-size:.95rem;
 }
 
-/* ===== ÍCONES SOCIAIS ===== */
+/* ===== SOCIAL ÍCONES — AGORA NEON MODERNO ===== */
 .socials{
-  position:fixed;right:18px;bottom:18px;
-  display:flex;flex-direction:column;gap:12px;z-index:1500;
+  position:fixed;right:20px;bottom:25px;
+  display:flex;flex-direction:column;gap:14px;
 }
 .socials a{
-  width:56px;height:56px;border-radius:12px;
+  width:58px;height:58px;border-radius:14px;
   display:grid;place-items:center;
-  color:#fff;font-size:1.25rem;
-  box-shadow:0 16px 40px rgba(0,0,0,0.25);
-  transition:.25s;
+  font-size:1.35rem;color:#fff;font-weight:900;
+  transition:.28s;border:none;
+  box-shadow:0 0 25px rgba(0,0,0,.45);
 }
-.socials a:hover{transform:translateY(-6px) scale(1.04);}
-.whatsapp{background:linear-gradient(180deg,#25D366,#00b65a);}
-.instagram{background:radial-gradient(circle at 30% 20%,#f09433,#bc1888 40%,#515bd4);}
-.facebook{background:#1877f2;}
+.socials a:hover{transform:scale(1.14) translateY(-4px);}
 
-/* ==== ANIMAÇÃO ==== */
-[data-animate]{opacity:0;transform:translateY(12px);transition:.7s;}
-.animado{opacity:1;transform:translateY(0);}
+.whatsapp{background:#00ff9d;}
+.instagram{background:#ff00d4;}
+.facebook{background:#0094ff;}
 
-/* ==== RESPONSIVO ==== */
-@media(max-width:900px){
-  .menu{display:none;}
-  .container{padding:20px;margin:24px 14px;}
-}
-@media(max-width:520px){
-  .foto{width:130px;height:130px;}
-  .titulo{font-size:1.25rem;}
-  .socials a{width:52px;height:52px;}
-}
-
-/* =======================================================
-   BOTÃO ANIMADO DE DOWNLOAD - FUTURISTA
-=======================================================*/
-.area-download{
-    text-align:center;
-    margin-top:25px;
-}
+/* ========== DOWNLOAD ANIMADO COM PORCENTAGEM ========= */
+.area-download{text-align:center;margin-top:30px;}
 
 .download-btn{
-    position:relative;
-    overflow:hidden;
-    padding:14px 30px;
-    font-size:1rem;
-    font-weight:700;
-    border-radius:14px;
-    cursor:pointer;
-    border:none;
-    backdrop-filter:blur(10px);
-    color:#fff;
-    background:linear-gradient(90deg,#4af0ff,#7b5bff);
-    box-shadow:0 0 18px rgba(123,91,255,0.55);
-    transition:.3s;
+  padding:15px 32px;border-radius:14px;
+  background:linear-gradient(90deg,#4af0ff,#7b5bff);
+  color:#fff;font-weight:800;border:none;
+  position:relative;overflow:hidden;cursor:pointer;font-size:1.1rem;
 }
+.download-btn:hover{transform:scale(1.05);}
 
-.download-btn:hover{
-    transform:scale(1.05);
-    box-shadow:0 0 25px #4af0ff,0 0 40px #7b5bff;
+.progress{
+  position:absolute;left:0;top:0;width:0%;
+  height:100%;background:#00eaff;opacity:.7;
+  transition:width 2.5s linear;
 }
-
-/* Barra de progresso interna */
-.download-btn .progress{
-    content:"";
-    position:absolute;
-    left:0; top:0;
-    height:100%;
-    width:0%;
-    background:linear-gradient(90deg,#00eaff,#00ffb3);
-    box-shadow:0 0 18px #00ffcc;
-    transition:width 2.4s linear;
-    border-radius:14px;
-    z-index:0;
+.percent{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  font-weight:800;font-size:1rem;z-index:10;display:none;
 }
+.loading .percent{display:block;color:#000;}
 
-.download-btn .txt{
-    position:relative;
-    z-index:2;
-}
-
-/* estado carregando */
-.download-btn.loading .txt{opacity:0;}
+/* ANIMAÇÃO AO ROLAR */
+[data-animate]{opacity:0;transform:translateY(20px);transition:.6s;}
+.animado{opacity:1;transform:translateY(0);}
