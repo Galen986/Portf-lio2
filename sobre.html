@@ -15,8 +15,14 @@
 <header class="header">
     <h2 class="logo">Guilherme Dev</h2>
     <div class="header-controls">
-        <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
-        <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+        <button class="toggle-tema" aria-pressed="false" aria-label="Alternar tema">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            <span class="visually-hidden">Alternar tema</span>
+        </button>
+
+        <button class="btn-toggle-menu" aria-expanded="false">
+            <span class="hamburger"><span></span><span></span><span></span></span>
+        </button>
     </div>
     <nav class="menu">
         <a href="index.html" class="menu-link">Início</a>
@@ -25,7 +31,7 @@
     </nav>
 </header>
 
-<section class="container">
+<section class="container" style="text-align:left;">
     <h1 class="titulo">Quem sou eu?</h1>
     <p>Me chamo <b>Guilherme Cardoso</b>, apaixonado por tecnologia e design funcional.</p>
 </section>
