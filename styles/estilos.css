@@ -350,3 +350,31 @@ a:focus, button:focus{ outline: none; box-shadow: 0 0 0 4px rgba(0,234,255,0.06)
 .logo{ animation: neonPulse 4.5s ease-in-out infinite }
 
 /* end of file */
+
+/* ===== REDES SOCIAIS 2025 — EFEITO NEON FUTURISTA ===== */
+.redes{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:25px;
+}
+
+.btn-social{
+    font-size:1.6rem;
+    color:var(--neon);
+    background:var(--card-bg);
+    width:50px;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    transition:.35s;
+    box-shadow:0 0 15px rgba(0,255,255,.20);
+}
+
+.btn-social:hover{
+    transform:translateY(-4px) scale(1.06);
+    box-shadow:0 0 25px rgba(0,255,255,.45);
+    color:#fff;
+}
