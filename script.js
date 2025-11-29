@@ -1,101 +1,71 @@
 /* ======================================================
-   script.js — Versão Premium Final
+   script.js — Final Premium 2025
 ====================================================== */
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-/* =================== 🌙 TEMA DARK/CLARO =================== */
+/* 🌙 TEMA */
 const btnToggleTema = $('.toggle-tema');
-const body = document.body;
 const temaSalvo = localStorage.getItem('tema');
+if(temaSalvo) document.body.classList.add(temaSalvo);
 
-if (temaSalvo) body.classList.add(temaSalvo);
-atualizarIconeTema();
-
-btnToggleTema?.addEventListener("click", () => {
-    body.classList.contains('dark')
-        ? body.classList.remove('dark')
-        : body.classList.add('dark');
-
-    localStorage.setItem('tema', body.classList.contains('dark') ? 'dark' : 'light');
-    atualizarIconeTema();
+btnToggleTema.addEventListener("click", ()=>{
+    document.body.classList.toggle("dark");
+    localStorage.setItem("tema", document.body.classList.contains("dark")?"dark":"light");
+    btnToggleTema.querySelector("i").className =
+        document.body.classList.contains("dark")?"fa-solid fa-sun":"fa-solid fa-moon";
 });
 
-function atualizarIconeTema(){
-    const icon = btnToggleTema.querySelector("i");
-    if(!icon) return;
-    if(body.classList.contains("dark")){
-        icon.className = "fa-solid fa-sun";
-        btnToggleTema.style.color = "#ffeb3b";
-    } else {
-        icon.className = "fa-solid fa-moon";
-        btnToggleTema.style.color = "#00eaff";
-    }
-}
+/* 📱 MENU */
+const btnMenu = document.querySelector(".btn-toggle-menu");
+const menu = document.querySelector(".menu");
 
-/* =================== 📱 MENU MOBILE =================== */
-const btnMenu = $(".btn-toggle-menu");
-const navMenu = $(".menu");
-
-btnMenu.addEventListener("click", () => {
-    navMenu.classList.toggle("open");
+btnMenu.addEventListener("click", ()=>{
+    menu.classList.toggle("open");
     btnMenu.classList.toggle("ativo");
 });
 
-$$(".menu-link").forEach(l =>
-    l.addEventListener("click", () => {
-        navMenu.classList.remove("open");
-        btnMenu.classList.remove("ativo");
-    })
-);
+$$(".menu-link").forEach(link=>link.addEventListener("click",()=>{
+    menu.classList.remove("open"); btnMenu.classList.remove("ativo");
+}));
 
-/* =================== 🔥 SCROLL REVEAL =================== */
+/* 🔥 SCROLL */
 const itens = $$('[data-animate]');
-function scrollReveal(){
-    itens.forEach(el => {
-        if(el.getBoundingClientRect().top < window.innerHeight - 120){
-            el.classList.add("animado");
-        }
-    })
-}
-scrollReveal();
-window.addEventListener("scroll", scrollReveal);
+const reveal = ()=>itens.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add("animado");
+});
+window.addEventListener("scroll",reveal); reveal();
 
-/* =================== ⬇ DOWNLOAD SURREAL =================== */
-const downloadBtn = $("#btnDownload");
-
+/* 📄 DOWNLOAD */
+const downloadBtn = document.getElementById("btnDownload");
 if(downloadBtn){
-    downloadBtn.addEventListener("click", () => {
-        if(downloadBtn.classList.contains("loading")) return;
+    downloadBtn.addEventListener("click",()=>{
+        if(downloadBtn.classList.contains("loading"))return;
 
-        downloadBtn.innerHTML = `<span class="txt">0%</span><span class="progress"></span>`;
+        downloadBtn.innerHTML=`<span class="txt">0%</span><span class="progress"></span>`;
         downloadBtn.classList.add("loading");
 
-        let pct = 0;
-        const sim = setInterval(()=>{
-            pct += Math.random()*10+5;
-            if(pct>=100){
-                pct = 100;
-                clearInterval(sim);
-                downloadBtn.querySelector(".txt").innerText="✔ Pronto";
+        let pct=0,set=setInterval(()=>{
+            pct+=Math.random()*10+5; if(pct>=100){pct=100;clearInterval(set);}
+            downloadBtn.querySelector(".txt").textContent=Math.round(pct)+"%";
+            downloadBtn.querySelector(".progress").style.width=pct+"%";
 
+            if(pct===100){
                 setTimeout(()=>{
+                    downloadBtn.querySelector(".txt").textContent="✔ Completo";
                     const a=document.createElement("a");
-                    a.href="Guilherme.pdf"; 
+                    a.href="Guilherme.pdf";
                     a.download="Curriculo-Guilherme-Cardoso.pdf";
-                    document.body.appendChild(a);
-                    a.click();
-                    a.remove();
+                    document.body.appendChild(a);a.click();a.remove();
 
                     setTimeout(()=>{
                         downloadBtn.classList.remove("loading");
-                        downloadBtn.innerText="Baixar Currículo";
+                        downloadBtn.textContent="Baixar Currículo";
                     },900);
-                },700);
+
+                },600);
             }
-            downloadBtn.querySelector(".txt").innerText = Math.round(pct)+"%";
-            downloadBtn.querySelector(".progress").style.width=pct+"%";
         },120);
     });
 }
