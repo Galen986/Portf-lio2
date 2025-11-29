@@ -1,124 +1,113 @@
-/* =======================================================
-   script.js — Versão corrigida para o seu HTML (2025)
-   Menu mobile | Tema persistente | Scroll reveal
-   Botão download com barra e porcentagem real
-   ======================================================= */
+/* ======================================================
+   SCRIPT OFICIAL — Guilherme Cardoso (2025)
+   Tema com persistência | Menu Mobile responsivo
+   Scroll Reveal | Download com barra e porcentagem real
+====================================================== */
 
 /* Helpers */
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-/* ================= TEMA (escuro/claro) ================= */
+
+/* =================== TEMA DARK/CLARO =================== */
+const btnToggleTema = $('.toggle-tema');
 const body = document.body;
-const btnToggleTema = document.querySelector('.toggle-tema'); // usa classe no HTML
-const temaSalvo = localStorage.getItem('tema') || null;
+const temaSalvo = localStorage.getItem('tema');
 
 // aplica tema salvo
 if (temaSalvo === 'dark') body.classList.add('dark');
-
-// atualiza ícone (se existir) conforme tema atual
-function atualizarIconeTema() {
-  const icone = btnToggleTema?.querySelector('i');
-  if (!icone) return;
-  if (body.classList.contains('dark')) {
-    icone.className = 'fa-solid fa-sun'; // sol quando está dark
-  } else {
-    icone.className = 'fa-solid fa-moon';
-  }
-}
 atualizarIconeTema();
 
-btnToggleTema?.addEventListener('click', () => {
-  body.classList.toggle('dark');
-  localStorage.setItem('tema', body.classList.contains('dark') ? 'dark' : 'light');
-  atualizarIconeTema();
-});
+function atualizarIconeTema() {
+    const icone = btnToggleTema?.querySelector('i');
+    if (!icone) return;
 
-/* ================= MENU MOBILE ================= */
-/*
-HTML: botão .btn-toggle-menu e nav.menu (conforme seu HTML)
-Vamos alternar a classe 'open' na <nav class="menu"> e 'ativo' no botão
-*/
-const btnToggleMenu = document.querySelector('.btn-toggle-menu');
-const menuPanel = document.querySelector('.menu');
-const menuLinks = $$('.menu-link');
-
-btnToggleMenu?.addEventListener('click', () => {
-  const isOpen = menuPanel.classList.toggle('open');
-  btnToggleMenu.classList.toggle('ativo');
-  // acessibilidade
-  btnToggleMenu.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-});
-
-// fechar menu ao clicar em link (útil no mobile)
-menuLinks.forEach(link => {
-  link.addEventListener('click', () => {
-    if (menuPanel.classList.contains('open')) {
-      menuPanel.classList.remove('open');
-      btnToggleMenu.classList.remove('ativo');
-      btnToggleMenu.setAttribute('aria-expanded', 'false');
+    if (body.classList.contains('dark')) {
+        icone.className = "fa-solid fa-sun"; // modo escuro = sol visível
+    } else {
+        icone.className = "fa-solid fa-moon";
     }
-  });
+}
+
+btnToggleTema?.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
+    atualizarIconeTema();
 });
 
-/* ============== ANIMAÇÃO AO ROLAR (reveal) ============= */
+
+/* =================== MENU MOBILE =================== */
+const btnMenu = $(".btn-toggle-menu");
+const navMenu = $(".menu");
+const linksMenu = $$(".menu-link");
+
+btnMenu?.addEventListener("click", () => {
+    const active = navMenu.classList.toggle("open");
+    btnMenu.classList.toggle("ativo");
+    btnMenu.setAttribute("aria-expanded", active ? "true" : "false");
+});
+
+// fecha ao clicar em link
+linksMenu.forEach(link => {
+    link.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        btnMenu.classList.remove("ativo");
+        btnMenu.setAttribute("aria-expanded", "false");
+    });
+});
+
+
+/* =================== SCROLL REVEAL =================== */
 const elementos = $$('[data-animate]');
 
 function revelarAoRolar() {
-  elementos.forEach(el => {
-    const pos = el.getBoundingClientRect().top;
-    if (pos < window.innerHeight - 100) el.classList.add('animado');
-  });
+    elementos.forEach(el => {
+        const posY = el.getBoundingClientRect().top;
+        if (posY < window.innerHeight - 100) el.classList.add("animado");
+    });
 }
-window.addEventListener('scroll', revelarAoRolar);
-revelarAoRolar(); // one-time ao carregar
+window.addEventListener("scroll", revelarAoRolar);
+revelarAoRolar(); // ativação inicial
 
-/* ======================================================
-   DOWNLOAD COM BARRA + PORCENTAGEM REAL + BAIXAR ARQUIVO
-   ====================================================== */
-/*
-HTML: botão com id="btnDownload" (conforme seu HTML).
-Ele exibirá percent e barra e, ao finalizar, iniciará o download de "Guilherme.pdf".
-*/
-const downloadBtn = document.getElementById('btnDownload');
+
+/* ===================== DOWNLOAD REAL ===================== */
+const downloadBtn = document.getElementById("btnDownload");
 
 if (downloadBtn) {
-  downloadBtn.addEventListener('click', async () => {
-    if (downloadBtn.classList.contains('loading')) return; // evita multi-cliques
+    downloadBtn.addEventListener("click", () => {
+        if (downloadBtn.classList.contains("loading")) return;
 
-    // estrutura interna (texto + barra)
-    downloadBtn.innerHTML = `<span class="txt">0%</span><span class="progress" aria-hidden="true"></span>`;
-    downloadBtn.classList.add('loading');
+        downloadBtn.innerHTML = `<span class="txt">0%</span><span class="progress"></span>`;
+        downloadBtn.classList.add("loading");
 
-    // animação fictícia de progresso (simula um download)
-    let pct = 0;
-    const interval = setInterval(() => {
-      pct += Math.floor(Math.random() * 6) + 2; // incremento variável para parecer real
-      if (pct > 100) pct = 100;
-      downloadBtn.querySelector('.txt').innerText = pct + '%';
-      downloadBtn.querySelector('.progress').style.width = pct + '%';
+        let pct = 0;
+        const simular = setInterval(() => {
+            pct += Math.floor(Math.random() * 6) + 3;
+            if (pct > 100) pct = 100;
 
-      if (pct >= 100) {
-        clearInterval(interval);
-        downloadBtn.querySelector('.txt').innerText = '✔ Completo';
+            downloadBtn.querySelector(".txt").innerText = pct + "%";
+            downloadBtn.querySelector(".progress").style.width = pct + "%";
 
-        // inicia o download real do arquivo (se existir no mesmo diretório)
-        setTimeout(() => {
-          // criar link e forçar download
-          const link = document.createElement('a');
-          link.href = 'Guilherme.pdf'; // ajuste se o arquivo estiver em outra pasta
-          link.download = 'Curriculo-Guilherme-Cardoso.pdf';
-          document.body.appendChild(link);
-          link.click();
-          link.remove();
+            if (pct === 100) {
+                clearInterval(simular);
 
-          // reset visual do botão
-          setTimeout(() => {
-            downloadBtn.classList.remove('loading');
-            downloadBtn.innerHTML = `<span class="txt">Baixar Currículo</span><span class="progress" style="width:0%"></span>`;
-          }, 900);
-        }, 600);
-      }
-    }, 120);
-  });
+                downloadBtn.querySelector(".txt").innerText = "✔ Completo";
+
+                setTimeout(() => {
+                    const link = document.createElement("a");
+                    link.href = "Guilherme.pdf"; // nome do seu arquivo
+                    link.download = "Curriculo-Guilherme-Cardoso.pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    link.remove();
+
+                    setTimeout(() => {
+                        downloadBtn.classList.remove("loading");
+                        downloadBtn.innerHTML = "Baixar Currículo";
+                    }, 900);
+
+                }, 600);
+            }
+        }, 120);
+    });
 }
