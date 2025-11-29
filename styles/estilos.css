@@ -1,224 +1,104 @@
-/* ======================================================================
-   ESTILOS V2 — Futurista Híbrido Inteligente (Light/Dark)
-   Design: Guilherme Cardoso 2025 — Interface Glass + Neon Glow
-======================================================================*/
+/* ==========================================================
+   FUTURE UI — V3 PREMIUM 2025  
+   Designer: Guilherme Cardoso
+   Glassmorphism + Neon | Efeito Holográfico + Ultra Responsivo
+==========================================================*/
 
-/* FONTE */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+/* TIPOGRAFIA */
+@import url('https://fonts.googleapis.com/css2?family:Poppins:wght@300;400;600&family:Teko:wght@600;700&display=swap');
 
-/* ============================================================
-   VARIÁVEIS DE COR (Light / Dark alternam automaticamente)
-============================================================ */
+/* ================= VARIÁVEIS GLOBAIS ================= */
 :root {
-    --bg: #f5f7ff;
-    --card: rgba(255,255,255,0.32);
-    --text: #0d0d16;
-    --text-sec: #3b3b4f;
-    --neon1: #00eaff;
-    --neon2: #b400ff;
-    --blur: 18px;
-    --trans: .25s ease;
+  --bg: #030613;
+  --glass: rgba(255,255,255,0.07);
+  --glass-border: rgba(255,255,255,0.22);
+  --primary: #00eaff;
+  --secondary: #b400ff;
+  --text: #e4eaff;
+  --text-muted: #a6b0d1;
+  --shadow: 0 0 15px rgba(0,255,255,0.35), 0 0 30px rgba(180,0,255,0.25);
 }
 
-/* Quando o usuário ativa modo DARK */
-body.dark {
-    --bg: #05050a;
-    --card: rgba(13,13,27,0.42);
-    --text: #e8e8ff;
-    --text-sec: #b3b3d9;
+/* ===================================== BODY ===================================== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #02040d 0%, #070a1c 50%, #0e0724 100%);
+  color: var(--text);
+  overflow-x: hidden;
+  animation: fadeIn 1.2s ease forwards;
 }
 
-/* ============================================================
-   BASE GERAL
-============================================================ */
-*{
-    margin:0; padding:0; box-sizing:border-box;
-    font-family:"Poppins",sans-serif;
-}
-body{
-    background:var(--bg);
-    color:var(--text);
-    transition:var(--trans);
-}
-img{max-width:100%;}
-
-/* ============================================================
-   HEADER / MENU
-============================================================ */
-.header{
-    width:100%;
-    position:fixed;
-    top:0; left:0;
-    backdrop-filter:blur(14px);
-    background:var(--card);
-    border-bottom:1px solid transparent;
-    box-shadow:0 0 22px rgba(0,0,0,.22);
-    padding:13px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:999;
-}
-.logo{
-    font-size:1.4rem;
-    font-weight:700;
-    color:var(--neon2);
-    letter-spacing:.5px;
-}
-.header-controls{display:flex; gap:12px;}
-
-.toggle-tema,.btn-toggle-menu{
-    background:transparent;
-    border:none;
-    font-size:1.3rem;
-    cursor:pointer;
-    color:var(--text);
-    transition:var(--trans);
-}
-.toggle-tema:hover,
-.btn-toggle-menu:hover{transform:scale(1.12);}
-
-/* MENU */
-.menu{
-    display:flex;
-    gap:22px;
-    transition:var(--trans);
-}
-.menu-link{
-    text-decoration:none;
-    font-weight:500;
-    color:var(--text);
-    position:relative;
-}
-.menu-link::after{
-    content:"";
-    width:0; height:2px;
-    background:var(--neon1);
-    position:absolute;
-    left:0; bottom:-3px;
-    transition:.28s;
-}
-.menu-link:hover::after,
-.menu-link.ativo::after{width:100%;}
-
-/* MOBILE */
-@media(max-width:780px){
-    .menu{
-        position:absolute;
-        top:75px; right:-100%;
-        flex-direction:column;
-        background:var(--card);
-        backdrop-filter:blur(14px);
-        padding:25px 40px;
-        box-shadow:0 0 20px rgba(0,0,0,.35);
-    }
-    .menu.open{right:5%;}
+/* Fade */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============================================================
-   CONTEÚDO / CONTAINER
-============================================================ */
-.container{
-    max-width:900px;
-    margin:auto;
-    padding:140px 25px 80px;
+/* ===================================== TÍTULOS ===================================== */
+h1, h2, h3 {
+  font-family: 'Teko', sans-serif;
+  letter-spacing: 1px;
+  color: var(--primary);
+  text-shadow: 0 0 12px var(--primary), 0 0 18px var(--secondary);
+  transition: 0.3s;
 }
-.titulo{
-    font-size:2.2rem;
-    font-weight:700;
-    background:linear-gradient(90deg,var(--neon1),var(--neon2));
-    -webkit-background-clip:text;
-    color:transparent;
+h1:hover, h2:hover { transform: scale(1.03); }
+
+/* ===================================== CONTAINER GLASS ===================================== */
+.glass-box {
+  width: 95%;
+  max-width: 850px;
+  margin: 35px auto;
+  background: var(--glass);
+  backdrop-filter: blur(13px) saturate(160%);
+  -webkit-backdrop-filter: blur(13px) saturate(160%);
+  border-radius: 18px;
+  border: 1.5px solid var(--glass-border);
+  padding: 40px;
+  box-shadow: var(--shadow);
+  animation: up 1s ease;
 }
 
-/* BLOCOS (Cards translúcidos) */
-.bloco{
-    background:var(--card);
-    backdrop-filter:blur(var(--blur));
-    padding:25px;
-    border-radius:18px;
-    margin-top:25px;
-    transition:var(--trans);
-    box-shadow:0 0 25px rgba(0,0,0,.15);
+@keyframes up { from { opacity:0; transform: translateY(20px);}}
+
+/* ===================================== BOTÕES ===================================== */
+button, .btn {
+  display: inline-block;
+  background: linear-gradient(92deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+  padding: 12px 22px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 10px var(--primary);
 }
-.bloco:hover{
-    transform:translateY(-4px);
-    box-shadow:0 0 25px var(--neon1);
+button:hover, .btn:hover {
+  letter-spacing: 1px;
+  transform: scale(1.05);
+  box-shadow: 0 0 18px var(--secondary), 0 0 30px var(--primary);
 }
 
-/* SCROLL REVEAL */
-[data-animate]{opacity:0; transform:translateY(30px); transition:.6s;}
-.animado{opacity:1; transform:translateY(0);}
+/* ===================================== LISTAS + TEXTOS ===================================== */
+ul, li { list-style: none; }
+p { color: var(--text-muted); font-size: 15px; }
 
-/* ============================================================
-   BOTÃO DOWNLOAD COM BARRA
-============================================================ */
-.download-btn{
-    background:linear-gradient(90deg,var(--neon1),var(--neon2));
-    color:#fff; border:none;
-    padding:14px 22px;
-    border-radius:10px;
-    font-weight:600;
-    cursor:pointer;
-    margin-top:25px;
-    font-size:1rem;
-    position:relative;
-    overflow:hidden;
-}
-.download-btn .progress{
-    position:absolute;left:0;top:0;
-    height:100%; width:0;
-    background:rgba(255,255,255,.35);
-    transition:.3s;
+/* ===================================== RODAPÉ ===================================== */
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 15px;
+  font-size: 13px;
+  opacity: 0.7;
 }
 
-/* ============================================================
-   REDES SOCIAIS (WHATSAPP, FACEBOOK, INSTAGRAM)
-============================================================ */
-.redes{
-    display:flex;
-    justify-content:center;
-    gap:14px;
-    margin:40px 0;
-}
-.btn-social{
-    width:45px; height:45px;
-    border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    font-size:1.3rem;
-    color:#fff;
-    transition:.3s;
-}
-
-/* CORES OFICIAIS */
-.btn-social:nth-child(1){background:#25D366;}       /* WhatsApp */
-.btn-social:nth-child(2){background:#1877F2;}       /* Facebook */
-.btn-social:nth-child(3){background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF,#515BD4);} /* Insta */
-
-.btn-social:hover{
-    transform:scale(1.13);
-    box-shadow:0 0 15px var(--neon1);
-}
-
-/* ============================================================
-   FOTO PERFIL (suave flutuante)
-============================================================ */
-.foto{
-    width:170px;
-    border-radius:50%;
-    margin-bottom:15px;
-    box-shadow:0 0 25px var(--neon1);
-    animation:flutuar 4s ease-in-out infinite alternate;
-}
-@keyframes flutuar{to{transform:translateY(-10px);}}
-
-/* ============================================================
-   FOOTER
-============================================================ */
-.footer{
-    text-align:center;
-    padding:20px;
-    opacity:.8;
-    margin-top:20px;
-    font-size:.9rem;
+/* ===================================== RESPONSIVIDADE ===================================== */
+@media (max-width: 600px){
+  .glass-box { padding: 25px; }
+  h1 { font-size: 1.8rem; }
+  p { font-size: 14px; }
 }
