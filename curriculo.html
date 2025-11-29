@@ -1,90 +1,65 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Currículo - Guilherme Cardoso</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Currículo - Guilherme Cardoso</title>
 
-  <link rel="stylesheet" href="styles/estilos.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script defer src="script.js"></script>
+<link rel="stylesheet" href="style.css">
+<script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
 
-  <header class="header">
-    <div class="logo"><i class="fa-solid fa-file-lines"></i> Currículo</div>
+<header class="header">
+    <h2 class="logo">Guilherme Dev</h2>
 
     <div class="header-controls">
-      <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
-      <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+        <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
+        <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
     </div>
 
     <nav class="menu">
-      <a href="index.html" class="menu-link">Início</a>
-      <a href="sobre.html" class="menu-link">Sobre Mim</a>
-      <a href="curriculo.html" class="menu-link ativo">Currículo</a>
+        <a href="index.html" class="menu-link">Início</a>
+        <a href="sobre.html" class="menu-link">Sobre Mim</a>
+        <a href="curriculo.html" class="menu-link ativo">Currículo</a>
     </nav>
-  </header>
+</header>
 
-  <main class="container" data-animate>
-
-    <img src="Guilherme.pdf" class="foto" alt="Foto curriculum">
-
-    <h1 class="titulo">Guilherme Cardoso da Silva</h1>
+<section class="container">
+    <h1 class="titulo">Currículo</h1>
 
     <section class="bloco">
-      <h2>Dados Pessoais</h2>
-      <ul>
-        <li><strong>Telefone:</strong> (11) 96400-2284</li>
-        <li><strong>Email:</strong> guilhermecardoso4413@gmail.com</li>
-        <li><strong>Endereço:</strong> São Paulo - SP</li>
-      </ul>
+        <h2>Dados Pessoais</h2>
+        <ul>
+            <li><b>Tel:</b> (11) 96400-2284</li>
+            <li><b>Email:</b> guilhermecardoso4413@gmail.com</li>
+            <li><b>Endereço:</b> São Paulo - SP</li>
+        </ul>
+    </section>
+
+    <section class="bloco"><h2>Objetivo</h2><p>Desenvolvimento Web / Suporte Técnico</p></section>
+
+    <section class="bloco"><h2>Formação</h2><p>Desenvolvimento de Sistemas – Senac</p></section>
+
+    <section class="bloco">
+        <h2>Cursos</h2>
+        <ul><li>HTML / CSS / JS</li><li>Pacote Office Avançado</li></ul>
     </section>
 
     <section class="bloco">
-      <h2>Objetivo</h2>
-      <p>Desenvolvimento Web / Suporte Técnico</p>
+        <h2>Habilidades</h2>
+        <ul>
+            <li>Comunicação</li>
+            <li>Organização</li>
+            <li>Trabalho em equipe</li>
+            <li>Montagem e manutenção de PCs</li>
+        </ul>
     </section>
 
-    <section class="bloco">
-      <h2>Formação</h2>
-      <p>Curso de Desenvolvimento de Sistemas – Senac</p>
-    </section>
+    <button id="btnDownload" class="download-btn">Baixar Currículo</button>
+</section>
 
-    <section class="bloco">
-      <h2>Cursos</h2>
-      <ul>
-        <li>HTML, CSS e JS – Intermediário</li>
-        <li>Pacote Office – Avançado</li>
-      </ul>
-    </section>
-
-    <section class="bloco">
-      <h2>Habilidades</h2>
-      <ul>
-        <li>Comunicação</li>
-        <li>Organização</li>
-        <li>Trabalho em equipe</li>
-        <li>Montagem e manutenção de computadores</li>
-      </ul>
-    </section>
-
-<!-- BOTÃO DE DOWNLOAD ANIMADO -->
-<div class="area-download">
-    <button id="btnDownload" class="download-btn">
-        <span class="txt">Baixar Currículo</span>
-        <span class="progress"></span>
-    </button>
-</div>
-
-  </main>
-
-  <footer class="footer">
-    <p>© 2025 Guilherme Cardoso</p>
-  </footer>
-
+<footer class="footer">© 2025 Guilherme Cardoso</footer>
+<script src="script.js"></script>
 </body>
 </html>
