@@ -1,120 +1,101 @@
 /* ======================================================
-   script.js — Versão levemente reforçada (ARIA + fallback)
+   script.js — Versão Premium Final
 ====================================================== */
 
-/* Helpers */
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-/* =================== TEMA DARK/CLARO =================== */
+/* =================== 🌙 TEMA DARK/CLARO =================== */
 const btnToggleTema = $('.toggle-tema');
 const body = document.body;
 const temaSalvo = localStorage.getItem('tema');
 
-// aplica tema salvo
-if (temaSalvo === 'dark') body.classList.add('dark');
+if (temaSalvo) body.classList.add(temaSalvo);
+atualizarIconeTema();
 
-function atualizarIconeTema() {
-    // atualiza ícone e aria-pressed com segurança
-    const icone = btnToggleTema?.querySelector('i');
-    if (btnToggleTema) {
-        const isDark = body.classList.contains('dark');
-        btnToggleTema.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        if (icone) icone.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
+btnToggleTema?.addEventListener("click", () => {
+    body.classList.contains('dark')
+        ? body.classList.remove('dark')
+        : body.classList.add('dark');
+
+    localStorage.setItem('tema', body.classList.contains('dark') ? 'dark' : 'light');
+    atualizarIconeTema();
+});
+
+function atualizarIconeTema(){
+    const icon = btnToggleTema.querySelector("i");
+    if(!icon) return;
+    if(body.classList.contains("dark")){
+        icon.className = "fa-solid fa-sun";
+        btnToggleTema.style.color = "#ffeb3b";
     } else {
-        // fallback: tenta procurar por qualquer botão similar
-        const fallback = document.querySelector('[data-toggle-tema-fallback]');
-        if (fallback) {
-            const ic = fallback.querySelector('i');
-            if (ic) ic.className = body.classList.contains('dark') ? "fa-solid fa-sun" : "fa-solid fa-moon";
-        }
+        icon.className = "fa-solid fa-moon";
+        btnToggleTema.style.color = "#00eaff";
     }
 }
 
-// inicializa ícone
-atualizarIconeTema();
-
-if (btnToggleTema) {
-    btnToggleTema.addEventListener("click", () => {
-        body.classList.toggle("dark");
-        localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
-        atualizarIconeTema();
-    });
-}
-
-/* =================== MENU MOBILE =================== */
+/* =================== 📱 MENU MOBILE =================== */
 const btnMenu = $(".btn-toggle-menu");
 const navMenu = $(".menu");
-const linksMenu = $$(".menu-link");
 
-btnMenu?.addEventListener("click", () => {
-    const active = navMenu.classList.toggle("open");
+btnMenu.addEventListener("click", () => {
+    navMenu.classList.toggle("open");
     btnMenu.classList.toggle("ativo");
-    btnMenu.setAttribute("aria-expanded", active ? "true" : "false");
 });
 
-// fecha ao clicar em link
-linksMenu.forEach(link => {
-    link.addEventListener("click", () => {
-        if (navMenu.classList.contains('open')) {
-            navMenu.classList.remove("open");
-            btnMenu.classList.remove("ativo");
-            btnMenu.setAttribute("aria-expanded", "false");
+$$(".menu-link").forEach(l =>
+    l.addEventListener("click", () => {
+        navMenu.classList.remove("open");
+        btnMenu.classList.remove("ativo");
+    })
+);
+
+/* =================== 🔥 SCROLL REVEAL =================== */
+const itens = $$('[data-animate]');
+function scrollReveal(){
+    itens.forEach(el => {
+        if(el.getBoundingClientRect().top < window.innerHeight - 120){
+            el.classList.add("animado");
         }
-    });
-});
-
-/* =================== SCROLL REVEAL =================== */
-const elementos = $$('[data-animate]');
-function revelarAoRolar() {
-    elementos.forEach(el => {
-        const posY = el.getBoundingClientRect().top;
-        if (posY < window.innerHeight - 100) el.classList.add("animado");
-    });
+    })
 }
-window.addEventListener("scroll", revelarAoRolar);
-revelarAoRolar();
+scrollReveal();
+window.addEventListener("scroll", scrollReveal);
 
-/* ===================== DOWNLOAD REAL ===================== */
-const downloadBtn = document.getElementById("btnDownload");
+/* =================== ⬇ DOWNLOAD SURREAL =================== */
+const downloadBtn = $("#btnDownload");
 
-if (downloadBtn) {
+if(downloadBtn){
     downloadBtn.addEventListener("click", () => {
-        if (downloadBtn.classList.contains("loading")) return;
+        if(downloadBtn.classList.contains("loading")) return;
 
         downloadBtn.innerHTML = `<span class="txt">0%</span><span class="progress"></span>`;
         downloadBtn.classList.add("loading");
 
         let pct = 0;
-        const simular = setInterval(() => {
-            pct += Math.floor(Math.random() * 6) + 3;
-            if (pct > 100) pct = 100;
+        const sim = setInterval(()=>{
+            pct += Math.random()*10+5;
+            if(pct>=100){
+                pct = 100;
+                clearInterval(sim);
+                downloadBtn.querySelector(".txt").innerText="✔ Pronto";
 
-            const txt = downloadBtn.querySelector(".txt");
-            const prog = downloadBtn.querySelector(".progress");
-            if (txt) txt.innerText = pct + "%";
-            if (prog) prog.style.width = pct + "%";
+                setTimeout(()=>{
+                    const a=document.createElement("a");
+                    a.href="Guilherme.pdf"; 
+                    a.download="Curriculo-Guilherme-Cardoso.pdf";
+                    document.body.appendChild(a);
+                    a.click();
+                    a.remove();
 
-            if (pct === 100) {
-                clearInterval(simular);
-
-                if (txt) txt.innerText = "✔ Completo";
-
-                setTimeout(() => {
-                    const link = document.createElement("a");
-                    link.href = "Guilherme.pdf"; // ajuste se necessário
-                    link.download = "Curriculo-Guilherme-Cardoso.pdf";
-                    document.body.appendChild(link);
-                    link.click();
-                    link.remove();
-
-                    setTimeout(() => {
+                    setTimeout(()=>{
                         downloadBtn.classList.remove("loading");
-                        downloadBtn.innerHTML = "Baixar Currículo";
-                    }, 900);
-
-                }, 600);
+                        downloadBtn.innerText="Baixar Currículo";
+                    },900);
+                },700);
             }
-        }, 120);
+            downloadBtn.querySelector(".txt").innerText = Math.round(pct)+"%";
+            downloadBtn.querySelector(".progress").style.width=pct+"%";
+        },120);
     });
 }
