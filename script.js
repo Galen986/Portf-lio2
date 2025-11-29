@@ -1,13 +1,10 @@
 /* ======================================================
-   SCRIPT OFICIAL — Guilherme Cardoso (2025)
-   Tema com persistência | Menu Mobile responsivo
-   Scroll Reveal | Download com barra e porcentagem real
+   script.js — Versão levemente reforçada (ARIA + fallback)
 ====================================================== */
 
 /* Helpers */
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-
 
 /* =================== TEMA DARK/CLARO =================== */
 const btnToggleTema = $('.toggle-tema');
@@ -16,25 +13,34 @@ const temaSalvo = localStorage.getItem('tema');
 
 // aplica tema salvo
 if (temaSalvo === 'dark') body.classList.add('dark');
-atualizarIconeTema();
 
 function atualizarIconeTema() {
+    // atualiza ícone e aria-pressed com segurança
     const icone = btnToggleTema?.querySelector('i');
-    if (!icone) return;
-
-    if (body.classList.contains('dark')) {
-        icone.className = "fa-solid fa-sun"; // modo escuro = sol visível
+    if (btnToggleTema) {
+        const isDark = body.classList.contains('dark');
+        btnToggleTema.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+        if (icone) icone.className = isDark ? "fa-solid fa-sun" : "fa-solid fa-moon";
     } else {
-        icone.className = "fa-solid fa-moon";
+        // fallback: tenta procurar por qualquer botão similar
+        const fallback = document.querySelector('[data-toggle-tema-fallback]');
+        if (fallback) {
+            const ic = fallback.querySelector('i');
+            if (ic) ic.className = body.classList.contains('dark') ? "fa-solid fa-sun" : "fa-solid fa-moon";
+        }
     }
 }
 
-btnToggleTema?.addEventListener("click", () => {
-    body.classList.toggle("dark");
-    localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
-    atualizarIconeTema();
-});
+// inicializa ícone
+atualizarIconeTema();
 
+if (btnToggleTema) {
+    btnToggleTema.addEventListener("click", () => {
+        body.classList.toggle("dark");
+        localStorage.setItem("tema", body.classList.contains("dark") ? "dark" : "light");
+        atualizarIconeTema();
+    });
+}
 
 /* =================== MENU MOBILE =================== */
 const btnMenu = $(".btn-toggle-menu");
@@ -50,16 +56,16 @@ btnMenu?.addEventListener("click", () => {
 // fecha ao clicar em link
 linksMenu.forEach(link => {
     link.addEventListener("click", () => {
-        navMenu.classList.remove("open");
-        btnMenu.classList.remove("ativo");
-        btnMenu.setAttribute("aria-expanded", "false");
+        if (navMenu.classList.contains('open')) {
+            navMenu.classList.remove("open");
+            btnMenu.classList.remove("ativo");
+            btnMenu.setAttribute("aria-expanded", "false");
+        }
     });
 });
 
-
 /* =================== SCROLL REVEAL =================== */
 const elementos = $$('[data-animate]');
-
 function revelarAoRolar() {
     elementos.forEach(el => {
         const posY = el.getBoundingClientRect().top;
@@ -67,8 +73,7 @@ function revelarAoRolar() {
     });
 }
 window.addEventListener("scroll", revelarAoRolar);
-revelarAoRolar(); // ativação inicial
-
+revelarAoRolar();
 
 /* ===================== DOWNLOAD REAL ===================== */
 const downloadBtn = document.getElementById("btnDownload");
@@ -85,17 +90,19 @@ if (downloadBtn) {
             pct += Math.floor(Math.random() * 6) + 3;
             if (pct > 100) pct = 100;
 
-            downloadBtn.querySelector(".txt").innerText = pct + "%";
-            downloadBtn.querySelector(".progress").style.width = pct + "%";
+            const txt = downloadBtn.querySelector(".txt");
+            const prog = downloadBtn.querySelector(".progress");
+            if (txt) txt.innerText = pct + "%";
+            if (prog) prog.style.width = pct + "%";
 
             if (pct === 100) {
                 clearInterval(simular);
 
-                downloadBtn.querySelector(".txt").innerText = "✔ Completo";
+                if (txt) txt.innerText = "✔ Completo";
 
                 setTimeout(() => {
                     const link = document.createElement("a");
-                    link.href = "Guilherme.pdf"; // nome do seu arquivo
+                    link.href = "Guilherme.pdf"; // ajuste se necessário
                     link.download = "Curriculo-Guilherme-Cardoso.pdf";
                     document.body.appendChild(link);
                     link.click();
