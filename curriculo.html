@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Currículo</title>
 
-<!-- CSS CONECTADO -->
+<!-- CSS CONECTADO (mantive seu caminho) -->
 <link rel="stylesheet" href="styles/estilos.css">
 
 <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
@@ -15,8 +15,15 @@
 <header class="header">
     <h2 class="logo">Guilherme Dev</h2>
     <div class="header-controls">
-        <button class="toggle-tema"><i class="fa-solid fa-moon"></i></button>
-        <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+        <!-- botão de tema com aria e texto escondido para acessibilidade -->
+        <button class="toggle-tema" aria-pressed="false" aria-label="Alternar tema">
+            <i class="fa-solid fa-moon" aria-hidden="true"></i>
+            <span class="visually-hidden">Alternar tema</span>
+        </button>
+
+        <button class="btn-toggle-menu" aria-expanded="false">
+            <span class="hamburger"><span></span><span></span><span></span></span>
+        </button>
     </div>
     <nav class="menu">
         <a href="index.html" class="menu-link">Início</a>
@@ -25,10 +32,11 @@
     </nav>
 </header>
 
-<section class="container">
+<!-- aqui forcei alinhamento à esquerda (preservando todo conteúdo) -->
+<section class="container" style="text-align:left;">
     <h1 class="titulo">Currículo</h1>
 
-    <section class="bloco">
+    <section class="bloco" data-animate>
         <h2>Dados Pessoais</h2>
         <ul>
             <li><b>Telefone:</b> (11) 96400-2284</li>
