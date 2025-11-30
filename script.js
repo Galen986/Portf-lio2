@@ -1,86 +1,44 @@
-/* ======================================================
-   script.js — Tema Ativado • Persistente • 2025
-====================================================== */
+/* ===== SELETOR RÁPIDO ===== */
+const $ = (s)=>document.querySelector(s); 
+const $$=(s)=>document.querySelectorAll(s);
 
-const $ = (sel) => document.querySelector(sel);
-const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-
-/* 🌙 / ☀ TEMA — PERSISTENTE */
-const btnToggleTema = $('.toggle-tema');
-const temaSalvo = localStorage.getItem("tema");
-
-// Se já existe tema salvo, aplica
-if (temaSalvo) {
-    document.body.classList.add(temaSalvo);
-    btnToggleTema.querySelector("i").className =
-        temaSalvo === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
-}
-
-// Clique → alterna
-btnToggleTema.addEventListener("click", () => {
+/* ===== THEME ===== */
+const tema = $(".toggle-tema");
+if(localStorage.tema) document.body.classList.add(localStorage.tema);
+tema.addEventListener("click", ()=> {
     document.body.classList.toggle("dark");
-
-    const modo = document.body.classList.contains("dark") ? "dark" : "light";
-    localStorage.setItem("tema", modo);
-
-    btnToggleTema.querySelector("i").className =
-        modo === "dark" ? "fa-solid fa-sun" : "fa-solid fa-moon";
+    localStorage.tema = document.body.classList.contains("dark") ? "dark" : "";
 });
 
-/* 📱 MENU */
-const btnMenu = document.querySelector(".btn-toggle-menu");
-const menu = document.querySelector(".menu");
-
-btnMenu.addEventListener("click", () => {
+/* ===== MENU ===== */
+const menu = $(".menu"), btn = $(".btn-toggle-menu");
+btn.addEventListener("click", ()=>{
     menu.classList.toggle("open");
-    btnMenu.classList.toggle("ativo");
+    btn.classList.toggle("ativo");
 });
+$$(".menu-link").forEach(l=>l.addEventListener("click",()=>{
+    menu.classList.remove("open"); btn.classList.remove("ativo");
+}));
 
-$$(".menu-link").forEach(link =>
-    link.addEventListener("click", () => {
-        menu.classList.remove("open");
-        btnMenu.classList.remove("ativo");
-    })
-);
+/* ===== DOWNLOAD ===== */
+const dl = $("#btnDownload");
+if(dl){
+    dl.addEventListener("click",()=>{
+        if(dl.classList.contains("loading")) return;
+        dl.classList.add("loading");
+        dl.textContent="Baixando 0%";
 
-/* 🔥 SCROLL - animação (V3) */
-const itens = $$('[data-animate]');
-const reveal = () => itens.forEach(el => {
-    if (el.getBoundingClientRect().top < window.innerHeight - 90)
-        el.classList.add("animado");
-});
-window.addEventListener("scroll", reveal);
-reveal();
-
-/* 📄 DOWNLOAD (se existir botão) */
-const downloadBtn = $("#btnDownload");
-if (downloadBtn) {
-    downloadBtn.addEventListener("click", () => {
-        if (downloadBtn.classList.contains("loading")) return;
-
-        downloadBtn.innerHTML = `<span class="txt">0%</span><span class="progress"></span>`;
-        downloadBtn.classList.add("loading");
-
-        let pct = 0, set = setInterval(() => {
-            pct += Math.random() * 10 + 5;
-            if (pct >= 100) { pct = 100; clearInterval(set); }
-            downloadBtn.querySelector(".txt").textContent = Math.round(pct) + "%";
-            downloadBtn.querySelector(".progress").style.width = pct + "%";
-
-            if (pct === 100) {
-                setTimeout(() => {
-                    downloadBtn.querySelector(".txt").textContent = "✔ Completo";
-                    const a = document.createElement("a");
-                    a.href = "Guilherme.pdf";
-                    a.download = "Curriculo-Guilherme-Cardoso.pdf";
-                    document.body.appendChild(a); a.click(); a.remove();
-
-                    setTimeout(() => {
-                        downloadBtn.classList.remove("loading");
-                        downloadBtn.textContent = "Baixar Currículo";
-                    }, 900);
-                }, 600);
-            }
-        }, 120);
+        let pct=0,set=setInterval(()=>{
+            pct+=8+Math.random()*10;
+            if(pct>=100){
+                pct=100; clearInterval(set);
+                dl.textContent="✔ Concluído";
+                let a=document.createElement("a");
+                a.href="Guilherme.pdf";
+                a.download="Curriculo-Guilherme-Cardoso.pdf";
+                a.click();
+                setTimeout(()=>{dl.classList.remove("loading");dl.textContent="Baixar Currículo"},1200);
+            }else dl.textContent="Baixando "+Math.round(pct)+"%";
+        },120);
     });
 }
