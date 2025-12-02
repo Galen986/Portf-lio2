@@ -2,10 +2,13 @@
 const $ = (s)=>document.querySelector(s); 
 const $$=(s)=>document.querySelectorAll(s);
 
-/* ===== THEME ===== */
+/* ===== THEME SWITCH ===== */
 const tema = $(".toggle-tema");
-if(localStorage.tema) document.body.classList.add(localStorage.tema);
-tema.addEventListener("click", ()=> {
+
+if (localStorage.tema)
+    document.body.classList.add(localStorage.tema);
+
+tema.addEventListener("click", () => {
     document.body.classList.toggle("dark");
     localStorage.tema = document.body.classList.contains("dark") ? "dark" : "";
 });
