@@ -2,10 +2,9 @@
 const $ = (s)=>document.querySelector(s); 
 const $$=(s)=>document.querySelectorAll(s);
 
-/* ===== THEME SWITCH ===== */
-const tema = $(".toggle-tema");
+const tema = document.querySelector(".toggle-tema");
 
-if (localStorage.tema)
+if(localStorage.tema)
     document.body.classList.add(localStorage.tema);
 
 tema.addEventListener("click", () => {
