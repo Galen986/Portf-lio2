@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Currículo - Guilherme Dev</title>
-<link rel="stylesheet" href="styles/estilos.css">
-<script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo - Guilherme Dev</title>
+
+  <link rel="stylesheet" href="styles/estilos.css" />
+  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<header class="header">
-    <h2 class="logo">Guilherme Dev</h2>
+  <header class="header" role="banner">
+    <h1 class="logo">Guilherme Dev</h1>
 
     <div class="header-controls">
-        <button class="toggle-tema"><i class="fas fa-moon"></i></button>
-        <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+      <button class="toggle-tema" aria-label="Alternar tema" title="Alternar tema">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+
+      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" title="Abrir menu">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
     </div>
 
-    <nav class="menu">
-        <a href="index.html" class="menu-link">Início</a>
-        <a href="sobre.html" class="menu-link">Sobre Mim</a>
-        <a href="curriculo.html" class="menu-link ativo">Currículo</a>
+    <nav id="main-menu" class="menu" role="navigation" aria-label="Menu principal">
+      <a href="index.html" class="menu-link">Início</a>
+      <a href="sobre.html" class="menu-link">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link ativo">Currículo</a>
     </nav>
-</header>
+  </header>
 
-<section class="container center">
+  <main class="container center" role="main">
+    <h2 class="titulo">Currículo</h2>
 
-<h1 class="titulo">Currículo</h1>
-
-<div class="bloco">
-    <h2>Dados Pessoais</h2>
-    <ul>
+    <section class="bloco">
+      <h3>Dados Pessoais</h3>
+      <ul>
         <li><b>Telefone:</b> (11) 96400-2284</li>
         <li><b>Email:</b> guilhermecardoso4413@gmail.com</li>
         <li><b>Local:</b> São Paulo - SP</li>
-    </ul>
-</div>
+      </ul>
+    </section>
 
-<button id="btnDownload" class="download-btn">Baixar Currículo</button>
+    <button id="btnDownload" class="download-btn">Baixar Currículo</button>
+  </main>
 
-</section>
+  <div class="redes">
+    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+    <a href="https://facebook.com" class="btn-social" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook" aria-hidden="true"></i>
+    </a>
+    <a href="https://instagram.com" class="btn-social" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
+    </a>
+  </div>
 
-<div class="redes stack">
-    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-<a href="https://facebook.com" class="btn-social" target="_blank">
-    <i class="fab fa-facebook"></i>
-</a>
-<a href="https://instagram.com" class="btn-social" target="_blank">
-    <i class="fab fa-instagram"></i>
-</a>
-</div>
+  <footer class="footer">© 2025 Guilherme Cardoso</footer>
 
-<footer class="footer">© 2025 Guilherme Cardoso</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
