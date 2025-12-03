@@ -1,51 +1,54 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guilherme Dev</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Dev</title>
 
-<link rel="stylesheet" href="styles/estilos.css">
-<script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles/estilos.css" />
+  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-<header class="header">
-    <h2 class="logo">Guilherme Dev</h2>
+  <header class="header" role="banner">
+    <h1 class="logo">Guilherme Dev</h1>
 
     <div class="header-controls">
-        <button class="toggle-tema"><i class="fas fa-moon"></i></button>
-        <button class="btn-toggle-menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+      <button class="toggle-tema" aria-label="Alternar tema" title="Alternar tema">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+
+      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" title="Abrir menu">
+        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+      </button>
     </div>
 
-    <nav class="menu">
-        <a href="index.html" class="menu-link ativo">Início</a>
-        <a href="sobre.html" class="menu-link">Sobre Mim</a>
-        <a href="curriculo.html" class="menu-link">Currículo</a>
+    <nav id="main-menu" class="menu" role="navigation" aria-label="Menu principal">
+      <a href="index.html" class="menu-link ativo">Início</a>
+      <a href="sobre.html" class="menu-link">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link">Currículo</a>
     </nav>
-</header>
+  </header>
 
-<section class="container center">
-    <img src="img/perfil.jpg" class="foto" alt="Guilherme">
+  <main class="container center" role="main">
+    <img src="img/perfil.jpg" class="foto" alt="Foto de Guilherme" />
+    <h2 class="titulo">Olá, eu sou Guilherme Cardoso</h2>
+    <p class="small">Desenvolvedor buscando evoluir e inovar no digital.</p>
+  </main>
 
-    <h1 class="titulo">Olá, eu sou Guilherme Cardoso</h1>
-    <p>Desenvolvedor buscando evoluir e inovar no digital.</p>
-</section>
+  <div class="redes">
+    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp" aria-hidden="true"></i>
+    </a>
+    <a href="https://facebook.com" class="btn-social" target="_blank" rel="noopener" aria-label="Facebook">
+      <i class="fab fa-facebook" aria-hidden="true"></i>
+    </a>
+    <a href="https://instagram.com" class="btn-social" target="_blank" rel="noopener" aria-label="Instagram">
+      <i class="fab fa-instagram" aria-hidden="true"></i>
+    </a>
+  </div>
 
-<div class="redes stack">
-    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-<a href="https://facebook.com" class="btn-social" target="_blank">
-    <i class="fab fa-facebook"></i>
-</a>
-<a href="https://instagram.com" class="btn-social" target="_blank">
-    <i class="fab fa-instagram"></i>
-</a>
-</div>
+  <footer class="footer">© 2025 Guilherme Cardoso</footer>
 
-<footer class="footer">© 2025 Guilherme Cardoso</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
