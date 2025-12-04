@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sobre Mim</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Guilherme Dev — Sobre</title>
 
   <link rel="stylesheet" href="styles/estilos.css" />
-  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous"></script>
+  <script defer src="scripts/script.js"></script>
+  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous" defer></script>
 </head>
 <body>
   <header class="header" role="banner">
@@ -29,9 +30,22 @@
     </nav>
   </header>
 
-  <main class="container center" role="main">
+  <main class="container" role="main">
     <h2 class="titulo">Quem sou eu?</h2>
-    <p class="small">Me chamo <strong>Guilherme Cardoso</strong>, apaixonado por tecnologia e design moderno e eficiente.</p>
+    <p class="small">
+      Me chamo <strong>Guilherme Cardoso</strong>. Tenho interesse por front-end, design de interfaces, experiência do usuário e performance web.
+      Trabalho com HTML, CSS (Sass/Tailwind quando necessário), JavaScript (ES6+) e ferramentas modernas.
+    </p>
+
+    <section class="bloco" style="margin-top:18px;">
+      <h3>Competências</h3>
+      <ul>
+        <li>HTML semântico e acessível</li>
+        <li>CSS moderno — layouts responsivos, animações leves</li>
+        <li>JavaScript: DOM, Fetch API, SPA simples</li>
+        <li>Git, deploy (Netlify/Vercel)</li>
+      </ul>
+    </section>
   </main>
 
   <div class="redes">
@@ -47,7 +61,5 @@
   </div>
 
   <footer class="footer">© 2025 Guilherme Cardoso</footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
