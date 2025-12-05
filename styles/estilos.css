@@ -1,7 +1,7 @@
 /* ===========================================================
-   ESTILOS — PREMIUM PORTFOLIO (ATUALIZAÇÃO 2025)
-   Neon escuro, responsivo, acessível
-   =========================================================== */
+    ESTILOS — PREMIUM PORTFOLIO (REVISÃO 2025: CARD LAYOUT)
+    Minimalista, Dark Neon, Responsivo, Acessível
+    =========================================================== */
 
 /* IMPORTS */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Teko:wght@600;700&display=swap');
@@ -29,11 +29,15 @@ body.dark{
   --text: #eaf7ff;
   --bg-1: #050613;
   --bg-2: #02030a;
+  /* 💡 CORREÇÃO TEMA: Reaplicar o background com as novas variáveis do modo escuro */
+  background: radial-gradient(900px 500px at 8% 8%, rgba(0,234,255,0.02), transparent 9%), linear-gradient(160deg,var(--bg-1),var(--bg-2));
 }
+
 
 /* RESET & BASE */
 *{box-sizing:border-box;margin:0;padding:0}
 html{scrollbar-width:thin}
+ul{list-style:none;padding-left:0} /* 👈 Melhoria para consistência em listas */
 body{
   font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
   background: radial-gradient(900px 500px at 8% 8%, rgba(0,234,255,0.02), transparent 9%), linear-gradient(160deg,var(--bg-1),var(--bg-2));
@@ -44,13 +48,35 @@ body{
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
+a{color:var(--accent-a)}
 
-/* LAYOUT */
+/* LAYOUT PRINCIPAL (Container Grid) */
 .container{
   max-width:var(--maxw);
   margin:100px auto 80px;
   padding:40px;
   width:100%;
+  display:grid; /* 👈 Usando Grid para o layout de cartões */
+  grid-template-columns:1fr 2fr; /* Coluna 1 (25%) e Coluna 2 (75%) no desktop */
+  gap:24px;
+}
+
+/* 🎯 NOVO ESTILO CARD */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:var(--radius);
+  padding:28px;
+  border:1px solid rgba(255,255,255,0.06);
+  box-shadow:0 8px 30px rgba(0,0,0,0.25);
+  transition:all 0.3s var(--ease);
+}
+.card.full-width {
+    grid-column: 1 / -1; /* Ocupa todas as colunas */
+}
+.card:hover{
+    border-color:rgba(0,234,255,0.1);
+    box-shadow:var(--glow);
+    transform:translateY(-2px);
 }
 
 /* HEADER */
@@ -108,15 +134,18 @@ body{
 .menu-link:hover{color:var(--accent-a);transform:translateY(-3px)}
 .menu-link.ativo{color:var(--accent-b);background:linear-gradient(145deg,rgba(123,75,255,0.12),rgba(123,75,255,0.06))}
 
-/* TITLES & CARDS */
+/* TITLES & LISTS */
 .titulo{font-family:"Teko",sans-serif;font-size:2.2rem;color:var(--accent-a);margin-bottom:10px}
-.bloco{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;margin-top:18px;border:1px solid rgba(255,255,255,0.03)}
-.bloco ul{list-style:none;margin-top:10px;display:flex;flex-direction:column;gap:12px;padding-left:0}
-.bloco li{padding-left:18px;position:relative}
-.bloco li::before{content:'▸';position:absolute;left:0;color:var(--accent-a)}
 
-/* FOTO */
-.foto{width:160px;height:160px;border-radius:14px;object-fit:cover;display:block;margin:0 auto 24px;border:2px solid rgba(255,255,255,0.08)}
+/* Removendo .bloco e usando .card */
+.card h3{margin-bottom:12px;color:var(--accent-a);font-weight:600}
+.card ul{margin-top:0;display:flex;flex-direction:column;gap:12px;}
+.card li{padding-left:18px;position:relative}
+.card li::before{content:'▸';position:absolute;left:0;color:var(--accent-a)}
+
+/* FOTO (dentro de um card) */
+.foto{width:100%;max-width:200px;height:auto;aspect-ratio:1/1;border-radius:14px;object-fit:cover;display:block;margin:0 auto 24px;border:2px solid rgba(255,255,255,0.08)}
+.perfil-card{text-align:center;} /* Card para centralizar o conteúdo da página inicial */
 
 /* DOWNLOAD BUTTON */
 .download-btn, .download-btn:link, .download-btn:visited {
@@ -144,27 +173,39 @@ body{
 
 /* RESPONSIVE RULES */
 @media (max-width: 900px) {
+  /* Layout GRID: Mudar para coluna única no mobile */
+  .container{
+    grid-template-columns:1fr;
+    gap:18px;
+    margin:70px 16px 60px;padding:20px;
+  }
+  /* O grid de 1 coluna torna 'full-width' irrelevante, mas mantemos por consistência */
+  .card.full-width {
+      grid-column: auto;
+  }
+  
+  /* Menu Mobile */
   .menu{display:none}
   .btn-toggle-menu{display:flex}
-  /* quando abre o menu no mobile, mostramos como sobreposição */
   .menu.open{
     display:flex !important;
     position:fixed;
     top:84px;right:18px;left:18px;
-    flex-direction:column;padding:18px;border-radius:12px;background:linear-gradient(180deg,rgba(5,8,18,0.98),rgba(3,6,12,0.95));
+    flex-direction:column;padding:18px;background:linear-gradient(180deg,rgba(5,8,18,0.98),rgba(3,6,12,0.95));
     gap:12px;border:1px solid rgba(255,255,255,0.06);z-index:1250;
   }
   .header{padding:12px 14px}
-  .container{margin:70px 16px 60px;padding:20px}
   .logo{font-size:1.36rem}
   .titulo{font-size:1.9rem}
-  .redes{position:static;display:flex;justify-content:center;margin-top:28px;gap:12px}
+  
+  /* Redes Sociais no Mobile: Mudar de fixed para estático no rodapé */
+  .redes{position:static;display:flex;flex-direction:row;justify-content:center;margin-top:28px;gap:12px}
   .header-controls{gap:8px}
 }
 
 /* EXTRA small devices */
 @media (max-width: 520px) {
-  .foto{width:130px;height:130px}
+  .foto{max-width:130px;height:130px}
   .download-btn{padding:12px 18px;font-size:.95rem}
   .menu.open{left:12px;right:12px}
 }
