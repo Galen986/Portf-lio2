@@ -1,65 +1,30 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Guilherme Dev — Sobre</title>
-
-  <link rel="stylesheet" href="styles/estilos.css" />
-  <script defer src="scripts/script.js"></script>
-  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous" defer></script>
-</head>
 <body>
-  <header class="header" role="banner">
-    <h1 class="logo">Guilherme Dev</h1>
-
-    <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema" title="Alternar tema">
-        <i class="fas fa-moon" aria-hidden="true"></i>
-      </button>
-
-      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" title="Abrir menu">
-        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
+  <main class="container" role="main">
+    
+    <div class="card">
+        <h2 class="titulo">Quem sou eu?</h2>
+        <p class="small">
+          Me chamo <strong>Guilherme Cardoso</strong>. Tenho interesse por front-end, design de interfaces, experiência do usuário e performance web.
+          Trabalho com HTML, CSS (Sass/Tailwind quando necessário), JavaScript (ES6+) e ferramentas modernas.
+        </p>
+        <a class="download-btn btn-download-simulado" role="button" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
+            <span class="icon"><i class="fas fa-download" aria-hidden="true"></i></span>
+            <span class="label">Baixar Currículo</span>
+        </a>
     </div>
 
-    <nav id="main-menu" class="menu" role="navigation" aria-label="Menu principal">
-      <a href="index.html" class="menu-link">Início</a>
-      <a href="sobre.html" class="menu-link ativo">Sobre Mim</a>
-      <a href="curriculo.html" class="menu-link">Currículo</a>
-    </nav>
-  </header>
-
-  <main class="container" role="main">
-    <h2 class="titulo">Quem sou eu?</h2>
-    <p class="small">
-      Me chamo <strong>Guilherme Cardoso</strong>. Tenho interesse por front-end, design de interfaces, experiência do usuário e performance web.
-      Trabalho com HTML, CSS (Sass/Tailwind quando necessário), JavaScript (ES6+) e ferramentas modernas.
-    </p>
-
-    <section class="bloco" style="margin-top:18px;">
-      <h3>Competências</h3>
-      <ul>
-        <li>HTML semântico e acessível</li>
-        <li>CSS moderno — layouts responsivos, animações leves</li>
-        <li>JavaScript: DOM, Fetch API, SPA simples</li>
-        <li>Git, deploy (Netlify/Vercel)</li>
-      </ul>
+    <section class="card">
+        <h3>Competências</h3>
+        <ul>
+          <li>HTML semântico e acessível</li>
+          <li>CSS moderno — layouts responsivos, animações leves</li>
+          <li>JavaScript: DOM, Fetch API, SPA simples</li>
+          <li>Git, deploy (Netlify/Vercel)</li>
+        </ul>
     </section>
   </main>
 
-  <div class="redes">
-    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-    <a href="https://facebook.com" class="btn-social" target="_blank" rel="noopener" aria-label="Facebook">
-      <i class="fab fa-facebook" aria-hidden="true"></i>
-    </a>
-    <a href="https://instagram.com" class="btn-social" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram" aria-hidden="true"></i>
-    </a>
-  </div>
-
-  <footer class="footer">© 2025 Guilherme Cardoso</footer>
-</body>
+  </body>
 </html>
