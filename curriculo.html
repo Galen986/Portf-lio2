@@ -1,39 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Guilherme Dev — Currículo</title>
-
-  <link rel="stylesheet" href="styles/estilos.css" />
-  <script defer src="scripts/script.js"></script>
-  <script src="https://kit.fontawesome.com/9b6df0ee4d.js" crossorigin="anonymous" defer></script>
-</head>
 <body>
-  <header class="header" role="banner">
-    <h1 class="logo">Guilherme Dev</h1>
-
-    <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema" title="Alternar tema">
-        <i class="fas fa-moon" aria-hidden="true"></i>
-      </button>
-
-      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" title="Abrir menu">
-        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
-    </div>
-
-    <nav id="main-menu" class="menu" role="navigation" aria-label="Menu principal">
-      <a href="index.html" class="menu-link">Início</a>
-      <a href="sobre.html" class="menu-link">Sobre Mim</a>
-      <a href="curriculo.html" class="menu-link ativo">Currículo</a>
-    </nav>
-  </header>
-
   <main class="container" role="main">
-    <h2 class="titulo">Currículo</h2>
-
-    <section class="bloco">
+    <h2 class="titulo full-width">Currículo</h2> <section class="card">
       <h3>Dados Pessoais</h3>
       <ul>
         <li><b>Telefone:</b> (11) 96400-2284</li>
@@ -42,7 +11,7 @@
       </ul>
     </section>
 
-    <section class="bloco">
+    <section class="card">
       <h3>Experiência</h3>
       <ul>
         <li><strong>Estágio / Projeto</strong> — Front-end (HTML/CSS/JS) — 2024</li>
@@ -50,25 +19,11 @@
       </ul>
     </section>
 
-    <a class="download-btn" id="btnDownload" role="button" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
+    <a class="download-btn btn-download-simulado full-width" role="button" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
       <span class="icon"><i class="fas fa-download" aria-hidden="true"></i></span>
       <span class="label">Baixar Currículo</span>
     </a>
-
   </main>
 
-  <div class="redes">
-    <a href="https://wa.me/5511964002284" class="btn-social" target="_blank" rel="noopener" aria-label="WhatsApp">
-      <i class="fab fa-whatsapp" aria-hidden="true"></i>
-    </a>
-    <a href="https://facebook.com" class="btn-social" target="_blank" rel="noopener" aria-label="Facebook">
-      <i class="fab fa-facebook" aria-hidden="true"></i>
-    </a>
-    <a href="https://instagram.com" class="btn-social" target="_blank" rel="noopener" aria-label="Instagram">
-      <i class="fab fa-instagram" aria-hidden="true"></i>
-    </a>
-  </div>
-
-  <footer class="footer">© 2025 Guilherme Cardoso</footer>
-</body>
+  </body>
 </html>
