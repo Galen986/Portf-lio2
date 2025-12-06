@@ -3,10 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sobre e Competências</title>
+  <title>Sobre e Competências - Guilherme Cardoso</title>
+  
   <link rel="stylesheet" href="script/estilos.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+
+  <header class="header">
+    <div class="logo">Guilherme Cardoso</div>
+    <nav class="menu" id="main-menu" role="navigation">
+      <a href="index.html" class="menu-link">Início</a> 
+      <a href="sobre.html" class="menu-link ativo">Sobre Mim</a>
+      <a href="curriculo.html" class="menu-link">Currículo</a>
+    </nav>
+    <div class="header-controls">
+      <button class="toggle-tema" aria-label="Alternar tema claro/escuro">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu de navegação">
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </header>
   <main class="container" role="main">
 
     <div class="card">
@@ -32,6 +51,14 @@
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <footer class="footer">
+    <p>&copy; 2025 Guilherme Cardoso. Desenvolvido com HTML, CSS e JS.</p>
+  </footer>
+  <div class="redes">
+      <a class="btn-social" href="#" target="_blank" title="WhatsApp" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+      <a class="btn-social" href="#" target="_blank" title="LinkedIn" style="background:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
+      <a class="btn-social" href="#" target="_blank" title="GitHub" style="background:#181717"><i class="fab fa-github"></i></a>
+  </div>
+  <script src="script/script.js"></script>
 </body>
 </html>
