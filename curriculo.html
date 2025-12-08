@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Currículo - Guilherme Cardoso</title>
-  
+
   <link rel="stylesheet" href="styles/estilos.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-  
   <header class="header">
-    <div class="logo">Guilherme Cardoso</div>
-    <nav class="menu" id="main-menu" role="navigation">
-      <a href="index.html" class="menu-link">Início</a> 
-      <a href="sobre.html" class="menu-link">Sobre Mim</a>
-      <a href="curriculo.html" class="menu-link ativo">Currículo</a>
-    </nav>
-    <div class="header-controls">
-      <button class="toggle-tema" aria-label="Alternar tema claro/escuro">
-        <i class="fas fa-moon" aria-hidden="true"></i>
-      </button>
-      <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu de navegação">
-        <div class="hamburger"><span></span><span></span><span></span></div>
-      </button>
+    <div class="header-inner">
+      <div class="logo">Guilherme Cardoso</div>
+
+      <nav class="menu" id="main-menu" role="navigation" aria-label="Menu principal">
+        <a href="index.html" class="menu-link">Início</a>
+        <a href="sobre.html" class="menu-link">Sobre Mim</a>
+        <a href="curriculo.html" class="menu-link ativo">Currículo</a>
+      </nav>
+
+      <div class="header-controls">
+        <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu de navegação">
+          <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+        </button>
+
+        <button class="toggle-tema" aria-label="Alternar tema claro/escuro">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </header>
+
   <main class="container" role="main">
-    <h2 class="titulo full-width">Currículo</h2> 
+    <h2 class="titulo full-width">Currículo</h2>
 
     <section class="card">
       <h3>Dados Pessoais</h3>
@@ -49,17 +54,20 @@
     <a class="download-btn btn-download-simulado full-width" role="button" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
       <span class="icon"><i class="fas fa-download" aria-hidden="true"></i></span>
       <span class="label">Baixar Currículo</span>
+      <span class="progress" aria-hidden="true"></span>
     </a>
   </main>
 
   <footer class="footer">
     <p>&copy; 2025 Guilherme Cardoso. Desenvolvido com HTML, CSS e JS.</p>
   </footer>
+
   <div class="redes">
-      <a class="btn-social" href="#" target="_blank" title="WhatsApp" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
-      <a class="btn-social" href="#" target="_blank" title="LinkedIn" style="background:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
-      <a class="btn-social" href="#" target="_blank" title="GitHub" style="background:#181717"><i class="fab fa-github"></i></a>
+    <a class="btn-social" href="#" target="_blank" title="WhatsApp" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+    <a class="btn-social" href="#" target="_blank" title="LinkedIn" style="background:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn-social" href="#" target="_blank" title="GitHub" style="background:#181717"><i class="fab fa-github"></i></a>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
