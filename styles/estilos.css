@@ -156,11 +156,29 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
 .download-btn::before{ content:""; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,0.18), transparent 35%); transform: translateX(-120%); transition: transform 0.35s ease-out; pointer-events:none; }
 .download-btn:hover::before{ transform: translateX(0%); }
 
-/* full width helper */
-.full-width { grid-column: 1 / -1; display:flex; align-items:center; justify-content:flex-start; }
-.full-width:is(h2) { /* Forçando o título a esticar em certas páginas, mantendo o alinhamento */
-  justify-content:flex-start;
+/* full width helper - AJUSTADO PARA CENTRALIZAÇÃO */
+.full-width { 
+  grid-column: 1 / -1; 
+  display:flex; 
+  align-items:center; 
+  /* Centraliza o conteúdo dentro do full-width */
+  justify-content:center; 
+  flex-direction: column; 
+  text-align: center; 
 }
+.full-width:is(h2) { 
+  /* Mantém o título do currículo e o separador em linha */
+  justify-content:center; 
+  flex-direction: row;
+}
+
+/* Regra para o botão de download ficar centralizado quando full-width */
+.download-btn.full-width {
+    justify-content: center;
+    align-self: center; 
+    width: auto; 
+}
+
 
 /* footer */
 .footer { margin-top:auto; border-top:1px solid rgba(30,64,175,0.2); background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); backdrop-filter: blur(8px); }
@@ -183,8 +201,10 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
   /* Ajustes gerais de layout */
   .perfil-card{ grid-template-columns: 1fr; text-align:center; gap:1rem; }
   .perfil-card .foto{ margin-inline:auto; }
+  
+  /* Garante que full-width no mobile centraliza */
   .full-width { justify-content:center; }
-  .full-width:is(h2) { /* Título principal sempre alinhado ao centro no mobile */
+  .full-width:is(h2) { 
     justify-content:center;
   }
   .menu { margin-left: 0; margin-right: 0; } /* Remove margens do menu em mobile */
@@ -194,6 +214,12 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
     /* Esconde o botão do menu e força a exibição do menu no desktop */
     .btn-toggle-menu { display: none; }
     .menu { display: flex !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; position: static !important; flex-direction: row !important; }
+
+    /* REGRAS PARA CENTRALIZAR CARDS EM TELA GRANDE */
+    .perfil-card, .card {
+      max-width: 800px; /* Define uma largura máxima razoável */
+      margin-inline: auto; /* Centraliza o card dentro do container */
+    }
 }
 
 @media (max-width:480px){
