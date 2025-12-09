@@ -31,56 +31,56 @@ html { scroll-behavior: smooth; }
 }
 
 /* DARK / LIGHT THEMES */
-body { min-height:100vh; color:var(--text); background:
-  radial-gradient(circle at 0% 0%, #1d283a 0, transparent 55%),
-  radial-gradient(circle at 100% 100%, #0f766e 0, transparent 55%),
-  radial-gradient(circle at 100% 0%, #4c1d95 0, transparent 50%),
-  var(--bg);
-  display:flex; flex-direction:column; line-height:1.45; }
-body::before { content:""; position:fixed; inset:0; backdrop-filter: blur(26px) saturate(140%) contrast(110%); pointer-events:none; z-index:-1; }
+body { 
+  min-height:100vh; 
+  color:var(--text); 
+  background:
+    radial-gradient(circle at 0% 0%, #1d283a 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, #0f766e 0, transparent 55%),
+    radial-gradient(circle at 100% 0%, #4c1d95 0, transparent 50%),
+    var(--bg);
+  display:flex; 
+  flex-direction:column; 
+  line-height:1.45; 
+}
+body::before { 
+  content:""; 
+  position:fixed; 
+  inset:0; 
+  /* Efeito de desfoque sutil no fundo para o glassmorphism */
+  backdrop-filter: blur(26px) saturate(140%) contrast(110%); 
+  pointer-events:none; 
+  z-index:-1; 
+}
 
 /* light theme overrides */
 body.light {
   --bg: #f6f8fb;
-  --bg-card: rgba(255,255,255,0.9); /* Mais leve */
+  --bg-card: rgba(255,255,255,0.9);
   --text: #0f1724;
   --text-soft: #475569;
   --border-subtle: rgba(15,23,42,0.1);
   background: linear-gradient(180deg,#e6f6ff 0%, #f8f9fb 100%);
   color: var(--text);
 }
-
-body.light .header {
-  background: rgba(255,255,255,0.9); /* Header mais claro */
-  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
-}
-body.light .logo {
-  border-color: rgba(15,23,42,0.15);
-  background: none;
-}
-body.light .logo::before {
-  box-shadow: 0 0 10px rgba(34,197,94,0.4);
-}
-body.light .menu-link:hover {
-  background: rgba(15,23,42,0.05); /* Hover suave */
-  box-shadow: none;
-}
-body.light .menu-link.ativo {
-  background: rgba(124,58,237,0.1); /* Fundo ativo suave */
-  border-color: rgba(124,58,237,0.2);
-  color: var(--text);
-}
-body.light .btn-toggle-menu, body.light .toggle-tema {
-  background: #fff;
-  color: var(--text-soft);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-body.light .card:hover, body.light .perfil-card:hover {
-  box-shadow: 0 18px 45px rgba(0,0,0,0.15); /* Sombra mais leve */
-}
+body.light .header { background: rgba(255,255,255,0.9); box-shadow: 0 4px 18px rgba(0,0,0,0.1); }
+body.light .logo { border-color: rgba(15,23,42,0.15); background: none; }
+body.light .logo::before { box-shadow: 0 0 10px rgba(34,197,94,0.4); }
+body.light .menu-link:hover { background: rgba(15,23,42,0.05); box-shadow: none; }
+body.light .menu-link.ativo { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.2); color: var(--text); }
+body.light .btn-toggle-menu, body.light .toggle-tema { background: #fff; color: var(--text-soft); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
+body.light .card:hover, body.light .perfil-card:hover { box-shadow: 0 18px 45px rgba(0,0,0,0.15); }
 
 /* HEADER */
-.header { position:sticky; top:0; z-index:50; backdrop-filter: blur(12px) saturate(120%); background: linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(15,23,42,0.6)); border-bottom:1px solid var(--border-subtle); box-shadow: 0 8px 26px rgba(0,0,0,0.5); }
+.header { 
+  position:sticky; 
+  top:0; 
+  z-index:50; 
+  backdrop-filter: blur(12px) saturate(120%); 
+  background: linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(15,23,42,0.6)); 
+  border-bottom:1px solid var(--border-subtle); 
+  box-shadow: 0 8px 26px rgba(0,0,0,0.5); 
+}
 .header-inner { 
   width:var(--container-w); 
   margin-inline:auto; 
@@ -90,7 +90,6 @@ body.light .card:hover, body.light .perfil-card:hover {
   justify-content:space-between; 
   gap:1rem; 
   padding-inline:0.5rem; 
-  /* Adicionado para evitar quebra de layout em telas muito pequenas */
   min-width: 280px;
 }
 
@@ -106,18 +105,16 @@ body.light .card:hover, body.light .perfil-card:hover {
   align-items:center; 
   gap:0.6rem; 
   color:var(--text); 
-  /* ADICIONADO: Evita quebra de linha no nome */
   white-space: nowrap; 
 }
 .logo::before{ content:""; width:8px; height:8px; border-radius:999px; background: radial-gradient(circle at 30% 30%, #bef264, #22c55e); box-shadow:0 0 16px rgba(34,197,94,0.8); }
 
-/* NAV - Desktop (Ajustado) */
-.menu { display:flex; gap:0.2rem; align-items:center; margin-left: auto; margin-right: 1.5rem; } /* Tenta centralizar e dá espaço */
+/* NAV - Desktop */
+.menu { display:flex; gap:0.2rem; align-items:center; margin-left: auto; margin-right: 1.5rem; }
 .menu-link { color:var(--text-soft); text-decoration:none; padding:0.6rem 1rem; border-radius:8px; font-size:0.92rem; transition: all var(--transition-fast); }
 .menu-link:hover { color:var(--text); transform:none; background: rgba(255,255,255,0.05); box-shadow: none; }
 .menu-link.ativo { color: #e5fffb; background: linear-gradient(90deg, rgba(6,182,212,0.18), rgba(124,58,237,0.15)); border-bottom:2px solid var(--accent-2); border-radius:4px 4px 0 0; color:var(--text); font-weight:600; }
-body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaque em roxo no light theme */
-
+body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
 
 /* CONTROLS */
 .header-controls { display:flex; align-items:center; gap:0.55rem; }
@@ -131,17 +128,65 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
 .btn-toggle-menu.is-open .hamburger span:nth-child(1){ top:6px; transform:rotate(45deg); } .btn-toggle-menu.is-open .hamburger span:nth-child(2){ opacity:0; } .btn-toggle-menu.is-open .hamburger span:nth-child(3){ bottom:6px; transform:rotate(-45deg); }
 
 /* MAIN / LAYOUT */
-.container { width:var(--container-w); margin-inline:auto; padding:2.6rem 0 3.5rem; display:grid; grid-template-columns:1fr; gap:1.4rem; }
-.titulo { font-size: clamp(1.5rem, 3vw, 1.95rem); font-weight:700; letter-spacing:0.02em; color:var(--text); display:inline-flex; align-items:center; gap:0.6rem; }
+.container { 
+  width:var(--container-w); 
+  margin-inline:auto; 
+  padding:2.6rem 0 3.5rem; 
+  display:grid; 
+  /* Garante que o layout se adapta ao mobile (colunas únicas) e centraliza em desktop */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap:1.4rem; 
+}
+.titulo { 
+  font-size: clamp(1.5rem, 3vw, 1.95rem); 
+  font-weight:700; 
+  letter-spacing:0.02em; 
+  color:var(--text); 
+  display:inline-flex; 
+  align-items:center; 
+  gap:0.6rem; 
+  /* Centraliza o texto do título */
+  justify-content:center; 
+}
 .titulo::after{ content:""; width:70px; height:2px; border-radius:999px; background: linear-gradient(90deg,var(--accent), transparent); margin-left:12px; }
 
 /* CARDS */
-.card, .perfil-card { border-radius:var(--radius-lg); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--bg-card); border:1px solid var(--border-subtle); padding:1.4rem; box-shadow: var(--shadow-soft); transition: transform var(--transition-med), box-shadow var(--transition-med); overflow:hidden; }
+.card, .perfil-card { 
+  border-radius:var(--radius-lg); 
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--bg-card); 
+  border:1px solid var(--border-subtle); 
+  padding:1.4rem; 
+  box-shadow: var(--shadow-soft); 
+  transition: transform var(--transition-med), box-shadow var(--transition-med); 
+  overflow:hidden; 
+  /* Adiciona flexbox para facilitar a centralização no card "Quem Sou Eu" */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza o conteúdo horizontalmente */
+  text-align: center; /* Centraliza o texto */
+}
 .card:hover, .perfil-card:hover { transform: translateY(-4px); box-shadow: 0 28px 66px rgba(0,0,0,0.6); }
 .card h3{ font-size:1.02rem; margin-bottom:0.6rem; color:var(--text); }
-.small, .card p, .card ul li { color:var(--text-soft); font-size:0.95rem; } /* Texto do card normalizado */
-.card ul{ list-style:none; padding:0; }
+.small, .card p, .card ul li { color:var(--text-soft); font-size:0.95rem; }
+.card ul{ list-style:none; padding:0; text-align: left; /* Lista alinhada à esquerda dentro do card */ }
 .card ul li { margin-bottom:0.4rem; }
+
+/* Especial para o card 'Quem Sou Eu?' para manter o texto centralizado */
+.card.full-width {
+    text-align: center;
+}
+.card.full-width p {
+    text-align: center;
+    max-width: 600px; /* Limita a largura do parágrafo */
+}
+/* Alinhamento da lista no card de competências */
+.card:not(.full-width) {
+    align-items: flex-start;
+    text-align: left;
+}
+.card:not(.full-width) h3 {
+    align-self: center;
+}
 
 /* perfil */
 .perfil-card { display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:center; }
@@ -161,22 +206,25 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
   grid-column: 1 / -1; 
   display:flex; 
   align-items:center; 
-  /* Centraliza o conteúdo dentro do full-width */
   justify-content:center; 
   flex-direction: column; 
   text-align: center; 
 }
 .full-width:is(h2) { 
-  /* Mantém o título do currículo e o separador em linha */
   justify-content:center; 
   flex-direction: row;
 }
 
-/* Regra para o botão de download ficar centralizado quando full-width */
-.download-btn.full-width {
-    justify-content: center;
+/* Regra para o botão de download ficar centralizado e com largura apropriada */
+.full-width .download-btn {
     align-self: center; 
     width: auto; 
+    margin-top: 10px;
+}
+/* Ajuste para o botão de download no card de Documentos */
+.card:has(.download-btn) {
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -201,13 +249,13 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
   /* Ajustes gerais de layout */
   .perfil-card{ grid-template-columns: 1fr; text-align:center; gap:1rem; }
   .perfil-card .foto{ margin-inline:auto; }
-  
+
   /* Garante que full-width no mobile centraliza */
   .full-width { justify-content:center; }
   .full-width:is(h2) { 
     justify-content:center;
   }
-  .menu { margin-left: 0; margin-right: 0; } /* Remove margens do menu em mobile */
+  .menu { margin-left: 0; margin-right: 0; }
 }
 
 @media (min-width: 769px) {
@@ -215,10 +263,9 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); } /* Destaqu
     .btn-toggle-menu { display: none; }
     .menu { display: flex !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; position: static !important; flex-direction: row !important; }
 
-    /* REGRAS PARA CENTRALIZAR CARDS EM TELA GRANDE */
-    .perfil-card, .card {
-      max-width: 800px; /* Define uma largura máxima razoável */
-      margin-inline: auto; /* Centraliza o card dentro do container */
+    /* Força os cards a não serem 100% da largura do container em desktop para melhor visual */
+    .card:not(.full-width) {
+      max-width: 480px; /* Limita a largura dos cards menores */
     }
 }
 
