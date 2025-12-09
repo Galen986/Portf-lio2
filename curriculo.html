@@ -6,68 +6,70 @@
   <title>Currículo - Guilherme Cardoso</title>
 
   <link rel="stylesheet" href="styles/estilos.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous"/>
 </head>
 <body>
+
   <header class="header">
     <div class="header-inner">
       <div class="logo">Guilherme Cardoso</div>
 
-      <nav class="menu" id="main-menu" role="navigation" aria-label="Menu principal">
+      <nav class="menu" id="main-menu">
         <a href="index.html" class="menu-link">Início</a>
         <a href="sobre.html" class="menu-link">Sobre Mim</a>
         <a href="curriculo.html" class="menu-link ativo">Currículo</a>
       </nav>
 
       <div class="header-controls">
-        <button class="btn-toggle-menu" aria-expanded="false" aria-controls="main-menu" aria-label="Abrir menu de navegação">
-          <div class="hamburger" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button class="btn-toggle-menu">
+          <div class="hamburger"><span></span><span></span><span></span></div>
         </button>
-
-        <button class="toggle-tema" aria-label="Alternar tema claro/escuro">
-          <i class="fas fa-moon" aria-hidden="true"></i>
+        <button class="toggle-tema">
+          <i class="fas fa-moon"></i>
         </button>
       </div>
     </div>
   </header>
 
-  <main class="container" role="main" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+  <main class="container">
+    
     <h2 class="titulo full-width">Currículo</h2>
 
-    <section class="card">
+    <section class="card full-width">
       <h3>Dados Pessoais</h3>
       <ul>
-        <li><b>Telefone:</b> (11) 96400-2284</li>
-        <li><b>Email:</b> guilhermecardoso4413@gmail.com</li>
-        <li><b>Local:</b> São Paulo - SP</li>
+        <li><strong>Telefone:</strong> (11) 96400-2284</li>
+        <li><strong>Email:</strong> guilhermecardoso4413@gmail.com</li>
+        <li><strong>Local:</strong> São Paulo - SP</li>
       </ul>
     </section>
 
-    <section class="card">
+    <section class="card full-width">
       <h3>Experiência</h3>
       <ul>
-        <li><strong>Estágio / Projeto</strong> — Front-end (HTML/CSS/JS) — 2024</li>
-        <li><strong>Projetos pessoais</strong> — Portfólio e landing pages responsivas</li>
+        <li><strong>Estágio / Projeto</strong> — Front-end — 2024</li>
+        <li><strong>Projetos pessoais</strong> — Portfólio e landing pages</li>
       </ul>
     </section>
 
-    <div class="full-width" style="margin-top: 1.4rem;"> 
-        <a class="download-btn btn-download-simulado" role="button" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
-          <span class="icon"><i class="fas fa-download" aria-hidden="true"></i></span>
-          <span class="label">Baixar Currículo</span>
-          <span class="progress" aria-hidden="true"></span>
-        </a>
+    <div class="full-width">
+      <a class="download-btn" href="assets/Curriculo-Guilherme-Cardoso.pdf" download>
+        <span class="icon"><i class="fas fa-download"></i></span>
+        <span class="label">Baixar Currículo</span>
+        <span class="progress"></span>
+      </a>
     </div>
+
   </main>
 
   <footer class="footer">
-    <p>&copy; 2025 Guilherme Cardoso. Desenvolvido com HTML, CSS e JS.</p>
+    <p>&copy; 2025 Guilherme Cardoso.</p>
   </footer>
 
   <div class="redes">
-    <a class="btn-social" href="#" target="_blank" title="WhatsApp" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
-    <a class="btn-social" href="#" target="_blank" title="LinkedIn" style="background:#0a66c2"><i class="fab fa-linkedin-in"></i></a>
-    <a class="btn-social" href="#" target="_blank" title="GitHub" style="background:#181717"><i class="fab fa-github"></i></a>
+    <a class="btn-social" href="#" style="background:#25D366"><i class="fab fa-whatsapp"></i></a>
+    <a class="btn-social" href="#" style="background:#0A66C2"><i class="fab fa-linkedin-in"></i></a>
+    <a class="btn-social" href="#" style="background:#181717"><i class="fab fa-github"></i></a>
   </div>
 
   <script src="script.js"></script>
