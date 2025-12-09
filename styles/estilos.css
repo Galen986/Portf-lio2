@@ -136,6 +136,8 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
   /* Garante que o layout se adapta ao mobile (colunas únicas) e centraliza em desktop */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
   gap:1.4rem; 
+  /* Centraliza o grid dentro do container */
+  justify-items: center;
 }
 .titulo { 
   font-size: clamp(1.5rem, 3vw, 1.95rem); 
@@ -148,7 +150,8 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
   /* Centraliza o texto do título */
   justify-content:center; 
 }
-.titulo::after{ content:""; width:70px; height:2px; border-radius:999px; background: linear-gradient(90deg,var(--accent), transparent); margin-left:12px; }
+/* REMOVE A LINHA DEPOIS DO TÍTULO */
+.titulo::after{ content:none; }
 
 /* CARDS */
 .card, .perfil-card { 
@@ -159,7 +162,7 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
   box-shadow: var(--shadow-soft); 
   transition: transform var(--transition-med), box-shadow var(--transition-med); 
   overflow:hidden; 
-  /* Adiciona flexbox para facilitar a centralização no card "Quem Sou Eu" */
+  /* Garante que o conteúdo do card é centralizado */
   display: flex;
   flex-direction: column;
   align-items: center; /* Centraliza o conteúdo horizontalmente */
@@ -168,28 +171,39 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
 .card:hover, .perfil-card:hover { transform: translateY(-4px); box-shadow: 0 28px 66px rgba(0,0,0,0.6); }
 .card h3{ font-size:1.02rem; margin-bottom:0.6rem; color:var(--text); }
 .small, .card p, .card ul li { color:var(--text-soft); font-size:0.95rem; }
-.card ul{ list-style:none; padding:0; text-align: left; /* Lista alinhada à esquerda dentro do card */ }
+.card ul{ list-style:none; padding:0; 
+    /* Garante que as listas dentro dos cards fiquem centralizadas */
+    text-align: center; 
+    width: 100%; /* Ocupa a largura total para centralizar o bloco */
+}
 .card ul li { margin-bottom:0.4rem; }
+.card ul li strong { color: var(--text); }
 
 /* Especial para o card 'Quem Sou Eu?' para manter o texto centralizado */
-.card.full-width {
+.card.full-width, .perfil-card.full-width {
     text-align: center;
 }
 .card.full-width p {
     text-align: center;
     max-width: 600px; /* Limita a largura do parágrafo */
 }
-/* Alinhamento da lista no card de competências */
+/* Alinhamento da lista no card de competências e outros cards menores */
 .card:not(.full-width) {
-    align-items: flex-start;
-    text-align: left;
+    align-items: center; /* Centraliza o card menor */
+    text-align: center;
 }
-.card:not(.full-width) h3 {
-    align-self: center;
+.card:not(.full-width) ul {
+    text-align: center;
 }
 
+
 /* perfil */
-.perfil-card { display:grid; grid-template-columns:auto 1fr; gap:1.2rem; align-items:center; }
+.perfil-card { 
+  display:flex; 
+  flex-direction: column; 
+  gap:1.2rem; 
+  align-items:center; 
+}
 .foto { width:96px; height:96px; border-radius:999px; object-fit:cover; border:2px solid rgba(148,163,184,0.6); }
 
 /* DOWNLOAD BUTTON */
@@ -210,10 +224,6 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
   flex-direction: column; 
   text-align: center; 
 }
-.full-width:is(h2) { 
-  justify-content:center; 
-  flex-direction: row;
-}
 
 /* Regra para o botão de download ficar centralizado e com largura apropriada */
 .full-width .download-btn {
@@ -221,8 +231,8 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
     width: auto; 
     margin-top: 10px;
 }
-/* Ajuste para o botão de download no card de Documentos */
-.card:has(.download-btn) {
+/* Ajuste para o card de Documentos */
+.card.documentos-card {
     justify-content: center;
     align-items: center;
 }
@@ -252,9 +262,6 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
 
   /* Garante que full-width no mobile centraliza */
   .full-width { justify-content:center; }
-  .full-width:is(h2) { 
-    justify-content:center;
-  }
   .menu { margin-left: 0; margin-right: 0; }
 }
 
@@ -263,9 +270,10 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
     .btn-toggle-menu { display: none; }
     .menu { display: flex !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; position: static !important; flex-direction: row !important; }
 
-    /* Força os cards a não serem 100% da largura do container em desktop para melhor visual */
+    /* Força os cards a não serem 100% da largura do container em desktop para melhor visual e centraliza-os*/
     .card:not(.full-width) {
       max-width: 480px; /* Limita a largura dos cards menores */
+      /* No layout de grid, 'justify-items: center' no .container cuida da centralização. */
     }
 }
 
