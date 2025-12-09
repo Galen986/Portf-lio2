@@ -1,4 +1,4 @@
-/* ===========================================================
+ /* ===========================================================
    FUTURE NEON — Premium Portfolio Styles (2025)
    Autor: Assistente — Ajustado para Guilherme Cardoso
    =========================================================== */
@@ -81,10 +81,34 @@ body.light .card:hover, body.light .perfil-card:hover {
 
 /* HEADER */
 .header { position:sticky; top:0; z-index:50; backdrop-filter: blur(12px) saturate(120%); background: linear-gradient(to bottom, rgba(15,23,42,0.85), rgba(15,23,42,0.6)); border-bottom:1px solid var(--border-subtle); box-shadow: 0 8px 26px rgba(0,0,0,0.5); }
-.header-inner { width:var(--container-w); margin-inline:auto; height:var(--nav-h); display:flex; align-items:center; justify-content:space-between; gap:1rem; padding-inline:0.5rem; }
+.header-inner { 
+  width:var(--container-w); 
+  margin-inline:auto; 
+  height:var(--nav-h); 
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  gap:1rem; 
+  padding-inline:0.5rem; 
+  /* Adicionado para evitar quebra de layout em telas muito pequenas */
+  min-width: 280px;
+}
 
 /* LOGO */
-.logo { font-weight:700; font-size:1.05rem; padding:0.35rem 0.9rem; border-radius:999px; border:1px solid rgba(148,163,184,0.5); background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); display:inline-flex; align-items:center; gap:0.6rem; color:var(--text); }
+.logo { 
+  font-weight:700; 
+  font-size:1.05rem; 
+  padding:0.35rem 0.9rem; 
+  border-radius:999px; 
+  border:1px solid rgba(148,163,184,0.5); 
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); 
+  display:inline-flex; 
+  align-items:center; 
+  gap:0.6rem; 
+  color:var(--text); 
+  /* ADICIONADO: Evita quebra de linha no nome */
+  white-space: nowrap; 
+}
 .logo::before{ content:""; width:8px; height:8px; border-radius:999px; background: radial-gradient(circle at 30% 30%, #bef264, #22c55e); box-shadow:0 0 16px rgba(34,197,94,0.8); }
 
 /* NAV - Desktop (Ajustado) */
