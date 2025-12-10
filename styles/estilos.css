@@ -70,6 +70,9 @@ body.light .menu-link:hover { background: rgba(15,23,42,0.05); box-shadow: none;
 body.light .menu-link.ativo { background: rgba(124,58,237,0.1); border-color: rgba(124,58,237,0.2); color: var(--text); }
 body.light .btn-toggle-menu, body.light .toggle-tema { background: #fff; color: var(--text-soft); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
 body.light .card:hover, body.light .perfil-card:hover { box-shadow: 0 18px 45px rgba(0,0,0,0.15); }
+/* CORREÇÃO TEMA CLARO: Fundo do menu mobile quando aberto */
+body.light .menu { background: rgba(255,255,255,0.98); border-bottom: 1px solid var(--border-subtle); }
+
 
 /* HEADER */
 .header { 
@@ -188,97 +191,4 @@ body.light .menu-link.ativo { border-bottom-color: var(--accent-3); }
     max-width: 600px; /* Limita a largura do parágrafo */
 }
 /* Alinhamento da lista no card de competências e outros cards menores */
-.card:not(.full-width) {
-    align-items: center; /* Centraliza o card menor */
-    text-align: center;
-}
-.card:not(.full-width) ul {
-    text-align: center;
-}
-
-
-/* perfil */
-.perfil-card { 
-  display:flex; 
-  flex-direction: column; 
-  gap:1.2rem; 
-  align-items:center; 
-}
-.foto { width:96px; height:96px; border-radius:999px; object-fit:cover; border:2px solid rgba(148,163,184,0.6); }
-
-/* DOWNLOAD BUTTON */
-.download-btn { position:relative; display:inline-flex; align-items:center; gap:0.6rem; padding:0.55rem 1.05rem; border-radius:var(--radius-pill); border:1px solid rgba(45,212,191,0.7); background: linear-gradient(135deg, #22c55e, #0f766e); color:#ecfdf5; text-decoration:none; font-weight:600; letter-spacing:0.02em; cursor:pointer; overflow:hidden; box-shadow: 0 18px 38px rgba(5,46,22,0.9); transition: transform var(--transition-fast); }
-.download-btn .icon i{ font-size:0.95rem; }
-.download-btn .progress{ margin-left:8px; font-size:0.88rem; color:rgba(255,255,255,0.95); font-weight:600; }
-
-/* animated sheen */
-.download-btn::before{ content:""; position:absolute; inset:0; background: linear-gradient(120deg, rgba(255,255,255,0.18), transparent 35%); transform: translateX(-120%); transition: transform 0.35s ease-out; pointer-events:none; }
-.download-btn:hover::before{ transform: translateX(0%); }
-
-/* full width helper - AJUSTADO PARA CENTRALIZAÇÃO */
-.full-width { 
-  grid-column: 1 / -1; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  flex-direction: column; 
-  text-align: center; 
-}
-
-/* Regra para o botão de download ficar centralizado e com largura apropriada */
-.full-width .download-btn {
-    align-self: center; 
-    width: auto; 
-    margin-top: 10px;
-}
-/* Ajuste para o card de Documentos */
-.card.documentos-card {
-    justify-content: center;
-    align-items: center;
-}
-
-
-/* footer */
-.footer { margin-top:auto; border-top:1px solid rgba(30,64,175,0.2); background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00)); backdrop-filter: blur(8px); }
-.footer p{ width:var(--container-w); margin-inline:auto; padding:1rem 0; color:var(--text-soft); font-size:0.86rem; }
-
-/* redes flutuantes */
-.redes { position:fixed; right:1.3rem; bottom:1.4rem; display:flex; flex-direction:column; gap:0.5rem; z-index:60; }
-.btn-social{ width:2.35rem; height:2.35rem; border-radius:999px; display:inline-flex; align-items:center; justify-content:center; color:#fff; text-decoration:none; box-shadow:0 14px 36px rgba(0,0,0,0.6); transition: transform var(--transition-fast); }
-.btn-social:hover{ transform: translateY(-3px) scale(1.03); }
-
-/* RESPONSIVO */
-@media (max-width: 768px){
-  /* Mostra o botão do menu e esconde links */
-  .btn-toggle-menu{ display:inline-flex; }
-  .menu{ position: fixed; inset: var(--nav-h) 0 auto 0; flex-direction:column; padding:0.85rem 1.1rem 1rem; background: rgba(15,23,42,0.98); transform: translateY(-120%); opacity:0; pointer-events:none; transition: transform 0.22s ease-out, opacity 0.18s ease-out; z-index:55; }
-  .menu.open{ transform: translateY(0); opacity:1; pointer-events:auto; }
-  .menu-link{ padding:0.65rem 0.9rem; font-size:0.96rem; border-radius:8px; width:100%; text-align:center; }
-  .menu-link.ativo { border-bottom: none; border:1px solid rgba(124,58,237,0.12); }
-
-  /* Ajustes gerais de layout */
-  .perfil-card{ grid-template-columns: 1fr; text-align:center; gap:1rem; }
-  .perfil-card .foto{ margin-inline:auto; }
-
-  /* Garante que full-width no mobile centraliza */
-  .full-width { justify-content:center; }
-  .menu { margin-left: 0; margin-right: 0; }
-}
-
-@media (min-width: 769px) {
-    /* Esconde o botão do menu e força a exibição do menu no desktop */
-    .btn-toggle-menu { display: none; }
-    .menu { display: flex !important; transform: none !important; opacity: 1 !important; pointer-events: auto !important; position: static !important; flex-direction: row !important; }
-
-    /* Força os cards a não serem 100% da largura do container em desktop para melhor visual e centraliza-os*/
-    .card:not(.full-width) {
-      max-width: 480px; /* Limita a largura dos cards menores */
-      /* No layout de grid, 'justify-items: center' no .container cuida da centralização. */
-    }
-}
-
-@media (max-width:480px){
-  :root{ --container-w: min(100% - 1.75rem, 520px); }
-  .download-btn{ width:100%; justify-content:center; }
-  .redes{ right:0.9rem; bottom:0.9rem; }
-}
+.card:not(.full
