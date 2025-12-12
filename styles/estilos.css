@@ -4,11 +4,11 @@
 
 :root {
   /* Cores Padrão (Tema Escuro) */
-  --cor-fundo-principal: #0d1117; /* Fundo escuro sutil (inspirado no GitHub) */
-  --cor-fundo-card: #161b22;     /* Fundo de componente mais claro */
-  --cor-texto-principal: #c9d1d9; /* Texto claro */
-  --cor-texto-secundario: #8b949e; /* Texto cinza suave */
-  --cor-accent: #58a6ff;         /* Azul suave para destaque (links, botões) */
+  --cor-fundo-principal: #0d1117;
+  --cor-fundo-card: #161b22;
+  --cor-texto-principal: #c9d1d9;
+  --cor-texto-secundario: #8b949e;
+  --cor-accent: #58a6ff;
   --cor-borda: #30363d;
   --cor-shadow: #010409;
   --cor-hamburger: #c9d1d9;
@@ -62,7 +62,7 @@ a {
 }
 
 a:hover {
-  color: var(--cor-accent); /* Mantém a cor ou escurece levemente */
+  color: var(--cor-accent);
   text-decoration: underline;
 }
 
@@ -86,7 +86,7 @@ h3 {
   margin-bottom: 12px;
 }
 
-/* Listas */
+/* Listas (Garantindo que a lista do currículo fique centrada no container do card) */
 ul {
   list-style: none;
   padding: 0;
@@ -103,23 +103,23 @@ ul li strong {
 
 
 /* ==========================================================
-   LAYOUT GERAL
+   LAYOUT GERAL - CORREÇÃO DE CENTRALIZAÇÃO
    ========================================================== */
 
 .container {
-  max-width: 1000px; /* Limita largura para elegância */
+  max-width: 1000px;
   width: 90%;
-  margin: 20px auto 40px auto;
-  padding: 0; /* O espaçamento será dado pelo max-width e width */
-  flex-grow: 1; /* Permite que o conteúdo principal cresça */
+  margin: 20px auto 40px auto; /* 'auto' garante a centralização horizontal */
+  padding: 0;
+  flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr; /* Coluna única para começar */
-  gap: 20px; /* Espaço entre os cards */
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 /* Classe de utilidade */
 .full-width {
-  grid-column: 1 / -1; /* Ocupa todas as colunas */
+  grid-column: 1 / -1;
 }
 
 /* Estilo para Parágrafos Pequenos */
@@ -158,7 +158,7 @@ ul li strong {
   color: var(--cor-accent);
 }
 
-/* Menu de Navegação */
+/* Menu de Navegação - VERSÃO DESKTOP */
 .menu {
   display: flex;
   gap: 20px;
@@ -203,7 +203,7 @@ ul li strong {
 
 
 /* ==========================================================
-   BOTÕES DE CONTROLE
+   BOTÕES DE CONTROLE E HAMBURGER
    ========================================================== */
 
 .btn-toggle-menu,
@@ -225,11 +225,6 @@ ul li strong {
   font-size: 1.2rem;
   color: var(--cor-texto-principal);
 }
-
-
-/* ==========================================================
-   HAMBURGER (Botão de Menu)
-   ========================================================== */
 
 .hamburger {
   width: 20px;
@@ -253,7 +248,6 @@ ul li strong {
 .hamburger span:nth-child(2) { top: 8px; }
 .hamburger span:nth-child(3) { top: 16px; }
 
-/* Animação para o 'X' */
 .btn-toggle-menu.is-open span:nth-child(1) {
   transform: rotate(45deg);
   top: 8px;
@@ -278,11 +272,30 @@ ul li strong {
   border: 1px solid var(--cor-borda);
   box-shadow: 0 4px 10px rgba(var(--cor-shadow), 0.2);
   transition: all var(--transition-default);
+
+  /* **NOVIDADE:** Centraliza o conteúdo dentro dos cartões */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  text-align: center; /* Centraliza o texto */
 }
 
-.card:hover {
-  border-color: var(--cor-accent);
-  transform: translateY(-2px); /* Efeito suave de elevação */
+/* Garante que o alinhamento de texto manual no HTML seja respeitado, mas mantendo o card centrado */
+.card p, .card ul {
+    text-align: left; /* Volta o texto de parágrafos e listas para a esquerda dentro do card */
+    max-width: 100%; /* Garante que o conteúdo ocupe a largura total */
+}
+
+/* Ajuste específico para a ul dos dados pessoais/experiência no currículo */
+.card ul {
+    width: fit-content; /* Faz a largura da lista ser apenas o tamanho do seu conteúdo */
+    margin: 0 auto; /* Centraliza essa lista horizontalmente dentro do card */
+    padding-left: 20px; /* Adiciona o recuo para simular bullet points invisíveis */
+}
+
+/* Títulos do card voltando a ser centrado */
+.card h3 {
+    text-align: center;
 }
 
 
@@ -292,7 +305,7 @@ ul li strong {
 
 .perfil-card {
   display: flex;
-  flex-direction: column; /* Padrão mobile */
+  flex-direction: column;
   align-items: center;
   text-align: center;
 }
@@ -314,15 +327,16 @@ ul li strong {
 
 
 /* ==========================================================
-   BOTÃO DE DOWNLOAD (Simulado)
-   ========================================================== */
+   RODAPÉ E REDES SOCIAIS (Inalterados)
+   ========================================================= */
 
 .download-btn {
+  /* ... estilos inalterados ... */
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
   background-color: var(--cor-accent);
-  color: var(--cor-fundo-principal); /* O texto no botão será a cor de fundo */
+  color: var(--cor-fundo-principal);
   border-radius: 4px;
   font-weight: bold;
   transition: background-color 0.2s ease-out, transform 0.1s ease-out;
@@ -341,13 +355,11 @@ ul li strong {
   margin-right: 10px;
 }
 
-/* Progresso de Download */
 .download-btn .progress {
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  /* Usa um gradiente sutil na cor principal ou borda, para não chocar com o texto */
   background-color: color-mix(in srgb, var(--cor-fundo-card) 50%, var(--cor-accent)); 
   width: 0%;
   color: var(--cor-texto-principal);
@@ -355,42 +367,27 @@ ul li strong {
   align-items: center;
   justify-content: center;
   font-size: 0.9rem;
-  z-index: 1; /* Garante que o progresso fique atrás do texto e ícone */
+  z-index: 1;
 }
 
-/* Ajusta o conteúdo para ficar na frente do progresso */
 .download-btn .icon,
 .download-btn .label {
   position: relative;
   z-index: 2;
 }
 
-/* Estilo quando o download está "busy" */
 .download-btn[data-busy="1"] {
   cursor: wait;
 }
-.download-btn[data-busy="1"] .progress {
-  width: auto;
-  transition: width 0.1s linear; /* A largura é manipulada no JS */
-}
-
-
-/* ==========================================================
-   RODAPÉ (Footer)
-   ========================================================== */
 
 .footer {
   text-align: center;
   padding: 20px 0;
   border-top: 1px solid var(--cor-borda);
   color: var(--cor-texto-secundario);
-  margin-top: auto; /* Garante que o rodapé fique no final */
+  margin-top: auto;
   background-color: var(--cor-fundo-card);
 }
-
-/* ==========================================================
-   REDES SOCIAIS (Botões Flutuantes)
-   ========================================================== */
 
 .redes {
   position: fixed;
@@ -409,7 +406,7 @@ ul li strong {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Os ícones são brancos */
+  color: white;
   font-size: 1.2rem;
   transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
@@ -421,7 +418,7 @@ ul li strong {
 }
 
 /* ==========================================================
-   MEDIA QUERIES (Responsividade Profissional)
+   MEDIA QUERIES (Responsividade Profissional e Menu)
    ========================================================== */
 
 /* Tablet e Desktop (Acima de 768px) */
@@ -429,16 +426,15 @@ ul li strong {
   
   .container {
     padding: 0 20px;
-    /* Divide o layout em duas colunas para currículo e sobre */
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
   }
 
+  /* Desfaz a centralização forçada do card para o layout de perfil */
   .perfil-card {
-    flex-direction: row; /* Layout horizontal no desktop */
+    flex-direction: row;
     text-align: left;
+    align-items: center;
   }
-
+  
   .perfil-card .foto {
     width: 150px;
     height: 150px;
@@ -459,42 +455,38 @@ ul li strong {
     text-align: left !important;
   }
 
-  /* Na página de currículo, seções de dados e experiência podem ser lado a lado,
-     mas mantendo 'full-width' para evitar confusão de layout no exemplo */
-}
-
-/* Desktop Grande (Acima de 992px) */
-@media (min-width: 992px) {
-  .header-inner {
-    width: 100%; /* Aproveita a max-width do container */
-    padding: 0 20px;
+  /* Oculta o botão do menu no Desktop */
+  .btn-toggle-menu {
+    display: none;
   }
 }
 
-/* MOBILE (Abaixo de 768px) */
+/* MOBILE (Abaixo de 768px) - CORREÇÃO CRÍTICA DO MENU */
 @media (max-width: 767px) {
   
   /* Esconde o menu na navegação padrão */
   .menu {
-    position: fixed;
-    top: 60px; /* Abaixo do header */
+    /* **CORREÇÃO:** Garante a visibilidade e o comportamento de abertura */
+    display: flex; /* Garante que o menu exista */
+    position: absolute; /* Usamos 'absolute' para que ele cubra apenas a área necessária */
+    top: 60px; /* Abaixo do header (ajustar se o header for mais alto) */
     left: 0;
     width: 100%;
     height: 0; /* Começa fechado */
+    max-height: 0; /* Impede o scroll e fecha */
     background-color: var(--cor-fundo-card);
     border-top: 1px solid var(--cor-borda);
     flex-direction: column;
-    overflow: hidden;
-    transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    overflow: hidden; /* **CRUCIAL:** Oculta o conteúdo quando está fechado */
+    transition: max-height 0.4s ease-in-out; /* Transiciona a altura máxima */
     padding: 0;
+    z-index: 900;
   }
 
   /* Menu Aberto */
   .menu.open {
-    height: auto; /* Altura automática */
+    max-height: 300px; /* **CORREÇÃO:** Define uma altura máxima que caiba o menu */
     padding: 15px 0;
-    max-height: calc(100vh - 60px); /* Garante que não ultrapasse a tela */
-    overflow-y: auto;
   }
 
   .menu-link {
@@ -509,7 +501,7 @@ ul li strong {
   }
   
   .menu-link::after {
-    display: none; /* Remove indicador de hover/ativo no mobile */
+    display: none;
   }
 
   /* Mostra o botão do hamburger */
@@ -520,13 +512,19 @@ ul li strong {
   .redes {
     right: 10px;
     bottom: 10px;
-    flex-direction: row; /* Redes sociais horizontais no mobile */
+    flex-direction: row;
   }
 }
 
-/* Oculta o botão do menu no Desktop */
+/* Oculta o menu de desktop em telas pequenas, garantindo que o botão hamburguer apareça */
+@media (max-width: 767px) {
+    .menu:not(.open) {
+        display: none;
+    }
+}
 @media (min-width: 768px) {
-  .btn-toggle-menu {
-    display: none;
-  }
+    .menu {
+        /* Garante que o menu de desktop apareça se o JS falhar */
+        display: flex !important; 
+    }
 }
