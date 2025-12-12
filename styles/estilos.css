@@ -1,575 +1,532 @@
 /* ==========================================================
-   SECTION 1: DESIGN TOKENS (Variáveis CSS)
+   CONFIGURAÇÃO GERAL E VARIÁVEIS CSS
    ========================================================== */
+
 :root {
-    /* -- CORES PRIMÁRIAS -- */
-    --cor-primaria: #007bff; /* Destacque / Botões */
-    --cor-primaria-hover: #0056b3;
-    --cor-sucesso: #28a745;
-    --cor-alerta: #ffc107;
+  /* Cores Padrão (Tema Escuro) */
+  --cor-fundo-principal: #0d1117; /* Fundo escuro sutil (inspirado no GitHub) */
+  --cor-fundo-card: #161b22;     /* Fundo de componente mais claro */
+  --cor-texto-principal: #c9d1d9; /* Texto claro */
+  --cor-texto-secundario: #8b949e; /* Texto cinza suave */
+  --cor-accent: #58a6ff;         /* Azul suave para destaque (links, botões) */
+  --cor-borda: #30363d;
+  --cor-shadow: #010409;
+  --cor-hamburger: #c9d1d9;
 
-    /* -- CORES TEMA ESCURO (Padrão) -- */
-    --cor-fundo: #0a0a0a;
-    --cor-fundo-card: #1e1e1e;
-    --cor-texto-principal: #ffffff;
-    --cor-texto-secundario: #b0b0b0;
-    --cor-borda-suave: #333333;
-    --cor-borda-forte: #555555;
-    --cor-shadow-card: rgba(0, 0, 0, 0.6);
-    --cor-separador: #2b2b2b;
+  /* Transições suaves para tema e interações */
+  --transition-default: 0.3s ease-in-out;
 
-    /* -- TIPOGRAFIA -- */
-    --fonte-principal: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --fonte-secundaria: Georgia, serif;
-    --tamanho-texto-base: 1rem;
-    --tamanho-h1: 2.5rem;
-    --tamanho-h2: 1.8rem;
-    --tamanho-h3: 1.25rem;
-    --line-height-base: 1.6;
-
-    /* -- ESPAÇAMENTO & LAYOUT -- */
-    --espacamento-min: 4px;
-    --espacamento-sm: 8px;
-    --espacamento-md: 16px;
-    --espacamento-lg: 24px;
-    --espacamento-xl: 48px;
-    --largura-maxima: 1300px; /* Aumentado para mais espaço */
-
-    /* -- COMPONENTES -- */
-    --borda-radius-base: 8px;
-    --transicao-rapida: 0.15s ease-out;
-    --transicao-suave: 0.35s ease-in-out;
+  /* Tipografia */
+  --font-body: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* -- CORES TEMA CLARO -- */
+/* Tema Claro (Switch via body.light) */
 body.light {
-    --cor-fundo: #f8f9fa;
-    --cor-fundo-card: #ffffff;
-    --cor-texto-principal: #212529;
-    --cor-texto-secundario: #6c757d;
-    --cor-borda-suave: #dee2e6;
-    --cor-borda-forte: #ced4da;
-    --cor-shadow-card: rgba(0, 0, 0, 0.15);
-    --cor-separador: #e9ecef;
+  --cor-fundo-principal: #f6f8fa;
+  --cor-fundo-card: #ffffff;
+  --cor-texto-principal: #24292f;
+  --cor-texto-secundario: #57606a;
+  --cor-accent: #0969da;
+  --cor-borda: #c8ced4;
+  --cor-shadow: #d1d5db;
+  --cor-hamburger: #24292f;
 }
 
-/* ==========================================================
-   SECTION 2: BASE & RESET (Mobile First)
-   ========================================================== */
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* Reset Básico e Box Model */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-    scroll-behavior: smooth;
-    font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--fonte-principal);
-    font-size: var(--tamanho-texto-base);
-    background-color: var(--cor-fundo);
-    color: var(--cor-texto-principal);
-    line-height: var(--line-height-base);
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: background-color var(--transicao-suave), color var(--transicao-suave);
+  font-family: var(--font-body);
+  background-color: var(--cor-fundo-principal);
+  color: var(--cor-texto-principal);
+  line-height: 1.6;
+  transition: background-color var(--transition-default), color var(--transition-default);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Links */
 a {
-    color: var(--cor-primaria);
-    text-decoration: none;
-    transition: color var(--transicao-rapida);
+  color: var(--cor-accent);
+  text-decoration: none;
+  transition: color var(--transition-default);
 }
 
-a:hover, a:focus {
-    color: var(--cor-primaria-hover);
-    text-decoration: underline;
+a:hover {
+  color: var(--cor-accent); /* Mantém a cor ou escurece levemente */
+  text-decoration: underline;
 }
 
-/* Acessibilidade de Foco (Keyboard Navigation) */
-button:focus-visible, a:focus-visible, .btn-social:focus-visible {
-    outline: 3px solid var(--cor-primaria);
-    outline-offset: 4px;
-    border-radius: var(--borda-radius-base);
-}
-
-/* Textos e Títulos */
+/* Títulos */
 h1, h2, h3 {
-    line-height: 1.2;
-    margin-bottom: var(--espacamento-md);
-    color: var(--cor-texto-principal);
-    font-family: var(--fonte-principal);
+  color: var(--cor-texto-principal);
+  line-height: 1.2;
 }
 
-.titulo {
-    font-size: var(--tamanho-h2);
-    text-align: center;
-    width: 100%;
-    font-weight: 700;
-    padding-bottom: var(--espacamento-md);
-    border-bottom: 2px solid var(--cor-borda-suave);
+h2.titulo {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  border-bottom: 2px solid var(--cor-accent);
+  padding-bottom: 8px;
+  text-align: center;
 }
 
-.small {
-    font-size: 0.9rem;
-    color: var(--cor-texto-secundario);
+h3 {
+  font-size: 1.4rem;
+  color: var(--cor-accent);
+  margin-bottom: 12px;
 }
+
+/* Listas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin-bottom: 8px;
+  color: var(--cor-texto-secundario);
+}
+
+ul li strong {
+  color: var(--cor-texto-principal);
+}
+
 
 /* ==========================================================
-   SECTION 3: LAYOUT GERAL
+   LAYOUT GERAL
    ========================================================== */
+
 .container {
-    max-width: var(--largura-maxima);
-    width: 100%;
-    margin: var(--espacamento-lg) auto;
-    padding: 0 var(--espacamento-lg);
-    flex-grow: 1;
-
-    display: grid;
-    grid-template-columns: 1fr; /* Mobile */
-    gap: var(--espacamento-lg);
+  max-width: 1000px; /* Limita largura para elegância */
+  width: 90%;
+  margin: 20px auto 40px auto;
+  padding: 0; /* O espaçamento será dado pelo max-width e width */
+  flex-grow: 1; /* Permite que o conteúdo principal cresça */
+  display: grid;
+  grid-template-columns: 1fr; /* Coluna única para começar */
+  gap: 20px; /* Espaço entre os cards */
 }
 
+/* Classe de utilidade */
 .full-width {
-    grid-column: 1 / -1;
+  grid-column: 1 / -1; /* Ocupa todas as colunas */
 }
+
+/* Estilo para Parágrafos Pequenos */
+.small {
+  font-size: 1.0rem;
+  color: var(--cor-texto-secundario);
+}
+
 
 /* ==========================================================
-   SECTION 4: COMPONENTES - CARD
+   HEADER / NAVEGAÇÃO
    ========================================================== */
-.card {
-    background-color: var(--cor-fundo-card);
-    padding: var(--espacamento-lg);
-    border-radius: var(--borda-radius-base);
-    box-shadow: 0 6px 16px var(--cor-shadow-card);
-    border: 1px solid var(--cor-borda-suave);
-    transition: background-color var(--transicao-suave), border-color var(--transicao-suave), box-shadow var(--transicao-suave);
-}
 
-.card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px var(--cor-shadow-card);
-    transition: transform var(--transicao-rapida), box-shadow var(--transicao-rapida);
-}
-
-.card h3 {
-    font-size: var(--tamanho-h3);
-    color: var(--cor-primaria);
-    margin-bottom: var(--espacamento-md);
-    padding-bottom: var(--espacamento-sm);
-    border-bottom: 1px solid var(--cor-separador);
-}
-
-.card ul {
-    list-style: none;
-    padding: 0;
-}
-
-.card li {
-    padding: var(--espacamento-sm) 0;
-    border-bottom: 1px dashed var(--cor-borda-suave);
-    color: var(--cor-texto-secundario);
-    transition: background-color var(--transicao-rapida);
-}
-
-.card li:hover {
-    background-color: rgba(var(--cor-primaria), 0.05); /* Leve destaque ao passar o mouse */
-}
-
-.card li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-}
-
-.card strong {
-    color: var(--cor-texto-principal);
-    font-weight: 600;
-}
-
-/* ==========================================================
-   SECTION 5: HEADER & NAVEGAÇÃO
-   ========================================================== */
 .header {
-    background-color: var(--cor-fundo-card);
-    border-bottom: 1px solid var(--cor-borda-suave);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    transition: background-color var(--transicao-suave), border-bottom var(--transicao-suave);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: var(--cor-fundo-card);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-inner {
-    max-width: var(--largura-maxima);
-    margin: 0 auto;
-    padding: var(--espacamento-sm) var(--espacamento-lg);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--cor-primaria);
-    letter-spacing: -1px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--cor-accent);
 }
 
-/* 5.1 Menu Mobile Setup */
+/* Menu de Navegação */
 .menu {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: -300px; /* Largura ajustada */
-    width: 300px;
-    height: 100vh;
-    background-color: var(--cor-fundo-card);
-    padding-top: 80px;
-    box-shadow: -6px 0 15px rgba(0, 0, 0, 0.7);
-    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Curva de animação profissional */
-    z-index: 999;
-    border-left: 2px solid var(--cor-primaria);
-}
-
-.menu.open {
-    right: 0;
+  display: flex;
+  gap: 20px;
+  transition: var(--transition-default);
 }
 
 .menu-link {
-    padding: var(--espacamento-md) var(--espacamento-lg);
-    border-bottom: 1px solid var(--cor-borda-suave);
-    color: var(--cor-texto-principal);
-    font-weight: 500;
-    display: block;
-    transition: background-color 0.2s, color 0.2s;
+  color: var(--cor-texto-principal);
+  padding: 5px 10px;
+  position: relative;
 }
 
+.menu-link:hover,
 .menu-link.ativo {
-    background-color: rgba(var(--cor-primaria), 0.15);
-    color: var(--cor-primaria);
-    font-weight: 700;
-    border-left: 4px solid var(--cor-primaria);
+  color: var(--cor-accent);
 }
 
-.menu-link:hover {
-    background-color: rgba(var(--cor-primaria), 0.08);
+/* Indicador de página ativa/hover elegante */
+.menu-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--cor-accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease-out;
 }
 
-/* 5.2 Controles e Botões */
+.menu-link:hover::after,
+.menu-link.ativo::after {
+  transform: scaleX(1);
+}
+
+/* Controles (Menu Toggle e Tema) */
 .header-controls {
-    display: flex;
-    gap: var(--espacamento-sm);
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.btn-toggle-menu, .toggle-tema {
-    background-color: transparent;
-    border: 1px solid var(--cor-borda-suave);
-    cursor: pointer;
-    color: var(--cor-texto-principal);
-    font-size: 1.1rem;
-    padding: 8px 10px;
-    border-radius: var(--borda-radius-base);
-    transition: background-color var(--transicao-rapida), color var(--transicao-rapida), border-color var(--transicao-rapida);
+
+/* ==========================================================
+   BOTÕES DE CONTROLE
+   ========================================================== */
+
+.btn-toggle-menu,
+.toggle-tema {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-out;
 }
 
-.btn-toggle-menu:hover, .toggle-tema:hover {
-    background-color: rgba(var(--cor-primaria), 0.1);
-    color: var(--cor-primaria);
-    border-color: var(--cor-primaria);
+.btn-toggle-menu:hover,
+.toggle-tema:hover {
+  background-color: rgba(var(--cor-accent), 0.1);
 }
 
-/* Hamburger Icon Animation */
+.toggle-tema i {
+  font-size: 1.2rem;
+  color: var(--cor-texto-principal);
+}
+
+
+/* ==========================================================
+   HAMBURGER (Botão de Menu)
+   ========================================================== */
+
 .hamburger {
-    width: 20px;
-    height: 16px;
-    position: relative;
-    display: block; /* Visível no mobile */
+  width: 20px;
+  height: 18px;
+  position: relative;
 }
 
 .hamburger span {
-    background-color: currentColor; /* Usa a cor do botão */
-    /* Animação aprimorada (Ver script.js) */
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--cor-hamburger);
+  border-radius: 2px;
+  opacity: 1;
+  left: 0;
+  transition: transform 0.25s ease-in-out, opacity 0.25s ease-in-out;
 }
 
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+
+/* Animação para o 'X' */
+.btn-toggle-menu.is-open span:nth-child(1) {
+  transform: rotate(45deg);
+  top: 8px;
+}
+.btn-toggle-menu.is-open span:nth-child(2) {
+  opacity: 0;
+}
+.btn-toggle-menu.is-open span:nth-child(3) {
+  transform: rotate(-45deg);
+  top: 8px;
+}
+
+
 /* ==========================================================
-   SECTION 6: PÁGINAS ESPECÍFICAS
+   CARTÕES (Componentes Principais)
    ========================================================== */
 
-/* 6.1 Página Início / Perfil */
+.card {
+  background-color: var(--cor-fundo-card);
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid var(--cor-borda);
+  box-shadow: 0 4px 10px rgba(var(--cor-shadow), 0.2);
+  transition: all var(--transition-default);
+}
+
+.card:hover {
+  border-color: var(--cor-accent);
+  transform: translateY(-2px); /* Efeito suave de elevação */
+}
+
+
+/* ==========================================================
+   SEÇÃO PERFIL (Página Inicial)
+   ========================================================== */
+
 .perfil-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: var(--espacamento-xl) var(--espacamento-md);
+  display: flex;
+  flex-direction: column; /* Padrão mobile */
+  align-items: center;
+  text-align: center;
 }
 
-.foto {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: var(--espacamento-lg);
-    border: 5px solid var(--cor-primaria);
-    box-shadow: 0 0 0 10px rgba(var(--cor-primaria), 0.2);
-    transition: transform var(--transicao-suave);
+.perfil-card .foto {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--cor-accent);
+  margin-bottom: 20px;
 }
 
-.foto:hover {
-    transform: scale(1.03) rotate(1deg);
+.perfil-card .titulo {
+  font-size: 1.7rem !important;
+  margin-bottom: 5px;
+  border-bottom: none;
 }
 
-.perfil-card h1 {
-    font-size: var(--tamanho-h1);
-    margin-bottom: var(--espacamento-sm);
-    font-weight: 900;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
-}
-
-/* 6.2 Página Sobre Mim */
-.sobre-quem-sou-eu p {
-    text-align: center;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.sobre-quem-sou-eu strong {
-    color: var(--cor-primaria);
-}
 
 /* ==========================================================
-   SECTION 7: UTILITÁRIOS E COMPONENTES DETALHADOS
+   BOTÃO DE DOWNLOAD (Simulado)
    ========================================================== */
-
-/* 7.1 Download Button (Simulado) */
-.documentos-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .download-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: var(--cor-primaria);
-    color: #ffffff;
-    padding: 14px 30px;
-    border-radius: 50px; /* Mais arredondado */
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: background-color 0.2s, transform 0.1s ease;
-    border: none;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    min-width: 250px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: var(--cor-accent);
+  color: var(--cor-fundo-principal); /* O texto no botão será a cor de fundo */
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.2s ease-out, transform 0.1s ease-out;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--cor-accent);
 }
 
 .download-btn:hover {
-    background-color: var(--cor-primaria-hover);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-}
-
-.download-btn:active {
-    transform: scale(0.97);
+  background-color: color-mix(in srgb, var(--cor-accent) 90%, black);
+  text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .download-btn .icon {
-    font-size: 1.2rem;
-    line-height: 0;
+  margin-right: 10px;
 }
 
-/* Simulação de Progresso */
-.progress {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0%; /* Inicialmente 0 */
-    height: 100%;
-    background-color: var(--cor-sucesso); /* Cor de progresso */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 0.95rem;
-    pointer-events: none;
-    transition: width 0.1s linear; /* Transição para a barra visual */
-    mix-blend-mode: screen; /* Efeito visual sutil */
+/* Progresso de Download */
+.download-btn .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  /* Usa um gradiente sutil na cor principal ou borda, para não chocar com o texto */
+  background-color: color-mix(in srgb, var(--cor-fundo-card) 50%, var(--cor-accent)); 
+  width: 0%;
+  color: var(--cor-texto-principal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  z-index: 1; /* Garante que o progresso fique atrás do texto e ícone */
 }
 
-/* 7.2 Footer e Redes Sociais */
+/* Ajusta o conteúdo para ficar na frente do progresso */
+.download-btn .icon,
+.download-btn .label {
+  position: relative;
+  z-index: 2;
+}
+
+/* Estilo quando o download está "busy" */
+.download-btn[data-busy="1"] {
+  cursor: wait;
+}
+.download-btn[data-busy="1"] .progress {
+  width: auto;
+  transition: width 0.1s linear; /* A largura é manipulada no JS */
+}
+
+
+/* ==========================================================
+   RODAPÉ (Footer)
+   ========================================================== */
+
 .footer {
-    padding: var(--espacamento-md) var(--espacamento-lg);
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--cor-texto-secundario);
-    border-top: 1px solid var(--cor-borda-suave);
-    margin-top: var(--espacamento-xl);
-    background-color: var(--cor-fundo-card);
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--cor-borda);
+  color: var(--cor-texto-secundario);
+  margin-top: auto; /* Garante que o rodapé fique no final */
+  background-color: var(--cor-fundo-card);
 }
+
+/* ==========================================================
+   REDES SOCIAIS (Botões Flutuantes)
+   ========================================================== */
 
 .redes {
-    position: fixed;
-    bottom: var(--espacamento-lg);
-    right: var(--espacamento-lg);
-    gap: var(--espacamento-md);
-    z-index: 998;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 990;
 }
 
 .btn-social {
-    width: 50px;
-    height: 50px;
-    font-size: 1.3rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white; /* Os ícones são brancos */
+  font-size: 1.2rem;
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.btn-social:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
 }
 
 /* ==========================================================
-   SECTION 8: MEDIA QUERIES (Responsividade Detalhada)
+   MEDIA QUERIES (Responsividade Profissional)
    ========================================================== */
 
-/* Desktop Médio (992px e acima) */
+/* Tablet e Desktop (Acima de 768px) */
+@media (min-width: 768px) {
+  
+  .container {
+    padding: 0 20px;
+    /* Divide o layout em duas colunas para currículo e sobre */
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+
+  .perfil-card {
+    flex-direction: row; /* Layout horizontal no desktop */
+    text-align: left;
+  }
+
+  .perfil-card .foto {
+    width: 150px;
+    height: 150px;
+    margin-right: 30px;
+    margin-bottom: 0;
+  }
+
+  .perfil-card div {
+    text-align: left !important;
+  }
+
+  .perfil-card .titulo {
+    font-size: 2rem !important;
+    text-align: left !important;
+  }
+
+  .small {
+    text-align: left !important;
+  }
+
+  /* Na página de currículo, seções de dados e experiência podem ser lado a lado,
+     mas mantendo 'full-width' para evitar confusão de layout no exemplo */
+}
+
+/* Desktop Grande (Acima de 992px) */
 @media (min-width: 992px) {
-    /* Layout do Container em 3 colunas */
-    .container {
-        grid-template-columns: 2fr 1fr 1fr; /* Layout mais assimétrico */
-    }
-
-    .perfil-card {
-        grid-column: 1 / 4; /* Full width */
-        flex-direction: row;
-        text-align: left;
-        align-items: center;
-        gap: var(--espacamento-lg);
-        padding: var(--espacamento-lg);
-    }
-    
-    .perfil-card h1 {
-        font-size: 2.5rem;
-        text-align: left !important;
-    }
-    
-    .perfil-card p.small {
-        text-align: left !important;
-    }
-
-    .foto {
-        margin-bottom: 0;
-    }
-
-    /* Navegação Desktop */
-    .menu {
-        position: static;
-        flex-direction: row;
-        width: auto;
-        height: auto;
-        padding-top: 0;
-        box-shadow: none;
-        transition: none;
-    }
-
-    .menu-link {
-        padding: 10px 15px;
-        border-bottom: none;
-        border-left: none;
-    }
-
-    .menu-link.ativo {
-        border-bottom: 3px solid var(--cor-primaria);
-        background-color: transparent;
-        border-radius: 0;
-        padding-bottom: 7px;
-    }
-
-    .btn-toggle-menu {
-        display: none;
-    }
-    
-    /* Reorganização de Cards (Exemplo Curriculo.html e Index.html) */
-    
-    /* 1. Experiência (Curriculo) / Projetos (Index) */
-    .container .card:nth-of-type(3) {
-        grid-column: 1 / 3; 
-    }
-    
-    /* 2. Documentos (Curriculo/Index) */
-    .documentos-card {
-        grid-column: 3 / 4; 
-        height: fit-content;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: var(--espacamento-lg);
-    }
-
-    .documentos-card h3 {
-        text-align: center;
-    }
-    
-    .documentos-card div {
-        display: flex;
-        justify-content: center;
-    }
+  .header-inner {
+    width: 100%; /* Aproveita a max-width do container */
+    padding: 0 20px;
+  }
 }
 
-/* Desktop Grande (1200px e acima) */
-@media (min-width: 1200px) {
-    :root {
-        --tamanho-h1: 3rem;
-        --espacamento-lg: 32px;
-    }
-
-    .container {
-        padding: 0 var(--espacamento-md);
-    }
-    
-    /* Ajustes finos para telas muito grandes */
-    .perfil-card {
-        padding: var(--espacamento-xl);
-    }
-}
-
-/* ==========================================================
-   SECTION 9: UTILITIES (Para uso futuro ou refinamento)
-   ========================================================== */
-
-/* Spacing Utilities (Similar a Bootstrap/Tailwind) */
-.mt-0 { margin-top: 0 !important; }
-.mt-sm { margin-top: var(--espacamento-sm) !important; }
-.mt-md { margin-top: var(--espacamento-md) !important; }
-.mt-lg { margin-top: var(--espacamento-lg) !important; }
-
-.text-center { text-align: center !important; }
-.text-left { text-align: left !important; }
-.text-right { text-align: right !important; }
-
-.d-flex { display: flex !important; }
-.flex-column { flex-direction: column !important; }
-.align-items-center { align-items: center !important; }
-.justify-content-center { justify-content: center !important; }
-.gap-md { gap: var(--espacamento-md) !important; }
-
-/* Hidden utilities for screen readers */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
+/* MOBILE (Abaixo de 768px) */
+@media (max-width: 767px) {
+  
+  /* Esconde o menu na navegação padrão */
+  .menu {
+    position: fixed;
+    top: 60px; /* Abaixo do header */
+    left: 0;
+    width: 100%;
+    height: 0; /* Começa fechado */
+    background-color: var(--cor-fundo-card);
+    border-top: 1px solid var(--cor-borda);
+    flex-direction: column;
     overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border-width: 0;
+    transition: height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    padding: 0;
+  }
+
+  /* Menu Aberto */
+  .menu.open {
+    height: auto; /* Altura automática */
+    padding: 15px 0;
+    max-height: calc(100vh - 60px); /* Garante que não ultrapasse a tela */
+    overflow-y: auto;
+  }
+
+  .menu-link {
+    display: block;
+    padding: 12px 25px;
+    border-bottom: 1px solid var(--cor-borda);
+    width: 100%;
+  }
+  
+  .menu-link:last-child {
+    border-bottom: none;
+  }
+  
+  .menu-link::after {
+    display: none; /* Remove indicador de hover/ativo no mobile */
+  }
+
+  /* Mostra o botão do hamburger */
+  .btn-toggle-menu {
+    display: block;
+  }
+  
+  .redes {
+    right: 10px;
+    bottom: 10px;
+    flex-direction: row; /* Redes sociais horizontais no mobile */
+  }
 }
 
-/* FIM DO ARQUIVO CSS PROFISSIONAL E EXAUSTIVO */
+/* Oculta o botão do menu no Desktop */
+@media (min-width: 768px) {
+  .btn-toggle-menu {
+    display: none;
+  }
+}
