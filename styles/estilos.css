@@ -1,472 +1,548 @@
 /* ==========================================================
-   RESET E VARIAVEIS GLOBAIS
+   Variáveis CSS para Temas e Cores (Clean Code)
    ========================================================== */
-
 :root {
-  /* Cores do Tema Escuro (Padrão) */
-  --cor-fundo-principal: #121212;
-  --cor-fundo-card: #1e1e1e;
-  --cor-texto-principal: #e0e0e0;
-  --cor-texto-secundario: #a0a0a0;
-  --cor-borda-suave: #333333;
+    /* Cores Padrão (Tema Escuro) */
+    --cor-fundo: #0a0a0a;
+    --cor-fundo-card: #1c1c1c;
+    --cor-texto-principal: #ffffff;
+    --cor-texto-secundario: #b0b0b0;
+    --cor-destaque: #007bff; /* Azul vibrante */
+    --cor-borda: #333333;
+    --cor-shadow-card: rgba(0, 0, 0, 0.4);
 
-  /* Cores de Ação */
-  --cor-primaria: #007bff; /* Azul vibrante para destaque */
-  --cor-primaria-hover: #0056b3;
-  --cor-destaque: #25d366; /* Verde como uma cor secundária de destaque (baseado no WhatsApp) */
+    /* Tipografia */
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --tamanho-titulo: 1.5rem;
+    --tamanho-subtitulo: 1.1rem;
 
-  /* Sombras */
-  --sombra-card: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --sombra-card-hover: 0 8px 18px rgba(0, 0, 0, 0.6);
+    /* Espaçamento */
+    --espacamento-principal: 16px;
+    --largura-maxima: 1200px;
 
-  /* Transições */
-  --transicao-rapida: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-
-  /* Espaçamento */
-  --espacamento-padrao: 1rem;
+    /* Transição suave para tema */
+    --transicao-suave: 0.3s ease-in-out;
 }
 
-/* Cores do Tema Claro (Ativado pela classe .light) */
-.light {
-  --cor-fundo-principal: #f5f7fa;
-  --cor-fundo-card: #ffffff;
-  --cor-texto-principal: #333333;
-  --cor-texto-secundario: #666666;
-  --cor-borda-suave: #e0e0e0;
-
-  --sombra-card: 0 2px 8px rgba(0, 0, 0, 0.1);
-  --sombra-card-hover: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* Cores para o Tema Claro (light class no body) */
+body.light {
+    --cor-fundo: #f0f2f5;
+    --cor-fundo-card: #ffffff;
+    --cor-texto-principal: #1c1c1c;
+    --cor-texto-secundario: #555555;
+    --cor-destaque: #0069d9;
+    --cor-borda: #dddddd;
+    --cor-shadow-card: rgba(0, 0, 0, 0.1);
 }
 
-/* Reset Básico */
+/* ==========================================================
+   Reset e Base (Mobile First)
+   ========================================================== */
 *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  font-size: 16px;
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base para rem */
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--cor-fundo-principal);
-  color: var(--cor-texto-principal);
-  transition: background-color var(--transicao-rapida), color var(--transicao-rapida);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Estilos de Tipografia */
-h1, h2, h3 {
-  color: var(--cor-texto-principal);
-  font-weight: 700;
-  margin-bottom: var(--espacamento-padrao);
-  line-height: 1.2;
-}
-
-h2.titulo {
-  font-size: 2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--cor-borda-suave);
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.25rem;
-  color: var(--cor-primaria);
-}
-
-p {
-  color: var(--cor-texto-secundario);
-  margin-bottom: 1rem;
+    font-family: var(--fonte-principal);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transicao-suave), color var(--transicao-suave);
 }
 
 a {
-  color: var(--cor-primaria);
-  text-decoration: none;
-  transition: color var(--transicao-rapida);
+    color: var(--cor-destaque);
+    text-decoration: none;
+    transition: color 0.2s;
 }
 
-a:hover {
-  color: var(--cor-primaria-hover);
-  text-decoration: underline;
+a:hover, a:focus {
+    color: var(--cor-texto-principal);
 }
-
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 0.5rem;
-  color: var(--cor-texto-secundario);
-}
-
-strong {
-  color: var(--cor-texto-principal);
-  font-weight: 600;
-}
-
 
 /* ==========================================================
-   LAYOUT GERAL
+   Layout Principal e Container
    ========================================================== */
-
 .container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px var(--espacamento-padrao);
-  flex-grow: 1; /* Garante que o main ocupe o espaço restante */
+    max-width: var(--largura-maxima);
+    width: 100%;
+    margin: var(--espacamento-principal) auto;
+    padding: 0 var(--espacamento-principal);
+    flex-grow: 1; /* Permite que o conteúdo principal ocupe o espaço restante */
+
+    /* Layout responsivo com Grid (Para organizar cards) */
+    display: grid;
+    grid-template-columns: 1fr; /* Padrão: uma coluna (mobile) */
+    gap: var(--espacamento-principal);
 }
 
-/* Estilo para quebra de linha visual em dispositivos maiores */
+.titulo {
+    font-size: 1.8rem;
+    color: var(--cor-texto-principal);
+    margin-bottom: var(--espacamento-principal);
+    text-align: center;
+    width: 100%;
+}
+
 .full-width {
-  width: 100%;
+    grid-column: 1 / -1; /* Ocupa toda a largura no grid */
 }
-
-/* Media Query para Layouts em Desktop */
-@media (min-width: 768px) {
-  .container {
-    padding-top: 40px;
-    padding-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--espacamento-padrao);
-  }
-
-  /* Ajusta cards para ocupar espaço proporcionalmente em desktop, 
-     permitindo layouts de duas colunas (ex: card e documentos-card) */
-  .card:not(.full-width) {
-    flex: 1 1 calc(50% - var(--espacamento-padrao)); /* 2 colunas */
-    min-width: 300px;
-  }
-}
-
 
 /* ==========================================================
-   COMPONENTE: CARD (Inovação e Profissionalismo)
+   Componente: Card
    ========================================================== */
-
 .card {
-  background-color: var(--cor-fundo-card);
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: var(--espacamento-padrao);
-  box-shadow: var(--sombra-card);
-  transition: transform var(--transicao-rapida), box-shadow var(--transicao-rapida);
-  border: 1px solid var(--cor-borda-suave); /* Borda sutil */
+    background-color: var(--cor-fundo-card);
+    padding: var(--espacamento-principal) * 1.5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--cor-shadow-card);
+    border: 1px solid var(--cor-borda);
+    transition: background-color var(--transicao-suave), border-color var(--transicao-suave), box-shadow var(--transicao-suave);
 }
 
-.card:hover {
-  transform: translateY(-3px); /* Efeito 3D sutil ao passar o mouse */
-  box-shadow: var(--sombra-card-hover);
+.card h3 {
+    font-size: var(--tamanho-titulo);
+    color: var(--cor-destaque);
+    margin-bottom: var(--espacamento-principal);
+    border-bottom: 2px solid var(--cor-borda);
+    padding-bottom: 5px;
 }
 
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card li {
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--cor-borda);
+    color: var(--cor-texto-secundario);
+}
+
+.card li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.card strong {
+    color: var(--cor-texto-principal);
+    font-weight: 600;
+}
+
+.small {
+    font-size: 0.95rem;
+    color: var(--cor-texto-secundario);
+}
 
 /* ==========================================================
-   HEADER E NAVEGAÇÃO
+   Header (Navegação)
    ========================================================== */
-
 .header {
-  background-color: var(--cor-fundo-card);
-  box-shadow: var(--sombra-card);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  border-bottom: 1px solid var(--cor-borda-suave);
+    background-color: var(--cor-fundo-card);
+    border-bottom: 1px solid var(--cor-borda);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color var(--transicao-suave), border-color var(--transicao-suave);
 }
 
 .header-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px var(--espacamento-padrao);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: var(--largura-maxima);
+    margin: 0 auto;
+    padding: 10px var(--espacamento-principal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: var(--cor-primaria);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--cor-destaque);
+    padding: 5px 0;
 }
 
+/* Menu principal */
 .menu {
-  display: none; /* Escondido por padrão em mobile */
-  flex-direction: column;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: var(--cor-fundo-card);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  z-index: 990;
-  transform: translateY(-100%);
-  opacity: 0;
-  pointer-events: none;
-  transition: transform var(--transicao-rapida), opacity var(--transicao-rapida);
+    display: flex;
+    flex-direction: column; /* Padrão Mobile: Coluna (Escondido) */
+    position: fixed;
+    top: 0;
+    right: -250px; /* Inicialmente fora da tela */
+    width: 250px;
+    height: 100vh;
+    background-color: var(--cor-fundo-card);
+    padding-top: 80px; /* Espaço para o header */
+    box-shadow: -4px 0 10px rgba(0, 0, 0, 0.5);
+    transition: right 0.3s ease-in-out;
+    z-index: 999;
 }
 
 .menu.open {
-  display: flex;
-  transform: translateY(0);
-  opacity: 1;
-  pointer-events: all;
+    right: 0; /* Menu visível */
 }
 
 .menu-link {
-  display: block;
-  padding: 10px 20px;
-  color: var(--cor-texto-principal);
-  border-left: 3px solid transparent;
-  transition: background-color 0.2s, border-left 0.2s;
+    padding: 15px var(--espacamento-principal);
+    border-bottom: 1px solid var(--cor-borda);
+    color: var(--cor-texto-principal);
+    font-weight: 500;
+    display: block;
+    transition: background-color 0.2s;
 }
 
-.menu-link:hover, .menu-link.ativo {
-  background-color: rgba(var(--cor-primaria), 0.1); /* Cor de fundo suave */
-  border-left-color: var(--cor-primaria);
-  text-decoration: none;
-  color: var(--cor-primaria);
+.menu-link.ativo, .menu-link:hover {
+    background-color: rgba(var(--cor-destaque), 0.1);
+    color: var(--cor-destaque);
 }
 
+/* Controles (Botões) */
 .header-controls {
     display: flex;
-    align-items: center;
     gap: 10px;
 }
 
-/* Hamburguer e Toggle Theme (Mobile) */
+/* Botões de Ação (Geral) */
 .btn-toggle-menu, .toggle-tema {
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  transition: background-color 0.2s;
-  color: var(--cor-texto-principal);
-  font-size: 1.25rem;
-  display: flex; /* Para centralizar o ícone/hamburguer */
-  align-items: center;
-  justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--cor-texto-principal);
+    font-size: 1.2rem;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s, color 0.2s;
 }
 
 .btn-toggle-menu:hover, .toggle-tema:hover {
-  background-color: var(--cor-borda-suave);
+    background-color: rgba(var(--cor-destaque), 0.1);
 }
 
-/* Estilo do Hambúrguer */
+.btn-toggle-menu {
+    /* Oculto no desktop, visível no mobile */
+    display: block; 
+}
+
+/* Ícone Hamburger */
 .hamburger {
-  width: 24px;
-  height: 24px;
-  position: relative;
+    width: 20px;
+    height: 16px;
+    position: relative;
 }
 
 .hamburger span {
-  display: block;
-  width: 100%;
-  height: 2px;
-  background-color: var(--cor-texto-principal);
-  position: absolute;
-  left: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: var(--cor-texto-principal);
+    position: absolute;
+    left: 0;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
-.hamburger span:nth-child(1) { top: 4px; }
-.hamburger span:nth-child(2) { top: 11px; }
-.hamburger span:nth-child(3) { top: 18px; }
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 7px; }
+.hamburger span:nth-child(3) { top: 14px; }
 
-.btn-toggle-menu.is-open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.btn-toggle-menu.is-open span:nth-child(2) {
-  opacity: 0;
-}
-.btn-toggle-menu.is-open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+/* Animação Hamburger -> X */
+.btn-toggle-menu.is-open .hamburger span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
 }
 
-/* Desktop Navigation */
-@media (min-width: 768px) {
-  .menu {
-    position: static;
-    display: flex;
-    flex-direction: row;
-    transform: none;
-    opacity: 1;
-    pointer-events: all;
-    box-shadow: none;
-    padding: 0;
-  }
-  
-  .menu-link {
-    padding: 8px 15px;
-    border-radius: 6px;
-    border-left: none;
-    border-bottom: 3px solid transparent;
-  }
+.btn-toggle-menu.is-open .hamburger span:nth-child(2) {
+    opacity: 0;
+}
 
-  .menu-link:hover, .menu-link.ativo {
-    background-color: transparent;
-    border-bottom-color: var(--cor-primaria);
-    color: var(--cor-texto-principal); /* Evita mudança de cor */
-  }
-
-  .btn-toggle-menu {
-    display: none; /* Esconde o botão hamburguer no desktop */
-  }
+.btn-toggle-menu.is-open .hamburger span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 
 /* ==========================================================
-   SEÇÕES ESPECÍFICAS
+   Página: Início / Perfil
    ========================================================== */
-
-/* Perfil Card (Home) */
 .perfil-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
 }
 
-.perfil-card .foto {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: var(--espacamento-padrao);
-  border: 4px solid var(--cor-primaria);
-  transition: border-color var(--transicao-rapida);
-}
-
-@media (min-width: 768px) {
-  .perfil-card {
-    flex-direction: row;
-    text-align: left;
-    gap: 30px;
-    padding: 30px;
-  }
-  .perfil-card .foto {
-    flex-shrink: 0;
-    margin-bottom: 0;
+.foto {
     width: 150px;
     height: 150px;
-  }
-  .perfil-card h1, .perfil-card p {
-    text-align: left !important;
-  }
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: var(--espacamento-principal);
+    border: 4px solid var(--cor-destaque);
+    box-shadow: 0 0 0 6px rgba(var(--cor-destaque), 0.3);
 }
 
-/* Documentos Card e Botão de Download Simulado */
+.perfil-card h1 {
+    font-size: 2rem;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+}
+
+.perfil-card p.small {
+    max-width: 400px;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--cor-texto-secundario);
+}
+
+/* ==========================================================
+   Componente: Botão de Download (Simulado)
+   ========================================================= */
 .documentos-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.documentos-card h3 {
-  margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 25px;
-  border-radius: 8px;
-  background-color: var(--cor-primaria);
-  color: #ffffff;
-  font-weight: 600;
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.15s ease-in-out, background-color 0.2s;
-  box-shadow: 0 4px 6px rgba(0, 123, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.1s ease;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    min-width: 220px;
 }
 
 .download-btn:hover {
-  background-color: var(--cor-primaria-hover);
-  transform: translateY(-1px);
-  text-decoration: none;
+    background-color: var(--cor-destaque); /* Mantém, mas escurece um pouco */
+    filter: brightness(1.1);
+}
+
+.download-btn:active {
+    transform: scale(0.98);
 }
 
 .download-btn .icon {
-  font-size: 1.1rem;
+    font-size: 1.1rem;
 }
 
-/* Efeito de Progresso Simulado */
-.download-btn .progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(255, 255, 255, 0.15); /* Fundo sutil para progresso */
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-weight: 700;
-  pointer-events: none;
-  transition: opacity 0.3s;
+/* Barra de progresso visual simulada */
+.progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 0.9rem;
+    pointer-events: none; /* Não interfere no clique */
 }
-
-/* Estado de Download em Andamento (data-busy="1" no JS) */
-.download-btn[data-busy="1"] .label, .download-btn[data-busy="1"] .icon {
-  opacity: 0.5;
-}
-
 
 /* ==========================================================
-   FOOTER E REDES SOCIAIS
+   Footer
    ========================================================== */
-
 .footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 30px;
-  border-top: 1px solid var(--cor-borda-suave);
-  color: var(--cor-texto-secundario);
+    padding: 20px var(--espacamento-principal);
+    text-align: center;
+    font-size: 0.9rem;
+    color: var(--cor-texto-secundario);
+    border-top: 1px solid var(--cor-borda);
+    margin-top: 40px;
+    background-color: var(--cor-fundo-card);
+    transition: background-color var(--transicao-suave), border-color var(--transicao-suave);
 }
 
-.footer p {
-  margin: 0;
-  font-size: 0.85rem;
-}
-
+/* ==========================================================
+   Redes Sociais (Fixo)
+   ========================================================== */
 .redes {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  z-index: 500;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 998;
 }
 
 .btn-social {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 1.25rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease;
 }
 
 .btn-social:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  text-decoration: none;
+    transform: scale(1.1);
+}
+
+/* ==========================================================
+   MEDIA QUERIES (Responsividade Profissional)
+   ========================================================== */
+
+/* Tablet (768px e acima) */
+@media (min-width: 768px) {
+    :root {
+        --tamanho-titulo: 1.8rem;
+        --espacamento-principal: 20px;
+    }
+
+    .titulo {
+        font-size: 2.2rem;
+        text-align: left;
+    }
+
+    /* Layout do Container em 2 colunas */
+    .container {
+        grid-template-columns: repeat(2, 1fr); /* Divide em 2 colunas para cards */
+    }
+    
+    /* Configuração de layouts específicos por página/estrutura */
+    .perfil-card {
+        flex-direction: row; /* Volta a ser linha */
+        text-align: left;
+        align-items: center;
+        gap: 30px;
+    }
+    
+    .perfil-card h1 {
+        font-size: 2.5rem;
+        text-align: left !important;
+    }
+
+    .perfil-card p.small {
+        text-align: left !important;
+    }
+
+    .foto {
+        margin-bottom: 0;
+    }
+
+    .documentos-card {
+        grid-column: 1 / 2; /* Move o card de documentos para a coluna 1 */
+        display: block; /* Volta ao layout padrão do card */
+    }
+
+    .documentos-card h3 {
+        text-align: left;
+    }
+    
+    .documentos-card div {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: var(--espacamento-principal) !important;
+    }
+    
+    /* Na página "Sobre Mim", alinhamos o texto da seção "Quem sou eu" */
+    .sobre-quem-sou-eu p {
+        text-align: left !important;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop (1024px e acima) */
+@media (min-width: 1024px) {
+    :root {
+        --tamanho-titulo: 2rem;
+    }
+
+    /* Header e Menu */
+    .header-inner {
+        padding: 15px var(--espacamento-principal);
+    }
+    
+    .menu {
+        /* Posição no Desktop: Volta ao fluxo normal do Flexbox */
+        position: static;
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        padding-top: 0;
+        box-shadow: none;
+        transition: none;
+    }
+
+    .menu-link {
+        padding: 10px 15px;
+        border-bottom: none;
+    }
+    
+    .menu-link.ativo {
+        border-bottom: 2px solid var(--cor-destaque);
+        background-color: transparent;
+    }
+
+    .btn-toggle-menu {
+        /* Oculta o botão do menu no desktop */
+        display: none;
+    }
+
+    /* Container */
+    .container {
+        grid-template-columns: repeat(3, 1fr); /* 3 colunas em desktop para layout mais rico */
+    }
+    
+    /* Cards específicos no layout de 3 colunas */
+    /* Curriculo.html */
+    .container .full-width:not(.perfil-card) {
+        grid-column: 1 / -1; /* Títulos e perfis continuam full-width */
+    }
+
+    .container .card:nth-of-type(3) {
+        /* Ex: Experiência, Competências, etc. */
+        grid-column: 1 / 3; 
+    }
+
+    .documentos-card {
+        grid-column: 3 / -1; /* Move para a última coluna */
+        height: fit-content; /* Ocupa apenas o necessário */
+        justify-content: center;
+        padding: var(--espacamento-principal);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .documentos-card h3 {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .documentos-card div {
+        justify-content: center;
+    }
+    
+    /* Aprimoramento da UX/Acessibilidade com Focus */
+    a:focus, button:focus {
+        outline: 2px solid var(--cor-destaque);
+        outline-offset: 3px;
+        border-radius: 4px;
+    }
 }
