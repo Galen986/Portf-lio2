@@ -86,7 +86,7 @@ h3 {
   margin-bottom: 12px;
 }
 
-/* Listas (Garantindo que a lista do currículo fique centrada no container do card) */
+/* Listas */
 ul {
   list-style: none;
   padding: 0;
@@ -103,23 +103,23 @@ ul li strong {
 
 
 /* ==========================================================
-   LAYOUT GERAL - CORREÇÃO DE CENTRALIZAÇÃO
+   LAYOUT GERAL - CENTRALIZAÇÃO E GRID
    ========================================================== */
 
 .container {
   max-width: 1000px;
   width: 90%;
-  margin: 20px auto 40px auto; /* 'auto' garante a centralização horizontal */
+  margin: 20px auto 40px auto; /* Centralização horizontal */
   padding: 0;
   flex-grow: 1;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* Padrão mobile: 1 coluna */
   gap: 20px;
 }
 
 /* Classe de utilidade */
 .full-width {
-  grid-column: 1 / -1;
+  grid-column: 1 / -1; /* Ocupa todas as colunas disponíveis na grid */
 }
 
 /* Estilo para Parágrafos Pequenos */
@@ -262,7 +262,7 @@ ul li strong {
 
 
 /* ==========================================================
-   CARTÕES (Componentes Principais)
+   CARTÕES (Componentes Principais) - CORREÇÃO DE CENTRALIZAÇÃO
    ========================================================== */
 
 .card {
@@ -273,27 +273,32 @@ ul li strong {
   box-shadow: 0 4px 10px rgba(var(--cor-shadow), 0.2);
   transition: all var(--transition-default);
 
-  /* **NOVIDADE:** Centraliza o conteúdo dentro dos cartões */
+  /* Centraliza todo o conteúdo do card */
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  text-align: center; /* Centraliza o texto */
+  align-items: center; 
+  text-align: center;
 }
 
-/* Garante que o alinhamento de texto manual no HTML seja respeitado, mas mantendo o card centrado */
+.card:hover {
+  border-color: var(--cor-accent);
+  transform: translateY(-2px);
+}
+
+/* Ajustes para garantir que listas e parágrafos dentro do card não fiquem esticados */
 .card p, .card ul {
-    text-align: left; /* Volta o texto de parágrafos e listas para a esquerda dentro do card */
-    max-width: 100%; /* Garante que o conteúdo ocupe a largura total */
+    text-align: left; 
+    max-width: 100%; 
 }
 
-/* Ajuste específico para a ul dos dados pessoais/experiência no currículo */
+/* Centraliza as listas de dados e experiência */
 .card ul {
-    width: fit-content; /* Faz a largura da lista ser apenas o tamanho do seu conteúdo */
-    margin: 0 auto; /* Centraliza essa lista horizontalmente dentro do card */
-    padding-left: 20px; /* Adiciona o recuo para simular bullet points invisíveis */
+    width: fit-content; 
+    margin: 0 auto; 
+    padding-left: 20px;
 }
 
-/* Títulos do card voltando a ser centrado */
+/* Títulos do card permanecem centralizados */
 .card h3 {
     text-align: center;
 }
@@ -327,11 +332,10 @@ ul li strong {
 
 
 /* ==========================================================
-   RODAPÉ E REDES SOCIAIS (Inalterados)
+   BOTÃO DE DOWNLOAD, RODAPÉ E REDES SOCIAIS (Inalterados)
    ========================================================= */
 
 .download-btn {
-  /* ... estilos inalterados ... */
   display: inline-flex;
   align-items: center;
   padding: 10px 20px;
@@ -426,15 +430,26 @@ ul li strong {
   
   .container {
     padding: 0 20px;
+    /* CORREÇÃO: Define 2 colunas de tamanho igual para os cards */
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start; /* Evita que cards baixos estiquem cards mais altos */
   }
 
-  /* Desfaz a centralização forçada do card para o layout de perfil */
+  /* Garante que elementos Full-Width ocupem 100% (2 colunas) */
+  .full-width {
+      grid-column: 1 / -1; 
+  }
+  
+  /* Ajuste para o Perfil (que deve ser full-width na home) */
   .perfil-card {
     flex-direction: row;
     text-align: left;
     align-items: center;
+    grid-column: 1 / -1; 
   }
   
+  /* Desfaz a centralização forçada do card de perfil no desktop */
   .perfil-card .foto {
     width: 150px;
     height: 150px;
@@ -464,29 +479,28 @@ ul li strong {
 /* MOBILE (Abaixo de 768px) - CORREÇÃO CRÍTICA DO MENU */
 @media (max-width: 767px) {
   
-  /* Esconde o menu na navegação padrão */
   .menu {
-    /* **CORREÇÃO:** Garante a visibilidade e o comportamento de abertura */
-    display: flex; /* Garante que o menu exista */
-    position: absolute; /* Usamos 'absolute' para que ele cubra apenas a área necessária */
-    top: 60px; /* Abaixo do header (ajustar se o header for mais alto) */
+    display: flex; 
+    position: absolute; 
+    top: 60px; 
     left: 0;
     width: 100%;
-    height: 0; /* Começa fechado */
-    max-height: 0; /* Impede o scroll e fecha */
+    height: auto;
+    max-height: 0; /* Começa fechado */
     background-color: var(--cor-fundo-card);
     border-top: 1px solid var(--cor-borda);
     flex-direction: column;
-    overflow: hidden; /* **CRUCIAL:** Oculta o conteúdo quando está fechado */
-    transition: max-height 0.4s ease-in-out; /* Transiciona a altura máxima */
+    overflow: hidden; 
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out; 
     padding: 0;
     z-index: 900;
   }
 
   /* Menu Aberto */
   .menu.open {
-    max-height: 300px; /* **CORREÇÃO:** Define uma altura máxima que caiba o menu */
+    max-height: 300px; /* Altura suficiente para mostrar todos os links */
     padding: 15px 0;
+    overflow-y: auto; /* Permite scroll caso tenha muitos links */
   }
 
   .menu-link {
@@ -516,15 +530,11 @@ ul li strong {
   }
 }
 
-/* Oculta o menu de desktop em telas pequenas, garantindo que o botão hamburguer apareça */
-@media (max-width: 767px) {
-    .menu:not(.open) {
-        display: none;
-    }
-}
+/* Garante que o menu de desktop apareça se o JS falhar (em telas grandes) */
 @media (min-width: 768px) {
     .menu {
-        /* Garante que o menu de desktop apareça se o JS falhar */
         display: flex !important; 
+        max-height: none !important; /* Reseta as regras do mobile */
+        padding: 0 !important;
     }
 }
