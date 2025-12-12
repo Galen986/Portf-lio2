@@ -4,21 +4,16 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  /* -------------------------
-     MÓDULO 1: TEMA (Persistência e UX)
-     ------------------------- */
+  // ... (MÓDULO 1: TEMA - Mantenha este código inalterado)
   (( ) => {
     const THEME_KEY = "gc_theme";
     const body = document.body;
-    // Seleciona todos os botões de tema de uma vez
     const btnTemaList = document.querySelectorAll(".toggle-tema");
 
-    // 1. Inicializa o tema ao carregar
     const saved = localStorage.getItem(THEME_KEY);
     if (saved === "light") body.classList.add("light");
     else body.classList.remove("light");
 
-    // 2. Função para sincronizar ícone e ARIA em todos os botões
     const updateThemeButtons = () => {
       const isLight = body.classList.contains("light");
       btnTemaList.forEach(btn => {
@@ -30,9 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.setAttribute("aria-label", isLight ? "Ativar tema escuro" : "Ativar tema claro");
       });
     };
-    updateThemeButtons(); // Aplica o estado inicial
+    updateThemeButtons();
 
-    // 3. Adiciona listener de clique
     btnTemaList.forEach(btn => {
       btn.addEventListener("click", () => {
         const nowLight = body.classList.toggle("light");
@@ -44,23 +38,28 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   /* -------------------------
-     MÓDULO 2: MENU MOBILE (Acessibilidade)
+     MÓDULO 2: MENU MOBILE (Acessibilidade) - CORRIGIDO
      ------------------------- */
   (( ) => {
     const menu = document.getElementById("main-menu");
-    // Seleciona todos os botões de menu (pode haver um no header e um no footer, se existisse)
+    // Seleciona todos os botões de menu
     const btnMenuList = document.querySelectorAll(".btn-toggle-menu");
 
     if (!menu) return; // Sai se o menu principal não existe
 
-    // Função para abrir/fechar o menu em todos os botões
+    // Função para abrir/fechar o menu em todos os botões E no elemento <nav>
     const toggleMenu = (openState) => {
+        // Alterna a classe 'open' no elemento do menu, ou usa o estado passado
         const isOpen = typeof openState === 'boolean' ? openState : menu.classList.toggle("open");
-        
+
+        // Aplica o estado em todos os botões (para animação do hamburger e ARIA)
         btnMenuList.forEach(btnMenu => {
             btnMenu.classList.toggle("is-open", isOpen);
             btnMenu.setAttribute("aria-expanded", String(isOpen));
         });
+        
+        // **LINHA CORRIGIDA:** Garante que a classe 'open' seja aplicada na NAV para o CSS
+        menu.classList.toggle("open", isOpen); 
     };
 
     // 1. Evento de clique para alternar o menu
@@ -75,13 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // 3. Fechar menu com ESC ou Ctrl/Cmd + K (como seu código já fazia, aprimorado)
+    // 3. Fechar menu com ESC ou Ctrl/Cmd + K
     window.addEventListener("keydown", (e) => {
       // Fecha com ESC
       if (e.key === "Escape" && menu.classList.contains("open")) {
         toggleMenu(false);
       }
-      
+
       // Ctrl/Cmd + K: Foca no primeiro link do menu (para acessibilidade)
       const isCmdK = (e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k";
       if (isCmdK) {
@@ -93,15 +92,12 @@ document.addEventListener("DOMContentLoaded", () => {
   })();
 
 
-  /* -------------------------
-     MÓDULO 3: DOWNLOAD SIMULADO (Simulação de Progresso)
-     ------------------------- */
+  // ... (MÓDULO 3: DOWNLOAD SIMULADO - Mantenha este código inalterado)
   (( ) => {
     const dlButtons = document.querySelectorAll(".btn-download-simulado");
 
     dlButtons.forEach(btn => {
       btn.addEventListener("click", (ev) => {
-        // Evita múltiplos cliques
         if (btn.dataset.busy === "1") {
           ev.preventDefault();
           return;
@@ -110,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const href = btn.getAttribute("href");
         if (!href) return;
 
-        ev.preventDefault(); // Bloqueia o download nativo para simular
+        ev.preventDefault();
 
         btn.dataset.busy = "1";
         const progressEl = btn.querySelector(".progress");
@@ -119,16 +115,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let percent = 0;
         const start = Date.now();
 
-        // Total da simulação (ms)
         const totalSimMs = 1200 + Math.random() * 900;
-        
-        // Função que realiza a animação
+
         const step = () => {
           const elapsed = Date.now() - start;
           const ratio = Math.min(1, elapsed / totalSimMs);
 
-          // Função de easing (curva ease-out mais suave)
-          // Usando uma potência maior (4) para um início mais rápido e desaceleração mais perceptível.
           const eased = 1 - Math.pow(1 - ratio, 4); 
           percent = Math.floor(eased * 100);
 
@@ -137,20 +129,16 @@ document.addEventListener("DOMContentLoaded", () => {
           if (ratio < 1) {
             requestAnimationFrame(step);
           } else {
-            // Conclusão
             progressEl.textContent = `100%`;
-            
-            // Pequena espera para melhor UX
+
             setTimeout(() => {
-              // Dispara o download real
               const a = document.createElement("a");
               a.href = href;
-              a.download = href.split("/").pop() || "documento.pdf"; // Reusa o nome do arquivo
+              a.download = href.split("/").pop() || "documento.pdf";
               document.body.appendChild(a);
               a.click();
               a.remove();
 
-              // Limpa estado e UI
               delete btn.dataset.busy;
               setTimeout(() => { 
                 if (progressEl) progressEl.textContent = ""; 
