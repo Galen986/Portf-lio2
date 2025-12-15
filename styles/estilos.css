@@ -1,414 +1,434 @@
-/* ==========================================================
-   1. Variáveis e Configurações Globais
-   ========================================================== */
-
 :root {
-    /* Cores (Dark Mode - Default) */
-    --color-bg-primary: #0a0a0a;         /* Fundo Principal (Preto Soft) */
-    --color-bg-card: #1c1c1c;            /* Fundo de Elementos (Cards, Header) */
-    --color-text-primary: #ffffff;       /* Texto Principal */
-    --color-text-secondary: #aaaaaa;     /* Texto Secundário/Detalhes */
-    --color-accent: #00bcd4;             /* Ciano Profissional (Destaque) */
-    --color-accent-hover: #0097a7;       /* Destaque mais escuro para hover */
-    --color-border: #333333;             /* Bordas e Divisores */
-    
-    /* Tipografia */
-    --font-family: 'Inter', 'Segoe UI', sans-serif;
-    --font-size-base: 1rem;
-    
-    /* Layout */
-    --max-width: 1280px;
-    --spacing-unit: 1.5rem; /* 24px */
-    --transition-speed: 0.35s;
-    --header-height: 65px;
+  --cor-bg: #050816;
+  --cor-bg-card: rgba(15, 23, 42, 0.9);
+  --cor-acento: #6366f1;
+  --cor-acento-soft: rgba(99, 102, 241, 0.2);
+  --cor-texto: #e5e7eb;
+  --cor-texto-suave: #9ca3af;
+  --cor-borda: rgba(148, 163, 184, 0.4);
+  --cor-erro: #f97373;
+  --radius-card: 16px;
+  --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.75);
+  --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --transicao-base: 180ms ease-out;
 }
 
-/* Tema Claro (Light Mode) */
+/* Tema claro */
 body.light {
-    --color-bg-primary: #f8f9fa;
-    --color-bg-card: #ffffff;
-    --color-text-primary: #212529;
-    --color-text-secondary: #6c757d;
-    --color-accent: #007bff; /* Azul profissional */
-    --color-accent-hover: #0056b3;
-    --color-border: #dee2e6;
+  --cor-bg: #f4f4f5;
+  --cor-bg-card: #ffffff;
+  --cor-texto: #020617;
+  --cor-texto-suave: #4b5563;
+  --cor-borda: rgba(148, 163, 184, 0.55);
+  --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.12);
 }
 
-
-/* ==========================================================
-   2. Reset, Base e Tipografia
-   ========================================================== */
-
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
-    font-size: var(--font-size-base);
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--font-family);
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
-    line-height: 1.6;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: background-color var(--transition-speed), color var(--transition-speed);
+  min-height: 100vh;
+  font-family: var(--font-base);
+  color: var(--cor-texto);
+  background:
+    radial-gradient(circle at top left, #1d2541 0, transparent 60%),
+    radial-gradient(circle at bottom right, #0b1120 0, transparent 55%),
+    var(--cor-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Container de Layout Centralizado */
-.container {
-    max-width: var(--max-width);
-    width: 90%;
-    margin: var(--spacing-unit) auto;
-    flex-grow: 1;
-    display: grid;
-    /* Mobile-First: Uma coluna ampla, com padding */
-    grid-template-columns: 1fr; 
-    gap: var(--spacing-unit);
+img,
+picture {
+  max-width: 100%;
+  display: block;
 }
 
-/* Títulos */
-h2.titulo {
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    margin-bottom: var(--spacing-unit);
-    padding-bottom: 0.5rem;
-    text-align: center;
-    border-bottom: 2px solid var(--color-accent);
-}
-
-h3 {
-    font-size: 1.35rem;
-    color: var(--color-accent);
-    margin-bottom: 0.8rem;
-}
-
-/* Links e Listas */
 a {
-    color: var(--color-accent);
-    text-decoration: none;
-    transition: color 0.15s;
-}
-
-a:hover, a:focus {
-    color: var(--color-accent-hover);
-    text-decoration: underline;
-    outline: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 ul {
-    list-style: none;
+  list-style: none;
 }
 
-ul li {
-    padding-left: 1.5em;
-    position: relative;
-    margin-bottom: 0.4rem;
-    color: var(--color-text-secondary);
+.container {
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+  padding-block: 5rem 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.75rem 2.25rem;
+  align-items: flex-start;
 }
 
-ul li::before {
-    content: '→'; /* Seta elegante como bullet point */
-    color: var(--color-accent);
-    font-weight: bold;
-    position: absolute;
-    left: 0;
+.full-width {
+  grid-column: 1 / -1;
 }
 
-/* ==========================================================
-   3. Componente: Header & Navegação
-   ========================================================== */
+.titulo {
+  font-size: clamp(1.8rem, 1.4rem + 1vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #f9fafb;
+}
+
+/* Cards com efeito “glass” profissional */
+.card {
+  position: relative;
+  background: var(--cor-bg-card);
+  border-radius: var(--radius-card);
+  padding: 1.4rem 1.5rem;
+  border: 1px solid var(--cor-borda);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  background: radial-gradient(circle at top left, var(--cor-acento-soft), transparent 60%);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+/* Conteúdo do card por cima do pseudo-elemento */
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.85rem;
+  font-weight: 600;
+}
+
+.card ul li {
+  color: var(--cor-texto-suave);
+  font-size: 0.95rem;
+  padding-block: 0.3rem;
+}
+
+.card ul li strong {
+  color: var(--cor-texto);
+}
+
+/* Card de perfil na home */
+.perfil-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.foto {
+  width: 112px;
+  height: 112px;
+  border-radius: 999px;
+  object-fit: cover;
+  border: 2px solid rgba(148, 163, 184, 0.75);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.85);
+}
+
+.small {
+  font-size: 0.96rem;
+  color: var(--cor-texto-suave);
+}
 
 .header {
-    background-color: var(--color-bg-card);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    min-height: var(--header-height);
-    display: flex;
-    align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: linear-gradient(
+    to bottom,
+    rgba(15, 23, 42, 0.94),
+    rgba(15, 23, 42, 0.86),
+    transparent
+  );
+  border-bottom: 1px solid rgba(148, 163, 184, 0.28);
 }
 
 .header-inner {
-    max-width: var(--max-width);
-    width: 90%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: min(1120px, 100% - 2.5rem);
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.85rem;
+  gap: 1.25rem;
 }
 
 .logo {
-    font-size: 1.6rem;
-    font-weight: 800;
-    color: var(--color-accent);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 1.02rem;
+  text-transform: uppercase;
 }
 
-.header-controls {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-/* Botões de Controle (Hamburger / Tema) */
-.btn-toggle-menu,
-.toggle-tema {
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.6rem;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-    color: var(--color-text-primary);
-}
-
-.btn-toggle-menu:hover,
-.toggle-tema:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.toggle-tema i {
-    font-size: 1.3rem;
-}
-
-/* Menu Mobile (Padrão: Fechado) */
 .menu {
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-height: 0;
-    background-color: var(--color-bg-card);
-    flex-direction: column;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-    border-top: 1px solid var(--color-border);
-    z-index: 900;
-}
-
-.menu.open {
-    max-height: 300px;
-    padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 }
 
 .menu-link {
-    display: block;
-    padding: 1rem 5%;
-    border-bottom: 1px solid var(--color-border);
-    transition: background-color 0.2s;
-    text-transform: uppercase;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+  position: relative;
+  font-size: 0.92rem;
+  color: var(--cor-texto-suave);
+  padding-block: 0.3rem;
+  transition: color var(--transicao-base);
 }
 
-.menu-link:hover, .menu-link.ativo {
-    background-color: rgba(0, 0, 0, 0.1);
-    text-decoration: none;
+.menu-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: -0.35rem;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cor-acento), #22d3ee);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 180ms ease-out;
 }
 
-
-/* ==========================================================
-   4. Componente: Cards e Layout Específico
-   ========================================================== */
-
-.card {
-    background-color: var(--color-bg-card);
-    padding: var(--spacing-unit);
-    border-radius: 10px;
-    border: 1px solid var(--color-border);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform var(--transition-speed), border-color var(--transition-speed);
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Padrão: Alinhado à esquerda */
+.menu-link:hover {
+  color: var(--cor-texto);
 }
 
-/* Efeito Hover Profissional */
-.card:hover {
-    transform: translateY(-5px);
-    border-color: var(--color-accent);
+.menu-link.ativo {
+  color: var(--cor-texto);
 }
 
-/* Card de Perfil (Home) */
-.perfil-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
-    padding: calc(var(--spacing-unit) * 1.5);
-    grid-column: 1 / -1; /* Ocupa sempre a largura total */
+.menu-link.ativo::after,
+.menu-link:hover::after {
+  transform: scaleX(1);
 }
 
-.perfil-card .foto {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid var(--color-accent);
-    transition: border-color var(--transition-speed);
+/* Controles do header */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-/* Botão de Download */
-.download-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 24px;
-    background-color: var(--color-accent);
-    color: var(--color-bg-primary);
-    border-radius: 4px;
-    font-weight: 600;
-    transition: background-color 0.2s, transform 0.15s;
-    overflow: hidden;
-    position: relative;
+/* Botão hamburguer */
+.btn-toggle-menu {
+  display: none;
+  border: none;
+  background: transparent;
+  padding: 0.25rem;
+  cursor: pointer;
 }
 
-.download-btn:hover {
-    background-color: var(--color-accent-hover);
-    transform: translateY(-2px);
-    text-decoration: none;
+.hamburger {
+  width: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
-/* ==========================================================
-   5. Footer & Redes Sociais
-   ========================================================== */
-
-.footer {
-    text-align: center;
-    padding: 1rem 0;
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    background-color: var(--color-bg-card);
-    margin-top: auto;
+.hamburger span {
+  height: 2px;
+  width: 100%;
+  border-radius: 999px;
+  background: var(--cor-texto);
+  transition: transform 160ms ease, opacity 160ms ease, translate 160ms ease;
 }
 
+.btn-toggle-menu.is-open .hamburger span:nth-child(1) {
+  transform: rotate(45deg);
+  translate: 0 4px;
+}
+
+.btn-toggle-menu.is-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+.btn-toggle-menu.is-open .hamburger span:nth-child(3) {
+  transform: rotate(-45deg);
+  translate: 0 -4px;
+}
+
+/* Botão de tema */
+.toggle-tema {
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 0.35rem 0.55rem;
+  background: radial-gradient(circle at top left, rgba(148, 163, 184, 0.35), transparent 55%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-texto);
+  cursor: pointer;
+  transition:
+    border-color var(--transicao-base),
+    box-shadow var(--transicao-base),
+    transform var(--transicao-base),
+    background 220ms ease-out;
+}
+
+.toggle-tema:hover {
+  box-shadow: 0 0 0 1px rgba(129, 140, 248, 0.85);
+  transform: translateY(-1px);
+}
+
+.toggle-tema i {
+  font-size: 0.95rem;
+}
+
+.documentos-card .download-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: 999px;
+  border: 1px solid rgba(129, 140, 248, 0.75);
+  background: radial-gradient(circle at top left, rgba(79, 70, 229, 0.35), transparent 65%);
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    transform var(--transicao-base),
+    box-shadow var(--transicao-base),
+    border-color var(--transicao-base),
+    background 220ms ease-out;
+}
+
+.documentos-card .download-btn .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.documentos-card .download-btn i {
+  font-size: 0.9rem;
+}
+
+.documentos-card .download-btn .progress {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--cor-texto-suave);
+}
+
+.documentos-card .download-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(79, 70, 229, 0.65);
+  border-color: rgba(191, 219, 254, 0.9);
+}
+
+/* Redes fixas */
 .redes {
-    position: fixed;
-    bottom: var(--spacing-unit);
-    right: var(--spacing-unit);
-    display: flex;
-    flex-direction: row; /* Mobile: Horizontal */
-    gap: 1rem;
-    z-index: 950;
+  position: fixed;
+  inset-block-end: 1.75rem;
+  inset-inline-end: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  z-index: 45;
 }
 
 .btn-social {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 1.3rem;
-    transition: transform 0.2s, opacity 0.2s;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #f9fafb;
+  box-shadow: 0 12px 25px rgba(15, 23, 42, 0.75);
+  transition: transform 140ms ease-out, box-shadow 140ms ease-out;
 }
 
 .btn-social:hover {
-    transform: scale(1.1);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.95);
 }
 
-/* ==========================================================
-   6. Media Queries (Responsividade Pura)
-   ========================================================== */
-
-/* Tablet (Mínimo 768px) */
-@media (min-width: 768px) {
-    
-    .container {
-        /* Layout fixo de 2 colunas para estabilidade */
-        grid-template-columns: repeat(2, 1fr);
-        gap: calc(var(--spacing-unit) * 1.5);
-        width: 92%;
-    }
-    
-    /* Header Desktop: Logo / Menu Centralizado / Controles */
-    .header-inner {
-        width: 92%;
-    }
-    
-    /* Menu Oculta Hamburger e se torna Flexbox no Header */
-    .btn-toggle-menu {
-        display: none;
-    }
-    
-    .menu {
-        position: static;
-        display: flex;
-        flex-direction: row;
-        max-height: none;
-        padding: 0;
-        border-top: none;
-        overflow: visible;
-        
-        /* CHAVE: Menu Centralizado */
-        flex-grow: 1; 
-        justify-content: center;
-        gap: 1.5rem; /* Espaço entre os links */
-    }
-    
-    .menu-link {
-        padding: 0.5rem 0.75rem;
-        border-bottom: none;
-        font-weight: 400;
-        transition: color 0.2s;
-    }
-    
-    .menu-link:hover, .menu-link.ativo {
-        background-color: transparent;
-        color: var(--color-accent);
-        text-decoration: none;
-    }
-
-    /* Card de Perfil: Layout Horizontal */
-    .perfil-card {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        gap: 2rem;
-    }
-    
-    .perfil-card .foto {
-        width: 150px;
-        height: 150px;
-        border-radius: 10px; /* Quadrado arredondado mais moderno */
-    }
-    
-    .perfil-card > div {
-        /* Garante que o texto dentro do div fique alinhado à esquerda */
-        text-align: left;
-    }
-    
-    /* Redes Sociais: Vertical */
-    .redes {
-        flex-direction: column;
-    }
+.footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  padding-block: 1.5rem 1.8rem;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
 }
 
-/* Desktop Widescreen (Mínimo 1200px) */
-@media (min-width: 1200px) {
-    .container {
-        /* Layout de 3 colunas para telas muito largas */
-        grid-template-columns: repeat(3, 1fr);
-    }
+@media (max-width: 768px) {
+  .header-inner {
+    padding-block: 0.7rem;
+  }
+
+  .menu {
+    position: absolute;
+    inset-inline: 0;
+    top: 100%;
+    background: rgba(15, 23, 42, 0.98);
+    border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.75rem 1.25rem 1rem;
+    transform-origin: top;
+    transform: scaleY(0);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 170ms ease-out, opacity 170ms ease-out;
+  }
+
+  .menu.open {
+    transform: scaleY(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .btn-toggle-menu {
+    display: inline-flex;
+  }
+
+  .container {
+    padding-block: 4.25rem 3rem;
+    grid-template-columns: 1fr;
+  }
+
+  .perfil-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .foto {
+    margin-inline: auto;
+  }
+
+  .redes {
+    inset-inline-end: 1rem;
+  }
 }
 
-/* ==========================================================
-   7. Acessibilidade
-   ========================================================== */
-
-:focus {
-    outline: 2px solid var(--color-accent-hover);
-    outline-offset: 3px;
-    border-radius: 3px;
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
+
