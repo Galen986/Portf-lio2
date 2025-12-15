@@ -1,579 +1,414 @@
 /* ==========================================================
-   Base & Configurações (Root, Reset, Tipografia)
+   1. Variáveis e Configurações Globais
    ========================================================== */
 
 :root {
-  /* Cores Padrão (Tema Escuro - Dark Mode) */
-  --color-bg-primary: #0d1117;        /* Fundo principal */
-  --color-bg-secondary: #161b22;      /* Fundo do Card/Header */
-  --color-text-primary: #c9d1d9;      /* Títulos, Links ativos */
-  --color-text-secondary: #8b949e;    /* Corpo de texto, detalhes */
-  --color-accent: #58a6ff;            /* Cor de destaque principal */
-  --color-accent-dark: #2f80ff;       /* Cor de destaque para hover/ativo */
-  --color-border: #30363d;            /* Bordas e divisores */
-  --color-shadow-rgb: 1, 4, 9;        /* Sombra (RGB) */
-  --color-hamburger: #c9d1d9;         /* Cor do menu hamburger */
-
-  /* Layout & Transições */
-  --max-width: 1200px;
-  --spacing-container-gap: 32px;
-  --transition-speed: 0.3s;
-  
-  /* Tipografia */
-  --font-body: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
-  --font-size-base: 1rem;
+    /* Cores (Dark Mode - Default) */
+    --color-bg-primary: #0a0a0a;         /* Fundo Principal (Preto Soft) */
+    --color-bg-card: #1c1c1c;            /* Fundo de Elementos (Cards, Header) */
+    --color-text-primary: #ffffff;       /* Texto Principal */
+    --color-text-secondary: #aaaaaa;     /* Texto Secundário/Detalhes */
+    --color-accent: #00bcd4;             /* Ciano Profissional (Destaque) */
+    --color-accent-hover: #0097a7;       /* Destaque mais escuro para hover */
+    --color-border: #333333;             /* Bordas e Divisores */
+    
+    /* Tipografia */
+    --font-family: 'Inter', 'Segoe UI', sans-serif;
+    --font-size-base: 1rem;
+    
+    /* Layout */
+    --max-width: 1280px;
+    --spacing-unit: 1.5rem; /* 24px */
+    --transition-speed: 0.35s;
+    --header-height: 65px;
 }
 
 /* Tema Claro (Light Mode) */
 body.light {
-  --color-bg-primary: #f6f8fa;
-  --color-bg-secondary: #ffffff;
-  --color-text-primary: #24292f;
-  --color-text-secondary: #57606a;
-  --color-accent: #0969da;
-  --color-accent-dark: #0747a6;
-  --color-border: #c8ced4;
-  --color-shadow-rgb: 209, 213, 219;
-  --color-hamburger: #24292f;
+    --color-bg-primary: #f8f9fa;
+    --color-bg-card: #ffffff;
+    --color-text-primary: #212529;
+    --color-text-secondary: #6c757d;
+    --color-accent: #007bff; /* Azul profissional */
+    --color-accent-hover: #0056b3;
+    --color-border: #dee2e6;
 }
 
-/* Reset Profissional */
+
+/* ==========================================================
+   2. Reset, Base e Tipografia
+   ========================================================== */
+
 *, *::before, *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
-  scroll-behavior: smooth;
-  font-size: 16px; /* Base 1rem */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
 }
 
 body {
-  font-family: var(--font-body);
-  background-color: var(--color-bg-primary);
-  color: var(--color-text-primary);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-  -webkit-tap-highlight-color: transparent;
+    font-family: var(--font-family);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
 }
 
-/* Links */
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color var(--transition-speed);
+/* Container de Layout Centralizado */
+.container {
+    max-width: var(--max-width);
+    width: 90%;
+    margin: var(--spacing-unit) auto;
+    flex-grow: 1;
+    display: grid;
+    /* Mobile-First: Uma coluna ampla, com padding */
+    grid-template-columns: 1fr; 
+    gap: var(--spacing-unit);
 }
 
-a:hover, a:focus {
-  color: var(--color-accent-dark);
-  text-decoration: underline;
-  outline: none;
-}
-
-/* Tipografia */
-h1, h2, h3 {
-  line-height: 1.2;
-  margin: 0;
-  color: var(--color-text-primary);
-}
-
+/* Títulos */
 h2.titulo {
-  font-size: clamp(1.75rem, 4vw, 2.2rem); 
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-accent);
-  text-align: center;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    margin-bottom: var(--spacing-unit);
+    padding-bottom: 0.5rem;
+    text-align: center;
+    border-bottom: 2px solid var(--color-accent);
 }
 
 h3 {
-  font-size: 1.25rem;
-  color: var(--color-accent);
-  margin-bottom: 0.75rem;
+    font-size: 1.35rem;
+    color: var(--color-accent);
+    margin-bottom: 0.8rem;
 }
 
-/* Listas */
+/* Links e Listas */
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+a:hover, a:focus {
+    color: var(--color-accent-hover);
+    text-decoration: underline;
+    outline: none;
+}
+
 ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+    list-style: none;
 }
 
 ul li {
-  margin-bottom: 0.5rem;
-  color: var(--color-text-secondary);
-  padding-left: 1.1em;
-  position: relative;
+    padding-left: 1.5em;
+    position: relative;
+    margin-bottom: 0.4rem;
+    color: var(--color-text-secondary);
 }
 
 ul li::before {
-  content: '•';
-  color: var(--color-accent);
-  font-weight: bold;
-  display: inline-block;
-  width: 1em;
-  margin-left: -1em;
-  position: absolute;
-  left: 0;
-}
-
-ul li strong {
-  color: var(--color-text-primary);
-}
-
-.small {
-  font-size: 1rem;
-  color: var(--color-text-secondary);
+    content: '→'; /* Seta elegante como bullet point */
+    color: var(--color-accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
 }
 
 /* ==========================================================
-   Header & Navegação
+   3. Componente: Header & Navegação
    ========================================================== */
 
 .header {
-  background-color: var(--color-bg-secondary);
-  border-bottom: 1px solid var(--color-border);
-  padding: 12px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(var(--color-shadow-rgb), 0.1);
+    background-color: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    min-height: var(--header-height);
+    display: flex;
+    align-items: center;
 }
 
 .header-inner {
-  max-width: var(--max-width);
-  width: 90%; /* Mobile width */
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    max-width: var(--max-width);
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--color-accent);
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-accent);
 }
 
 .header-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
-/* Botões de controle */
+/* Botões de Controle (Hamburger / Tema) */
 .btn-toggle-menu,
 .toggle-tema {
-  background: none;
-  border: 1px solid transparent;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 6px;
-  transition: border-color var(--transition-speed), background-color 0.15s ease-out;
-  color: var(--color-text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.6rem;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    color: var(--color-text-primary);
 }
 
 .btn-toggle-menu:hover,
 .toggle-tema:hover {
-  background-color: rgba(var(--color-shadow-rgb), 0.1);
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .toggle-tema i {
-  font-size: 1.25rem;
-}
-
-/* Hamburger */
-.hamburger {
-  width: 22px;
-  height: 18px;
-  position: relative;
-  display: inline-block;
-}
-
-.hamburger span {
-  display: block;
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: var(--color-hamburger);
-  border-radius: 2px;
-  left: 0;
-  transition: transform 0.25s ease-in-out, opacity 0.18s ease-in-out, top 0.25s ease-in-out;
-}
-
-.hamburger span:nth-child(1) { top: 0px; }
-.hamburger span:nth-child(2) { top: 8px; }
-.hamburger span:nth-child(3) { top: 16px; }
-
-.btn-toggle-menu.is-open .hamburger span:nth-child(1) {
-  transform: rotate(45deg); top: 8px;
-}
-.btn-toggle-menu.is-open .hamburger span:nth-child(2) {
-  opacity: 0;
-}
-.btn-toggle-menu.is-open .hamburger span:nth-child(3) {
-  transform: rotate(-45deg); top: 8px;
+    font-size: 1.3rem;
 }
 
 /* Menu Mobile (Padrão: Fechado) */
 .menu {
-  display: flex;
-  position: absolute;
-  top: 100%; 
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-height: 0; 
-  background-color: var(--color-bg-secondary);
-  border-top: 1px solid var(--color-border);
-  flex-direction: column;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out, padding 0.3s ease;
-  padding: 0;
-  z-index: 900;
+    position: absolute;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-height: 0;
+    background-color: var(--color-bg-card);
+    flex-direction: column;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    border-top: 1px solid var(--color-border);
+    z-index: 900;
 }
 
 .menu.open {
-  max-height: 400px; 
-  padding: 0.5rem 0;
-  overflow-y: auto;
+    max-height: 300px;
+    padding: 0.5rem 0;
 }
 
 .menu-link {
-  display: block;
-  padding: 1rem 5%; 
-  color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-border);
-  transition: background-color 0.2s;
-  width: 100%;
-  position: relative;
+    display: block;
+    padding: 1rem 5%;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s;
+    text-transform: uppercase;
+    font-weight: 500;
+    letter-spacing: 0.5px;
 }
 
-.menu-link:last-child {
-  border-bottom: none;
-}
-
-.menu-link:hover {
-  background-color: rgba(var(--color-shadow-rgb), 0.05);
-  text-decoration: none;
-}
-
-.menu-link.ativo {
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
-.menu-link::after {
-  content: none; /* Remove indicador de link em mobile */
+.menu-link:hover, .menu-link.ativo {
+    background-color: rgba(0, 0, 0, 0.1);
+    text-decoration: none;
 }
 
 
 /* ==========================================================
-   Layout Principal (Container e Cards)
+   4. Componente: Cards e Layout Específico
    ========================================================== */
 
-.container {
-  max-width: var(--max-width);
-  width: 90%; 
-  margin: 20px auto 40px auto;
-  padding: 0;
-  flex-grow: 1;
-  display: grid;
-  /* MOBILE PADRÃO: Flexibilidade */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: var(--spacing-container-gap);
-  justify-content: center; /* Centraliza a grid */
-}
-
-/* Ocupa toda a largura da grid */
-.full-width {
-  grid-column: 1 / -1;
-}
-
-/* Cards (componentes) */
 .card {
-  background-color: var(--color-bg-secondary);
-  padding: 24px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 12px rgba(var(--color-shadow-rgb), 0.1);
-  transition: transform var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Mobile: Centralizado */
-  text-align: center; 
-  min-height: 100px;
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-unit);
+    border-radius: 10px;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform var(--transition-speed), border-color var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Padrão: Alinhado à esquerda */
 }
 
+/* Efeito Hover Profissional */
 .card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(var(--color-shadow-rgb), 0.15);
+    transform: translateY(-5px);
+    border-color: var(--color-accent);
 }
 
-.card h3 {
-  text-align: center;
-  width: 100%;
-}
-
-.card p,
-.card ul,
-.card div {
-  width: 100%;
-  text-align: left; /* Garante que o conteúdo interno seja legível */
-}
-
-/* Card de Perfil */
+/* Card de Perfil (Home) */
 .perfil-card {
-  align-items: center; 
-  text-align: center;
-  gap: 16px;
-  padding: 30px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+    padding: calc(var(--spacing-unit) * 1.5);
+    grid-column: 1 / -1; /* Ocupa sempre a largura total */
 }
 
 .perfil-card .foto {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid var(--color-accent);
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--color-accent);
+    transition: border-color var(--transition-speed);
 }
 
-
-/* Botão de download */
+/* Botão de Download */
 .download-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 20px;
-  background-color: var(--color-accent);
-  color: var(--color-bg-primary); 
-  border-radius: 6px;
-  font-weight: 700;
-  transition: all 0.2s ease-out;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid var(--color-accent);
-  text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background-color: var(--color-accent);
+    color: var(--color-bg-primary);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.2s, transform 0.15s;
+    overflow: hidden;
+    position: relative;
 }
 
-.download-btn:hover,
-.download-btn:focus {
-  background-color: var(--color-accent-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 8px rgba(var(--color-shadow-rgb), 0.3);
-  outline: none;
+.download-btn:hover {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-2px);
+    text-decoration: none;
 }
-
-/* Barra de progresso (Manter código de simulação) */
-.download-btn .progress {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0%;
-  background-color: rgba(0, 0, 0, 0.14);
-  color: var(--color-text-primary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  z-index: 1;
-  transition: width 0.18s linear;
-}
-
-.download-btn .icon,
-.download-btn .label {
-  position: relative;
-  z-index: 2;
-}
-
 
 /* ==========================================================
-   Footer & Redes Sociais
+   5. Footer & Redes Sociais
    ========================================================== */
 
 .footer {
-  text-align: center;
-  padding: 20px 0;
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-secondary);
-  margin-top: auto;
-  background-color: var(--color-bg-secondary);
+    text-align: center;
+    padding: 1rem 0;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    background-color: var(--color-bg-card);
+    margin-top: auto;
 }
 
 .redes {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  display: flex;
-  flex-direction: row; /* Mobile: Horizontal */
-  gap: 12px;
-  z-index: 990;
+    position: fixed;
+    bottom: var(--spacing-unit);
+    right: var(--spacing-unit);
+    display: flex;
+    flex-direction: row; /* Mobile: Horizontal */
+    gap: 1rem;
+    z-index: 950;
 }
 
 .btn-social {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #ffffff;
-  font-size: 1.2rem;
-  transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-}
-
-.btn-social:hover,
-.btn-social:focus {
-  transform: scale(1.1);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
-  outline: none;
-}
-
-
-/* ==========================================================
-   MEDIA QUERIES (Responsividade Profissional)
-   ========================================================== */
-
-/* Tablet & Desktop (768px e acima) */
-@media (min-width: 768px) {
-  
-  .header-inner {
-    width: 95%;
-  }
-
-  /* Menu Desktop (Sempre visível) */
-  .menu {
-    position: static;
-    display: flex;
-    max-height: none;
-    padding: 0;
-    background: transparent;
-    border-top: none;
-    flex-direction: row;
-    overflow: visible;
-    
-    /* CHAVE: Centraliza os links do menu no espaço central */
-    flex-grow: 1; 
-    justify-content: center; 
-    margin: 0 30px; /* Espaço para afastar do Logo e Controles */
-  }
-
-  .menu-link {
-    padding: 6px 12px;
-    border-bottom: none;
-    position: relative;
-  }
-  
-  /* Indicador elegante de link no desktop */
-  .menu-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    width: 100%;
-    height: 2px;
-    background-color: var(--color-accent);
-    transform: scaleX(0);
-    transition: transform 0.28s ease-out;
-    transform-origin: left;
-  }
-
-  .menu-link:hover::after,
-  .menu-link.ativo::after {
-    transform: scaleX(1);
-  }
-
-  /* Oculta o botão hamburger no desktop */
-  .btn-toggle-menu {
-    display: none;
-  }
-  
-  .container {
-    width: 92%;
-    /* CHAVE: Layout fixo de 2 colunas para maior estabilidade visual */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: var(--spacing-container-gap);
-  }
-
-  /* Full-width e Perfil Card ocupam as 2 colunas */
-  .full-width,
-  .perfil-card {
-    grid-column: 1 / -1;
-  }
-
-  /* Cards (Conteúdo) */
-  .card {
-    align-items: flex-start;
-    text-align: left;
-    padding: 30px;
-  }
-  
-  .card h3 {
-    text-align: left;
-  }
-  
-  /* Layout do Card de Perfil */
-  .perfil-card {
-    flex-direction: row;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: inline-flex;
     align-items: center;
-    text-align: left;
-    gap: 32px;
-  }
-
-  .perfil-card .foto {
-    width: 150px;
-    height: 150px;
-    border-radius: 10px; /* Muda para quadrado arredondado */
-  }
-
-  /* Garante que o texto do perfil se alinhe à esquerda */
-  .perfil-card > div {
-    text-align: left;
-    width: 100%;
-  }
-
-  .perfil-card .titulo,
-  .perfil-card p {
-    text-align: left !important;
-  }
-  
-  /* Redes Sociais: Vertical no desktop para ser discreto */
-  .redes {
-    flex-direction: column;
-    right: 30px;
-    bottom: 30px;
-  }
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.3rem;
+    transition: transform 0.2s, opacity 0.2s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Widescreen (1200px e acima) */
-@media (min-width: 1200px) {
-  
-  .container {
-    /* CHAVE: Layout de 3 colunas para telas muito largas */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-  }
-
-  /* Full-width e Perfil Card ocupam as 3 colunas */
-  .full-width,
-  .perfil-card {
-    grid-column: 1 / -1;
-  }
+.btn-social:hover {
+    transform: scale(1.1);
 }
 
 /* ==========================================================
-   Acessibilidade & Utils
+   6. Media Queries (Responsividade Pura)
    ========================================================== */
 
-/* Foco de acessibilidade */
+/* Tablet (Mínimo 768px) */
+@media (min-width: 768px) {
+    
+    .container {
+        /* Layout fixo de 2 colunas para estabilidade */
+        grid-template-columns: repeat(2, 1fr);
+        gap: calc(var(--spacing-unit) * 1.5);
+        width: 92%;
+    }
+    
+    /* Header Desktop: Logo / Menu Centralizado / Controles */
+    .header-inner {
+        width: 92%;
+    }
+    
+    /* Menu Oculta Hamburger e se torna Flexbox no Header */
+    .btn-toggle-menu {
+        display: none;
+    }
+    
+    .menu {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        max-height: none;
+        padding: 0;
+        border-top: none;
+        overflow: visible;
+        
+        /* CHAVE: Menu Centralizado */
+        flex-grow: 1; 
+        justify-content: center;
+        gap: 1.5rem; /* Espaço entre os links */
+    }
+    
+    .menu-link {
+        padding: 0.5rem 0.75rem;
+        border-bottom: none;
+        font-weight: 400;
+        transition: color 0.2s;
+    }
+    
+    .menu-link:hover, .menu-link.ativo {
+        background-color: transparent;
+        color: var(--color-accent);
+        text-decoration: none;
+    }
+
+    /* Card de Perfil: Layout Horizontal */
+    .perfil-card {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        gap: 2rem;
+    }
+    
+    .perfil-card .foto {
+        width: 150px;
+        height: 150px;
+        border-radius: 10px; /* Quadrado arredondado mais moderno */
+    }
+    
+    .perfil-card > div {
+        /* Garante que o texto dentro do div fique alinhado à esquerda */
+        text-align: left;
+    }
+    
+    /* Redes Sociais: Vertical */
+    .redes {
+        flex-direction: column;
+    }
+}
+
+/* Desktop Widescreen (Mínimo 1200px) */
+@media (min-width: 1200px) {
+    .container {
+        /* Layout de 3 colunas para telas muito largas */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==========================================================
+   7. Acessibilidade
+   ========================================================== */
+
 :focus {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 4px;
-  border-radius: 3px;
+    outline: 2px solid var(--color-accent-hover);
+    outline-offset: 3px;
+    border-radius: 3px;
 }
