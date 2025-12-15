@@ -1,3 +1,7 @@
+/* =========================
+   Reset e variáveis globais
+   ========================= */
+
 :root {
   --cor-bg: #050816;
   --cor-bg-card: rgba(15, 23, 42, 0.9);
@@ -6,21 +10,22 @@
   --cor-texto: #e5e7eb;
   --cor-texto-suave: #9ca3af;
   --cor-borda: rgba(148, 163, 184, 0.4);
-  --cor-erro: #f97373;
   --radius-card: 16px;
   --shadow-card: 0 18px 45px rgba(15, 23, 42, 0.75);
   --font-base: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --transicao-base: 180ms ease-out;
 }
 
-/* Tema claro */
+/* Tema claro ajustado */
 body.light {
-  --cor-bg: #f4f4f5;
+  --cor-bg: #f4f4f4;
   --cor-bg-card: #ffffff;
-  --cor-texto: #020617;
+  --cor-texto: #111827;
   --cor-texto-suave: #4b5563;
-  --cor-borda: rgba(148, 163, 184, 0.55);
-  --shadow-card: 0 14px 35px rgba(15, 23, 42, 0.12);
+  --cor-borda: rgba(148, 163, 184, 0.6);
+  --cor-acento: #2563eb;
+  --cor-acento-soft: rgba(37, 99, 235, 0.18);
+  --shadow-card: 0 16px 32px rgba(15, 23, 42, 0.12);
 }
 
 *,
@@ -31,12 +36,20 @@ body.light {
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
+/* Layout base em coluna para sticky footer */
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-base);
   color: var(--cor-texto);
   background:
@@ -62,6 +75,15 @@ ul {
   list-style: none;
 }
 
+/* main ocupa o espaço disponível (para empurrar o footer) */
+main.container {
+  flex: 1;
+}
+
+/* =========================
+   Layout geral e cards
+   ========================= */
+
 .container {
   width: min(1120px, 100% - 2.5rem);
   margin-inline: auto;
@@ -83,7 +105,7 @@ ul {
   color: #f9fafb;
 }
 
-/* Cards com efeito “glass” profissional */
+/* Cards com leve efeito glass */
 .card {
   position: relative;
   background: var(--cor-bg-card);
@@ -105,7 +127,6 @@ ul {
   pointer-events: none;
 }
 
-/* Conteúdo do card por cima do pseudo-elemento */
 .card > * {
   position: relative;
   z-index: 1;
@@ -149,6 +170,10 @@ ul {
   color: var(--cor-texto-suave);
 }
 
+/* =========================
+   Header, menu e tema
+   ========================= */
+
 .header {
   position: sticky;
   top: 0;
@@ -162,6 +187,15 @@ ul {
     transparent
   );
   border-bottom: 1px solid rgba(148, 163, 184, 0.28);
+}
+
+body.light .header {
+  background: linear-gradient(
+    to bottom,
+    rgba(244, 244, 244, 0.96),
+    rgba(244, 244, 244, 0.9),
+    transparent
+  );
 }
 
 .header-inner {
@@ -293,6 +327,10 @@ ul {
   font-size: 0.95rem;
 }
 
+/* =========================
+   Botão de download e redes
+   ========================= */
+
 .documentos-card .download-btn {
   position: relative;
   display: inline-flex;
@@ -312,6 +350,10 @@ ul {
     box-shadow var(--transicao-base),
     border-color var(--transicao-base),
     background 220ms ease-out;
+}
+
+body.light .documentos-card .download-btn {
+  color: #0f172a;
 }
 
 .documentos-card .download-btn .icon {
@@ -364,6 +406,10 @@ ul {
   box-shadow: 0 16px 36px rgba(15, 23, 42, 0.95);
 }
 
+/* =========================
+   Footer
+   ========================= */
+
 .footer {
   border-top: 1px solid rgba(148, 163, 184, 0.3);
   padding-block: 1.5rem 1.8rem;
@@ -372,6 +418,10 @@ ul {
   font-size: 0.85rem;
   color: var(--cor-texto-suave);
 }
+
+/* =========================
+   Responsividade
+   ========================= */
 
 @media (max-width: 768px) {
   .header-inner {
@@ -392,6 +442,10 @@ ul {
     opacity: 0;
     pointer-events: none;
     transition: transform 170ms ease-out, opacity 170ms ease-out;
+  }
+
+  body.light .menu {
+    background: rgba(244, 244, 244, 0.98);
   }
 
   .menu.open {
@@ -431,4 +485,3 @@ ul {
     animation-iteration-count: 1 !important;
   }
 }
-
