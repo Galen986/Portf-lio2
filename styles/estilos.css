@@ -12,7 +12,8 @@
   --color-accent-dark: #2f80ff;       /* Cor de destaque para hover/ativo */
   --color-border: #30363d;            /* Bordas e divisores */
   --color-shadow-rgb: 1, 4, 9;        /* Sombra (RGB) */
-  
+  --color-hamburger: #c9d1d9;         /* Cor do menu hamburger */
+
   /* Layout & Transições */
   --max-width: 1200px;
   --spacing-container-gap: 32px;
@@ -33,6 +34,7 @@ body.light {
   --color-accent-dark: #0747a6;
   --color-border: #c8ced4;
   --color-shadow-rgb: 209, 213, 219;
+  --color-hamburger: #24292f;
 }
 
 /* Reset Profissional */
@@ -43,6 +45,8 @@ body.light {
 html {
   scroll-behavior: smooth;
   font-size: 16px; /* Base 1rem */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -55,27 +59,6 @@ body {
   flex-direction: column;
   transition: background-color var(--transition-speed), color var(--transition-speed);
   -webkit-tap-highlight-color: transparent;
-}
-
-/* Tipografia e Estilos Base */
-h1, h2, h3 {
-  line-height: 1.2;
-  margin: 0;
-  color: var(--color-text-primary);
-}
-
-h2.titulo {
-  font-size: clamp(1.75rem, 4vw, 2.2rem); /* Font-size responsivo */
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--color-accent);
-  text-align: center;
-}
-
-h3 {
-  font-size: 1.25rem;
-  color: var(--color-accent);
-  margin-bottom: 0.75rem;
 }
 
 /* Links */
@@ -91,6 +74,27 @@ a:hover, a:focus {
   outline: none;
 }
 
+/* Tipografia */
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: 0;
+  color: var(--color-text-primary);
+}
+
+h2.titulo {
+  font-size: clamp(1.75rem, 4vw, 2.2rem); 
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--color-accent);
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  margin-bottom: 0.75rem;
+}
+
 /* Listas */
 ul {
   list-style: none;
@@ -101,7 +105,7 @@ ul {
 ul li {
   margin-bottom: 0.5rem;
   color: var(--color-text-secondary);
-  padding-left: 1.1em; /* Para simular bullet points sem usar list-style */
+  padding-left: 1.1em;
   position: relative;
 }
 
@@ -126,71 +130,7 @@ ul li strong {
 }
 
 /* ==========================================================
-   Layout Principal (Container e Cards)
-   ========================================================== */
-
-.container {
-  max-width: var(--max-width);
-  width: 90%; /* Levemente mais estreito em mobile */
-  margin: 20px auto 40px auto;
-  padding: 0;
-  flex-grow: 1;
-  display: grid;
-  /* MOBILE: Padrão de 1 coluna ou 2 muito estreitas (auto-fit minmax) */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-  gap: var(--spacing-container-gap);
-}
-
-/* Ocupa toda a largura da grid */
-.full-width {
-  grid-column: 1 / -1;
-}
-
-/* Cards (componentes) */
-.card {
-  background-color: var(--color-bg-secondary);
-  padding: 24px;
-  border-radius: 10px;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 4px 12px rgba(var(--color-shadow-rgb), 0.1);
-  transition: transform var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Padrão Mobile: Alinhado à esquerda */
-  text-align: left; 
-  min-height: 100px;
-}
-
-/* Efeito de destaque ao passar o mouse */
-.card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(var(--color-shadow-rgb), 0.15);
-}
-
-/* Títulos do card no Mobile */
-.card h3 {
-  text-align: left;
-}
-
-/* Card de Perfil */
-.perfil-card {
-  align-items: center; /* Alinha no centro (vertical) no mobile */
-  text-align: center;
-  gap: 16px;
-  padding: 30px 24px;
-}
-
-.perfil-card .foto {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 5px solid var(--color-accent);
-}
-
-/* ==========================================================
-   Header & Navegação (Acessibilidade e Mobile-First)
+   Header & Navegação
    ========================================================== */
 
 .header {
@@ -205,7 +145,7 @@ ul li strong {
 
 .header-inner {
   max-width: var(--max-width);
-  width: 90%;
+  width: 90%; /* Mobile width */
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -222,54 +162,6 @@ ul li strong {
   display: flex;
   align-items: center;
   gap: 12px;
-}
-
-/* Menu Mobile (Padrão: Fechado) */
-.menu {
-  display: flex;
-  position: absolute;
-  top: 100%; /* Abaixo do header */
-  left: 0;
-  right: 0;
-  width: 100%;
-  max-height: 0; 
-  background-color: var(--color-bg-secondary);
-  border-top: 1px solid var(--color-border);
-  flex-direction: column;
-  overflow: hidden;
-  transition: max-height 0.4s ease-in-out, padding 0.3s ease;
-  padding: 0;
-  z-index: 900;
-}
-
-.menu.open {
-  max-height: 400px; /* Suficiente para expandir */
-  padding: 0.5rem 0;
-  overflow-y: auto;
-}
-
-.menu-link {
-  display: block;
-  padding: 1rem 5%; /* Padding lateral maior */
-  color: var(--color-text-primary);
-  border-bottom: 1px solid var(--color-border);
-  transition: background-color 0.2s;
-  width: 100%;
-  position: relative;
-}
-
-.menu-link:hover {
-  background-color: rgba(var(--color-shadow-rgb), 0.05);
-  text-decoration: none;
-}
-
-.menu-link.ativo {
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
-.menu-link::after {
-  content: none; /* Remove indicador de link em mobile */
 }
 
 /* Botões de controle */
@@ -293,18 +185,172 @@ ul li strong {
   font-size: 1.25rem;
 }
 
+/* Hamburger */
+.hamburger {
+  width: 22px;
+  height: 18px;
+  position: relative;
+  display: inline-block;
+}
+
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  background: var(--color-hamburger);
+  border-radius: 2px;
+  left: 0;
+  transition: transform 0.25s ease-in-out, opacity 0.18s ease-in-out, top 0.25s ease-in-out;
+}
+
+.hamburger span:nth-child(1) { top: 0px; }
+.hamburger span:nth-child(2) { top: 8px; }
+.hamburger span:nth-child(3) { top: 16px; }
+
+.btn-toggle-menu.is-open .hamburger span:nth-child(1) {
+  transform: rotate(45deg); top: 8px;
+}
+.btn-toggle-menu.is-open .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+.btn-toggle-menu.is-open .hamburger span:nth-child(3) {
+  transform: rotate(-45deg); top: 8px;
+}
+
+/* Menu Mobile (Padrão: Fechado) */
+.menu {
+  display: flex;
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-height: 0; 
+  background-color: var(--color-bg-secondary);
+  border-top: 1px solid var(--color-border);
+  flex-direction: column;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.3s ease;
+  padding: 0;
+  z-index: 900;
+}
+
+.menu.open {
+  max-height: 400px; 
+  padding: 0.5rem 0;
+  overflow-y: auto;
+}
+
+.menu-link {
+  display: block;
+  padding: 1rem 5%; 
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color 0.2s;
+  width: 100%;
+  position: relative;
+}
+
+.menu-link:last-child {
+  border-bottom: none;
+}
+
+.menu-link:hover {
+  background-color: rgba(var(--color-shadow-rgb), 0.05);
+  text-decoration: none;
+}
+
+.menu-link.ativo {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.menu-link::after {
+  content: none; /* Remove indicador de link em mobile */
+}
+
 
 /* ==========================================================
-   Download Button & Social
+   Layout Principal (Container e Cards)
    ========================================================== */
 
+.container {
+  max-width: var(--max-width);
+  width: 90%; 
+  margin: 20px auto 40px auto;
+  padding: 0;
+  flex-grow: 1;
+  display: grid;
+  /* MOBILE PADRÃO: Flexibilidade */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: var(--spacing-container-gap);
+  justify-content: center; /* Centraliza a grid */
+}
+
+/* Ocupa toda a largura da grid */
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* Cards (componentes) */
+.card {
+  background-color: var(--color-bg-secondary);
+  padding: 24px;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 4px 12px rgba(var(--color-shadow-rgb), 0.1);
+  transition: transform var(--transition-speed), border-color var(--transition-speed), box-shadow var(--transition-speed);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Mobile: Centralizado */
+  text-align: center; 
+  min-height: 100px;
+}
+
+.card:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(var(--color-shadow-rgb), 0.15);
+}
+
+.card h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.card p,
+.card ul,
+.card div {
+  width: 100%;
+  text-align: left; /* Garante que o conteúdo interno seja legível */
+}
+
+/* Card de Perfil */
+.perfil-card {
+  align-items: center; 
+  text-align: center;
+  gap: 16px;
+  padding: 30px 24px;
+}
+
+.perfil-card .foto {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--color-accent);
+}
+
+
+/* Botão de download */
 .download-btn {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   padding: 12px 20px;
   background-color: var(--color-accent);
-  color: var(--color-bg-primary); /* Texto na cor de fundo para contraste */
+  color: var(--color-bg-primary); 
   border-radius: 6px;
   font-weight: 700;
   transition: all 0.2s ease-out;
@@ -322,7 +368,34 @@ ul li strong {
   outline: none;
 }
 
-/* Rodapé */
+/* Barra de progresso (Manter código de simulação) */
+.download-btn .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background-color: rgba(0, 0, 0, 0.14);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  z-index: 1;
+  transition: width 0.18s linear;
+}
+
+.download-btn .icon,
+.download-btn .label {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ==========================================================
+   Footer & Redes Sociais
+   ========================================================== */
+
 .footer {
   text-align: center;
   padding: 20px 0;
@@ -332,13 +405,12 @@ ul li strong {
   background-color: var(--color-bg-secondary);
 }
 
-/* Redes Sociais Fixas */
 .redes {
   position: fixed;
   bottom: 20px;
   right: 20px;
   display: flex;
-  flex-direction: row; /* Padrão Mobile: Horizontal */
+  flex-direction: row; /* Mobile: Horizontal */
   gap: 12px;
   z-index: 990;
 }
@@ -371,24 +443,10 @@ ul li strong {
 /* Tablet & Desktop (768px e acima) */
 @media (min-width: 768px) {
   
-  .container {
-    width: 92%;
-    /* CHAVE: Layout fixo de 2 colunas para maior estabilidade visual */
-    grid-template-columns: repeat(2, 1fr); 
-    gap: var(--spacing-container-gap);
+  .header-inner {
+    width: 95%;
   }
 
-  /* Full-width e Perfil Card ocupam as 2 colunas */
-  .full-width,
-  .perfil-card {
-    grid-column: 1 / -1;
-  }
-
-  /* Oculta o botão hamburger no desktop */
-  .btn-toggle-menu {
-    display: none;
-  }
-  
   /* Menu Desktop (Sempre visível) */
   .menu {
     position: static;
@@ -399,6 +457,11 @@ ul li strong {
     border-top: none;
     flex-direction: row;
     overflow: visible;
+    
+    /* CHAVE: Centraliza os links do menu no espaço central */
+    flex-grow: 1; 
+    justify-content: center; 
+    margin: 0 30px; /* Espaço para afastar do Logo e Controles */
   }
 
   .menu-link {
@@ -425,10 +488,40 @@ ul li strong {
   .menu-link.ativo::after {
     transform: scaleX(1);
   }
+
+  /* Oculta o botão hamburger no desktop */
+  .btn-toggle-menu {
+    display: none;
+  }
+  
+  .container {
+    width: 92%;
+    /* CHAVE: Layout fixo de 2 colunas para maior estabilidade visual */
+    grid-template-columns: repeat(2, 1fr); 
+    gap: var(--spacing-container-gap);
+  }
+
+  /* Full-width e Perfil Card ocupam as 2 colunas */
+  .full-width,
+  .perfil-card {
+    grid-column: 1 / -1;
+  }
+
+  /* Cards (Conteúdo) */
+  .card {
+    align-items: flex-start;
+    text-align: left;
+    padding: 30px;
+  }
+  
+  .card h3 {
+    text-align: left;
+  }
   
   /* Layout do Card de Perfil */
   .perfil-card {
     flex-direction: row;
+    align-items: center;
     text-align: left;
     gap: 32px;
   }
@@ -439,15 +532,18 @@ ul li strong {
     border-radius: 10px; /* Muda para quadrado arredondado */
   }
 
-  .perfil-card .titulo {
-    text-align: left !important;
+  /* Garante que o texto do perfil se alinhe à esquerda */
+  .perfil-card > div {
+    text-align: left;
+    width: 100%;
   }
 
+  .perfil-card .titulo,
   .perfil-card p {
     text-align: left !important;
   }
   
-  /* Redes Sociais: Vertical no desktop para economizar espaço e ser discreto */
+  /* Redes Sociais: Vertical no desktop para ser discreto */
   .redes {
     flex-direction: column;
     right: 30px;
@@ -475,6 +571,7 @@ ul li strong {
    Acessibilidade & Utils
    ========================================================== */
 
+/* Foco de acessibilidade */
 :focus {
   outline: 2px solid var(--color-accent);
   outline-offset: 4px;
