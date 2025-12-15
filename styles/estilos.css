@@ -85,17 +85,19 @@ main.container {
    ========================= */
 
 .container {
-  width: min(1120px, 100% - 2.5rem);
+  /* largura máxima centralizada, uma coluna */
+  width: min(720px, 100% - 2.5rem);
   margin-inline: auto;
-  padding-block: 5rem 3rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.75rem 2.25rem;
-  align-items: flex-start;
+  padding-block: 4.5rem 3rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  align-items: stretch;
 }
 
 .full-width {
-  grid-column: 1 / -1;
+  width: 100%;
 }
 
 .titulo {
@@ -103,6 +105,11 @@ main.container {
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #f9fafb;
+}
+
+/* Títulos principais centralizados */
+.titulo.full-width {
+  text-align: center;
 }
 
 /* Cards com leve efeito glass */
@@ -148,12 +155,13 @@ main.container {
   color: var(--cor-texto);
 }
 
-/* Card de perfil na home */
+/* Card de perfil sempre centralizado */
 .perfil-card {
-  display: grid;
-  grid-template-columns: auto minmax(0, 1fr);
-  gap: 1.25rem;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  text-align: center;
+  gap: 1.25rem;
 }
 
 .foto {
@@ -459,12 +467,14 @@ body.light .documentos-card .download-btn {
   }
 
   .container {
-    padding-block: 4.25rem 3rem;
-    grid-template-columns: 1fr;
+    width: min(720px, 100% - 2rem);
+    padding-block: 4rem 2.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .perfil-card {
-    grid-template-columns: 1fr;
+    align-items: center;
     text-align: center;
   }
 
